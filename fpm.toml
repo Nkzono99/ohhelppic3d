@@ -1,0 +1,12 @@
+name = "ohhelppic3d"
+version = "0.1.0"
+license = "license"
+author = "Nkzono99"
+maintainer = "210x218x@stu.kobe-u.ac.jp"
+copyright = "Copyright 2023, Nkzono99"
+[build]
+auto-executables = true
+auto-tests = true
+auto-examples = true
+[install]
+library = false
