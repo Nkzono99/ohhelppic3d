@@ -4,9 +4,19 @@ license = "license"
 author = "Nkzono99"
 maintainer = "210x218x@stu.kobe-u.ac.jp"
 copyright = "Copyright 2023, Nkzono99"
+
 [build]
-auto-executables = true
+auto-executables = false
 auto-tests = true
 auto-examples = true
+external-modules = ["mpi", "hdf5", "HDF5"]
+link = ["hdf5_hl","hdf5", "hdf5_fortran",
+        "fftw3_mpi","fftw3"]
+
 [install]
 library = false
+
+[dependencies]
+futils = { git = "https://github.com/Nkzono99/futils" }
+finbound = { git = "https://github.com/Nkzono99/finbound" }
+ohhelpf = { git =  "https://github.com/Nkzono99/ohhelp-for-fpm" }
