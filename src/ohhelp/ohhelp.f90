@@ -1,5 +1,9 @@
 #define OH_LIB_LEVEL 3
 
+#ifndef OH_PBUF_SIZE
+#define OH_PBUF_SIZE 16384
+#endif
+
 !> OhHelp Wrapper module.
 module m_ohhelp
     use ohhelp2, only: oh2_max_local_particles
@@ -9,6 +13,7 @@ module m_ohhelp
     use oh_type, only: oh_particle, oh_mycomm
     use m_ohparticles, only: t_OhParticles
     use m_ohfield, only: t_FieldExtensionInfo, new_FieldExtensionInfo, &
+                         tp_OhField, &
                          t_BoundaryCommunicationInfo, new_BoundaryCommunicationInfo, &
                          t_BoundaryCommunicationInfos, new_BoundaryCommunicationInfos, &
                          t_OhField, new_OhField, &
@@ -16,7 +21,7 @@ module m_ohhelp
                          BOUNDARY_CONDITION_PERIODIC, BOUNDARY_CONDITION_NO_PERIODIC
     implicit none
 
-    integer, parameter :: PARTICLE_BUFSIZE = 12*10 ! TODO: 64*1024
+    integer, parameter :: PARTICLE_BUFSIZE = OH_PBUF_SIZE
 
     private
     public oh_particle
@@ -98,73 +103,29 @@ contains
         obj%loadbalance_tolerance_percentage = loadbalance_tolerance_percentage
     end function
 
-    subroutine ohhelp_set_field_extension_infos(self, field_extension_infos)
-        class(t_OhHelp), intent(inout) :: self
-        type(t_FieldExtensionInfo), intent(in) :: field_extension_infos(:)
-
-        allocate (self%field_extension_infos(size(field_extension_infos)))
-        allocate (self%field_sizes(2, 3, size(self%field_extension_infos)))
-
-        block
-            integer :: i
-            integer :: id
-            do i = 1, size(field_extension_infos)
-                id = field_extension_infos(i)%id
-                self%field_extension_infos(id) = field_extension_infos(i)
-            end do
-        end block
-    end subroutine
-
-    subroutine ohhelp_set_boundary_communication_infos(self, boundary_communication_infos)
-        class(t_OhHelp), intent(inout) :: self
-        type(t_BoundaryCommunicationInfos), intent(in) :: boundary_communication_infos(:)
-
-        allocate (self%boundary_communication_infos(size(boundary_communication_infos)))
-
-        block
-            integer :: i
-            integer :: id
-            do i = 1, size(boundary_communication_infos)
-                id = boundary_communication_infos(i)%id
-                self%boundary_communication_infos(id) = boundary_communication_infos(i)
-            end do
-        end block
-    end subroutine
-
-    subroutine ohhelp_allocate_ohfield(self, ohfield)
-        class(t_OhHelp), intent(in) :: self
-        class(t_OhField), intent(inout) :: ohfield
-
-        integer :: nelements
-        integer :: nfields
-        integer :: field_size(2, 3)
-
-        nelements = ohfield%extension_info%nelements
-        nfields = ohfield%nfields
-
-        field_size(:, :) = self%field_sizes(:, :, ohfield%extension_info%id)
-
-        allocate (ohfield%values(nelements, &
-                                 field_size(1, 1):field_size(2, 1), &
-                                 field_size(1, 2):field_size(2, 2), &
-                                 field_size(1, 3):field_size(2, 3), &
-                                 nfields))
-    end subroutine
-
-    subroutine ohhelp_initialize(self, ohparticles)
+    subroutine ohhelp_initialize(self, ohparticles, ohfields)
         class(t_OhHelp), intent(inout) :: self
         type(t_OhParticles), intent(inout) :: ohparticles
+        type(tp_OhField), intent(inout) :: ohfields(:)
 
         integer :: status = 0
         integer :: repiter = 0
         integer :: verbose = 0
-        integer :: ftypes(7, size(self%field_extension_infos) + 1)
-        integer :: cfields(size(self%boundary_communication_infos) + 1)
-        integer :: ctypes(3, 2, NBOUNDARY_CONDITION_TYPES, size(self%boundary_communication_infos))
+
+        integer, allocatable :: ftypes(:, :)
+        integer, allocatable :: cfields(:)
+        integer, allocatable :: ctypes(:, :, :, :)
 
         call ohparticles%allocate_pbuf(oh2_max_local_particles(ohparticles%max_nparticles, &
                                                                self%loadbalance_tolerance_percentage, &
                                                                PARTICLE_BUFSIZE))
+
+        call self%set_field_extension_infos(ohfields)
+        call self%set_boundary_communication_infos(ohfields)
+
+        allocate (ftypes(7, size(self%field_extension_infos) + 1))
+        allocate (cfields(size(self%boundary_communication_infos) + 1))
+        allocate (ctypes(3, 2, NBOUNDARY_CONDITION_TYPES, size(self%boundary_communication_infos)))
 
         ftypes = ftypes_from(self%field_extension_infos)
         cfields = cfields_from(self%boundary_communication_infos)
@@ -198,6 +159,16 @@ contains
                       status, &
                       repiter, &
                       verbose)
+
+        ! Initialize particle-related variables, etc. in ohhelp (first time calling transbound function)
+        call self%transbound(ohparticles)
+
+        block
+            integer :: iohfield
+            do iohfield = 1, size(ohfields)
+                call self%allocate_ohfield(ohfields(iohfield)%ref)
+            end do
+        end block
 
     contains
 
@@ -248,12 +219,70 @@ contains
 
     end subroutine
 
+    subroutine ohhelp_set_field_extension_infos(self, ohfields)
+        class(t_OhHelp), intent(inout) :: self
+        type(tp_OhField), intent(in) :: ohfields(:)
+
+        allocate (self%field_extension_infos(size(ohfields)))
+        allocate (self%field_sizes(2, 3, size(ohfields)))
+
+        block
+            integer :: i
+            integer :: id
+            type(t_FieldExtensionInfo) :: info
+            do i = 1, size(ohfields)
+                info = ohfields(i)%ref%extension_info
+                id = info%id
+                self%field_extension_infos(id) = info
+            end do
+        end block
+    end subroutine
+
+    subroutine ohhelp_set_boundary_communication_infos(self, ohfields)
+        class(t_OhHelp), intent(inout) :: self
+        type(tp_OhField), intent(in) :: ohfields(:)
+
+        allocate (self%boundary_communication_infos(size(ohfields)))
+
+        block
+            integer :: i, j
+            integer :: id
+            type(t_BoundaryCommunicationInfos), allocatable :: infos(:)
+            do i = 1, size(ohfields)
+                infos = ohfields(i)%ref%boundary_comm_infos
+                do j = 1, size(infos)
+                    id = infos(j)%id
+                    self%boundary_communication_infos(id) = infos(j)
+                end do
+            end do
+        end block
+    end subroutine
+
+    subroutine ohhelp_allocate_ohfield(self, ohfield)
+        class(t_OhHelp), intent(in) :: self
+        class(t_OhField), intent(inout) :: ohfield
+
+        integer :: nelements
+        integer :: nfields
+        integer :: field_size(2, 3)
+
+        nelements = ohfield%extension_info%nelements
+        nfields = ohfield%nfields
+
+        field_size(:, :) = self%field_sizes(:, :, ohfield%extension_info%id)
+
+        allocate (ohfield%values(nelements, &
+                                 field_size(1, 1):field_size(2, 1), &
+                                 field_size(1, 2):field_size(2, 2), &
+                                 field_size(1, 3):field_size(2, 3), &
+                                 nfields))
+    end subroutine
+
     subroutine ohhelp_transbound(self, ohparticles)
         class(t_OhHelp), intent(inout) :: self
         class(t_OhParticles), intent(inout) :: ohparticles
         integer :: status
 
-        print *, self%current_mode
         self%current_mode = oh3_transbound(self%current_mode, status)
         call oh2_set_total_particles
 

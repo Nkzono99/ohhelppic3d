@@ -2,7 +2,7 @@ module ohhelppic3d
     use mpi
     use m_ohhelp, only: t_OhHelp, new_OhHelp
     use m_ohfield_factory, only: t_OhFieldFactory, new_OhFieldFactory
-    use m_ohfield, only: t_OhField, &
+    use m_ohfield, only: t_OhField, tp_OhField, &
                          BC_PERIODIC => BOUNDARY_CONDITION_PERIODIC, &
                          BC_NO_PERIODIC => BOUNDARY_CONDITION_NO_PERIODIC
     use m_ohparticles, only: t_OhParticles, new_OhParticles
@@ -19,7 +19,7 @@ module ohhelppic3d
     type(t_OhHelp) :: ohhelp
     type(t_OhParticles) :: ohparticles
     integer :: pbase(3)
-    type(t_OhField) :: eb, aj, rho, phi
+    type(t_OhField), target :: eb, aj, rho, phi
     class(t_ParticleMover), allocatable :: particle_mover
 
     !! Parameters
@@ -145,77 +145,37 @@ contains
 
         ohparticles = new_OhParticles(nspec, max_npcls, product(nnodes))
 
-        print *, 'boundary_con', boundary_conditions
         ohhelp = new_OhHelp(nnodes, nx, ny, nz, boundary_conditions, tolerance)
 
-        call ohhelp%set_field_extension_infos([eb%extension_info, &
-                                               aj%extension_info, &
-                                               rho%extension_info, &
-                                               phi%extension_info])
+        block ! Initialization of OhHelp
+            type(tp_OhField) :: ohfields(4)
+            ohfields(1)%ref => eb
+            ohfields(2)%ref => aj
+            ohfields(3)%ref => rho
+            ohfields(4)%ref => phi
 
-        call ohhelp%set_boundary_communication_infos([eb%boundary_comm_infos(1), &
-                                                      aj%boundary_comm_infos(1), &
-                                                      rho%boundary_comm_infos(1), &
-                                                      phi%boundary_comm_infos(1)])
+            call ohhelp%initialize(ohparticles, ohfields)
+            call ohhelp%transbound(ohparticles)
+        end block
 
-        call ohhelp%initialize(ohparticles)
+        do i = 1, 30*(ohhelp%subdomain_id(1)+1)
+            subdomain = ohhelp%subdomain_range(:, :, ohhelp%subdomain_id(1)+1)
+            block
+                double precision :: position(3)
 
-        call ohhelp%allocate_ohfield(eb)
-        call ohhelp%allocate_ohfield(aj)
-        call ohhelp%allocate_ohfield(rho)
-        call ohhelp%allocate_ohfield(phi)
+                position(:) = subdomain(1, :) + (subdomain(2, :) - subdomain(1, :))/1000d0*i
+                particle%x = position(1)
+                particle%y = position(2)
+                particle%z = position(3)
+                particle%nid = ohhelp%subdomain_id(1)
+                particle%pid = 0
+                particle%spec = 1
+            end block
+
+            call ohhelp%inject_particle(particle)
+        end do
+
         call ohhelp%transbound(ohparticles)
-
-        ! if (ohhelp%subdomain_id(1) == 1) then
-        if (1) then
-            do i = 1, 30*(ohhelp%subdomain_id(1)+1)
-                subdomain = ohhelp%subdomain_range(:, :, ohhelp%subdomain_id(1)+1)
-                block
-                    double precision :: position(3)
-
-                    position(:) = subdomain(1, :) + (subdomain(2, :) - subdomain(1, :))/1000d0*i
-                    particle%x = position(1)
-                    particle%y = position(2)
-                    particle%z = position(3)
-                    particle%nid = ohhelp%subdomain_id(1)
-                    particle%pid = 0
-                    particle%spec = 1
-                end block
-
-                ! ohparticles%particle_count_histgram(ohhelp%subdomain_id(1)+1, 1, 1) &
-                !     = ohparticles%particle_count_histgram(ohhelp%subdomain_id(1)+1, 1, 1) + 1
-
-                ! ohparticles%pbuf(i) = particle
-
-                ! print *, '------', i, '------'
-                ! print *, particle
-                call ohhelp%inject_particle(particle)
-            end do
-        end if
-
-        print *, ":::::::::::::::::::::"
-        print *, 'sdid', ohhelp%subdomain_id
-        print *, 'nphgram', ohparticles%particle_count_histgram
-        print *, 'totalp', ohparticles%total_local_particles
-        print *, ohparticles%pbuf(1)
-        print *, ":::::::::::::::::::::"
-        call ohhelp%transbound(ohparticles)
-        ! ! call ohhelp%transbound(ohparticles)
-
-        print *, '========='
-        print *, ohhelp%subdomain_id
-        print *, 30*(ohhelp%subdomain_id(1)+1)
-        print *, ohparticles%total_local_particles
-        print *, '========='
-
-        if (ohhelp%subdomain_id(1) == 1) then
-            print *, '*****************:'
-            print *, ohhelp%subdomain_id
-            print *, ohparticles%pbase
-            print *, ohparticles%pbuf(1)
-            ! print *, ohparticles%pbuf(2)
-            print *, '*****************:'
-        end if
     end subroutine
 
 end module ohhelppic3d
