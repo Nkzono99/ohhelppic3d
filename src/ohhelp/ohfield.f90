@@ -9,6 +9,7 @@ module m_ohfield
     public t_BoundaryCommunicationInfos, new_BoundaryCommunicationInfos
     public t_FieldExtensionInfo, new_FieldExtensionInfo
     public t_OhField, new_OhField
+    public tp_OhField
 
     integer, parameter :: NBOUNDARY_CONDITION_TYPES = 2
     integer, parameter :: BOUNDARY_CONDITION_PERIODIC = 1
@@ -55,6 +56,10 @@ module m_ohfield
         type(t_BoundaryCommunicationInfos), allocatable :: boundary_comm_infos(:)
     contains
         procedure :: make_copy => ohfield_make_copy
+    end type
+
+    type tp_OhField
+        class(t_OhField), pointer :: ref
     end type
 
 contains
