@@ -19,6 +19,7 @@ module m_ohparticles
     contains
 
         procedure :: allocate_pbuf => ohparticles_allocate_pbuf
+
     end type
 
 contains

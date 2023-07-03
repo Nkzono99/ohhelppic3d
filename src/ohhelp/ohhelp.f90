@@ -55,15 +55,14 @@ module m_ohhelp
 
     contains
 
-        procedure :: allocate_ohfield => ohhelp_allocate_ohfield
-
-        procedure :: set_field_extension_infos => ohhelp_set_field_extension_infos
-        procedure :: set_boundary_communication_infos => ohhelp_set_boundary_communication_infos
-
         procedure :: initialize => ohhelp_initialize
+        procedure :: allocate_ohfield => ohhelp_allocate_ohfield
 
         procedure :: transbound => ohhelp_transbound
         procedure :: inject_particle => ohhelp_inject_particle
+
+        procedure, private :: set_field_extension_infos => ohhelp_set_field_extension_infos
+        procedure, private :: set_boundary_communication_infos => ohhelp_set_boundary_communication_infos
 
     end type
 

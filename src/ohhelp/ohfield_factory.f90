@@ -20,7 +20,7 @@ module m_ohfield_factory
 
 contains
 
-    function new_OhFieldFactory result(obj)
+    function new_OhFieldFactory() result(obj)
         type(t_OhFieldFactory) :: obj
 
         obj%extension_id_count = 1
