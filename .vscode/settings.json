@@ -2,6 +2,6 @@
     "fortran.linter.compiler": "ifort",
     "fortran.linter.modOutput": "${workspaceFolder}/.vscode/linter",
     "fortran.linter.includePaths": [
-        "${workspaceFolder}/include"
+        "${workspaceFolder}/**"
     ]
 }
