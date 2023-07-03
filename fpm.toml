@@ -20,3 +20,4 @@ library = false
 futils = { git = "https://github.com/Nkzono99/futils" }
 finbound = { git = "https://github.com/Nkzono99/finbound" }
 ohhelpf = { git =  "https://github.com/Nkzono99/ohhelp-for-fpm" }
+toml-f = { git ="https://github.com/toml-f/toml-f" }
