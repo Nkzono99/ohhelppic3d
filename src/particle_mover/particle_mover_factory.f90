@@ -17,10 +17,10 @@ contains
         type(t_ParticleMoverFactory) :: obj
     end function
 
-    subroutine factory_create_particle_mover(self, name, particle_mover)
+    function factory_create_particle_mover(self, name) result(particle_mover)
         class(t_ParticleMoverFactory), intent(in) :: self
         character(len=*), intent(in) :: name
-        class(t_ParticleMover), allocatable, intent(out) :: particle_mover
+        class(t_ParticleMover), allocatable :: particle_mover
 
         select case (name)
         case ('boris')
@@ -28,6 +28,6 @@ contains
         case default
             ! TODO: エラー出力?
         end select
-    end subroutine
+    end function
 
 end module
