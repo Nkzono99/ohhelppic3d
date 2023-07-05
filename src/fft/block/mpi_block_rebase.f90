@@ -21,6 +21,9 @@ module m_mpi_block_rebase
         type(t_BlockCommunicatorList), private :: block_senders
         type(t_BlockCommunicatorList), private :: block_receivers
 
+        integer, allocatable :: pids(:)
+        integer :: ipid
+
         integer(kind=kind(MPI_COMM_WORLD)), private :: comm
     contains
         procedure :: rebase => mpiBlockRebasor_rebase
@@ -50,6 +53,9 @@ contains
 
         obj%local_block = local_blocks%get(ipid)
         obj%require_block = require_blocks%get(ipid)
+
+        obj%pids = pids
+        obj%ipid = ipid
 
         obj%block_senders = new_BlockCommunicatorList()
         obj%block_receivers = new_BlockCommunicatorList()
@@ -112,7 +118,6 @@ contains
         !> Blocks that each process requires.
         type(t_BlockList) :: require_blocks
 
-        ! TODO: create
         local_blocks = mpi_collect_blocks(local_block, pids, comm, tag)
         require_blocks = mpi_collect_blocks(require_block, pids, comm, tag)
 
@@ -141,7 +146,7 @@ contains
         call block%to_array(send_data(:))
 
         do i = 1, size(pids)
-            ip = i - 1
+            ip = pids(i)
             call MPI_Isend(send_data(1), SIZE_OF_BLOCK_ARRAY, MPI_INTEGER, &
                            ip, &
                            get_default(tag, 0), comm, &
@@ -186,6 +191,7 @@ contains
 
             do i = 1, self%block_senders%current_size
                 sender = self%block_senders%get(i)
+                ! print *, self%pids(self%ipid), 'send', sender%pid
                 call sender%isend(send_data(:, :, :), get_default(tag, 0), send_requests(i))
             end do
         end block
@@ -195,9 +201,12 @@ contains
             type(t_BlockCommunicator) :: receiver
             do i = 1, self%block_receivers%current_size
                 receiver = self%block_receivers%get(i)
+                ! print *, self%pids(self%ipid), 'recv', receiver%pid
                 call receiver%irecv(recv_data(:, :, :), get_default(tag, 0), recv_requests(i))
             end do
         end block
+
+        ! print *, self%pids(self%ipid), self%block_senders%current_size, self%block_receivers%current_size
 
         block
             integer :: ierr
