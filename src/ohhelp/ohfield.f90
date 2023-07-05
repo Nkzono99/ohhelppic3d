@@ -49,13 +49,18 @@ module m_ohfield
 
         type(t_FieldExtensionInfo) :: extension_info
 
+        integer :: nelements
         integer :: nfields
         integer :: field_size(2, 3)
+        integer :: subdomain_range(2, 3, 2)
 
         integer :: nboundary_comm_infos
         type(t_BoundaryCommunicationInfos), allocatable :: boundary_comm_infos(:)
     contains
         procedure :: make_copy => ohfield_make_copy
+        procedure :: get_value_from_local_index => ohfield_get_value_from_local_index
+        procedure :: get_value_from_global_index => ohfield_get_value_from_global_index
+
     end type
 
     type tp_OhField
@@ -129,6 +134,7 @@ contains
         type(t_OhField) :: obj
 
         obj%extension_info = extension_info
+        obj%nelements = extension_info%nelements
         obj%nfields = nfields
 
         if (present(boundary_comm_infos)) then
@@ -148,6 +154,30 @@ contains
         type(t_OhField) :: copy
 
         copy = new_OhField(self%extension_info, nfields, self%boundary_comm_infos)
+    end function
+
+    function ohfield_get_value_from_local_index(self, ix, iy, iz, ps) result(ret)
+        class(t_OhField), intent(in) :: self
+        integer, intent(in) :: ix
+        integer, intent(in) :: iy
+        integer, intent(in) :: iz
+        integer, intent(in) :: ps
+
+        double precision :: ret(self%nelements)
+
+        ret(:) = self%values(:, ix, iy, iz, ps)
+    end function
+
+    function ohfield_get_value_from_global_index(self, ix, iy, iz, ps) result(ret)
+        class(t_OhField), intent(in) :: self
+        integer, intent(in) :: ix
+        integer, intent(in) :: iy
+        integer, intent(in) :: iz
+        integer, intent(in) :: ps
+
+        double precision :: ret(self%nelements)
+
+        ret(:) = self%values(:, ix, iy, iz, ps)
     end function
 
 end module
