@@ -19,6 +19,8 @@ module m_ohparticles
     contains
 
         procedure :: allocate_pbuf => ohparticles_allocate_pbuf
+        procedure :: start_index => ohparticles_start_index
+        procedure :: end_index => ohparticles_end_index
 
     end type
 
@@ -50,7 +52,7 @@ contains
         allocate (self%pbuf(self%max_local_particles))
     end subroutine
 
-    function start_index(self, ispec, ps) result(ret)
+    function ohparticles_start_index(self, ispec, ps) result(ret)
         class(t_OhParticles), intent(in) :: self
         integer, intent(in) :: ispec
         integer, intent(in) :: ps
@@ -59,13 +61,13 @@ contains
         ret = self%pbase(ps) + 1 + sum(self%total_local_particles(1:ispec - 1, ps))
     end function
 
-    function end_index(self, ispec, ps) result(ret)
+    function ohparticles_end_index(self, ispec, ps) result(ret)
         class(t_OhParticles), intent(in) :: self
         integer, intent(in) :: ispec
         integer, intent(in) :: ps !> 1: primary subdomain, 2: secondary subdomain
         integer :: ret
 
-        ret = self%pbase(ps) + 1 + sum(self%total_local_particles(1:ispec, ps))
+        ret = self%pbase(ps) + sum(self%total_local_particles(1:ispec, ps))
     end function
 
 end module
