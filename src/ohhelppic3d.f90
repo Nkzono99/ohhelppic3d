@@ -17,9 +17,10 @@ module ohhelppic3d
     use m_velocity_distribution, only: new_NoVelocityDistribution3d
     use m_interpolator, only: t_Interpolator
     use m_mpi_fft_solver, only: t_MPIFFTSolver3d
-    use m_mpi_fftw_solver, only: new_MPIFFTWSolver
+    use m_mpi_fftw_solver, only: new_MPIFFTWSolver3d
     use m_block, only: t_Block, new_Block
     implicit none
+
     private
     public pic
 
@@ -145,16 +146,34 @@ contains
         block
             integer :: fft_boundary_types(3)
             type(t_Block) :: local_block
-            type(t_Block) :: global_block
 
-            local_block = new_Block(ohhelp%subdomain_range(1, :, ohhelp%subdomain_id(1)), &
-                                    ohhelp%subdomain_range(2, :, ohhelp%subdomain_id(1)))
-            global_block = new_Block([0, 0, 0], [parameters%nx, parameters%ny, parameters%nz])
+            fft_boundary_types = [0, 0, 0]
 
-            mpifft_solver3d = new_MPIFFTWSolver(fft_boundary_types, &
-                                                local_block, global_block, &
-                                                myid, nprocs, &
-                                                MPI_COMM_WORLD, tag=10)
+            local_block = new_Block(ohhelp%subdomain_range(1, :, ohhelp%subdomain_id(1)) + 1, &
+                                    ohhelp%subdomain_range(2, :, ohhelp%subdomain_id(1)) + 1)
+
+            mpifft_solver3d = new_MPIFFTWSolver3d(fft_boundary_types, &
+                                                  local_block, &
+                                                  parameters%nx - 1, parameters%ny - 1, parameters%nz - 1, &
+                                                  myid + 1, nprocs, &
+                                                  MPI_COMM_WORLD, tag=10)
+        end block
+
+        block
+            integer :: lnx, lny, lnz
+
+            lnx = rho%subdomain_range(2, 1, 1) - rho%subdomain_range(1, 1, 1) + 1
+            lnx = rho%subdomain_range(2, 2, 1) - rho%subdomain_range(1, 2, 1) + 1
+            lnx = rho%subdomain_range(2, 3, 1) - rho%subdomain_range(1, 3, 1) + 1
+
+            rho%values(1, 2, 2, 2, 1) = 2.125d0
+
+            call mpifft_solver3d%forward(rho%values(1, 1:lnx, 1:lnx, 1:lnx, 1), &
+                                         rho%values(1, 1:lnx, 1:lnx, 1:lnx, 1))
+            call mpifft_solver3d%backward(rho%values(1, 1:lnx, 1:lnx, 1:lnx, 1), &
+                                         rho%values(1, 1:lnx, 1:lnx, 1:lnx, 1))
+
+            print *, rho%values(1, 2, 2, 2, 1)
         end block
 
         block
@@ -182,15 +201,15 @@ contains
 
             ! Primaryモードの場合は、start_index(ispec, 2) > end_index(ispec, 2)のため最内ループは実行されない
             do ps = 1, 2
-                do ispec = 1, ohparticles%nspecies
-                    ipcl_start = ohparticles%start_index(ispec, ps)
-                    ipcl_end = ohparticles%end_index(ispec, ps)
-                    do ipcl = ipcl_start, ipcl_end
-                        eb_interped(:) = interpolator%interp(ohparticles%pbuf(ipcl), eb)
+            do ispec = 1, ohparticles%nspecies
+                ipcl_start = ohparticles%start_index(ispec, ps)
+                ipcl_end = ohparticles%end_index(ispec, ps)
+                do ipcl = ipcl_start, ipcl_end
+                    eb_interped(:) = interpolator%interp(ohparticles%pbuf(ipcl), eb)
 
-                        call particle_mover%move(ohparticles%pbuf(ipcl), qm, eb_interped, dt)
-                    end do
+                    call particle_mover%move(ohparticles%pbuf(ipcl), qm, eb_interped, dt)
                 end do
+            end do
             end do
         end block
 
