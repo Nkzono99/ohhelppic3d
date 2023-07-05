@@ -10,9 +10,9 @@ module m_block_communicator
         integer :: pid
         integer(kind(MPI_COMM_WORLD)) :: comm
     contains
-        procedure :: isend => blockSendReceiver_isend
-        procedure :: irecv => blockSendReceiver_irecv
-        procedure :: destroy => blockSendReceiver_destroy
+        procedure :: isend => blockCommunicator_isend
+        procedure :: irecv => blockCommunicator_irecv
+        procedure :: destroy => blockCommunicator_destroy
     end type
 
 contains
@@ -53,7 +53,7 @@ contains
         call MPI_Type_commit(obj%mpi_type, ierr)
     end function
 
-    subroutine blockSendReceiver_isend(self, senddata, tag, request)
+    subroutine blockCommunicator_isend(self, senddata, tag, request)
         class(t_BlockCommunicator), intent(inout) :: self
         double precision, intent(in) :: senddata(self%local_block%start(1):self%local_block%end(1), &
                                                  self%local_block%start(2):self%local_block%end(2), &
@@ -72,7 +72,7 @@ contains
         call MPI_Isend(senddata(start(1), start(2), start(3)), 1, self%mpi_type, self%pid, tag, self%comm, request, ierr)
     end subroutine
 
-    subroutine blockSendReceiver_irecv(self, recvdata, tag, request)
+    subroutine blockCommunicator_irecv(self, recvdata, tag, request)
         class(t_BlockCommunicator), intent(inout) :: self
         integer, intent(in) :: tag
         double precision, intent(inout) :: recvdata(self%local_block%start(1):self%local_block%end(1), &
@@ -91,7 +91,7 @@ contains
         call MPI_Irecv(recvdata(start(1), start(2), start(3)), 1, self%mpi_type, self%pid, tag, self%comm, request, ierr)
     end subroutine
 
-    subroutine blockSendReceiver_destroy(self)
+    subroutine blockCommunicator_destroy(self)
         class(t_BlockCommunicator), intent(inout) :: self
 
         integer :: ierr
