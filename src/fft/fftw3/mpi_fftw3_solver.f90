@@ -13,7 +13,6 @@ module m_mpi_fftw_solver
     type, extends(t_MPIFFTSolver3d) :: t_MPIFFTWSolver3d
         type(C_PTR) :: forward_plan
         type(C_PTR) :: backward_plan
-        double precision :: normalizers(3)
 
         type(t_Block) :: local_block
         type(t_Block) :: require_block
@@ -45,27 +44,22 @@ contains
         case (FFT_BoundaryType_Periodic)
             forward_fft_type = FFTW_R2HC
             backward_fft_type = FFTW_HC2R
-            normalizer = n
 
         case (FFT_BoundaryType_Dirichlet)
             forward_fft_type = FFTW_RODFT00
             backward_fft_type = FFTW_RODFT00
-            normalizer = 2.0d0*(n + 1.0d0)
 
         case (FFT_BoundaryType_Neumann)
             forward_fft_type = FFTW_REDFT00
             backward_fft_type = FFTW_REDFT00
-            normalizer = 2.0d0*(n - 1.0d0)
 
         case (FFT_BoundaryType_Dirichlet_Neumann)
             forward_fft_type = FFTW_RODFT01
             backward_fft_type = FFTW_RODFT10
-            normalizer = 2.0d0*n
 
         case (FFT_BoundaryType_Neumann_Dirichlet)
             forward_fft_type = FFTW_REDFT01
             backward_fft_type = FFTW_REDFT10
-            normalizer = 2.0d0*n
         end select
     end subroutine
 
