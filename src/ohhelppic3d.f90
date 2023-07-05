@@ -154,7 +154,7 @@ contains
 
             mpifft_solver3d = new_MPIFFTWSolver3d(fft_boundary_types, &
                                                   local_block, &
-                                                  parameters%nx - 1, parameters%ny - 1, parameters%nz - 1, &
+                                                  parameters%nx, parameters%ny, parameters%nz, &
                                                   myid + 1, nprocs, &
                                                   MPI_COMM_WORLD, tag=10)
         end block
@@ -168,10 +168,10 @@ contains
 
             rho%values(1, 2, 2, 2, 1) = 2.125d0
 
-            call mpifft_solver3d%forward(rho%values(1, 1:lnx, 1:lnx, 1:lnx, 1), &
-                                         rho%values(1, 1:lnx, 1:lnx, 1:lnx, 1))
-            call mpifft_solver3d%backward(rho%values(1, 1:lnx, 1:lnx, 1:lnx, 1), &
-                                         rho%values(1, 1:lnx, 1:lnx, 1:lnx, 1))
+            call mpifft_solver3d%forward(rho%values(1, 0:lnx, 0:lnx, 0:lnx, 1), &
+                                         rho%values(1, 0:lnx, 0:lnx, 0:lnx, 1))
+            call mpifft_solver3d%backward(rho%values(1, 0:lnx, 0:lnx, 0:lnx, 1), &
+                                         rho%values(1, 0:lnx, 0:lnx, 0:lnx, 1))
 
             print *, rho%values(1, 2, 2, 2, 1)
         end block
