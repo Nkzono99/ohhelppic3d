@@ -79,7 +79,12 @@ contains
         integer, intent(in) :: tag
         type(t_MPIFFTWSolver3d) :: obj
 
+        integer(kind=C_INTPTR_T) :: iptr_nx, iptr_ny, iptr_nz
         integer(C_INTPTR_T) :: local_nz, local_z_start
+
+        iptr_nx = nx
+        iptr_ny = ny
+        iptr_nz = nz
 
         obj%boundary_types(:) = fft_boundary_types(:)
         obj%local_block = local_block
@@ -91,14 +96,14 @@ contains
         block ! Allocate array used in fft.
             integer(C_INTPTR_T) :: alloc_local
 
-            alloc_local = fftw_mpi_local_size_3d(int(nz, kind=C_INTPTR_T), &
-                                                 int(ny, kind=C_INTPTR_T), &
-                                                 int(nx, kind=C_INTPTR_T), &
+            alloc_local = fftw_mpi_local_size_3d(iptr_nz, &
+                                                 iptr_ny, &
+                                                 iptr_nx, &
                                                  communicator, &
                                                  local_nz, local_z_start)
             obj%ptr_fft_array = fftw_alloc_real(alloc_local)
             call c_f_pointer(obj%ptr_fft_array, obj%fft_array, &
-                             [int(ny, kind=C_INTPTR_T), int(nx, kind=C_INTPTR_T), local_nz])
+                             [iptr_nx, iptr_ny, local_nz])
         end block
 
         block ! Create fftw plan.
@@ -112,14 +117,14 @@ contains
             double precision :: normalizer_y
             double precision :: normalizer_z
 
-            call convert_fft_type(int(nx), fft_boundary_types(1), &
+            call convert_fft_type(nx, fft_boundary_types(1), &
                                   forward_fft_type_x, backward_fft_type_x, normalizer_x)
-            call convert_fft_type(int(ny), fft_boundary_types(1), &
+            call convert_fft_type(ny, fft_boundary_types(1), &
                                   forward_fft_type_y, backward_fft_type_y, normalizer_y)
-            call convert_fft_type(int(nz), fft_boundary_types(1), &
+            call convert_fft_type(nz, fft_boundary_types(1), &
                                   forward_fft_type_z, backward_fft_type_z, normalizer_z)
 
-            obj%forward_plan = fftw_mpi_plan_r2r_3d(nz, ny, nx, &
+            obj%forward_plan = fftw_mpi_plan_r2r_3d(iptr_nz, iptr_ny, iptr_nx, &
                                                     obj%fft_array, obj%fft_array, &
                                                     obj%communicator, &
                                                     forward_fft_type_z, &
@@ -127,7 +132,7 @@ contains
                                                     forward_fft_type_x, &
                                                     FFTW_MEASURE)
 
-            obj%backward_plan = fftw_mpi_plan_r2r_3d(nz, ny, nx, &
+            obj%backward_plan = fftw_mpi_plan_r2r_3d(iptr_nz, iptr_ny, iptr_nx, &
                                                      obj%fft_array, obj%fft_array, &
                                                      obj%communicator, &
                                                      backward_fft_type_z, &
@@ -140,8 +145,8 @@ contains
             integer :: zs, ze
 
             zs = local_z_start
-            ze = local_z_start + local_nz
-            obj%require_block = new_Block([0, 0, zs], [int(nx), int(ny), ze])
+            ze = local_z_start + local_nz-1
+            obj%require_block = new_Block([1, 1, zs], [int(nx), int(ny), ze])
         end block
 
         block ! Create a converter between the coordinate range used in fft and the coordinate range for subdomain.
