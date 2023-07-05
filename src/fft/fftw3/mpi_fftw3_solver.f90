@@ -6,13 +6,16 @@ module m_mpi_fftw_solver
     use m_mpi_block_rebase
     implicit none
 
+    private
+    public t_MPIFFTWSolver3d
+    public new_MPIFFTWSolver3d
+
     type, extends(t_MPIFFTSolver3d) :: t_MPIFFTWSolver3d
         type(C_PTR) :: forward_plan
         type(C_PTR) :: backward_plan
         double precision :: normalizers(3)
 
         type(t_Block) :: local_block
-        type(t_Block) :: global_block
         type(t_Block) :: require_block
 
         integer :: communicator
@@ -66,43 +69,42 @@ contains
         end select
     end subroutine
 
-    function new_MPIFFTWSolver(fft_boundary_types, &
-                               local_block, global_block, &
-                               myid, nprocs, &
-                               communicator, tag) result(obj)
+    function new_MPIFFTWSolver3d(fft_boundary_types, &
+                                 local_block, &
+                                 nx, ny, nz, &
+                                 myid, nprocs, &
+                                 communicator, tag) result(obj)
         integer, intent(in) :: fft_boundary_types(3)
+        !> Block that the local process has.
+        !> global index 座標系は1:nx
         type(t_Block), intent(in) :: local_block
-        type(t_Block), intent(in) :: global_block
+        integer, intent(in) :: nx, ny, nz
         integer, intent(in) :: myid
         integer, intent(in) :: nprocs
         integer, intent(in) :: communicator
         integer, intent(in) :: tag
         type(t_MPIFFTWSolver3d) :: obj
 
-        integer(C_INTPTR_T) :: nx, ny, nz
         integer(C_INTPTR_T) :: local_nz, local_z_start
 
         obj%boundary_types(:) = fft_boundary_types(:)
         obj%local_block = local_block
-        obj%global_block = global_block
         obj%communicator = communicator
         obj%tag = tag
 
         call fftw_mpi_init()
 
-        nx = global_block%sizes(1)
-        ny = global_block%sizes(2)
-        nz = global_block%sizes(3)
-
         block ! Allocate array used in fft.
             integer(C_INTPTR_T) :: alloc_local
 
-            alloc_local = fftw_mpi_local_size_3d(nz, ny, nx, &
+            alloc_local = fftw_mpi_local_size_3d(int(nz, kind=C_INTPTR_T), &
+                                                 int(ny, kind=C_INTPTR_T), &
+                                                 int(nx, kind=C_INTPTR_T), &
                                                  communicator, &
                                                  local_nz, local_z_start)
             obj%ptr_fft_array = fftw_alloc_real(alloc_local)
             call c_f_pointer(obj%ptr_fft_array, obj%fft_array, &
-                             [nx, ny, local_nz])
+                             [int(ny, kind=C_INTPTR_T), int(nx, kind=C_INTPTR_T), local_nz])
         end block
 
         block ! Create fftw plan.
