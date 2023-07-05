@@ -30,18 +30,24 @@ contains
     function factory_create_field(self, name, nfields) result(field)
         class(t_OhFieldFactory), intent(inout) :: self
         character(len=*), intent(in) :: name
-        integer, intent(in) :: nfields
+        integer, optional, intent(in) :: nfields
         type(t_OhField) :: field
+
+        integer :: nfields_ = 2
+
+        if (present(nfields)) then
+            nfields_ = nfields
+        end if
 
         select case (name)
         case ('eb', 'electromagnetic')
-            field = self%create_electromagnetic_field(nfields)
+            field = self%create_electromagnetic_field(nfields_)
         case ('j', 'current')
-            field = self%create_current_field(nfields)
+            field = self%create_current_field(nfields_)
         case ('rho', 'density')
-            field = self%create_density_field(nfields)
+            field = self%create_density_field(nfields_)
         case ('phi', 'potential')
-            field = self%create_potential_field(nfields)
+            field = self%create_potential_field(nfields_)
         case default
             print *, 'InvalidArgumentError: input name is invalid (OhFieldFactory%create_field):', name
             return
