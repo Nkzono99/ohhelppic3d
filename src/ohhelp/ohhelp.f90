@@ -6,10 +6,11 @@
 
 !> OhHelp Wrapper module.
 module m_ohhelp
-    use ohhelp2, only: oh2_max_local_particles
+    use ohhelp2, only: oh2_max_local_particles, oh2_inject_particle
     use ohhelp3, only: oh3_init, oh3_transbound, &
                        oh3_map_particle_to_neighbor, &
-                       oh3_map_particle_to_subdomain
+                       oh3_map_particle_to_subdomain, &
+                       oh3_bcast_field
     use oh_type, only: oh_particle, oh_mycomm
     use m_ohparticles, only: t_OhParticles
     use m_ohfield, only: t_FieldExtensionInfo, new_FieldExtensionInfo, &
@@ -22,6 +23,13 @@ module m_ohhelp
     implicit none
 
     integer, parameter :: PARTICLE_BUFSIZE = OH_PBUF_SIZE
+
+    !> Helpand-helper configuration in (re)build and in secondary mode (= -1).
+    integer, parameter :: OHH_REQUIRES_BCAST = -1
+    !> In primary mode (= 0).
+    integer, parameter :: OHH_PRIMARY_MODE = 0
+    !> In secondary mode (= 1).
+    integer, parameter :: OHH_SECONDARY_MODE = 1
 
     private
     public oh_particle
@@ -58,12 +66,21 @@ module m_ohhelp
         procedure :: initialize => ohhelp_initialize
         procedure :: allocate_ohfield => ohhelp_allocate_ohfield
 
+        procedure :: correct_load_balancing => ohhelp_correct_load_balancing
+
         procedure :: transbound => ohhelp_transbound
         procedure :: inject_particle => ohhelp_inject_particle
+
+        procedure :: requires_broadcast_field => ohhelp_requires_broadcast_field
+        procedure :: broadcast_field => ohhelp_broadcast_field
+
+        procedure :: is_primary_mode => ohhelp_is_primary_mode
+        procedure :: is_secondary_mode => ohhelp_is_secondary_mode
 
         procedure, private :: set_field_extension_infos => ohhelp_set_field_extension_infos
         procedure, private :: set_boundary_communication_infos => ohhelp_set_boundary_communication_infos
 
+        procedure :: notify_subdomain_id => ohhelp_notify_subdomain_id
     end type
 
 contains
@@ -166,6 +183,7 @@ contains
             integer :: iohfield
             do iohfield = 1, size(ohfields)
                 call self%allocate_ohfield(ohfields(iohfield)%ref)
+                call self%notify_subdomain_id(ohfields(iohfield)%ref)
             end do
         end block
 
@@ -176,13 +194,14 @@ contains
             integer :: ret(7, size(infos) + 1)
 
             block
-                integer :: i
+                integer :: i, id
 
                 do i = 1, size(infos)
-                    ret(1, i) = infos(i)%nelements
-                    ret(2:3, i) = infos(i)%nextensions(1:2)
-                    ret(4:5, i) = infos(i)%nextensions_for_broadcast(1:2)
-                    ret(6:7, i) = infos(i)%nextensions_for_reduction(1:2)
+                    id = infos(i)%id
+                    ret(1, id) = infos(i)%nelements
+                    ret(2:3, id) = infos(i)%nextensions(1:2)
+                    ret(4:5, id) = infos(i)%nextensions_for_broadcast(1:2)
+                    ret(6:7, id) = infos(i)%nextensions_for_reduction(1:2)
                 end do
             end block
 
@@ -277,13 +296,36 @@ contains
                                  nfields))
     end subroutine
 
+    subroutine ohhelp_correct_load_balancing(self, ohparticles, eb, ohfields_to_be_notified)
+        class(t_OhHelp), intent(inout) :: self
+        class(t_OhParticles), intent(inout) :: ohparticles
+        type(tp_OhField), intent(inout) :: ohfields_to_be_notified(:)
+        class(t_OhField), intent(inout) :: eb
+
+        call self%transbound(ohparticles)
+
+        if (.not. self%requires_broadcast_field()) then
+            return
+        end if
+
+        call self%broadcast_field(eb)
+        self%current_mode = OHH_SECONDARY_MODE
+
+        block
+            integer :: i
+
+            do i = 1, size(ohfields_to_be_notified)
+                call self%notify_subdomain_id(ohfields_to_be_notified(i)%ref)
+            end do
+        end block
+    end subroutine
+
     subroutine ohhelp_transbound(self, ohparticles)
         class(t_OhHelp), intent(inout) :: self
         class(t_OhParticles), intent(inout) :: ohparticles
         integer :: status
 
         self%current_mode = oh3_transbound(self%current_mode, status)
-        call oh2_set_total_particles
 
         ohparticles%particle_count_histgram(self%subdomain_id(1) + 1, :, 1) &
             = ohparticles%total_local_particles(:, 1)
@@ -292,6 +334,22 @@ contains
             ohparticles%particle_count_histgram(self%subdomain_id(2) + 1, :, 2) &
                 = ohparticles%total_local_particles(:, 2)
         end if
+    end subroutine
+
+    function ohhelp_requires_broadcast_field(self) result(ret)
+        class(t_OhHelp), intent(inout) :: self
+        logical :: ret
+
+        ret = self%current_mode == OHH_REQUIRES_BCAST
+    end function
+
+    subroutine ohhelp_broadcast_field(self, ohfield)
+        class(t_OhHelp), intent(inout) :: self
+        type(t_OhField), intent(inout) :: ohfield
+
+        call oh3_bcast_field(ohfield%values(1, 0, 0, 0, 1), &
+                             ohfield%values(1, 0, 0, 0, 2), &
+                             ohfield%extension_info%id)
     end subroutine
 
     subroutine check_particles_in_subdomain(particles, pbase, primary_or_secondary)
@@ -305,11 +363,36 @@ contains
         nid = oh3_map_particle_to_neighbor(particle%x, particle%y, particle%z, primary_or_secondary)
     end subroutine
 
+    subroutine ohhelp_notify_subdomain_id(self, ohfield)
+        class(t_OhHelp), intent(inout) :: self
+        type(t_OhField), intent(inout) :: ohfield
+
+        ohfield%subdomain_range(:, :, 1) = self%subdomain_range(:, :, self%subdomain_id(1))
+
+        if (self%is_secondary_mode()) then
+            ohfield%subdomain_range(:, :, 2) = self%subdomain_range(:, :, self%subdomain_id(2))
+        end if
+    end subroutine
+
     subroutine ohhelp_inject_particle(self, particle)
         class(t_OhHelp), intent(inout) :: self
         type(oh_particle), intent(in) :: particle
 
         call oh2_inject_particle(particle)
     end subroutine
+
+    function ohhelp_is_primary_mode(self) result(ret)
+        class(t_OhHelp), intent(inout) :: self
+        logical :: ret
+
+        ret = self%current_mode == OHH_PRIMARY_MODE
+    end function
+
+    function ohhelp_is_secondary_mode(self) result(ret)
+        class(t_OhHelp), intent(inout) :: self
+        logical :: ret
+
+        ret = self%current_mode == OHH_SECONDARY_MODE
+    end function
 
 end module
