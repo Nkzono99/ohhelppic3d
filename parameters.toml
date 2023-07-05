@@ -1,127 +1,102 @@
 simulation_name = "main"
 
-[unit_system_conversion]
+[meta]
+[meta.unit_system_conversion]
 from_grid_width_m = 0.5
 to_light_speed = 10000
 
 [simulation_type]
-emflag = 'electric_static_pic'
+simulation_type = 'electric_static_pic'
+
+[continuaus]
+load_continuaus_data = 0
+load_directory = 'SNAPSHOT0'
+save_continuaus_data = 1
+save_directory = 'SNAPSHOT1'
 
 [system]
-nx = 32
-ny = 32
-nz = 256
-nstep = 1000000
-npmax = [-1, -1, 52428800]
-nodes = [2, 4, 32]
+nx = 8
+ny = 4
+nz = 16
+dt = 0.1
+nstep = 100
+nmacro_particles_per_grid = [20, 20, 20]
+particle_buffer_size = [2.0, 2.0, 2.0] # size(pbuf) >= sum(nparticles_per_grid(:)*particle_buffer_size(:))
+imbalance_tolerance_percentage = 10
 
-[model]
-[model.plasma]
-nspec = 3
-# Number of particle division for macroparticles.
-dnsf = [20, 20, 20]
-qm = [-1.0, 0.000544617021778308, -1.0]
-wp = [2.10390362104881, 0.04909886429062906, 2.10390362104881]
-path = [44.237443494336965, 1.032370595764297, 20.749200214013655]
-peth = [44.237443494336965, 1.032370595764297, 20.749200214013655]
-vdri = [-13.342563807926082, -13.342563807926082]
-vdthz = [0.0, 0.0, 0.0]
-vdthxy = [180.0, 180.0, 0.0]
-wc = 0.0
-cv = 10000.0
-phiz = 0.0
-phixy = 0.0
-dt = 0.002
-[model.plasma.initialization]
-npin = [5242880, 5242880, 0]
-method = 'load'              # or 'init'
-load_directory = 'SNAPSHOT0'
+[system.method]
+particle_mover = 'boris'
 
-[model.injection]
-# Magnitude of the emitted charged particle current [A/m^2]
-curf = [0.0, 0.0, 829.3982816842599]
+[system.mpi]
+nnodes = [2, 1, 2]
 
-# Set .true. if the photoemission surface is determined by raycasting.
-# If you want to specify it yourself, set it to .false. and do the settings below.
-pe_ray_cast = true
-
-# Conventional parameter settings
-# nflag_emit(1:3) = 0, 0, 2
-# nepl(3) = 6
-#     #     # imarea = 0.0, 0.0, 0.0
-#     # curf(3) = 829.3982816842599
-# zmine(1:5) = 60.0, 60.0, 60.0, 60.0, 20.0
-# zmaxe(1:5) = 60.0, 60.0, 60.0, 60.0, 20.0
-# nemd(1:5) = 3, 3, 3, 3, 3
-# xmine(1:5) = 0, 11.0, 21.0, 11.0, 11.0
-# xmaxe(1:5) = 11.0, 21.0, 32, 21.0, 21.0
-# ymine(1:5) = 0, 0, 0, 21.0, 11.0
-# ymaxe(1:5) = 32, 11.0, 32, 32, 21.0
-
-[model.outer_boundaries]
-nfbnd = [0, 0, 1]
-npbnd = [0, 0, 2, 0, 0, 2, 0, 0, 2]
-mtd_vbnd = [0, 0, 1]
-
-
-[model.inner_boundaries]
-# Basic inner boundary type
-# boundary_type = "none"
-# boundary_type = "flat-surface"
-# boundary_type = "rectangle-hole"
-# boundary_type = "cylinder-hole"
-# boundary_type = "hyperboloid-hole"
-# boundary_type = "ellipsoid-hole"
-# boundary_type = "complex"
-
-# Z-coordinate of the ground surface (for "****-surface" and "****-hole").
-boundary_type = "complex"
-zssurf = 60.0
-
-# Set "complex" and use boundary_types if you want to use multiple boundaries.
-#     # boundary_types(1) = "flat-surface"
-# boundary_types(1) = "rectangle-hole"
-# boundary_types(1) = "cylinder-hole"
-# boundary_types(1) = "hyperboloid-hole"
-# boundary_types(1) = "ellipsoid-hole"
-boundary_types = ["ellipsoid-hole"]
-
-# Ratio of minimum radius to maximum radius (for "hyperboloid-hole")
-rcurv = 0.5
-
-# For hole shape parameters (for "****-hole")
-xlrechole = [11.0, 11.0]
-xurechole = [21.0, 21.0]
-ylrechole = [11.0, 11.0]
-yurechole = [21.0, 21.0]
-zlrechole = [59.0, 20.0]
-zurechole = [60.0, 59.0]
-
-[model.conductor]
-pcgs = 0
-ccgs = 0
-mtd_vchg = 0
+[system.outer_boundary]
+boundary_communication = ['periodic', 'periodic', 'no_periodic']
+boundary_type_for_electromagnetic_field = ['periodic', 'periodic', 'neumman']
+boundary_type_for_particle = [
+  ['periodic', 'periodic', 'vanish'],
+  ['periodic', 'periodic', 'vanish'],
+  ['periodic', 'periodic', 'vanish'],
+]
 
 [output]
-[output.step]
-intfoc = 100
+[output.stdout]
+stdout_interval_step = 10
 
 [output.snapshot]
-[output.snapshot.field]
-hdfdigstart = 0
-ifdiag = 100000
-ijdiag = 100000
-daverg = 1
-ipadig = [1024, 1024, 1024]
-ipaxyz = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-ifxyz = [1, 1, 1, 1, 1, 1, 1]
-ijxyz = [1, 1, 1]
+output_start_step = 0
+field_output_interval = 100000
+current_output_interval = 100000
 
-[output.snapshot.particles]
-ipahdf = [0, 0, 0]
-ipadig = [1024, 1024, 1024]
-ipaxyz = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+[plasma]
+nspecies = 3
+charge_to_mass_ratio = [-1.0, 0.000544617021778308, -1.0]
+plasma_frequency = [2.10390362104881, 0.04909886429062906, 2.10390362104881]
+thermal_velocity_para = [44.237443494336965, 1.032370595764297, 20.749200214013655]
+thermal_velocity_perp = [44.237443494336965, 1.032370595764297, 20.749200214013655]
+flow_velocity = [-13.342563807926082, -13.342563807926082]
+flow_angle_deg_z = [0.0, 0.0, 0.0]
+flow_angle_deg_xy = [180.0, 180.0, 0.0]
+cyclotron_frequency = 0.0
 
-[output.continuaus]
-noutput_step_for_continuation = 1
-output_step_for_continuation = [1000000]
+[plasma.initialization]
+plasma_initialization = ['random-uniform', 'random-uniform', 'none']
+
+[plasma.injection]
+nemission_types = 2
+outer_boundary = ['none', 'none', 'none', 'none', 'none', 'none']
+
+[plasma.injection.emission1]
+emission_type = 'raycast'
+current_density = 829.3982816842599
+ray_angle_deg_xy = 0
+ray_angle_deg_z = 0
+ispec = 3
+range = [0, 11, 0, 32, 60, 60]
+
+[plasma.injection.emission2]
+emission_type = 'plane'
+emission_ispec = 3
+current_density = 829.3982816842599
+emission_angle_deg_xy = 0
+emission_angle_deg_z = 0
+emission_ranges = [
+  [0, 11, 0, 32, 60, 60],
+  [11, 21, 0, 11, 60, 60],
+  [21, 32, 0, 32, 60, 60],
+  [11, 21, 21, 32, 60, 60],
+  [11, 21, 11, 21, 60, 60],
+]
+
+[object]
+object_type = "ellipsoid-hole"
+hole_shape = [11, 21, 11, 21, 20, 60]
+dent_ratio = 0.5
+is_conductor = false
+
+nappend_boundaries = 1
+
+[object.object1]
+object_type = "cuboid"
+hole_shape = [11, 21, 11, 21, 60, 63]
+is_conductor = false
