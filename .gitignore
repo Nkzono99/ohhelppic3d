@@ -35,3 +35,5 @@ mydev/
 .old/
 
 *.i90
+
+doc/
