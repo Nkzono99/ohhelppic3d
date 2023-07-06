@@ -3,6 +3,9 @@ module m_block_communicator
     use mpi
     implicit none
 
+    private
+    public t_BlockCommunicator, new_BlockCommunicator
+
     type t_BlockCommunicator
         type(t_Block) :: local_block
         type(t_Block) :: comm_block

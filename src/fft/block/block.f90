@@ -1,4 +1,10 @@
 module m_block
+    implicit none
+
+    private
+    public SIZE_OF_BLOCK_ARRAY
+    public t_Block
+    public new_block
 
     integer, parameter :: SIZE_OF_BLOCK_ARRAY = 6
 
@@ -12,11 +18,6 @@ module m_block
         procedure :: to_array => block_to_array
         procedure :: from_array => block_from_array
     end type
-
-    private
-    public SIZE_OF_BLOCK_ARRAY
-    public t_Block
-    public new_block
 
 contains
 

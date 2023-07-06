@@ -1,6 +1,13 @@
 module m_fft_boundary_type
     implicit none
 
+    private
+    public FFT_BoundaryType_Periodic
+    public FFT_BoundaryType_Dirichlet
+    public FFT_BoundaryType_Neumann
+    public FFT_BoundaryType_Dirichlet_Neumann
+    public FFT_BoundaryType_Neumann_Dirichlet
+
     !> Periodic boundary type.
     !>
     !> Example (Array of length n, Logical size = n)
@@ -52,12 +59,5 @@ module m_fft_boundary_type
     !> D: Dirichlet boundary condition value (= 0)
     !> N: Neumann boundary condition value (= 0)
     integer, parameter :: FFT_BoundaryType_Neumann_Dirichlet = 4
-
-    private
-    public FFT_BoundaryType_Periodic
-    public FFT_BoundaryType_Dirichlet
-    public FFT_BoundaryType_Neumann
-    public FFT_BoundaryType_Dirichlet_Neumann
-    public FFT_BoundaryType_Neumann_Dirichlet
 
 end module

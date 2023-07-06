@@ -1,6 +1,9 @@
 module m_mpi_fft_solver
     implicit none
 
+    private
+    public t_MPIFFTSolver3d
+
     type :: t_MPIFFTSolver3d
         integer :: boundary_types(3)
     contains

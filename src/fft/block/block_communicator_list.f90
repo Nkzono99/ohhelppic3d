@@ -4,6 +4,10 @@ module m_block_communicator_list
     use m_block_communicator, only: t_BlockCommunicator
     implicit none
 
+    private
+    public t_BlockCommunicatorList
+    public new_BlockCommunicatorList
+
     type, extends(t_List) :: t_BlockCommunicatorList
         type(t_BlockCommunicator), allocatable :: buffer(:)
         type(t_BlockCommunicator), allocatable :: tmp_buffer(:)
@@ -16,10 +20,6 @@ module m_block_communicator_list
         procedure :: append => blockSendReceiverList_append
         procedure :: get => blockSendReceiverList_get
     end type
-
-    private
-    public t_BlockCommunicatorList
-    public new_BlockCommunicatorList
 
 contains
 

@@ -4,6 +4,10 @@ module m_block_list
     use m_block, only: t_Block
     implicit none
 
+    private
+    public t_BlockList
+    public new_BlockList
+
     type, extends(t_List) :: t_BlockList
         type(t_Block), allocatable :: buffer(:)
         type(t_Block), allocatable :: tmp_buffer(:)
@@ -16,10 +20,6 @@ module m_block_list
         procedure :: append => blockList_append
         procedure :: get => blockList_get
     end type
-
-    private
-    public t_BlockList
-    public new_BlockList
 
 contains
 
