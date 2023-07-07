@@ -16,11 +16,16 @@ module m_ohfield
     integer, parameter :: BOUNDARY_CONDITION_NO_PERIODIC = 2
 
     type t_FieldExtensionInfo
-        integer :: id !> Identifier
-        integer :: nelements = 0 !> The number of elements.
-        integer :: nextensions(2) !>  The size of subdomain expansion (lower, upper)
-        integer :: nextensions_for_broadcast(2) ! The size of subdomain expansion when broadcast (lower, upper)
-        integer :: nextensions_for_reduction(2) ! The size of subdomain expansion when reduction (lower, upper)
+        !> Identifier
+        integer :: id
+        !> The number of elements.
+        integer :: nelements = 0
+        !>  The size of subdomain expansion [lower, upper]
+        integer :: nextensions(2)
+        !> The size of subdomain expansion when broadcast [lower, upper]
+        integer :: nextensions_for_broadcast(2)
+        !> The size of subdomain expansion when reduction [lower, upper]
+        integer :: nextensions_for_reduction(2)
     end type
 
     type t_BoundaryCommunicationInfo
@@ -40,7 +45,8 @@ module m_ohfield
     end type
 
     type t_BoundaryCommunicationInfos
-        integer :: id !> boundary communication type identifier
+        !> boundary communication type identifier
+        integer :: id
         type(t_BoundaryCommunicationInfo) :: infos(NBOUNDARY_CONDITION_TYPES)
     end type
 
@@ -119,7 +125,8 @@ contains
     end function
 
     function new_BoundaryCommunicationInfos(id, boundary_communication_infos) result(obj)
-        integer, intent(in) :: id !> boundary communication type identifier
+        !> boundary communication type identifier
+        integer, intent(in) :: id 
         type(t_BoundaryCommunicationInfo) :: boundary_communication_infos(NBOUNDARY_CONDITION_TYPES)
         type(t_BoundaryCommunicationInfos) :: obj
 
