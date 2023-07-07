@@ -20,4 +20,9 @@ library = false
 futils = { git = "https://github.com/Nkzono99/futils" }
 finbound = { git = "https://github.com/Nkzono99/finbound" }
 ohhelpf = { git =  "https://github.com/Nkzono99/ohhelp-for-fpm" }
-toml-f = { git ="https://github.com/toml-f/toml-f" }
+toml-f = { git = "https://github.com/toml-f/toml-f" }
+pcg-c = { path = "lib/pcg-c" }
+
+
+[dev-dependencies]
+test-drive = { git = "https://github.com/fortran-lang/test-drive", tag="v0.4.0" }
