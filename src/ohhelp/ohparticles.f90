@@ -64,7 +64,8 @@ contains
     function ohparticles_end_index(self, ispec, ps) result(ret)
         class(t_OhParticles), intent(in) :: self
         integer, intent(in) :: ispec
-        integer, intent(in) :: ps !> 1: primary subdomain, 2: secondary subdomain
+        !> 1: primary subdomain, 2: secondary subdomain
+        integer, intent(in) :: ps 
         integer :: ret
 
         ret = self%pbase(ps) + sum(self%total_local_particles(1:ispec, ps))
