@@ -1,6 +1,5 @@
 module m_particle_injector
     use m_ohhelp, only: t_OhHelp
-    use m_random
     implicit none
 
     private

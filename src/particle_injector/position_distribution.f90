@@ -5,7 +5,6 @@ module m_position_distribution
     public t_PositionDistribution1d
     public t_PositionDistribution3d
     public t_SimplePositionDistribution3d, new_SimplePositionDistribution3d
-    public t_NoPositionDistribution3d, new_NoPositionDistribution3d
 
     type, abstract :: t_PositionDistribution1d
     contains
@@ -60,12 +59,6 @@ module m_position_distribution
         procedure :: subdomain_ratio => simplePositionDistribution3d_subdomain_ratio
     end type
 
-    type, extends(t_PositionDistribution3d) :: t_NoPositionDistribution3d
-    contains
-        procedure :: sample => noPositionDistribution3d_sample
-        procedure :: subdomain_ratio => noPositionDistribution3d_subdomain_ratio
-    end type
-
 contains
 
     function new_SimplePositionDistribution3d(distribution_x, distribution_y, distribution_z) result(obj)
@@ -97,26 +90,6 @@ contains
         ret = self%distribution_x%subdomain_ratio(subdomain_range(:, 1)) &
               *self%distribution_y%subdomain_ratio(subdomain_range(:, 2)) &
               *self%distribution_z%subdomain_ratio(subdomain_range(:, 3))
-    end function
-
-    function new_NoPositionDistribution3d() result(obj)
-        type(t_NoPositionDistribution3d) :: obj
-    end function
-
-    function noPositionDistribution3d_sample(self, subdomain_range) result(ret)
-        class(t_NoPositionDistribution3d), intent(in) :: self
-        double precision, intent(in) :: subdomain_range(2, 3)
-        double precision :: ret(3)
-
-        ret(:) = 0d0
-    end function
-
-    function noPositionDistribution3d_subdomain_ratio(self, subdomain_range) result(ret)
-        class(t_NoPositionDistribution3d), intent(in) :: self
-        double precision, intent(in) :: subdomain_range(2, 3)
-        double precision :: ret
-
-        ret = 0d0
     end function
 
 end module
