@@ -1,5 +1,5 @@
 ! TODO: モジュール名とクラス名をよりわかりやすい名前に変える(rebaseはよくわからない)
-module m_mpi_block_rebase
+module m_mpi_block_rebaser
     use m_block
     use m_block_list
     use m_block_communicator
@@ -9,10 +9,10 @@ module m_mpi_block_rebase
     implicit none
 
     private
-    public t_MPIBlockRebasor
-    public new_MPIBlockRebasor
+    public t_MPIBlockRebaser
+    public new_MPIBlockRebaser
 
-    type t_MPIBlockRebasor
+    type t_MPIBlockRebaser
         !> Block that local process has.
         type(t_Block) :: local_block
         !> Block that local process requires.
@@ -26,18 +26,18 @@ module m_mpi_block_rebase
 
         integer(kind=kind(MPI_COMM_WORLD)), private :: comm
     contains
-        procedure :: rebase => mpiBlockRebasor_rebase
-        procedure :: destroy => mpiBlockRebasor_destroy
+        procedure :: rebase => mpiBlockRebaser_rebase
+        procedure :: destroy => mpiBlockRebaser_destroy
     end type
 
-    interface new_MPIBlockRebasor
-        procedure :: new_MPIBlockRebasor_with_blocks
-        procedure :: new_MPIBlockRebasor_with_local_block
+    interface new_MPIBlockRebaser
+        procedure :: new_MPIBlockRebaser_with_blocks
+        procedure :: new_MPIBlockRebaser_with_local_block
     end interface
 
 contains
 
-    function new_MPIBlockRebasor_with_blocks(local_blocks, require_blocks, pids, ipid, comm) result(obj)
+    function new_MPIBlockRebaser_with_blocks(local_blocks, require_blocks, pids, ipid, comm) result(obj)
         !> Blocks that each process has.
         type(t_BlockList), intent(in) :: local_blocks
         !> Blocks that each process requires.
@@ -49,7 +49,7 @@ contains
         integer, intent(in) :: ipid
         !> MPI Communicator.
         integer(kind=kind(MPI_COMM_WORLD)), intent(in) :: comm
-        type(t_MPIBlockRebasor) :: obj
+        type(t_MPIBlockRebaser) :: obj
 
         obj%local_block = local_blocks%get(ipid)
         obj%require_block = require_blocks%get(ipid)
@@ -98,7 +98,7 @@ contains
         obj%comm = comm
     end function
 
-    function new_MPIBlockRebasor_with_local_block(local_block, require_block, pids, ipid, comm, tag) result(obj)
+    function new_MPIBlockRebaser_with_local_block(local_block, require_block, pids, ipid, comm, tag) result(obj)
         !> Blocks that each process has.
         type(t_Block), intent(in) :: local_block
         !> Blocks that each process requires.
@@ -111,7 +111,7 @@ contains
         !> MPI Communicator.
         integer(kind=kind(MPI_COMM_WORLD)), intent(in) :: comm
         integer, optional, intent(in) :: tag
-        type(t_MPIBlockRebasor) :: obj
+        type(t_MPIBlockRebaser) :: obj
 
         !> Blocks that each process has.
         type(t_BlockList) :: local_blocks
@@ -121,7 +121,7 @@ contains
         local_blocks = mpi_collect_blocks(local_block, pids, comm, tag)
         require_blocks = mpi_collect_blocks(require_block, pids, comm, tag)
 
-        obj = new_MPIBlockRebasor(local_blocks, require_blocks, pids, ipid, comm)
+        obj = new_MPIBlockRebaser(local_blocks, require_blocks, pids, ipid, comm)
     end function
 
     function mpi_collect_blocks(block, pids, comm, tag) result(blocks)
@@ -170,8 +170,8 @@ contains
         end block
     end function
 
-    subroutine mpiBlockRebasor_rebase(self, send_data, recv_data, tag)
-        class(t_MPIBlockRebasor), intent(in) :: self
+    subroutine mpiBlockRebaser_rebase(self, send_data, recv_data, tag)
+        class(t_MPIBlockRebaser), intent(in) :: self
         double precision, intent(in) :: send_data(self%local_block%start(1):self%local_block%end(1), &
                                                   self%local_block%start(2):self%local_block%end(2), &
                                                   self%local_block%start(3):self%local_block%end(3))
@@ -216,8 +216,8 @@ contains
         end block
     end subroutine
 
-    subroutine mpiBlockRebasor_destroy(self)
-        class(t_MPIBlockRebasor), intent(inout) :: self
+    subroutine mpiBlockRebaser_destroy(self)
+        class(t_MPIBlockRebaser), intent(inout) :: self
 
         call self%block_senders%destroy
         call self%block_receivers%destroy
