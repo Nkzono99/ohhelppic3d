@@ -13,12 +13,14 @@ module ohhelppic3d
     use m_particle_mover_factory, only: t_ParticleMoverFactory, new_ParticleMoverFactory
     use m_parameters, only: t_Parameters, new_Parameters
     use m_particle_injector_manager, only: t_ParticleInjectorManager, new_ParticleInjectorManager
-    use m_position_distribution, only: new_NoPositionDistribution3d
+    use m_no_position_distribution, only: new_NoPositionDistribution3d
     use m_velocity_distribution, only: new_NoVelocityDistribution3d
     use m_interpolator, only: t_Interpolator
     use m_mpi_fft_solver, only: t_MPIFFTSolver3d
     use m_mpi_fftw_solver, only: new_MPIFFTWSolver3d
     use m_block, only: t_Block, new_Block
+    use m_random_generator
+    use m_pcg_generator
     implicit none
 
     private
@@ -35,6 +37,7 @@ module ohhelppic3d
     class(t_MPIFFTSolver3d), allocatable :: mpifft_solver3d
     class(t_Interpolator), allocatable :: interpolator
     type(t_Parameters) :: parameters
+    class(t_RandomGenerator), allocatable, target :: random_generator
     character(len=15) :: toml_filepath = 'parameters.toml'
 
 contains
@@ -66,6 +69,8 @@ contains
         call hdf5_initialize(status)
 
         parameters = new_Parameters(toml_filepath)
+
+        random_generator = new_PcgGenerator([int(42, kind=8), int(52, kind=8)])
 
         block
             type(t_OhFieldFactory) :: ohfield_factory
@@ -125,8 +130,8 @@ contains
         end block
 
         ! TODO: 粒子の初期化の実装
-        particle_injector_manager = new_ParticleInjectorManager()
-        call particle_injector_manager%initialize_particles(ohhelp, parameters)
+        particle_injector_manager = new_ParticleInjectorManager(parameters, random_generator)
+        call particle_injector_manager%initialize_particles(ohhelp)
 
         block
             type(tp_OhField) :: ohfields(4)
@@ -146,34 +151,52 @@ contains
         block
             integer :: fft_boundary_types(3)
             type(t_Block) :: local_block
+            type(t_Block) :: global_block
 
             fft_boundary_types = [0, 0, 0]
 
-            local_block = new_Block(ohhelp%subdomain_range(1, :, ohhelp%subdomain_id(1)) + 1, &
-                                    ohhelp%subdomain_range(2, :, ohhelp%subdomain_id(1)) + 1)
+            local_block = new_Block(ohhelp%subdomain_range(1, :, ohhelp%subdomain_id(1) + 1), &
+                                    ohhelp%subdomain_range(2, :, ohhelp%subdomain_id(1) + 1))
+            ! print *, myid, ohhelp%subdomain_id(1), 'set', local_block%start, local_block%end
 
+            global_block = new_Block([0, 0, 0], [parameters%nx, parameters%ny, parameters%nz])
             mpifft_solver3d = new_MPIFFTWSolver3d(fft_boundary_types, &
                                                   local_block, &
-                                                  parameters%nx, parameters%ny, parameters%nz, &
-                                                  myid + 1, nprocs, &
+                                                  global_block, &
+                                                  myid, nprocs, &
                                                   MPI_COMM_WORLD, tag=10)
         end block
 
         block
             integer :: lnx, lny, lnz
+            integer :: i, j, k
 
             lnx = rho%subdomain_range(2, 1, 1) - rho%subdomain_range(1, 1, 1) + 1
-            lnx = rho%subdomain_range(2, 2, 1) - rho%subdomain_range(1, 2, 1) + 1
-            lnx = rho%subdomain_range(2, 3, 1) - rho%subdomain_range(1, 3, 1) + 1
+            lny = rho%subdomain_range(2, 2, 1) - rho%subdomain_range(1, 2, 1) + 1
+            lnz = rho%subdomain_range(2, 3, 1) - rho%subdomain_range(1, 3, 1) + 1
 
+            rho%values = 0d0
             rho%values(1, 2, 2, 2, 1) = 2.125d0
+            rho%values(1, 2, 3, 2, 1) = 15d0
+            rho%values(1, 2, 1, 2, 1) = 15d0
+            rho%values(1, 1, 2, 2, 1) = 15d0
+            rho%values(1, 3, 2, 2, 1) = 13d0
+            rho%values(1, 2, 2, 1, 1) = 15d0
+            rho%values(1, 2, 2, 3, 1) = 12d0
 
-            call mpifft_solver3d%forward(rho%values(1, 0:lnx, 0:lnx, 0:lnx, 1), &
-                                         rho%values(1, 0:lnx, 0:lnx, 0:lnx, 1))
-            call mpifft_solver3d%backward(rho%values(1, 0:lnx, 0:lnx, 0:lnx, 1), &
-                                         rho%values(1, 0:lnx, 0:lnx, 0:lnx, 1))
+            print *, 'sr', rho%subdomain_range(2, 1, 1), rho%subdomain_range(1, 1, 1)
 
-            print *, rho%values(1, 2, 2, 2, 1)
+            print *, 'rp1', rho%values(1, 2, 2, 2, 1), phi%values(1, 2, 2, 2, 1)
+
+            call mpifft_solver3d%forward(rho%values(1, 0:lnx - 1, 0:lny - 1, 0:lnz - 1, 1), &
+                                         phi%values(1, 0:lnx - 1, 0:lny - 1, 0:lnz - 1, 1))
+
+            print *, 'rp2', rho%values(1, 2, 2, 2, 1), phi%values(1, 2, 2, 2, 1)
+
+            call mpifft_solver3d%backward(phi%values(1, 0:lnx - 1, 0:lny - 1, 0:lnz - 1, 1), &
+                                          rho%values(1, 0:lnx - 1, 0:lny - 1, 0:lnz - 1, 1))
+
+            print *, 'rp3', rho%values(1, 2, 2, 2, 1), phi%values(1, 2, 2, 2, 1)
         end block
 
         block
@@ -191,7 +214,6 @@ contains
 
         ! TODO: 場の更新 & 場のリロケート(self-forceの回避)
 
-        ! TODO: 粒子の更新
         block
             integer :: ps
             integer :: ispec, ipcl
@@ -205,7 +227,8 @@ contains
                 ipcl_start = ohparticles%start_index(ispec, ps)
                 ipcl_end = ohparticles%end_index(ispec, ps)
                 do ipcl = ipcl_start, ipcl_end
-                    eb_interped(:) = interpolator%interp(ohparticles%pbuf(ipcl), eb)
+                    ! TODO: 場の内挿処理を実装
+                    ! eb_interped(:) = interpolator%interp(ohparticles%pbuf(ipcl), eb)
 
                     call particle_mover%move(ohparticles%pbuf(ipcl), qm, eb_interped, dt)
                 end do
