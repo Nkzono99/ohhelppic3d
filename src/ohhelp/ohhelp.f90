@@ -41,7 +41,8 @@ module m_ohhelp
 
     type t_OhHelp
         integer :: subdomain_id(2)
-        integer :: current_mode = 0 !> 0: primary mode, 1: secondary mode
+        !> OHH_PRIMARY_MODE: primary mode, OHH_SECONDARY_MODE: secondary mode, OHH_REQUIRES_BCAST: requires bcast
+        integer :: current_mode = 0
 
         integer :: loadbalance_tolerance_percentage = 10
 
@@ -147,7 +148,7 @@ contains
         cfields = cfields_from(self%boundary_communication_infos)
         ctypes = ctypes_from(self%boundary_communication_infos)
 
-        ! ! Let ohhelp set up the following parameters.
+        ! Let ohhelp set up the following parameters.
         self%neighber_subdomain_ids(1, 1, 1) = -1
         self%subdomain_range(1, 1, 1) = 0
         self%subdomain_range(2, 1, 1) = -1
@@ -367,10 +368,10 @@ contains
         class(t_OhHelp), intent(inout) :: self
         type(t_OhField), intent(inout) :: ohfield
 
-        ohfield%subdomain_range(:, :, 1) = self%subdomain_range(:, :, self%subdomain_id(1))
+        ohfield%subdomain_range(:, :, 1) = self%subdomain_range(:, :, self%subdomain_id(1)+1)
 
         if (self%is_secondary_mode()) then
-            ohfield%subdomain_range(:, :, 2) = self%subdomain_range(:, :, self%subdomain_id(2))
+            ohfield%subdomain_range(:, :, 2) = self%subdomain_range(:, :, self%subdomain_id(2)+1)
         end if
     end subroutine
 
