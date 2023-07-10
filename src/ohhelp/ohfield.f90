@@ -64,9 +64,10 @@ module m_ohfield
         type(t_BoundaryCommunicationInfos), allocatable :: boundary_comm_infos(:)
     contains
         procedure :: make_copy => ohfield_make_copy
-        procedure :: get_value_from_local_index => ohfield_get_value_from_local_index
-        procedure :: get_value_from_global_index => ohfield_get_value_from_global_index
-
+        procedure :: allocate => ohfield_allocate
+        procedure :: to_global_index => ohfield_to_global_index
+        procedure :: to_local_index => ohfield_to_local_index
+        procedure :: to_local_position => ohfield_to_local_position
     end type
 
     type tp_OhField
@@ -126,7 +127,7 @@ contains
 
     function new_BoundaryCommunicationInfos(id, boundary_communication_infos) result(obj)
         !> boundary communication type identifier
-        integer, intent(in) :: id 
+        integer, intent(in) :: id
         type(t_BoundaryCommunicationInfo) :: boundary_communication_infos(NBOUNDARY_CONDITION_TYPES)
         type(t_BoundaryCommunicationInfos) :: obj
 
@@ -154,6 +155,19 @@ contains
         end if
     end function
 
+    subroutine ohfield_allocate(self, nelements, field_size, nfields)
+        class(t_Ohfield), intent(inout) :: self
+        integer, intent(in) :: nelements
+        integer, intent(in) :: field_size(2, 3)
+        integer, intent(in) :: nfields
+
+        allocate (self%values(nelements, &
+                              field_size(1, 1):field_size(2, 1), &
+                              field_size(1, 2):field_size(2, 2), &
+                              field_size(1, 3):field_size(2, 3), &
+                              nfields))
+    end subroutine
+
     function ohfield_make_copy(self, nfields) result(copy)
         class(t_OhField), intent(in) :: self
         integer, intent(in) :: nfields
@@ -163,28 +177,31 @@ contains
         copy = new_OhField(self%extension_info, nfields, self%boundary_comm_infos)
     end function
 
-    function ohfield_get_value_from_local_index(self, ix, iy, iz, ps) result(ret)
-        class(t_OhField), intent(in) :: self
-        integer, intent(in) :: ix
-        integer, intent(in) :: iy
-        integer, intent(in) :: iz
+    function ohfield_to_global_index(self, local_index, ps) result(global_index)
+        class(t_Ohfield), intent(in) :: self
+        integer, intent(in) :: local_index(3)
         integer, intent(in) :: ps
+        integer :: global_index(3)
 
-        double precision :: ret(self%nelements)
-
-        ret(:) = self%values(:, ix, iy, iz, ps)
+        global_index = self%subdomain_range(1, :, ps) + local_index(:)
     end function
 
-    function ohfield_get_value_from_global_index(self, ix, iy, iz, ps) result(ret)
-        class(t_OhField), intent(in) :: self
-        integer, intent(in) :: ix
-        integer, intent(in) :: iy
-        integer, intent(in) :: iz
+    function ohfield_to_local_index(self, global_index, ps) result(local_index)
+        class(t_Ohfield), intent(in) :: self
+        integer, intent(in) :: global_index(3)
         integer, intent(in) :: ps
+        integer :: local_index(3)
 
-        double precision :: ret(self%nelements)
+        local_index = global_index - self%subdomain_range(1, :, ps)
+    end function
 
-        ret(:) = self%values(:, ix, iy, iz, ps)
+    function ohfield_to_local_position(self, global_position, ps) result(ret)
+        class(t_Ohfield), intent(in) :: self
+        double precision, intent(in) :: global_position(3)
+        integer, intent(in) :: ps
+        double precision :: ret(3)
+
+        ret = global_position - self%subdomain_range(1, :, ps)
     end function
 
 end module
