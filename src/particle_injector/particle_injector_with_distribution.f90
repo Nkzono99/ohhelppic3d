@@ -1,5 +1,6 @@
 module m_particle_injector_with_distribution
-    use m_ohhelp, only: t_OhHelp, oh_particle
+    use oh_type, only: oh_particle
+    use m_ohhelp, only: t_OhHelp
     use m_position_distribution, only: t_PositionDistribution3d
     use m_velocity_distribution, only: t_VelocityDistribution3d
     use m_random_generator, only: t_RandomGenerator
@@ -61,7 +62,9 @@ contains
                 particle%vx = velocity(1)
                 particle%vy = velocity(2)
                 particle%vz = velocity(3)
-                particle%nid = ohhelp%subdomain_id(1)
+                ! NOTE: map処理は重いため、Distributionの実装を再確認
+                ! 仕様: sample(subdomain)でsubdomain内の座標のみサンプリング可能
+                particle%nid = ohhelp%map_subdomain_id(position)! ohhelp%subdomain_id(1)
                 particle%pid = 0
                 particle%spec = self%ispec
 
