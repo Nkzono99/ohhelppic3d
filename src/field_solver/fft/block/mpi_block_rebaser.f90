@@ -86,6 +86,7 @@ contains
 
             do i = 1, local_blocks%current_size
                 overlapped = obj%require_block%overlapped(local_blocks%get(i))
+
                 if (overlapped%size() == 0) then
                     cycle
                 end if
