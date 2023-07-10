@@ -34,7 +34,7 @@
 mydev/
 .old/
 
-*.i90
+**/*.i90
 
 doc/
 fpm-doc/
