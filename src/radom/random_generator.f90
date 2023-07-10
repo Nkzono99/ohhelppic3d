@@ -1,5 +1,9 @@
 module m_random_generator
+    use m_science_constants, only: pi
     implicit none
+
+    private
+    public t_RandomGenerator
 
     !TODO: 乱数の取り扱いを実装
     type, abstract :: t_RandomGenerator
@@ -7,6 +11,7 @@ module m_random_generator
 
         procedure(randomGenerator_rand), deferred :: rand
         procedure :: normal => randomGenerator_normal
+        procedure(randomGenerator_advance), deferred :: advance
         procedure :: random_fix => randomGenerator_random_fix
     end type
 
@@ -16,6 +21,12 @@ module m_random_generator
             class(t_RandomGenerator), intent(in) :: self
             double precision :: ret
         end function
+
+        subroutine randomGenerator_advance(self, n)
+            import t_RandomGenerator
+            class(t_RandomGenerator), intent(in) :: self
+            integer(8), intent(in) :: n
+        end subroutine
     end interface
 
 contains
@@ -24,8 +35,11 @@ contains
         class(t_RandomGenerator), intent(in) :: self
         double precision :: ret
 
-        ! TODO: 実装
-        ret = 0
+        double precision :: r1, r2
+
+        r1 = self%rand()
+        r2 = self%rand()
+        ret = 2.0d0*sqrt(-2.0d0*log(r1))*cos(2.0d0*pi*r2)
     end function
 
     function randomGenerator_random_fix(self, value) result(ret)
