@@ -1,5 +1,5 @@
 module m_particle_mover
-    use m_ohhelp, only: oh_particle
+    use oh_type, only: oh_particle
     implicit none
 
     private

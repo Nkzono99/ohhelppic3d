@@ -1,6 +1,6 @@
 module m_particle_mover_boris
     use m_vector, only: cross
-    use m_ohhelp, only: oh_particle
+    use oh_type, only: oh_particle
     use m_particle_mover, only: t_ParticleMover
     implicit none
 
