@@ -1,16 +1,12 @@
 #define OH_LIB_LEVEL 3
 
-#ifndef OH_PBUF_SIZE
-#define OH_PBUF_SIZE 16384
-#endif
-
 !> OhHelp Wrapper module.
 module m_ohhelp
     use ohhelp2, only: oh2_max_local_particles, oh2_inject_particle
     use ohhelp3, only: oh3_init, oh3_transbound, &
                        oh3_map_particle_to_neighbor, &
                        oh3_map_particle_to_subdomain, &
-                       oh3_bcast_field
+                       oh3_bcast_field, oh3_exchange_borders, oh3_reduce_field
     use oh_type, only: oh_particle, oh_mycomm
     use m_ohparticles, only: t_OhParticles
     use m_ohfield, only: t_FieldExtensionInfo, new_FieldExtensionInfo, &
@@ -22,8 +18,6 @@ module m_ohhelp
                          BOUNDARY_CONDITION_PERIODIC, BOUNDARY_CONDITION_NO_PERIODIC
     implicit none
 
-    integer, parameter :: PARTICLE_BUFSIZE = OH_PBUF_SIZE
-
     !> Helpand-helper configuration in (re)build and in secondary mode (= -1).
     integer, parameter :: OHH_REQUIRES_BCAST = -1
     !> In primary mode (= 0).
@@ -32,7 +26,6 @@ module m_ohhelp
     integer, parameter :: OHH_SECONDARY_MODE = 1
 
     private
-    public oh_particle
     public t_OhHelp, new_OhHelp
     ! integer(kind=4), external :: oh2_max_local_particles
     ! integer(kind=4), external :: oh3_transbound
@@ -42,25 +35,27 @@ module m_ohhelp
     type t_OhHelp
         integer :: subdomain_id(2)
         !> OHH_PRIMARY_MODE: primary mode, OHH_SECONDARY_MODE: secondary mode, OHH_REQUIRES_BCAST: requires bcast
-        integer :: current_mode = 0
+        integer, private :: current_mode = 0
 
-        integer :: loadbalance_tolerance_percentage = 10
+        integer, private :: loadbalance_tolerance_percentage = 10
 
-        type(oh_mycomm) :: communicator
+        integer :: nspecies
+        integer, allocatable :: particle_count_histgram(:, :, :) ! (nprocs, nspec, 2)
+        type(oh_mycomm), private :: communicator
 
         integer :: neighber_subdomain_ids(3, 3, 3)
-        integer :: process_coordinates(3)
+        integer, private :: process_coordinates(3)
         integer, allocatable :: subdomain_range(:, :, :) ! (2, 3, nprocs)
-        integer :: whole_domain_range(2, 3)
+        integer, private :: whole_domain_range(2, 3)
 
-        integer :: nboundary_condition_types = NBOUNDARY_CONDITION_TYPES
-        integer :: boundary_conditions(2, 3) = 1
-        integer, allocatable :: subdomain_boundary_conditions(:, :, :) ! (nprocs, 3, 2)
+        integer, private :: nboundary_condition_types = NBOUNDARY_CONDITION_TYPES
+        integer, private :: boundary_conditions(2, 3) = 1
+        integer, allocatable, private :: subdomain_boundary_conditions(:, :, :) ! (nprocs, 3, 2)
 
-        type(t_FieldExtensionInfo), allocatable :: field_extension_infos(:) ! (nextension + 1)
-        type(t_BoundaryCommunicationInfos), allocatable :: boundary_communication_infos(:)
+        type(t_FieldExtensionInfo), allocatable, private :: field_extension_infos(:) ! (nextension + 1)
+        type(t_BoundaryCommunicationInfos), allocatable, private :: boundary_communication_infos(:)
 
-        integer, allocatable :: field_sizes(:, :, :) ! (2, 3, F)
+        integer, allocatable, private :: field_sizes(:, :, :) ! (2, 3, F)
 
     contains
 
@@ -70,10 +65,11 @@ module m_ohhelp
         procedure :: correct_load_balancing => ohhelp_correct_load_balancing
 
         procedure :: transbound => ohhelp_transbound
-        procedure :: inject_particle => ohhelp_inject_particle
 
         procedure :: requires_broadcast_field => ohhelp_requires_broadcast_field
         procedure :: broadcast_field => ohhelp_broadcast_field
+        procedure :: reduce_field => ohhelp_reduce_field
+        procedure :: exchange_borders => ohhelp_exchange_borders
 
         procedure :: is_primary_mode => ohhelp_is_primary_mode
         procedure :: is_secondary_mode => ohhelp_is_secondary_mode
@@ -81,21 +77,26 @@ module m_ohhelp
         procedure, private :: set_field_extension_infos => ohhelp_set_field_extension_infos
         procedure, private :: set_boundary_communication_infos => ohhelp_set_boundary_communication_infos
 
-        procedure :: notify_subdomain_id => ohhelp_notify_subdomain_id
+        procedure :: notify_subdomain_range => ohhelp_notify_subdomain_range
+        procedure :: inject_particle => ohhelp_inject_particle
+
+        procedure :: correct_particle => ohhelp_correct_particle
+
+        procedure :: map_subdomain_id => ohhelp_map_subdomain_id
     end type
 
 contains
 
-    function new_OhHelp(nnodes, &
+    function new_OhHelp(nspecies, nnodes, &
                         nx, ny, nz, &
                         boundary_conditions, &
                         loadbalance_tolerance_percentage) result(obj)
+        integer, intent(in) :: nspecies
         integer, intent(in) :: nnodes(3)
         integer, intent(in) :: nx
         integer, intent(in) :: ny
         integer, intent(in) :: nz
         integer, intent(in) :: loadbalance_tolerance_percentage
-
         !> Boundary conditions.
         !>
         !>   boundary_conditions :=
@@ -107,12 +108,16 @@ contains
         integer, intent(in) :: boundary_conditions(2, 3)
         type(t_OhHelp) :: obj
 
-        integer :: nprocs
+        obj%nspecies = nspecies
 
-        nprocs = product(nnodes)
+        block
+            integer :: nprocs
 
-        allocate (obj%subdomain_range(2, 3, nprocs))
-        allocate (obj%subdomain_boundary_conditions(2, 3, nprocs))
+            nprocs = product(nnodes)
+            allocate (obj%subdomain_range(2, 3, nprocs))
+            allocate (obj%subdomain_boundary_conditions(2, 3, nprocs))
+            allocate (obj%particle_count_histgram(nprocs, nspecies, 2))
+        end block
 
         obj%process_coordinates(:) = nnodes(:)
         obj%whole_domain_range(:, :) = reshape([0, nx, 0, ny, 0, nz], [2, 3])
@@ -133,9 +138,7 @@ contains
         integer, allocatable :: cfields(:)
         integer, allocatable :: ctypes(:, :, :, :)
 
-        call ohparticles%allocate_pbuf(oh2_max_local_particles(ohparticles%max_nparticles, &
-                                                               self%loadbalance_tolerance_percentage, &
-                                                               PARTICLE_BUFSIZE))
+        call ohparticles%allocate_pbuf(self%loadbalance_tolerance_percentage)
 
         call self%set_field_extension_infos(ohfields)
         call self%set_boundary_communication_infos(ohfields)
@@ -156,7 +159,7 @@ contains
         call oh3_init(self%subdomain_id(:), & ! sdid(2)
                       ohparticles%nspecies, & ! nspec
                       self%loadbalance_tolerance_percentage, & ! maxfrac
-                      ohparticles%particle_count_histgram(:, :, :), & ! nphgram(N, S, 2)
+                      self%particle_count_histgram(:, :, :), & ! nphgram(N, S, 2)
                       ohparticles%total_local_particles(:, :), & ! totalp(S, 2)
                       ohparticles%pbuf(:), & ! pbuf(:)
                       ohparticles%pbase(:), & ! pbase(3)
@@ -184,7 +187,7 @@ contains
             integer :: iohfield
             do iohfield = 1, size(ohfields)
                 call self%allocate_ohfield(ohfields(iohfield)%ref)
-                call self%notify_subdomain_id(ohfields(iohfield)%ref)
+                call self%notify_subdomain_range(ohfields(iohfield)%ref)
             end do
         end block
 
@@ -290,11 +293,7 @@ contains
 
         field_size(:, :) = self%field_sizes(:, :, ohfield%extension_info%id)
 
-        allocate (ohfield%values(nelements, &
-                                 field_size(1, 1):field_size(2, 1), &
-                                 field_size(1, 2):field_size(2, 2), &
-                                 field_size(1, 3):field_size(2, 3), &
-                                 nfields))
+        call ohfield%allocate(nelements, field_size, nfields)
     end subroutine
 
     subroutine ohhelp_correct_load_balancing(self, ohparticles, eb, ohfields_to_be_notified)
@@ -316,7 +315,7 @@ contains
             integer :: i
 
             do i = 1, size(ohfields_to_be_notified)
-                call self%notify_subdomain_id(ohfields_to_be_notified(i)%ref)
+                call self%notify_subdomain_range(ohfields_to_be_notified(i)%ref)
             end do
         end block
     end subroutine
@@ -328,11 +327,11 @@ contains
 
         self%current_mode = oh3_transbound(self%current_mode, status)
 
-        ohparticles%particle_count_histgram(self%subdomain_id(1) + 1, :, 1) &
+        self%particle_count_histgram(self%subdomain_id(1) + 1, :, 1) &
             = ohparticles%total_local_particles(:, 1)
 
         if (self%subdomain_id(2) >= 0) then
-            ohparticles%particle_count_histgram(self%subdomain_id(2) + 1, :, 2) &
+            self%particle_count_histgram(self%subdomain_id(2) + 1, :, 2) &
                 = ohparticles%total_local_particles(:, 2)
         end if
     end subroutine
@@ -353,6 +352,22 @@ contains
                              ohfield%extension_info%id)
     end subroutine
 
+    subroutine ohhelp_reduce_field(self, ohfield)
+        class(t_OhHelp), intent(inout) :: self
+        type(t_OhField), intent(inout) :: ohfield
+
+        call oh3_reduce_field(ohfield%values(1, 0, 0, 0, 1), ohfield%values(1, 0, 0, 0, 2), ohfield%extension_info%id)
+    end subroutine
+
+    subroutine ohhelp_exchange_borders(self, ohfield)
+        class(t_OhHelp), intent(inout) :: self
+        type(t_OhField), intent(inout) :: ohfield
+
+        call oh3_exchange_borders(ohfield%values(1, 0, 0, 0, 1), &
+                                  ohfield%values(1, 0, 0, 0, 2), &
+                                  ohfield%boundary_comm_infos(1)%id, 0)
+    end subroutine
+
     subroutine check_particles_in_subdomain(particles, pbase, primary_or_secondary)
         type(oh_particle), intent(inout) :: particles(:)
         integer, intent(in) :: pbase(3)
@@ -364,22 +379,15 @@ contains
         nid = oh3_map_particle_to_neighbor(particle%x, particle%y, particle%z, primary_or_secondary)
     end subroutine
 
-    subroutine ohhelp_notify_subdomain_id(self, ohfield)
+    subroutine ohhelp_notify_subdomain_range(self, ohfield)
         class(t_OhHelp), intent(inout) :: self
         type(t_OhField), intent(inout) :: ohfield
 
-        ohfield%subdomain_range(:, :, 1) = self%subdomain_range(:, :, self%subdomain_id(1)+1)
+        ohfield%subdomain_range(:, :, 1) = self%subdomain_range(:, :, self%subdomain_id(1) + 1)
 
         if (self%is_secondary_mode()) then
-            ohfield%subdomain_range(:, :, 2) = self%subdomain_range(:, :, self%subdomain_id(2)+1)
+            ohfield%subdomain_range(:, :, 2) = self%subdomain_range(:, :, self%subdomain_id(2) + 1)
         end if
-    end subroutine
-
-    subroutine ohhelp_inject_particle(self, particle)
-        class(t_OhHelp), intent(inout) :: self
-        type(oh_particle), intent(in) :: particle
-
-        call oh2_inject_particle(particle)
     end subroutine
 
     function ohhelp_is_primary_mode(self) result(ret)
@@ -395,5 +403,37 @@ contains
 
         ret = self%current_mode == OHH_SECONDARY_MODE
     end function
+
+    subroutine ohhelp_inject_particle(self, particle)
+        class(t_OhHelp), intent(inout) :: self
+        type(oh_particle), intent(in) :: particle
+
+        call oh2_inject_particle(particle)
+    end subroutine
+
+    subroutine ohhelp_correct_particle(self, particle, ps)
+        class(t_OhHelp), intent(inout) :: self
+        type(oh_particle), intent(inout) :: particle
+        integer, intent(in) :: ps
+
+        integer :: nid
+
+        nid = oh3_map_particle_to_neighbor(particle%x, particle%y, particle%z, ps)
+
+        if (nid /= particle%nid) then
+            particle%nid = nid
+            self%particle_count_histgram(self%subdomain_id(ps) + 1, particle%spec, ps) = &
+                self%particle_count_histgram(self%subdomain_id(ps) + 1, particle%spec, ps) - 1
+        end if
+    end subroutine
+
+    function ohhelp_map_subdomain_id(self, position) result(ret)
+        class(t_Ohhelp), intent(in) :: self
+        double precision, intent(in) :: position(3)
+        integer :: ret
+
+        ret = oh3_map_particle_to_subdomain(position(1), position(2), position(3))
+    end function
+    
 
 end module

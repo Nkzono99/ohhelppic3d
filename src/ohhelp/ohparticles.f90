@@ -1,17 +1,24 @@
+#define OH_LIB_LEVEL 3
+
+#ifndef OH_PBUF_SIZE
+#define OH_PBUF_SIZE 16384
+#endif
 module m_ohparticles
+    use ohhelp2, only: oh2_max_local_particles
     use oh_type, only: oh_particle
     implicit none
 
     private
     public t_OhParticles, new_OhParticles
 
+    integer, parameter :: PARTICLE_BUFSIZE = OH_PBUF_SIZE
+
     type :: t_OhParticles
         type(oh_particle), allocatable :: pbuf(:)
         integer, allocatable :: pbase(:)
-        integer(kind=8) :: max_nparticles
+        integer(kind=8), private :: max_nparticles
         integer :: max_local_particles
 
-        integer, allocatable :: particle_count_histgram(:, :, :) ! (nprocs, nspec, 2)
         integer, allocatable :: total_local_particles(:, :) ! (nspec, 2)
 
         integer :: nspecies
@@ -34,21 +41,20 @@ contains
         integer, intent(in) :: nprocs
         type(t_OhParticles) :: self
 
-        double precision, pointer :: p
-
         self%nspecies = nspecies
         self%max_nparticles = max_nparticles
 
         allocate (self%pbase(3))
-        allocate (self%particle_count_histgram(nprocs, nspecies, 2))
         allocate (self%total_local_particles(nspecies, 2))
     end function
 
-    subroutine ohparticles_allocate_pbuf(self, max_local_particles)
+    subroutine ohparticles_allocate_pbuf(self, loadbalance_tolerance_percentage)
         class(t_OhParticles), intent(inout) :: self
-        integer, intent(in) :: max_local_particles
+        integer, intent(in) :: loadbalance_tolerance_percentage
 
-        self%max_local_particles = max_local_particles
+        self%max_local_particles = oh2_max_local_particles(self%max_nparticles, &
+                                                           loadbalance_tolerance_percentage, &
+                                                           PARTICLE_BUFSIZE)
         allocate (self%pbuf(self%max_local_particles))
     end subroutine
 
@@ -65,7 +71,7 @@ contains
         class(t_OhParticles), intent(in) :: self
         integer, intent(in) :: ispec
         !> 1: primary subdomain, 2: secondary subdomain
-        integer, intent(in) :: ps 
+        integer, intent(in) :: ps
         integer :: ret
 
         ret = self%pbase(ps) + sum(self%total_local_particles(1:ispec, ps))
