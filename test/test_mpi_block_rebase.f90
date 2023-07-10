@@ -6,6 +6,7 @@ module test_mpi_block_rebaser
     use m_check_array, only: check
     use mpi
     use m_str
+    use m_mpi_block
     implicit none
 
     private
@@ -21,7 +22,7 @@ contains
 
         call mpi_init(ierr)
         if (ierr /= 0) then
-            write(error_unit, '(a)') 'Use "mpiexec -n 4" to run this test.'
+            write (error_unit, '(a)') 'Use "mpiexec -n 4" to run this test.'
             stop 1
         end if
 
@@ -36,23 +37,18 @@ contains
     subroutine test_rebase(error)
         type(error_type), allocatable, intent(out) :: error
 
+        type(t_Block) :: global_block
         type(t_Block) :: local_block
         type(t_Block) :: require_block
 
         integer :: n(3)
         integer :: nnodes(3)
-        integer :: myid_x, myid_y, myid_z
         integer :: ids(3)
 
         n = [16, 32, 64]
         nnodes = [2, 1, 2]
-        myid_x = mod(myid, nnodes(1))
-        myid_y = mod(myid/nnodes(1), nnodes(2))
-        myid_z = myid/nnodes(1)/nnodes(2)
-
-        ids = [myid_x, myid_y, myid_z]
-
-        local_block = new_Block(ids*n/nnodes + 1, (ids + 1)*n/nnodes)
+        global_block = new_Block([1, 1, 1], n)
+        call create_local_block(global_block, nnodes, myid, local_block, ids)
         require_block = new_Block([1, 1, ids*n(3)/4 + 1], [n(1), n(2), (ids + 1)*n(3)/4])
 
         call check_rebase(local_block, require_block)
@@ -60,13 +56,8 @@ contains
 
         n = [16, 32, 64]
         nnodes = [1, 2, 2]
-        myid_x = mod(myid, nnodes(1))
-        myid_y = mod(myid/nnodes(1), nnodes(2))
-        myid_z = myid/nnodes(1)/nnodes(2)
-
-        ids = [myid_x, myid_y, myid_z]
-
-        local_block = new_Block(ids*n/nnodes + 1, (ids + 1)*n/nnodes)
+        global_block = new_Block([1, 1, 1], n)
+        call create_local_block(global_block, nnodes, myid, local_block, ids)
         require_block = new_Block([1, 1, ids*n(3)/4 + 1], [n(1), n(2), (ids + 1)*n(3)/4])
 
         call check_rebase(local_block, require_block)
@@ -74,13 +65,8 @@ contains
 
         n = [16, 32, 64]
         nnodes = [4, 1, 1]
-        myid_x = mod(myid, nnodes(1))
-        myid_y = mod(myid/nnodes(1), nnodes(2))
-        myid_z = myid/nnodes(1)/nnodes(2)
-
-        ids = [myid_x, myid_y, myid_z]
-
-        local_block = new_Block(ids*n/nnodes + 1, (ids + 1)*n/nnodes)
+        global_block = new_Block([1, 1, 1], n)
+        call create_local_block(global_block, nnodes, myid, local_block, ids)
         require_block = new_Block([1, 1, ids*n(3)/4 + 1], [n(1), n(2), (ids + 1)*n(3)/4])
 
         call check_rebase(local_block, require_block)

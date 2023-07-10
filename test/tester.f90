@@ -2,9 +2,14 @@ program tester
     use, intrinsic :: iso_fortran_env, only: error_unit
     use testdrive, only: run_testsuite, new_testsuite, testsuite_type, &
       & select_suite, run_selected, get_argument
+
     use test_block, only: collect_block
     use test_mpi_block_rebaser, only: collect_mpi_block_rebaser
+    use test_pcg_generator, only: collect_pcg_generator
+    use test_mpi_fftw3_solver, only: collect_mpi_fftw3_solver
+
     implicit none
+
     integer :: stat, is
     character(len=:), allocatable :: suite_name, test_name
     type(testsuite_type), allocatable :: testsuites(:)
@@ -14,8 +19,10 @@ program tester
 
     testsuites = [ &
                  new_testsuite("block-suite", collect_block), &
-                 new_testsuite("mpi-block-rebaser", collect_mpi_block_rebaser) &
-    ]
+                 new_testsuite("mpi-block-rebaser", collect_mpi_block_rebaser), &
+                 new_testsuite("pcg-generator", collect_pcg_generator), &
+                 new_testsuite("mpi-fftw3-solver", collect_mpi_fftw3_solver) &
+                 ]
 
     call get_argument(1, suite_name)
     call get_argument(2, test_name)
