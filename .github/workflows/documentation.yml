@@ -1,0 +1,36 @@
+name: Build and Deploy Documentation
+
+on: [push, pull_request]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    
+    env:
+      FC: gfortran
+      GCC_V: 12
+    
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-python@v1
+      with:
+        python-version: '3.x'
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        sudo apt install -y graphviz gfortran-${GCC_V}
+        pip install ford
+    - name: Build Documentation
+      run: ford docs.md
+    - name: Upload Documentation
+      uses: actions/upload-artifact@v2
+      with:
+        name: documentation
+        path: ohhelppic3d-doc
+        if-no-files-found: error
+    - uses: JamesIves/github-pages-deploy-action@4.1.0
+      if: ${{ github.event_name == 'push'  &&  github.ref == 'refs/heads/main' }}
+      with:
+        BRANCH: gh-pages
+        FOLDER: ohhelppic3d-doc
+        CLEAN: true
