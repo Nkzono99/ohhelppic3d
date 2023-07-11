@@ -8,8 +8,7 @@ author_email: j-nakazono@stu.kobe-u.ac.jp
 github: https://github.com/Nkzono99
 src_dir: ./src
          ./app
-output_dir: ./fpm-doc
-page_dir: ./doc
+output_dir: ./ohhelppic3d-doc
 exclude_dir: ./test
 display: public
 source: true
