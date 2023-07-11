@@ -17,10 +17,18 @@ module ohhelppic3d
     use m_velocity_distribution, only: new_NoVelocityDistribution3d
     use m_interpolator, only: t_Interpolator
     use m_mpi_fft_solver, only: t_MPIFFTSolver3d
-    use m_mpi_fftw_solver, only: new_MPIFFTWSolver3d
+    use m_mpi_fftw3_solver, only: new_MPIFFTW3Solver3d
     use m_block, only: t_Block, new_Block
     use m_random_generator
     use m_pcg_generator
+    use m_field_solver
+    use m_poisson_solver
+    use m_field_boundary_type
+    use m_linear_interpolator
+    use m_particle_boundaries
+    use m_scatter
+    use m_linear_scatter
+    use m_str
     implicit none
 
     private
@@ -34,11 +42,14 @@ module ohhelppic3d
     type(t_OhField), target :: eb, aj, rho, phi
     class(t_ParticleInjectorManager), allocatable :: particle_injector_manager
     class(t_ParticleMover), allocatable :: particle_mover
-    class(t_MPIFFTSolver3d), allocatable :: mpifft_solver3d
+    class(t_MPIFFTSolver3d), target, allocatable :: mpifft_solver3d
     class(t_Interpolator), allocatable :: interpolator
     type(t_Parameters) :: parameters
     class(t_RandomGenerator), allocatable, target :: random_generator
     character(len=15) :: toml_filepath = 'parameters.toml'
+    class(t_FieldSolver), allocatable, target :: field_solver
+    class(t_ParticleBoundaries), allocatable :: particle_boundaries
+    class(t_Scatter), allocatable :: scatter
 
 contains
 
@@ -57,6 +68,10 @@ contains
         call initialize
 
         do istep = 1, parameters%nstep
+            if (myid == 0 .and. mod(istep, parameters%stdout_interval_step) == 0) then
+                print *, '------ '//str(istep)//' -------'
+            end if
+
             call mainstep(parameters%dt)
         end do
 
@@ -71,7 +86,9 @@ contains
         parameters = new_Parameters(toml_filepath)
 
         random_generator = new_PcgGenerator([int(42, kind=8), int(52, kind=8)])
+        call random_generator%advance(myid * 100000000)
 
+        ! Init ohfields
         block
             type(t_OhFieldFactory) :: ohfield_factory
             ohfield_factory = new_OhFieldFactory()
@@ -82,6 +99,7 @@ contains
             phi = ohfield_factory%create_field('potential')
         end block
 
+        ! Init ohparticles
         block
             integer(kind=8) :: pbuf_size(parameters%nspecies)
             integer :: nx, ny, nz
@@ -93,6 +111,7 @@ contains
             ohparticles = new_OhParticles(parameters%nspecies, sum(pbuf_size), product(parameters%nnodes))
         end block
 
+        ! new ohhelp
         block
             integer :: boundary_conditions(2, 3)
             integer :: i
@@ -112,12 +131,14 @@ contains
                 end if
             end do
 
-            ohhelp = new_OhHelp(parameters%nnodes, &
+            ohhelp = new_OhHelp(parameters%nspecies, &
+                                parameters%nnodes, &
                                 parameters%nx, parameters%ny, parameters%nz, &
                                 boundary_conditions, &
                                 parameters%imbalance_tolerance_percentage)
         end block
 
+        ! Init ohhelp
         block
             type(tp_OhField) :: ohfields(4)
 
@@ -129,10 +150,13 @@ contains
             call ohhelp%initialize(ohparticles, ohfields)
         end block
 
-        ! TODO: 粒子の初期化の実装
-        particle_injector_manager = new_ParticleInjectorManager(parameters, random_generator)
-        call particle_injector_manager%initialize_particles(ohhelp)
+        ! Init particle injector
+        block
+            particle_injector_manager = new_ParticleInjectorManager(parameters, random_generator)
+            call particle_injector_manager%initialize_particles(ohhelp)
+        end block
 
+        ! Correct load balancing
         block
             type(tp_OhField) :: ohfields(4)
 
@@ -144,76 +168,8 @@ contains
             call ohhelp%correct_load_balancing(ohparticles, eb, ohfields_to_be_notified=ohfields)
         end block
 
-        ! TODO: 場の初期化
         ! TODO: 粒子Scatterの実装
-
-        ! TODO: フィールドソルバーの実装
-        block
-            integer :: fft_boundary_types(3)
-            type(t_Block) :: local_block
-            type(t_Block) :: global_block
-
-            fft_boundary_types = [0, 0, 0]
-
-            local_block = new_Block(ohhelp%subdomain_range(1, :, ohhelp%subdomain_id(1) + 1), &
-                                    ohhelp%subdomain_range(2, :, ohhelp%subdomain_id(1) + 1))
-            ! print *, myid, ohhelp%subdomain_id(1), 'set', local_block%start, local_block%end
-
-            global_block = new_Block([0, 0, 0], [parameters%nx, parameters%ny, parameters%nz])
-            mpifft_solver3d = new_MPIFFTWSolver3d(fft_boundary_types, &
-                                                  local_block, &
-                                                  global_block, &
-                                                  myid, nprocs, &
-                                                  MPI_COMM_WORLD, tag=10)
-        end block
-
-        block
-            integer :: lnx, lny, lnz
-            integer :: i, j, k
-
-            lnx = rho%subdomain_range(2, 1, 1) - rho%subdomain_range(1, 1, 1) + 1
-            lny = rho%subdomain_range(2, 2, 1) - rho%subdomain_range(1, 2, 1) + 1
-            lnz = rho%subdomain_range(2, 3, 1) - rho%subdomain_range(1, 3, 1) + 1
-
-            rho%values = 0d0
-            rho%values(1, 2, 2, 2, 1) = 2.125d0
-            rho%values(1, 2, 3, 2, 1) = 15d0
-            rho%values(1, 2, 1, 2, 1) = 15d0
-            rho%values(1, 1, 2, 2, 1) = 15d0
-            rho%values(1, 3, 2, 2, 1) = 13d0
-            rho%values(1, 2, 2, 1, 1) = 15d0
-            rho%values(1, 2, 2, 3, 1) = 12d0
-
-            print *, 'sr', rho%subdomain_range(2, 1, 1), rho%subdomain_range(1, 1, 1)
-
-            print *, 'rp1', rho%values(1, 2, 2, 2, 1), phi%values(1, 2, 2, 2, 1)
-
-            call mpifft_solver3d%forward(rho%values(1, 0:lnx - 1, 0:lny - 1, 0:lnz - 1, 1), &
-                                         phi%values(1, 0:lnx - 1, 0:lny - 1, 0:lnz - 1, 1))
-
-            print *, 'rp2', rho%values(1, 2, 2, 2, 1), phi%values(1, 2, 2, 2, 1)
-
-            call mpifft_solver3d%backward(phi%values(1, 0:lnx - 1, 0:lny - 1, 0:lnz - 1, 1), &
-                                          rho%values(1, 0:lnx - 1, 0:lny - 1, 0:lnz - 1, 1))
-
-            print *, 'rp3', rho%values(1, 2, 2, 2, 1), phi%values(1, 2, 2, 2, 1)
-        end block
-
-        block
-            type(t_ParticleMoverFactory) :: particle_mover_factory
-
-            particle_mover_factory = new_ParticleMoverFactory()
-            particle_mover = particle_mover_factory%create_particle_mover(parameters%particle_mover_type)
-        end block
-    end subroutine
-
-    subroutine mainstep(dt)
-        double precision, intent(in) :: dt
-
-        call particle_injector_manager%inject_particles(dt, ohhelp)
-
-        ! TODO: 場の更新 & 場のリロケート(self-forceの回避)
-
+        scatter = new_LinearScatter()
         block
             integer :: ps
             integer :: ispec, ipcl
@@ -221,22 +177,172 @@ contains
             double precision :: qm
             double precision :: eb_interped(6)
 
-            ! Primaryモードの場合は、start_index(ispec, 2) > end_index(ispec, 2)のため最内ループは実行されない
-            do ps = 1, 2
-            do ispec = 1, ohparticles%nspecies
-                ipcl_start = ohparticles%start_index(ispec, ps)
-                ipcl_end = ohparticles%end_index(ispec, ps)
-                do ipcl = ipcl_start, ipcl_end
-                    ! TODO: 場の内挿処理を実装
-                    ! eb_interped(:) = interpolator%interp(ohparticles%pbuf(ipcl), eb)
+            integer :: eps
 
-                    call particle_mover%move(ohparticles%pbuf(ipcl), qm, eb_interped, dt)
+            if (ohhelp%is_primary_mode()) then
+                eps = 1
+            else
+                eps = 2
+            end if
+
+            rho%values = 0
+            do ps = 1, eps
+                do ispec = 1, ohparticles%nspecies
+                    ipcl_start = ohparticles%start_index(ispec, ps)
+                    ipcl_end = ohparticles%end_index(ispec, ps)
+                    do ipcl = ipcl_start, ipcl_end
+                        call scatter%scatter(ohparticles%pbuf(ipcl), rho, [parameters%charge_per_macro_particle(ispec)], ps)
+                    end do
                 end do
             end do
+
+            if (ohhelp%is_secondary_mode()) then
+                call ohhelp%reduce_field(rho)
+            end if
+
+            call ohhelp%exchange_borders(rho)
+        end block
+
+        ! TODO: フィールドソルバーのテスト
+        block
+            integer :: fft_boundary_types(3)
+            type(t_Block) :: local_block
+            type(t_Block) :: global_block
+
+            integer :: i
+
+            do i = 1, 3
+                select case (parameters%boundary_type_for_electromagnetic_field(i)%string)
+                case ('periodic')
+                    fft_boundary_types(i) = Field_BoundaryType_Periodic
+                case ('dirichlet')
+                    fft_boundary_types(i) = Field_BoundaryType_Dirichlet
+                case ('neumman')
+                    fft_boundary_types(i) = Field_BoundaryType_Neumann
+                case ('dirichlet-neumman')
+                    fft_boundary_types(i) = Field_BoundaryType_Dirichlet_Neumann
+                case ('neumman-dirichlet')
+                    fft_boundary_types(i) = Field_BoundaryType_Neumann_Dirichlet
+                end select
+            end do
+
+            local_block = new_Block(ohhelp%subdomain_range(1, :, ohhelp%subdomain_id(1) + 1), &
+                                    ohhelp%subdomain_range(2, :, ohhelp%subdomain_id(1) + 1))
+
+            global_block = new_Block([0, 0, 0], [parameters%nx, parameters%ny, parameters%nz])
+            mpifft_solver3d = new_MPIFFTW3Solver3d(fft_boundary_types, &
+                                                   local_block, &
+                                                   global_block, &
+                                                   myid, nprocs, &
+                                                   MPI_COMM_WORLD, tag=10)
+
+            field_solver = new_PoissonSolver3d(local_block, global_block, mpifft_solver3d)
+
+            ! call field_solver%solve(rho, aj, eb, phi, ohhelp)
+        end block
+
+        block
+            interpolator = new_LinearInterpolator()
+        end block
+
+        block
+            type(t_ParticleMoverFactory) :: particle_mover_factory
+
+            particle_mover_factory = new_ParticleMoverFactory()
+            particle_mover = particle_mover_factory%create_particle_mover(parameters%particle_mover_type)
+
+            particle_boundaries = new_ParticleBoundaries(parameters%nx, parameters%ny, parameters%nz)
+        end block
+    end subroutine
+
+    subroutine mainstep(dt)
+        double precision, intent(in) :: dt
+
+        ! TODO: 粒子密度 or 電流の場への配分
+        block
+            integer :: ps
+            integer :: ispec, ipcl
+            integer :: ipcl_start, ipcl_end
+            double precision :: qm
+            double precision :: eb_interped(6)
+
+            integer :: eps
+
+            if (.not.ohhelp%is_secondary_mode()) then
+                eps = 1
+            else
+                eps = 2
+            end if
+            do ps = 1, eps
+                do ispec = 1, ohparticles%nspecies
+                    ipcl_start = ohparticles%start_index(ispec, ps)
+                    ipcl_end = ohparticles%end_index(ispec, ps)
+                end do
+            end do
+
+            rho%values = 0
+            do ps = 1, eps
+                do ispec = 1, ohparticles%nspecies
+                    ipcl_start = ohparticles%start_index(ispec, ps)
+                    ipcl_end = ohparticles%end_index(ispec, ps)
+                    do ipcl = ipcl_start, ipcl_end
+                        call scatter%scatter(ohparticles%pbuf(ipcl), rho, [parameters%charge_per_macro_particle(ispec)], ps)
+                    end do
+                end do
             end do
         end block
 
-        ! TODO: 粒子密度 or 電流の場への配分
+        ! TODO: 場の更新 & 場のリロケート(self-forceの回避)
+        call field_solver%solve(rho, aj, eb, phi, ohhelp)
+
+        ! print *, 'phi', phi%values
+        ! print *, 'eb', eb%values
+
+        block
+            integer :: ps
+            integer :: ispec, ipcl
+            integer :: ipcl_start, ipcl_end
+            double precision :: qm
+            double precision :: eb_interped(6) = 0
+
+            integer :: eps
+
+            if (ohhelp%is_primary_mode()) then
+                eps = 1
+            else
+                eps = 2
+            end if
+
+            if (myid == 0) print *, ohparticles%pbuf(1)%x, ohparticles%pbuf(1)%vx
+
+            ! if (myid == 0) print *, &
+            !     ohparticles%start_index(1, 1), ohparticles%end_index(1, 1), &
+            !     ohparticles%start_index(2, 1), ohparticles%end_index(2, 1)
+            ! print *, myid, &
+            !     ohparticles%start_index(1, 1), ohparticles%end_index(1, 1), ohparticles%start_index(1, 2), ohparticles%end_index(1, 2), &
+            !     ohparticles%start_index(2, 1), ohparticles%end_index(2, 1), ohparticles%start_index(2, 2), ohparticles%end_index(2, 2)
+            do ps = 1, eps
+                do ispec = 1, ohparticles%nspecies
+                    qm = parameters%charge_to_mass_ratio(ispec)
+                    ipcl_start = ohparticles%start_index(ispec, ps)
+                    ipcl_end = ohparticles%end_index(ispec, ps)
+                    do ipcl = ipcl_start, ipcl_end
+                        ! TODO: 場の内挿処理を実装
+                        eb_interped(:) = interpolator%interp(ohparticles%pbuf(ipcl), eb, ps)
+
+                        call particle_mover%move(ohparticles%pbuf(ipcl), qm, eb_interped, dt)
+
+                        call ohhelp%correct_particle(ohparticles%pbuf(ipcl), ps)
+
+                        call particle_boundaries%apply(ohparticles%pbuf(ipcl), dt)
+                        
+                        call particle_boundaries%apply(ohparticles%pbuf(ipcl), dt)
+                    end do
+                end do
+            end do
+        end block
+
+        call particle_injector_manager%inject_particles(dt, ohhelp)
 
         block
             type(tp_OhField) :: ohfields(4)
@@ -247,6 +353,11 @@ contains
             ohfields(4)%ref => phi
 
             call ohhelp%correct_load_balancing(ohparticles, eb, ohfields_to_be_notified=ohfields)
+        end block
+
+        block
+            integer :: ierr
+            call MPI_Barrier(MPI_COMM_WORLD, ierr)
         end block
 
         ! TODO: スナップショットの出力
