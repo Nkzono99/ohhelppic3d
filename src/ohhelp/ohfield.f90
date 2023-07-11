@@ -68,6 +68,7 @@ module m_ohfield
         procedure :: to_global_index => ohfield_to_global_index
         procedure :: to_local_index => ohfield_to_local_index
         procedure :: to_local_position => ohfield_to_local_position
+        procedure :: local_shape => ohfield_local_shape
     end type
 
     type tp_OhField
@@ -204,4 +205,11 @@ contains
         ret = global_position - self%subdomain_range(1, :, ps)
     end function
 
+    function ohfield_local_shape(self, ps) result(ret)
+        class(t_Ohfield), intent(in) :: self
+        integer, intent(in) :: ps
+        integer :: ret(3)
+
+        ret = self%subdomain_range(2, :, ps) - self%subdomain_range(1, :, ps) + 1
+    end function
 end module
