@@ -29,6 +29,8 @@ module ohhelppic3d
     use m_scatter
     use m_linear_scatter
     use m_str
+    use m_hdf5_for_ohfield
+    use m_domain
     implicit none
 
     private
@@ -50,6 +52,7 @@ module ohhelppic3d
     class(t_FieldSolver), allocatable, target :: field_solver
     class(t_ParticleBoundaries), allocatable :: particle_boundaries
     class(t_Scatter), allocatable :: scatter
+    class(t_Hdf5ForOhfield), allocatable :: hdf5_phi
 
 contains
 
@@ -67,26 +70,46 @@ contains
 
         call initialize
 
+        call hdf5_initialize(ierr)
+
+        rho%values(:, :, :, :, 1) = 0
+        if (myid == 0)  rho%values(1, 2, 2, 3, 1) = parameters%charge_per_macro_particle(1)*10
+        call field_solver%solve(rho, aj, eb, phi, ohhelp)
+
+        hdf5_phi = new_Hdf5ForOhfield('phisp00_0000.h5', 'phisp', &
+                                      int([parameters%nx+1, parameters%ny+1, parameters%nz+1], kind=8), &
+                                      int([0, 0, 0], kind=8), &
+                                      MPI_COMM_WORLD)
+
+        call hdf5_phi%write('0', phi, 1)
+
+        call hdf5_phi%close()
+        stop
+
         do istep = 1, parameters%nstep
             if (myid == 0 .and. mod(istep, parameters%stdout_interval_step) == 0) then
                 print *, '------ '//str(istep)//' -------'
             end if
 
             call mainstep(parameters%dt)
+
+            call hdf5_phi%write(str(istep), phi, 1)
         end do
 
+        call hdf5_phi%close()
+
+        call hdf5_finalize(ierr)
+        call mpi_finalize(ierr)
         call finalize
     end subroutine
 
     subroutine initialize
         integer :: status
 
-        call hdf5_initialize(status)
-
         parameters = new_Parameters(toml_filepath)
 
         random_generator = new_PcgGenerator([int(42, kind=8), int(52, kind=8)])
-        call random_generator%advance(myid * 100000000)
+        call random_generator%advance(myid*100000000)
 
         ! Init ohfields
         block
@@ -170,6 +193,7 @@ contains
 
         ! TODO: 粒子Scatterの実装
         scatter = new_LinearScatter()
+
         block
             integer :: ps
             integer :: ispec, ipcl
@@ -238,7 +262,7 @@ contains
 
             field_solver = new_PoissonSolver3d(local_block, global_block, mpifft_solver3d)
 
-            ! call field_solver%solve(rho, aj, eb, phi, ohhelp)
+            call field_solver%solve(rho, aj, eb, phi, ohhelp)
         end block
 
         block
@@ -268,7 +292,7 @@ contains
 
             integer :: eps
 
-            if (.not.ohhelp%is_secondary_mode()) then
+            if (.not. ohhelp%is_secondary_mode()) then
                 eps = 1
             else
                 eps = 2
@@ -295,9 +319,6 @@ contains
         ! TODO: 場の更新 & 場のリロケート(self-forceの回避)
         call field_solver%solve(rho, aj, eb, phi, ohhelp)
 
-        ! print *, 'phi', phi%values
-        ! print *, 'eb', eb%values
-
         block
             integer :: ps
             integer :: ispec, ipcl
@@ -313,21 +334,12 @@ contains
                 eps = 2
             end if
 
-            if (myid == 0) print *, ohparticles%pbuf(1)%x, ohparticles%pbuf(1)%vx
-
-            ! if (myid == 0) print *, &
-            !     ohparticles%start_index(1, 1), ohparticles%end_index(1, 1), &
-            !     ohparticles%start_index(2, 1), ohparticles%end_index(2, 1)
-            ! print *, myid, &
-            !     ohparticles%start_index(1, 1), ohparticles%end_index(1, 1), ohparticles%start_index(1, 2), ohparticles%end_index(1, 2), &
-            !     ohparticles%start_index(2, 1), ohparticles%end_index(2, 1), ohparticles%start_index(2, 2), ohparticles%end_index(2, 2)
             do ps = 1, eps
                 do ispec = 1, ohparticles%nspecies
                     qm = parameters%charge_to_mass_ratio(ispec)
                     ipcl_start = ohparticles%start_index(ispec, ps)
                     ipcl_end = ohparticles%end_index(ispec, ps)
                     do ipcl = ipcl_start, ipcl_end
-                        ! TODO: 場の内挿処理を実装
                         eb_interped(:) = interpolator%interp(ohparticles%pbuf(ipcl), eb, ps)
 
                         call particle_mover%move(ohparticles%pbuf(ipcl), qm, eb_interped, dt)
@@ -335,7 +347,7 @@ contains
                         call ohhelp%correct_particle(ohparticles%pbuf(ipcl), ps)
 
                         call particle_boundaries%apply(ohparticles%pbuf(ipcl), dt)
-                        
+
                         call particle_boundaries%apply(ohparticles%pbuf(ipcl), dt)
                     end do
                 end do
@@ -366,8 +378,6 @@ contains
 
     subroutine finalize
         integer :: status
-
-        call hdf5_finalize(status)
     end subroutine
 
 end module ohhelppic3d

@@ -169,7 +169,7 @@ contains
 
         call h5dwrite_f(dataset_id, &
                         H5T_NATIVE_DOUBLE, &
-                        dataset(1:subdomain_info%local_shape(1), 1:subdomain_info%local_shape(2), 1:subdomain_info%local_shape(3)), &
+                        dataset, &
                         subdomain_info%global_shape, &
                         status, &
                         file_space_id=file_space_id, &

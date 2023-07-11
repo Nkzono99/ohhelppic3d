@@ -68,7 +68,9 @@ contains
                 wx = calc_wave_number(kx, global_block%sizes(1), fft3d%boundary_types(1))
                 wy = calc_wave_number(ky, global_block%sizes(2), fft3d%boundary_types(2))
                 wz = calc_wave_number(kz, global_block%sizes(3), fft3d%boundary_types(3))
-                wn = wx + wy + wz
+
+                ! TODO: 二乗にすると正しそうな結果となったが、理論をもう一度確認すること
+                wn = wx*wx + wy*wy + wz*wz
 
                 obj%modified_wave_number(kx + global_block%start(1), &
                                          ky + global_block%start(2), &
@@ -108,10 +110,11 @@ contains
 
         select case (boundary_type)
         case (Field_BoundaryType_Periodic)
+            ! REVIEW: wave numberの計算が本当に正しいか疑わしいため、要再確認
             if (k <= int(n/2)) then
                 wn = 2.0d0*sin(PI*k/dble(n))
             else
-                wn = 2.0d0*sin(PI*(k - int(n/2))/dble(n))
+                wn = 2.0d0*sin(PI*(n-1 - k)/dble(n))
             end if
 
         case (Field_BoundaryType_Dirichlet)
@@ -212,10 +215,13 @@ contains
                                                 local_start(2):local_end(2), &
                                                 local_start(3):local_end(3), &
                                                 1))
+
+            call ohhelp%broadcast_field(phi)
+            call ohhelp%exchange_borders(phi)
         end block
 
-        call ohhelp%broadcast_field(phi)
-
+        ! NOTE: ebをbroadcastせず、primary/secondary両方で解いているのは通信回数を減らすことを意図している
+        ! OPTIMIZE: しかし、実行時間の計測・比較はしていないため、どちらを採用するかは要検討
         block
             integer :: ps
             integer :: i, j, k
@@ -237,6 +243,34 @@ contains
                 eb%values(3, xl:xu, yl:yu, zl:zu, ps) = &
                     phi%values(3, xl:xu, yl:yu, zl:zu, ps) - phi%values(3, xl:xu, yl:yu, zl + 1:zu + 1, ps)
             end do
+
+            call ohhelp%exchange_borders(eb)
+        end block
+
+        ! Avoiding self-force.
+        block
+            integer :: ps
+            integer :: i, j, k
+            integer :: xl, yl, zl
+            integer :: xu, yu, zu
+
+            do ps = 1, 2
+                xl = phi%subdomain_range(1, 1, ps) - 1
+                yl = phi%subdomain_range(1, 2, ps) - 1
+                zl = phi%subdomain_range(1, 3, ps) - 1
+                xu = phi%subdomain_range(2, 1, ps) - phi%subdomain_range(1, 1, ps)
+                yu = phi%subdomain_range(2, 2, ps) - phi%subdomain_range(1, 2, ps)
+                zu = phi%subdomain_range(2, 3, ps) - phi%subdomain_range(1, 3, ps)
+
+                eb%values(1, xl:xu, yl:yu, zl:zu, ps) = &
+                    0.5d0*(eb%values(1, xl - 1:xu - 1, yl:yu, zl:zu, ps) + eb%values(1, xl:xu, yl:yu, zl:zu, ps))
+                eb%values(2, xl:xu, yl:yu, zl:zu, ps) = &
+                    0.5d0*(eb%values(2, xl:xu, yl - 1:yu - 1, zl:zu, ps) + eb%values(2, xl:xu, yl:yu, zl:zu, ps))
+                eb%values(3, xl:xu, yl:yu, zl:zu, ps) = &
+                    0.5d0*(eb%values(3, xl:xu, yl:yu, zl - 1:zu - 1, ps) + eb%values(3, xl:xu, yl:yu, zl:zu, ps))
+            end do
+
+            call ohhelp%exchange_borders(eb)
         end block
     end subroutine
 
