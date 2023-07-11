@@ -42,13 +42,14 @@ contains
 
     function new_NoVelocityDistribution3d() result(obj)
         type(t_NoVelocityDistribution3d) :: obj
+
     end function
 
     function noVelocityDistribution3d_sample(self) result(ret)
         class(t_NoVelocityDistribution3d), intent(in) :: self
         double precision :: ret(3)
 
-        ret(:) = 0
+        ret(:) = 1.0d0
     end function
 
     function new_SimpleVelocityDistribution3d(distribution_x, distribution_y, distribution_z) result(obj)

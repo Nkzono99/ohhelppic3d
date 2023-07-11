@@ -77,9 +77,9 @@ contains
         double precision, intent(in) :: subdomain_range(2, 3)
         double precision :: ret(3)
 
-        ret(1) = self%distribution_x%sample(subdomain_range)
-        ret(2) = self%distribution_y%sample(subdomain_range)
-        ret(3) = self%distribution_z%sample(subdomain_range)
+        ret(1) = self%distribution_x%sample(subdomain_range(:, 1))
+        ret(2) = self%distribution_y%sample(subdomain_range(:, 2))
+        ret(3) = self%distribution_z%sample(subdomain_range(:, 3))
     end function
 
     function simplePositionDistribution3d_subdomain_ratio(self, subdomain_range) result(ret)

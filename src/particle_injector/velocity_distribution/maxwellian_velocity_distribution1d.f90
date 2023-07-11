@@ -1,5 +1,6 @@
 module m_maxwellian_velocity_distribution1d
     use m_velocity_distribution, only: t_VelocityDistribution1d
+    use m_random_generator
     implicit none
 
     private
@@ -7,14 +8,18 @@ module m_maxwellian_velocity_distribution1d
     public new_MaxwellianVelocityDistribution1d
 
     type, extends(t_VelocityDistribution1d) :: t_MaxwellianVelocityDistribution1d
+        class(t_RandomGenerator), pointer :: random_generator
     contains
         procedure :: sample => maxwellianVelocityDistribution1d_sample
     end type
 
 contains
 
-    function new_MaxwellianVelocityDistribution1d() result(obj)
+    function new_MaxwellianVelocityDistribution1d(random_generator) result(obj)
+        class(t_RandomGenerator), pointer :: random_generator
         type(t_MaxwellianVelocityDistribution1d) :: obj
+
+        obj%random_generator => random_generator
     end function
 
     function maxwellianVelocityDistribution1d_sample(self) result(ret)
@@ -33,8 +38,6 @@ contains
         double precision :: rands(6)
 
         PI = acos(-1.0d0)
-
-        call ranu0(rands, 6, icon)
 
         ! Assign maxwellian velocity.
         sigma = self%vel_variance

@@ -13,7 +13,7 @@ module m_position_random_uniform_distribution
         class(t_RandomGenerator), pointer :: random_generator
     contains
         procedure :: sample => positionRandomUniformDistribution1d_sample
-        procedure :: subdomain_ratio => positionRandomUniformDistribution1d_subdomain_range
+        procedure :: subdomain_ratio => positionRandomUniformDistribution1d_subdomain_ratio
     end type
 
 contains
@@ -41,7 +41,7 @@ contains
         ret = self%random_generator%rand()*(upper - lower) + lower
     end function
 
-    function positionRandomUniformDistribution1d_subdomain_range(self, subdomain_range) result(ret)
+    function positionRandomUniformDistribution1d_subdomain_ratio(self, subdomain_range) result(ret)
         class(t_PositionRandomUniformDistribution1d), intent(in) :: self
         double precision, intent(in) :: subdomain_range(2)
         double precision :: ret

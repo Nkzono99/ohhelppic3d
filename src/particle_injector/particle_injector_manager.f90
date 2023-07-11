@@ -21,7 +21,8 @@ module m_particle_injector_manager
         class(t_ParticleInjector), allocatable :: injector
     end type
 
-    ! TODO: Change the name if come up with a name other than "Manager",
+    ! TODO: Change the name if come up with a name other than "Manager"
+    ! TODO: Injector, Manager, Distributionとクラス関係が必要以上に複雑なのでいくつか統合 or 抽出を検討
     type t_ParticleInjectorManager
         type(t_ParticleInjectorHolder), allocatable :: injectors_for_initialization(:)
         type(t_ParticleInjectorHolder), allocatable :: injectors_for_injection(:)
@@ -59,8 +60,8 @@ contains
 
                     pdist = new_SimplePositionDistribution3d( &
                             new_PositionRandomUniformDistribution1d([0d0, 1d0*parameters%nx], obj%random_generator), &
-                            new_PositionRandomUniformDistribution1d([0d0, 1d0*parameters%nx], obj%random_generator), &
-                            new_PositionRandomUniformDistribution1d([0d0, 1d0*parameters%nx], obj%random_generator))
+                            new_PositionRandomUniformDistribution1d([0d0, 1d0*parameters%ny], obj%random_generator), &
+                            new_PositionRandomUniformDistribution1d([0d0, 1d0*parameters%nz], obj%random_generator))
 
                     vdist = new_NoVelocityDistribution3d()
                     obj%injectors_for_initialization(ispec)%injector = &
@@ -90,7 +91,8 @@ contains
         integer :: i
 
         do i = 1, size(self%injectors_for_initialization)
-            call self%injectors_for_initialization(i)%injector%inject_particles(1000, ohhelp)
+            ! パラメータファイルからの入力に変更
+            call self%injectors_for_initialization(i)%injector%inject_particles(8*4*16*10, ohhelp)
         end do
     end subroutine
 
