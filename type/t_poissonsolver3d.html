@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Particle-In-Cell using OhHelp">
+    <meta name="author" content="Nkzono99" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>t_PoissonSolver3d &ndash; ohhelp-pic-3d </title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+         <script src="../js/jquery-2.1.3.min.js"></script>
+         <script src="../js/svg-pan-zoom.min.js"></script>
+
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">ohhelp-pic-3d </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
+              <a href="#" class="dropdown-toggle"
+                 data-toggle="dropdown" role="button"
+                 aria-haspopup="true"
+                 aria-expanded="false">
+                 Contents <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                    <li><a href="../lists/files.html">Source Files</a></li>
+                  <li><a href="../lists/modules.html">Modules</a></li>
+                  <li><a href="../lists/procedures.html">Procedures</a></li>
+                  <li><a href="../lists/types.html">Derived Types</a></li>
+                  <li><a href="../program/main.html">Program</a></li>
+              </ul>
+            </li>
+                <li class="visible-xs hidden-sm visible-lg">
+                  <a href="../lists/files.html">Source Files</a>
+                </li>
+              <li class="visible-xs hidden-sm visible-lg">
+                <a href="../lists/modules.html">Modules</a>
+              </li>
+              <li class="visible-xs hidden-sm visible-lg">
+                <a href="../lists/procedures.html">Procedures</a>
+              </li>
+              <li class="visible-xs hidden-sm visible-lg">
+                <a href="../lists/types.html">Derived Types</a>
+              </li>
+              <li class="visible-xs hidden-sm visible-lg">
+                <a href="../program/main.html">Program</a>
+              </li>
+          </ul>
+            <form action="../search.html" class="navbar-form navbar-right" role="search">
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+              </div>
+              <!--
+                  <button type="submit" class="btn btn-default">Submit</button>
+                  -->
+            </form>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+  <div class="row">
+    <h1>t_PoissonSolver3d
+      <small>Derived Type</small>
+      
+    </h1>
+      <div class="row" id="info-bar">
+    <div class="col-lg-12">
+      <div class="well well-sm">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+            <li id="meta-license"><i class="fa fa-legal"></i> <a rel="license" href="https://opensource.org/licenses/MIT">MIT</a></li>
+
+          <li id="statements"><i class="fa fa-list-ol"></i>
+            <a data-toggle="tooltip"
+               data-placement="bottom" data-html="true"
+               title="<p> 1.9% of total for derived types.</p>Including implementation: 62 statements,  2.3% of total for derived types.">9 statements</a>
+          </li>
+
+            <li id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/poisson_solver.f90"> Source File</a>
+            </li>
+        </ul>
+        <ol class="breadcrumb in-well text-right">
+              <li><a href='../sourcefile/poisson_solver.f90.html'>poisson_solver.f90</a></li>
+              <li><a href='../module/m_poisson_solver.html'>m_poisson_solver</a></li>
+          <li class="active">t_PoissonSolver3d</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+      <div id="sidebar">
+      <h3>Contents</h3>
+  
+      <div class="panel panel-primary">
+      <div class="panel-heading text-left">
+        <h3 class="panel-title">
+          <a data-toggle="collapse" href="#vars-0">Variables</a>
+        </h3>
+      </div>
+      <div id="vars-0" class="panel-collapse collapse">
+        <div class="list-group">
+            <a class="list-group-item" href="../type/t_poissonsolver3d.html#variable-global_block">global_block</a>
+            <a class="list-group-item" href="../type/t_poissonsolver3d.html#variable-local_block~5">local_block</a>
+        </div>
+      </div>
+    </div>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+      <div class="panel panel-primary">
+      <div class="panel-heading text-left">
+        <h3 class="panel-title">
+          <a data-toggle="collapse" href="#boundprocs-0">Type-Bound Procedures</a>
+        </h3>
+      </div>
+      <div id="boundprocs-0" class="panel-collapse collapse">
+        <div class="list-group">
+            <a class="list-group-item" href="../type/t_poissonsolver3d.html#boundprocedure-solve">solve</a>
+        </div>
+      </div>
+    </div>
+
+  
+
+
+  </div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+      <h2>type, public, extends(<a href='../type/t_fieldsolver.html'>t_FieldSolver</a>) :: t_PoissonSolver3d</h2>
+    <p>3d poisson equation solver.</p>
+<p>Poisson equation:
+    ∂^2p/∂^2 + ∂^2p/∂y^2 + ∂^2p/∂z^2 = f(x, y, z)</p>
+<br>    <div class="panel panel-default">
+      <div class="panel-heading">
+  <h3 class="panel-title">Inherits</h3>
+      </div>
+      <div class="panel-body">
+    <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: type~~t_poissonsolver3d~~InheritsGraph Pages: 1 -->
+<svg id="typet_poissonsolver3dInheritsGraph" width="574pt" height="119pt"
+ viewBox="0.00 0.00 574.00 119.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="type~~t_poissonsolver3d~~InheritsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 115)">
+<title>type~~t_poissonsolver3d~~InheritsGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-115 570,-115 570,4 -4,4"/>
+<!-- type~t_poissonsolver3d -->
+<g id="type~~t_poissonsolver3d~~InheritsGraph_node1" class="node">
+<title>type~t_poissonsolver3d</title>
+<polygon fill="none" stroke="black" points="566,-91 457,-91 457,-67 566,-67 566,-91"/>
+<text text-anchor="middle" x="511.5" y="-76.6" font-family="Helvetica,sans-Serif" font-size="10.50">t_PoissonSolver3d</text>
+</g>
+<!-- type~t_block -->
+<g id="type~~t_poissonsolver3d~~InheritsGraph_node2" class="node">
+<title>type~t_block</title>
+<g id="a_type~~t_poissonsolver3d~~InheritsGraph_node2"><a xlink:href=".././type/t_block.html" xlink:title="t_Block">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="54,-69 0,-69 0,-45 54,-45 54,-69"/>
+<text text-anchor="middle" x="27" y="-54.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">t_Block</text>
+</a>
+</g>
+</g>
+<!-- type~t_poissonsolver3d&#45;&gt;type~t_block -->
+<g id="type~~t_poissonsolver3d~~InheritsGraph_edge2" class="edge">
+<title>type~t_poissonsolver3d&#45;&gt;type~t_block</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M426.5,-102C292.4,-102.35 134.5,-76.7 64.53,-63.98"/>
+<polygon fill="#000000" stroke="#000000" points="64.93,-60.49 54.47,-62.12 63.67,-67.38 64.93,-60.49"/>
+<text text-anchor="middle" x="338" y="-103.4" font-family="Helvetica,sans-Serif" font-size="9.50">local_block, global_block</text>
+</g>
+<!-- type~t_fieldsolver -->
+<g id="type~~t_poissonsolver3d~~InheritsGraph_node3" class="node">
+<title>type~t_fieldsolver</title>
+<g id="a_type~~t_poissonsolver3d~~InheritsGraph_node3"><a xlink:href=".././type/t_fieldsolver.html" xlink:title="t_FieldSolver">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="378,-66 298,-66 298,-42 378,-42 378,-66"/>
+<text text-anchor="middle" x="338" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">t_FieldSolver</text>
+</a>
+</g>
+</g>
+<!-- type~t_poissonsolver3d&#45;&gt;type~t_fieldsolver -->
+<g id="type~~t_poissonsolver3d~~InheritsGraph_edge3" class="edge">
+<title>type~t_poissonsolver3d&#45;&gt;type~t_fieldsolver</title>
+<path fill="none" stroke="#000000" d="M482.2,-91C466.65,-96.55 446.83,-101.95 428.5,-102"/>
+<path fill="none" stroke="#000000" d="M426.5,-102C410.5,-102.04 411.76,-88.18 398,-80 392.18,-76.54 385.82,-73.27 379.5,-70.28"/>
+<polygon fill="#000000" stroke="#000000" points="380.88,-67.07 370.33,-66.13 377.99,-73.44 380.88,-67.07"/>
+</g>
+<!-- type~t_mpifftsolver3d -->
+<g id="type~~t_poissonsolver3d~~InheritsGraph_node4" class="node">
+<title>type~t_mpifftsolver3d</title>
+<g id="a_type~~t_poissonsolver3d~~InheritsGraph_node4"><a xlink:href=".././type/t_mpifftsolver3d.html" xlink:title="t_MPIFFTSolver3d">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="391,-24 285,-24 285,0 391,0 391,-24"/>
+<text text-anchor="middle" x="338" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">t_MPIFFTSolver3d</text>
+</a>
+</g>
+</g>
+<!-- type~t_poissonsolver3d&#45;&gt;type~t_mpifftsolver3d -->
+<g id="type~~t_poissonsolver3d~~InheritsGraph_edge1" class="edge">
+<title>type~t_poissonsolver3d&#45;&gt;type~t_mpifftsolver3d</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M481.98,-66.91C459.32,-57.41 426.78,-44 398,-33 393.23,-31.18 388.23,-29.32 383.24,-27.5"/>
+<polygon fill="#000000" stroke="#000000" points="384.32,-24.17 373.73,-24.06 381.94,-30.75 384.32,-24.17"/>
+<text text-anchor="middle" x="427.5" y="-51.4" font-family="Helvetica,sans-Serif" font-size="9.50">fft3d</text>
+</g>
+<!-- type~t_mpifftsolver3d&#45;&gt;type~t_block -->
+<g id="type~~t_poissonsolver3d~~InheritsGraph_edge4" class="edge">
+<title>type~t_mpifftsolver3d&#45;&gt;type~t_block</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M284.93,-19.58C222.24,-28.71 118.59,-43.81 64.07,-51.75"/>
+<polygon fill="#000000" stroke="#000000" points="63.56,-48.28 54.17,-53.19 64.57,-55.21 63.56,-48.28"/>
+<text text-anchor="middle" x="166" y="-53.4" font-family="Helvetica,sans-Serif" font-size="9.50">local_block, logical_block, global_block</text>
+</g>
+</g>
+</svg>
+</div>        <div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div>
+          <div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                </div>
+              <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="186pt" height="32pt"
+ viewBox="0.00 0.00 185.50 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 181.5,-28 181.5,4 -4,4"/>
+<!-- Type -->
+<g id="node1" class="node">
+<title>Type</title>
+<polygon fill="#5cb85c" stroke="#5cb85c" points="54,-24 0,-24 0,0 54,0 54,-24"/>
+<text text-anchor="middle" x="27" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node2" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="177.5,-24 72.5,-24 72.5,0 177.5,0 177.5,-24"/>
+<text text-anchor="middle" x="125" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a derived type to the parent type which it
+extends. Dashed arrows point from a derived type to the other
+types it contains as a components, with a label listing the name(s) of
+said component(s).
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+
+    <section class="visible-xs visible-sm hidden-md">
+        <h3>Contents</h3>
+  
+      <div class="panel panel-primary">
+      <div class="panel-heading text-left">
+        <h3 class="panel-title">
+          <a data-toggle="collapse" href="#vars-1">Variables</a>
+        </h3>
+      </div>
+      <div id="vars-1" class="panel-collapse collapse">
+        <div class="list-group">
+            <a class="list-group-item" href="../type/t_poissonsolver3d.html#variable-global_block">global_block</a>
+            <a class="list-group-item" href="../type/t_poissonsolver3d.html#variable-local_block~5">local_block</a>
+        </div>
+      </div>
+    </div>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+      <div class="panel panel-primary">
+      <div class="panel-heading text-left">
+        <h3 class="panel-title">
+          <a data-toggle="collapse" href="#boundprocs-1">Type-Bound Procedures</a>
+        </h3>
+      </div>
+      <div id="boundprocs-1" class="panel-collapse collapse">
+        <div class="list-group">
+            <a class="list-group-item" href="../type/t_poissonsolver3d.html#boundprocedure-solve">solve</a>
+        </div>
+      </div>
+    </div>
+
+  
+
+
+    </section>
+    <br class="visible-xs visible-sm hidden-md">
+
+    <section>
+    <h2>Components</h2>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th>Type</th>
+<th>Visibility</th>        <th>Attributes</th>
+        <th></th>
+        <th>Name</th>
+<th></th><th>Initial</th>        <th></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-global_block"></span>
+              type(<a href='../type/t_block.html'>t_Block</a>),
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>global_block</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-local_block~5"></span>
+              type(<a href='../type/t_block.html'>t_Block</a>),
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>local_block</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    </section>
+    <br>
+    
+
+
+      <section>
+        <h2>Type-Bound Procedures</h2>
+            <div class="panel panel-default">
+    <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-solve"></span><h3>procedure, public,  :: <strong>solve</strong>  => poissonSolver3d_solve         
+    </h3></div>
+    <ul class="list-group">
+        <li class="list-group-item">
+                  <h3>
+    private  subroutine poissonSolver3d_solve(self, rho, aj, eb, phi, ohhelp)  
+</h3>
+  
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th>Type</th>
+<th>Intent</th><th>Optional</th>        <th>Attributes</th>
+        <th></th>
+        <th>Name</th>
+        <th></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              class(<a href='../type/t_poissonsolver3d.html'>t_PoissonSolver3d</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>self</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              class(<a href='../type/t_ohfield.html'>t_OhField</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>rho</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              class(<a href='../type/t_ohfield.html'>t_OhField</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>aj</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              class(<a href='../type/t_ohfield.html'>t_OhField</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>eb</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              class(<a href='../type/t_ohfield.html'>t_OhField</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>phi</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              class(<a href='../type/t_ohhelp.html'>t_OhHelp</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>ohhelp</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+        </li>
+    </ul>
+  </div>
+
+      </section>
+
+    
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-6 col-md-6"><p>ohhelp-pic-3d was developed by Nkzono99<br>&copy; 2023 <a rel="license" href="https://opensource.org/licenses/MIT">MIT</a>
+</p>
+          </div>
+          <div class="col-xs-6 col-md-6">
+            <p class="text-right">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2023-07-11T20:54:49.776456             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+         ================================================== -->
+         <!-- Placed at the end of the document so the pages load faster -->
+    <!--
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        -->
+        <script src="../js/bootstrap.min.js"></script>
+        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+        <script src="../js/ie10-viewport-bug-workaround.js"></script>
+
+        <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>
