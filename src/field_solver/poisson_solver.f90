@@ -55,11 +55,11 @@ contains
         end if
 
         allocate (obj%modified_wave_number(local_block%start(1):local_block%end(1), &
-                                           local_block%sizes(2):local_block%end(2), &
-                                           local_block%sizes(3):local_block%end(3)))
+                                           local_block%start(2):local_block%end(2), &
+                                           local_block%start(3):local_block%end(3)))
 
         start(:) = local_block%start(:) - global_block%start(:)
-        end(:) = local_block%end(:) - global_block%end(:)
+        end(:) = local_block%end(:) - global_block%start(:)
         do concurrent(kx=start(1):end(1), ky=start(2):end(2), kz=start(3):end(3))
             block
                 double precision :: wx, wy, wz
