@@ -1,15 +1,13 @@
 module m_poisson_solver3d
-    use m_mpi_fft_solver
-    use m_science_constants, only: pi
-    use m_get_default, only: get_default
     use m_block
+    use m_science_constants, only: pi
+    use m_mpi_fft_solver
     use m_field_boundary_type
-    use m_field_solver
-    use m_ohfield
-    use m_ohhelp
-    use m_string_holder
-    use m_mpi_fft_solver_factory
     implicit none
+
+    private
+    public t_PoissonSolver3d
+    public new_PoissonSolver3d
 
     !> 3d poisson equation solver.
     !>
@@ -24,10 +22,6 @@ module m_poisson_solver3d
     contains
         procedure :: solve => poissonSolver3d_solve
     end type
-
-    private
-    public t_PoissonSolver3d
-    public new_PoissonSolver3d
 
 contains
 

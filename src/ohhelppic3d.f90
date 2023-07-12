@@ -258,13 +258,13 @@ contains
 
             boundary_conditions = reshape([[0d0, 0d0], [0d0, 0d0], [0d0, 0d0]], [2, 3])
 
-            field_solver = new_PoissonFieldSolver3d(local_block, global_block, &
-                                                    'fftw3', &
-                                                    parameters%boundary_type_for_electromagnetic_field, &
-                                                    boundary_conditions, &
-                                                    myid, &
-                                                    nprocs, &
-                                                    MPI_COMM_WORLD, tag=10)
+            field_solver = new_PoissonFieldSolver(local_block, global_block, &
+                                                  'fftw3', &
+                                                  parameters%boundary_type_for_electromagnetic_field, &
+                                                  boundary_conditions, &
+                                                  myid, &
+                                                  nprocs, &
+                                                  MPI_COMM_WORLD, tag=10)
 
             call field_solver%solve(rho, aj, eb, phi, ohhelp)
         end block

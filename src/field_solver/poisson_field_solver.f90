@@ -1,22 +1,24 @@
 module m_poisson_field_solver
-    use m_mpi_fft_solver
-    use m_science_constants, only: pi
-    use m_get_default, only: get_default
-    use m_block
-    use m_field_boundary_type
-    use m_field_solver
-    use m_ohfield
-    use m_ohhelp
     use m_string_holder
+    use m_block
+    use m_ohhelp
+    use m_ohfield
+    use m_field_solver
+    use m_field_boundary_type
+    use m_mpi_fft_solver
     use m_mpi_fft_solver_factory
     use m_poisson_solver3d
     implicit none
+
+    private
+    public t_PoissonFieldSolver
+    public new_PoissonFieldSolver
 
     !> 3d poisson equation solver.
     !>
     !> Poisson equation:
     !>     ∂^2p/∂^2 + ∂^2p/∂y^2 + ∂^2p/∂z^2 = f(x, y, z)
-    type, extends(t_FieldSolver) :: t_PoissonFieldSolver3d
+    type, extends(t_FieldSolver) :: t_PoissonFieldSolver
         class(t_MPIFFTSolver3d), pointer, private :: fft3d
         type(t_PoissonSolver3d), private :: poisson_solver3d
         double precision, allocatable, private :: modified_wave_number(:, :, :)
@@ -24,15 +26,12 @@ module m_poisson_field_solver
         type(t_Block) :: local_block
         type(t_Block) :: global_block
     contains
-        procedure :: solve => poissonSolver3d_solve
+        procedure :: solve => poissonSolver_solve
     end type
-
-    private
-    public new_PoissonFieldSolver3d
 
 contains
 
-    function new_PoissonFieldSolver3d(local_block, global_block, &
+    function new_PoissonFieldSolver(local_block, global_block, &
                                       fft_solver_name, &
                                       boundary_types, &
                                       boundary_values, &
@@ -49,10 +48,7 @@ contains
         integer, intent(in) :: nprocs
         integer, intent(in) :: comm
         integer, intent(in) :: tag
-        type(t_PoissonFieldSolver3d) :: obj
-
-        integer :: start(3), end(3)
-        integer :: kx, ky, kz
+        type(t_PoissonFieldSolver) :: obj
 
         block
             integer :: fft_boundary_types(3)
@@ -87,11 +83,12 @@ contains
 
         obj%poisson_solver3d = new_PoissonSolver3d(local_block, &
                                                    global_block, &
-                                                   obj%fft3d)
+                                                   obj%fft3d, &
+                                                   boundary_values)
     end function
 
-    subroutine poissonSolver3d_solve(self, rho, aj, eb, phi, ohhelp)
-        class(t_PoissonFieldSolver3d), intent(in) :: self
+    subroutine poissonSolver_solve(self, rho, aj, eb, phi, ohhelp)
+        class(t_PoissonFieldSolver), intent(in) :: self
         class(t_OhField), intent(in) :: rho
         class(t_OhField), intent(in) :: aj
         class(t_OhField), intent(inout) :: eb
