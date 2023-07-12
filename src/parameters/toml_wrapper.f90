@@ -7,15 +7,12 @@ module m_toml_wrapper
                      get_value, &
                      toml_serialize, &
                      len, toml_error, toml_stat
+    use m_string_holder
 
     implicit none
 
     private
-    public t_TomlWrapper, t_StringHolder
-
-    type :: t_StringHolder
-        character(len=:), allocatable :: string
-    end type
+    public t_TomlWrapper
 
     type :: t_TomlWrapper
         type(toml_table), allocatable :: table
