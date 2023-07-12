@@ -207,7 +207,7 @@ contains
     end subroutine
 
     subroutine mpiFFTW3Solver_forward(self, in, out)
-        class(t_MPIFFTW3Solver3d), intent(inout) :: self
+        class(t_MPIFFTW3Solver3d), intent(in) :: self
         double precision, intent(in) :: in(self%local_block%start(1):self%local_block%end(1), &
                                            self%local_block%start(2):self%local_block%end(2), &
                                            self%local_block%start(3):self%local_block%end(3))
@@ -221,7 +221,7 @@ contains
     end subroutine
 
     subroutine mpiFFTW3Solver_backward(self, in, out)
-        class(t_MPIFFTW3Solver3d), intent(inout) :: self
+        class(t_MPIFFTW3Solver3d), intent(in) :: self
         double precision, intent(in) :: in(self%local_block%start(1):self%local_block%end(1), &
                                            self%local_block%start(2):self%local_block%end(2), &
                                            self%local_block%start(3):self%local_block%end(3))

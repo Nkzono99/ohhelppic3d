@@ -232,6 +232,7 @@ contains
             integer :: fft_boundary_types(3)
             type(t_Block) :: local_block
             type(t_Block) :: global_block
+            double precision :: boundary_conditions(2, 3)
 
             integer :: i
 
@@ -254,14 +255,16 @@ contains
                                     ohhelp%subdomain_range(2, :, ohhelp%subdomain_id(1) + 1))
 
             global_block = new_Block([0, 0, 0], [parameters%nx, parameters%ny, parameters%nz])
-            mpifft_solver3d = create_mpi_fft_solver('fftw3', &
-                                                    fft_boundary_types, &
-                                                    local_block, &
-                                                    global_block, &
-                                                    myid, nprocs, &
-                                                    MPI_COMM_WORLD, tag=10)
 
-            field_solver = new_PoissonSolver3d(local_block, global_block, mpifft_solver3d)
+            boundary_conditions = reshape([[0d0, 0d0], [0d0, 0d0], [0d0, 0d0]], [2, 3])
+
+            field_solver = new_PoissonSolver3d(local_block, global_block, &
+                                               'fftw3', & 
+                                               parameters%boundary_type_for_electromagnetic_field, &
+                                               boundary_conditions, &
+                                               myid, &
+                                               nprocs, &
+                                               MPI_COMM_WORLD, tag=10)
 
             call field_solver%solve(rho, aj, eb, phi, ohhelp)
         end block

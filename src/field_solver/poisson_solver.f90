@@ -7,6 +7,8 @@ module m_poisson_solver
     use m_field_solver
     use m_ohfield
     use m_ohhelp
+    use m_string_holder
+    use m_mpi_fft_solver_factory
     implicit none
 
     !> 3d poisson equation solver.
@@ -14,7 +16,7 @@ module m_poisson_solver
     !> Poisson equation:
     !>     ∂^2p/∂^2 + ∂^2p/∂y^2 + ∂^2p/∂z^2 = f(x, y, z)
     type, extends(t_FieldSolver) :: t_PoissonSolver3d
-        class(t_MPIFFTSolver3d), pointer, private :: fft3d
+        class(t_MPIFFTSolver3d), allocatable, private :: fft3d
         double precision, allocatable, private :: modified_wave_number(:, :, :)
         double precision, private :: boundary_condition_terms(2, 3)
         type(t_Block) :: local_block
@@ -28,17 +30,55 @@ module m_poisson_solver
 
 contains
 
-    function new_PoissonSolver3d(local_block, global_block, fft3d, boundary_values) result(obj)
+    function new_PoissonSolver3d(local_block, global_block, &
+                                 fft_solver_name, &
+                                 boundary_types, &
+                                 boundary_values, &
+                                 myid, &
+                                 nprocs, &
+                                 comm, &
+                                 tag) result(obj)
         type(t_Block), intent(in) :: local_block
         type(t_Block), intent(in) :: global_block
-        class(t_MPIFFTSolver3d), pointer, intent(in) :: fft3d
+        character(*), intent(in) :: fft_solver_name
+        type(t_StringHolder), intent(in) :: boundary_types(3)
         double precision, intent(in), optional :: boundary_values(2, 3)
+        integer, intent(in) :: myid
+        integer, intent(in) :: nprocs
+        integer, intent(in) :: comm
+        integer, intent(in) :: tag
         type(t_PoissonSolver3d) :: obj
 
         integer :: start(3), end(3)
         integer :: kx, ky, kz
 
-        obj%fft3d => fft3d
+        block
+            integer :: fft_boundary_types(3)
+
+            integer :: i
+
+            do i = 1, 3
+                select case (boundary_types(i)%string)
+                case ('periodic')
+                    fft_boundary_types(i) = Field_BoundaryType_Periodic
+                case ('dirichlet')
+                    fft_boundary_types(i) = Field_BoundaryType_Dirichlet
+                case ('neumman')
+                    fft_boundary_types(i) = Field_BoundaryType_Neumann
+                case ('dirichlet-neumman')
+                    fft_boundary_types(i) = Field_BoundaryType_Dirichlet_Neumann
+                case ('neumman-dirichlet')
+                    fft_boundary_types(i) = Field_BoundaryType_Neumann_Dirichlet
+                end select
+            end do
+
+            obj%fft3d = create_mpi_fft_solver(fft_solver_name, &
+                                              fft_boundary_types, &
+                                              local_block, &
+                                              global_block, &
+                                              myid, nprocs, &
+                                              comm, tag=10)
+        end block
 
         obj%local_block = local_block
         obj%global_block = global_block
@@ -65,9 +105,9 @@ contains
                 double precision :: wx, wy, wz
                 double precision :: wn
 
-                wx = calc_wave_number(kx, global_block%sizes(1), fft3d%boundary_types(1))
-                wy = calc_wave_number(ky, global_block%sizes(2), fft3d%boundary_types(2))
-                wz = calc_wave_number(kz, global_block%sizes(3), fft3d%boundary_types(3))
+                wx = calc_wave_number(kx, global_block%sizes(1), obj%fft3d%boundary_types(1))
+                wy = calc_wave_number(ky, global_block%sizes(2), obj%fft3d%boundary_types(2))
+                wz = calc_wave_number(kz, global_block%sizes(3), obj%fft3d%boundary_types(3))
 
                 ! TODO: 二乗にすると正しそうな結果となったが、理論をもう一度確認すること
                 wn = wx*wx + wy*wy + wz*wz
@@ -114,7 +154,7 @@ contains
             if (k <= int(n/2)) then
                 wn = 2.0d0*sin(PI*k/dble(n))
             else
-                wn = 2.0d0*sin(PI*(n-1 - k)/dble(n))
+                wn = 2.0d0*sin(PI*(n - 1 - k)/dble(n))
             end if
 
         case (Field_BoundaryType_Dirichlet)
