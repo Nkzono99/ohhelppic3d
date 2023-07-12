@@ -2,15 +2,15 @@ module m_particle_injector_manager
     use m_particle_injector
     use m_ohhelp
     use m_parameters
-    use m_toml_wrapper, only: t_StringHolder
+    use m_string_holder, only: t_StringHolder
     use m_particle_injector_with_distribution, only: t_ParticleInjectorWithDistribution, &
                                                      new_ParticleInjectorWithDistribution
     use m_position_distribution
     use m_no_position_distribution
     use m_position_random_uniform_distribution
     use m_velocity_distribution
-    use m_maxwellian_distribution
     use m_no_particle_injector
+    use m_velocity_maxwell_distribution3d
 
     use m_random_generator
     implicit none
@@ -63,6 +63,7 @@ contains
                             new_PositionRandomUniformDistribution1d([0d0, 1d0*parameters%ny], obj%random_generator), &
                             new_PositionRandomUniformDistribution1d([0d0, 1d0*parameters%nz], obj%random_generator))
 
+                    ! vdist = new_VelocityMaxwellDistribution3d(parameters%thermal_velocity_para(ispec), obj%random_generator)
                     vdist = new_NoVelocityDistribution3d()
                     obj%injectors_for_initialization(ispec)%injector = &
                         new_ParticleInjectorWithDistribution(ispec, pdist, vdist, obj%random_generator)
@@ -92,7 +93,7 @@ contains
 
         do i = 1, size(self%injectors_for_initialization)
             ! パラメータファイルからの入力に変更
-            call self%injectors_for_initialization(i)%injector%inject_particles(8*4*16*10, ohhelp)
+            call self%injectors_for_initialization(i)%injector%inject_particles(8*8*16*10, ohhelp)
         end do
     end subroutine
 

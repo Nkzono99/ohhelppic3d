@@ -1,6 +1,7 @@
 module m_maxwellian_velocity_distribution1d
     use m_velocity_distribution, only: t_VelocityDistribution1d
     use m_random_generator
+    use m_science_constants, only: pi
     implicit none
 
     private
@@ -32,9 +33,6 @@ contains
 
         double precision :: sigma
 
-        double precision :: PI
-
-        integer :: icon
         double precision :: rands(6)
 
         PI = acos(-1.0d0)
