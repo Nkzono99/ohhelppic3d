@@ -169,7 +169,7 @@ contains
             backward_fft_type = FFTW_HC2R
             logical_start = global_start
             logical_end = global_end - 1
-            n = logical_end - global_start + 1
+            n = logical_end - logical_start + 1
             normalizer = n
 
         case (Field_BoundaryType_Dirichlet)
@@ -177,7 +177,7 @@ contains
             backward_fft_type = FFTW_RODFT00
             logical_start = global_start + 1
             logical_end = global_end - 1
-            n = logical_end - global_start + 1
+            n = logical_end - logical_start + 1
             normalizer = 2.0d0*(n + 1.0d0)
 
         case (Field_BoundaryType_Neumann)
@@ -185,7 +185,7 @@ contains
             backward_fft_type = FFTW_REDFT00
             logical_start = global_start
             logical_end = global_end
-            n = logical_end - global_start + 1
+            n = logical_end - logical_start + 1
             normalizer = 2.0d0*(n - 1.0d0)
 
         case (Field_BoundaryType_Dirichlet_Neumann)
@@ -193,7 +193,7 @@ contains
             backward_fft_type = FFTW_RODFT10
             logical_start = global_start + 1
             logical_end = global_end
-            n = logical_end - global_start + 1
+            n = logical_end - logical_start + 1
             normalizer = 2.0d0*n
 
         case (Field_BoundaryType_Neumann_Dirichlet)
@@ -201,7 +201,7 @@ contains
             backward_fft_type = FFTW_REDFT10
             logical_start = global_start
             logical_end = global_end - 1
-            n = logical_end - global_start + 1
+            n = logical_end - logical_start + 1
             normalizer = 2.0d0*n
         end select
     end subroutine
