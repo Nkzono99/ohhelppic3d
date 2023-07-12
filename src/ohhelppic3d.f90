@@ -17,7 +17,7 @@ module ohhelppic3d
     use m_velocity_distribution, only: new_NoVelocityDistribution3d
     use m_interpolator, only: t_Interpolator
     use m_mpi_fft_solver, only: t_MPIFFTSolver3d
-    use m_mpi_fftw3_solver, only: new_MPIFFTW3Solver3d
+    use m_mpi_fft_solver_factory
     use m_block, only: t_Block, new_Block
     use m_random_generator
     use m_pcg_generator
@@ -73,11 +73,11 @@ contains
         call hdf5_initialize(ierr)
 
         rho%values(:, :, :, :, 1) = 0
-        if (myid == 0)  rho%values(1, 2, 2, 3, 1) = parameters%charge_per_macro_particle(1)*10
+        if (myid == 0) rho%values(1, 2, 2, 3, 1) = parameters%charge_per_macro_particle(1)*10
         call field_solver%solve(rho, aj, eb, phi, ohhelp)
 
         hdf5_phi = new_Hdf5ForOhfield('phisp00_0000.h5', 'phisp', &
-                                      int([parameters%nx+1, parameters%ny+1, parameters%nz+1], kind=8), &
+                                      int([parameters%nx + 1, parameters%ny + 1, parameters%nz + 1], kind=8), &
                                       int([0, 0, 0], kind=8), &
                                       MPI_COMM_WORLD)
 
@@ -254,11 +254,12 @@ contains
                                     ohhelp%subdomain_range(2, :, ohhelp%subdomain_id(1) + 1))
 
             global_block = new_Block([0, 0, 0], [parameters%nx, parameters%ny, parameters%nz])
-            mpifft_solver3d = new_MPIFFTW3Solver3d(fft_boundary_types, &
-                                                   local_block, &
-                                                   global_block, &
-                                                   myid, nprocs, &
-                                                   MPI_COMM_WORLD, tag=10)
+            mpifft_solver3d = create_mpi_fft_solver('fftw3', &
+                                                    fft_boundary_types, &
+                                                    local_block, &
+                                                    global_block, &
+                                                    myid, nprocs, &
+                                                    MPI_COMM_WORLD, tag=10)
 
             field_solver = new_PoissonSolver3d(local_block, global_block, mpifft_solver3d)
 
