@@ -22,7 +22,7 @@ module ohhelppic3d
     use m_random_generator
     use m_pcg_generator
     use m_field_solver
-    use m_poisson_solver
+    use m_poisson_field_solver
     use m_field_boundary_type
     use m_linear_interpolator
     use m_particle_boundaries
@@ -258,13 +258,13 @@ contains
 
             boundary_conditions = reshape([[0d0, 0d0], [0d0, 0d0], [0d0, 0d0]], [2, 3])
 
-            field_solver = new_PoissonSolver3d(local_block, global_block, &
-                                               'fftw3', & 
-                                               parameters%boundary_type_for_electromagnetic_field, &
-                                               boundary_conditions, &
-                                               myid, &
-                                               nprocs, &
-                                               MPI_COMM_WORLD, tag=10)
+            field_solver = new_PoissonFieldSolver3d(local_block, global_block, &
+                                                    'fftw3', &
+                                                    parameters%boundary_type_for_electromagnetic_field, &
+                                                    boundary_conditions, &
+                                                    myid, &
+                                                    nprocs, &
+                                                    MPI_COMM_WORLD, tag=10)
 
             call field_solver%solve(rho, aj, eb, phi, ohhelp)
         end block
