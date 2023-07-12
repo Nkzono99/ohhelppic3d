@@ -2,6 +2,17 @@
     "fortran.linter.compiler": "ifort",
     "fortran.linter.modOutput": "${workspaceFolder}/.vscode/linter",
     "fortran.linter.includePaths": [
-        "${workspaceFolder}/**"
-    ]
+        "${workspaceFolder}/**",
+        "build/mpiifort_F596D329C9DBB61B",
+        "lib/pcg-c/include"
+    ],
+    "evenBetterToml.formatter.allowedBlankLines": 2,
+    "evenBetterToml.formatter.columnWidth": 15,
+    "evenBetterToml.formatter.arrayTrailingComma": true,
+    "evenBetterToml.formatter.arrayAutoCollapse": false,
+    "evenBetterToml.formatter.compactArrays": false,
+    "evenBetterToml.formatter.arrayAutoExpand": false,
+    "evenBetterToml.formatter.indentEntries": false,
+    "evenBetterToml.formatter.indentTables": false,
+    "evenBetterToml.formatter.inlineTableExpand": false
 }
