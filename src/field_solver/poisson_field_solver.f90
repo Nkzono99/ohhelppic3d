@@ -98,8 +98,9 @@ contains
         class(t_OhField), intent(inout) :: phi
         class(t_OhHelp), intent(inout) :: ohhelp
 
-        eb%values = 0
+        eb%values(1:3, :, :, :, :) = 0
 
+        ! Solve poisson equation.
         block
             integer :: local_start(3), local_end(3)
 
@@ -121,6 +122,7 @@ contains
             call ohhelp%exchange_borders(phi)
         end block
 
+        ! Calculate electric field.
         ! NOTE: ebをbroadcastせず、primary/secondary両方で解いているのは通信回数を減らすことを意図している
         ! OPTIMIZE: しかし、実行時間の計測・比較はしていないため、どちらを採用するかは要検討
         block
