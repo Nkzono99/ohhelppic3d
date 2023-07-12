@@ -105,9 +105,9 @@ contains
                 double precision :: wx, wy, wz
                 double precision :: wn
 
-                wx = calc_wave_number(kx, global_block%sizes(1), obj%fft3d%boundary_types(1))
-                wy = calc_wave_number(ky, global_block%sizes(2), obj%fft3d%boundary_types(2))
-                wz = calc_wave_number(kz, global_block%sizes(3), obj%fft3d%boundary_types(3))
+                wx = calc_wave_number(kx, global_block%sizes(1)-1, obj%fft3d%boundary_types(1))
+                wy = calc_wave_number(ky, global_block%sizes(2)-1, obj%fft3d%boundary_types(2))
+                wz = calc_wave_number(kz, global_block%sizes(3)-1, obj%fft3d%boundary_types(3))
 
                 ! TODO: 二乗にすると正しそうな結果となったが、理論をもう一度確認すること
                 wn = wx*wx + wy*wy + wz*wz
@@ -154,7 +154,7 @@ contains
             if (k <= int(n/2)) then
                 wn = 2.0d0*sin(PI*k/dble(n))
             else
-                wn = 2.0d0*sin(PI*(n - 1 - k)/dble(n))
+                wn = 2.0d0*sin(PI*(n - k)/dble(n))
             end if
 
         case (Field_BoundaryType_Dirichlet)
