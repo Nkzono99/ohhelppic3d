@@ -11,81 +11,55 @@
     <title>All Files &ndash; ohhelp-pic-3d
 </title>
 
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link href="../css/pygments.css" rel="stylesheet">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/local.css" rel="stylesheet">
       <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
-
-         <script src="../js/jquery-2.1.3.min.js"></script>
-         <script src="../js/svg-pan-zoom.min.js"></script>
-
+    <script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha256-tG5mcZUtJsZvyKAxYLVXrmjKBVLd6VpVccqz/r4ypFE=" crossorigin="anonymous"></script>
   </head>
 
   <body>
 
     <!-- Fixed navbar -->
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
           <a class="navbar-brand" href="../index.html">ohhelp-pic-3d </a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
-              <a href="#" class="dropdown-toggle"
-                 data-toggle="dropdown" role="button"
-                 aria-haspopup="true"
-                 aria-expanded="false">
-                 Contents <span class="caret"></span>
-              </a>
-              <ul class="dropdown-menu">
-                    <li><a href="../lists/files.html">Source Files</a></li>
-                  <li><a href="../lists/modules.html">Modules</a></li>
-                  <li><a href="../lists/procedures.html">Procedures</a></li>
-                  <li><a href="../lists/types.html">Derived Types</a></li>
-                  <li><a href="../program/main.html">Program</a></li>
-              </ul>
-            </li>
-                <li class="visible-xs hidden-sm visible-lg">
-                  <a href="../lists/files.html">Source Files</a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
                 </li>
-              <li class="visible-xs hidden-sm visible-lg">
-                <a href="../lists/modules.html">Modules</a>
-              </li>
-              <li class="visible-xs hidden-sm visible-lg">
-                <a href="../lists/procedures.html">Procedures</a>
-              </li>
-              <li class="visible-xs hidden-sm visible-lg">
-                <a href="../lists/types.html">Derived Types</a>
-              </li>
-              <li class="visible-xs hidden-sm visible-lg">
-                <a href="../program/main.html">Program</a>
-              </li>
-          </ul>
-            <form action="../search.html" class="navbar-form navbar-right" role="search">
-              <div class="form-group">
-                <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../program/main.html">Program</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
               </div>
-              <!--
-                  <button type="submit" class="btn btn-default">Submit</button>
-                  -->
-            </form>
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
 
     <div class="container">
       <div class="row" id='text'>
@@ -102,6 +76,7 @@
 			   <tr><td><a href='../sourcefile/domain.f90.html'>domain.f90</a></td><td></td></tr>
 			   <tr><td><a href='../sourcefile/field_boundary_type.f90.html'>field_boundary_type.f90</a></td><td></td></tr>
 			   <tr><td><a href='../sourcefile/field_solver.f90.html'>field_solver.f90</a></td><td></td></tr>
+			   <tr><td><a href='../sourcefile/flux_velocity_maxwell_distribution3d.f90.html'>flux_velocity_maxwell_distribution3d.f90</a></td><td></td></tr>
 			   <tr><td><a href='../sourcefile/hdf5.f90.html'>hdf5.f90</a></td><td></td></tr>
 			   <tr><td><a href='../sourcefile/hdf5_for_ohfield.f90.html'>hdf5_for_ohfield.f90</a></td><td></td></tr>
 			   <tr><td><a href='../sourcefile/interpolator.f90.html'>interpolator.f90</a></td><td></td></tr>
@@ -111,6 +86,7 @@
 			   <tr><td><a href='../sourcefile/maxwellian_velocity_distribution1d.f90.html'>maxwellian_velocity_distribution1d.f90</a></td><td></td></tr>
 			   <tr><td><a href='../sourcefile/mpi_block_rebaser.f90.html'>mpi_block_rebaser.f90</a></td><td></td></tr>
 			   <tr><td><a href='../sourcefile/mpi_fft_solver.f90.html'>mpi_fft_solver.f90</a></td><td></td></tr>
+			   <tr><td><a href='../sourcefile/mpi_fft_solver_factory.f90.html'>mpi_fft_solver_factory.f90</a></td><td></td></tr>
 			   <tr><td><a href='../sourcefile/mpi_fftw3_solver.f90.html'>mpi_fftw3_solver.f90</a></td><td></td></tr>
 			   <tr><td><a href='../sourcefile/no_particle_injector.f90.html'>no_particle_injector.f90</a></td><td></td></tr>
 			   <tr><td><a href='../sourcefile/no_position_distribution.f90.html'>no_position_distribution.f90</a></td><td></td></tr>
@@ -131,16 +107,17 @@
 			   <tr><td><a href='../sourcefile/pcg64.f90.html'>pcg64.f90</a></td><td></td></tr>
 			   <tr><td><a href='../sourcefile/pcg_generator.f90.html'>pcg_generator.f90</a></td><td></td></tr>
 			   <tr><td><a href='../sourcefile/periodic_particle_boundary.f90.html'>periodic_particle_boundary.f90</a></td><td></td></tr>
-			   <tr><td><a href='../sourcefile/poisson_solver.f90.html'>poisson_solver.f90</a></td><td></td></tr>
+			   <tr><td><a href='../sourcefile/poisson_field_solver.f90.html'>poisson_field_solver.f90</a></td><td></td></tr>
+			   <tr><td><a href='../sourcefile/poisson_solver3d.f90.html'>poisson_solver3d.f90</a></td><td></td></tr>
 			   <tr><td><a href='../sourcefile/position_distribution.f90.html'>position_distribution.f90</a></td><td></td></tr>
 			   <tr><td><a href='../sourcefile/position_random_uniform_distribution.f90.html'>position_random_uniform_distribution.f90</a></td><td></td></tr>
 			   <tr><td><a href='../sourcefile/random_generator.f90.html'>random_generator.f90</a></td><td></td></tr>
-			   <tr><td><a href='../sourcefile/rescaler.f90.html'>rescaler.f90</a></td><td></td></tr>
 			   <tr><td><a href='../sourcefile/scatter.f90.html'>scatter.f90</a></td><td></td></tr>
 			   <tr><td><a href='../sourcefile/science_constants.f90.html'>science_constants.f90</a></td><td></td></tr>
+			   <tr><td><a href='../sourcefile/string_holder.f90.html'>string_holder.f90</a></td><td></td></tr>
 			   <tr><td><a href='../sourcefile/toml_wrapper.f90.html'>toml_wrapper.f90</a></td><td></td></tr>
-			   <tr><td><a href='../sourcefile/velocity_distribution.f90.html'>velocity_distribution.f90</a></td><td></td></tr>
-			   <tr><td><a href='../sourcefile/velocity_maxwell_distribution.f90.html'>velocity_maxwell_distribution.f90</a></td><td></td></tr>
+			   <tr><td><a href='../sourcefile/velocity_distribution3d.f90.html'>velocity_distribution3d.f90</a></td><td></td></tr>
+			   <tr><td><a href='../sourcefile/velocity_maxwell_distribution3d.f90.html'>velocity_maxwell_distribution3d.f90</a></td><td></td></tr>
 			 </tbody></table>
 			 <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
@@ -148,17 +125,17 @@
 <!-- Generated by graphviz version 2.43.0 (0)
  -->
 <!-- Title: file~~graph~~FileGraph Pages: 1 -->
-<svg id="filegraphFileGraph" width="641pt" height="821pt"
- viewBox="0.00 0.00 641.00 820.83" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="file~~graph~~FileGraph" class="graph" transform="scale(1.86 1.86) rotate(0) translate(4 1519.85)">
+<svg id="filegraphFileGraph" width="641pt" height="597pt"
+ viewBox="0.00 0.00 641.00 597.40" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="file~~graph~~FileGraph" class="graph" transform="scale(2.38 2.38) rotate(0) translate(4 1417.28)">
 <title>file~~graph~~FileGraph</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-1519.85 1186,-1519.85 1186,4 -4,4"/>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-1417.28 1521,-1417.28 1521,4 -4,4"/>
 <!-- sourcefile~block.f90 -->
 <g id="file~~graph~~FileGraph_node1" class="node">
 <title>sourcefile~block.f90</title>
 <g id="a_file~~graph~~FileGraph_node1"><a xlink:href=".././sourcefile/block.f90.html" xlink:title="block.f90">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="1166.5,-1424.85 1105.5,-1424.85 1105.5,-1400.85 1166.5,-1400.85 1166.5,-1424.85"/>
-<text text-anchor="middle" x="1136" y="-1410.45" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">block.f90</text>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="1517,-848.05 1456,-848.05 1456,-824.05 1517,-824.05 1517,-848.05"/>
+<text text-anchor="middle" x="1486.5" y="-833.65" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">block.f90</text>
 </a>
 </g>
 </g>
@@ -166,147 +143,178 @@
 <g id="file~~graph~~FileGraph_node2" class="node">
 <title>sourcefile~block_communicator.f90</title>
 <g id="a_file~~graph~~FileGraph_node2"><a xlink:href=".././sourcefile/block_communicator.f90.html" xlink:title="block_communicator.f90">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="1054,-1454.85 911,-1454.85 911,-1430.85 1054,-1430.85 1054,-1454.85"/>
-<text text-anchor="middle" x="982.5" y="-1440.45" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">block_communicator.f90</text>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="1420,-869.05 1277,-869.05 1277,-845.05 1420,-845.05 1420,-869.05"/>
+<text text-anchor="middle" x="1348.5" y="-854.65" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">block_communicator.f90</text>
 </a>
 </g>
 </g>
 <!-- sourcefile~block.f90&#45;&gt;sourcefile~block_communicator.f90 -->
 <g id="file~~graph~~FileGraph_edge1" class="edge">
 <title>sourcefile~block.f90&#45;&gt;sourcefile~block_communicator.f90</title>
-<path fill="none" stroke="#000000" d="M1105.43,-1418.71C1090.75,-1421.61 1072.34,-1425.26 1054.3,-1428.83"/>
-<polygon fill="#000000" stroke="#000000" points="1053.47,-1425.43 1044.34,-1430.81 1054.83,-1432.3 1053.47,-1425.43"/>
+<path fill="none" stroke="#000000" d="M1455.99,-840.6C1448.19,-841.81 1439.38,-843.17 1430.25,-844.58"/>
+<polygon fill="#000000" stroke="#000000" points="1429.6,-841.14 1420.25,-846.12 1430.67,-848.06 1429.6,-841.14"/>
 </g>
 <!-- sourcefile~block_list.f90 -->
 <g id="file~~graph~~FileGraph_node4" class="node">
 <title>sourcefile~block_list.f90</title>
 <g id="a_file~~graph~~FileGraph_node4"><a xlink:href=".././sourcefile/block_list.f90.html" xlink:title="block_list.f90">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="1023.5,-1515.85 941.5,-1515.85 941.5,-1491.85 1023.5,-1491.85 1023.5,-1515.85"/>
-<text text-anchor="middle" x="982.5" y="-1501.45" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">block_list.f90</text>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="1389.5,-827.05 1307.5,-827.05 1307.5,-803.05 1389.5,-803.05 1389.5,-827.05"/>
+<text text-anchor="middle" x="1348.5" y="-812.65" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">block_list.f90</text>
 </a>
 </g>
 </g>
 <!-- sourcefile~block.f90&#45;&gt;sourcefile~block_list.f90 -->
 <g id="file~~graph~~FileGraph_edge3" class="edge">
 <title>sourcefile~block.f90&#45;&gt;sourcefile~block_list.f90</title>
-<path fill="none" stroke="#000000" d="M1106.32,-1424.88C1100.77,-1427.58 1095.09,-1430.62 1090,-1433.85 1072.42,-1445.02 1071.13,-1452 1054,-1463.85 1042.11,-1472.09 1028.4,-1480.16 1016.25,-1486.87"/>
-<polygon fill="#000000" stroke="#000000" points="1014.43,-1483.87 1007.32,-1491.71 1017.77,-1490.02 1014.43,-1483.87"/>
+<path fill="none" stroke="#000000" d="M1455.99,-831.49C1439.5,-828.95 1418.51,-825.7 1399.53,-822.77"/>
+<polygon fill="#000000" stroke="#000000" points="1399.95,-819.3 1389.53,-821.23 1398.88,-826.21 1399.95,-819.3"/>
 </g>
 <!-- sourcefile~mpi_block_rebaser.f90 -->
-<g id="file~~graph~~FileGraph_node16" class="node">
+<g id="file~~graph~~FileGraph_node17" class="node">
 <title>sourcefile~mpi_block_rebaser.f90</title>
-<g id="a_file~~graph~~FileGraph_node16"><a xlink:href=".././sourcefile/mpi_block_rebaser.f90.html" xlink:title="mpi_block_rebaser.f90">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="622,-1452.85 491,-1452.85 491,-1428.85 622,-1428.85 622,-1452.85"/>
-<text text-anchor="middle" x="556.5" y="-1438.45" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_block_rebaser.f90</text>
+<g id="a_file~~graph~~FileGraph_node17"><a xlink:href=".././sourcefile/mpi_block_rebaser.f90.html" xlink:title="mpi_block_rebaser.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="1035,-806.05 904,-806.05 904,-782.05 1035,-782.05 1035,-806.05"/>
+<text text-anchor="middle" x="969.5" y="-791.65" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_block_rebaser.f90</text>
 </a>
 </g>
 </g>
 <!-- sourcefile~block.f90&#45;&gt;sourcefile~mpi_block_rebaser.f90 -->
-<g id="file~~graph~~FileGraph_edge19" class="edge">
+<g id="file~~graph~~FileGraph_edge23" class="edge">
 <title>sourcefile~block.f90&#45;&gt;sourcefile~mpi_block_rebaser.f90</title>
-<path fill="none" stroke="#000000" d="M791.5,-1404.85C737.53,-1409.66 677.09,-1419.07 631.16,-1427.05"/>
-<polygon fill="#000000" stroke="#000000" points="630.54,-1423.61 621.29,-1428.79 631.75,-1430.51 630.54,-1423.61"/>
+<path fill="none" stroke="#000000" d="M1157.5,-775.05C1120.53,-774.95 1079.67,-778.66 1045.59,-782.83"/>
+<polygon fill="#000000" stroke="#000000" points="1044.73,-779.41 1035.24,-784.13 1045.6,-786.35 1044.73,-779.41"/>
 </g>
 <!-- sourcefile~mpi_fft_solver.f90 -->
-<g id="file~~graph~~FileGraph_node17" class="node">
+<g id="file~~graph~~FileGraph_node18" class="node">
 <title>sourcefile~mpi_fft_solver.f90</title>
-<g id="a_file~~graph~~FileGraph_node17"><a xlink:href=".././sourcefile/mpi_fft_solver.f90.html" xlink:title="mpi_fft_solver.f90">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="845.5,-1376.85 739.5,-1376.85 739.5,-1352.85 845.5,-1352.85 845.5,-1376.85"/>
-<text text-anchor="middle" x="792.5" y="-1362.45" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_fft_solver.f90</text>
+<g id="a_file~~graph~~FileGraph_node18"><a xlink:href=".././sourcefile/mpi_fft_solver.f90.html" xlink:title="mpi_fft_solver.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="1022.5,-848.05 916.5,-848.05 916.5,-824.05 1022.5,-824.05 1022.5,-848.05"/>
+<text text-anchor="middle" x="969.5" y="-833.65" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_fft_solver.f90</text>
 </a>
 </g>
 </g>
 <!-- sourcefile~block.f90&#45;&gt;sourcefile~mpi_fft_solver.f90 -->
-<g id="file~~graph~~FileGraph_edge23" class="edge">
+<g id="file~~graph~~FileGraph_edge27" class="edge">
 <title>sourcefile~block.f90&#45;&gt;sourcefile~mpi_fft_solver.f90</title>
-<path fill="none" stroke="#000000" d="M981.5,-1383.85C939.65,-1377.82 892.29,-1373.04 855.57,-1369.79"/>
-<polygon fill="#000000" stroke="#000000" points="855.78,-1366.3 845.51,-1368.91 855.17,-1373.27 855.78,-1366.3"/>
+<path fill="none" stroke="#000000" d="M1480.74,-848.11C1466.69,-881.86 1421.78,-977.24 1349.5,-1015.05"/>
+<path fill="none" stroke="#000000" d="M1347.5,-1015.05C1269.9,-1055.64 1242.63,-983.6 1159.5,-956.05"/>
+<path fill="none" stroke="#000000" d="M1157.5,-956.05C1115.54,-942.14 1109.67,-927.68 1076,-899.05 1058.52,-884.18 1059.21,-874.59 1040,-862.05 1034.27,-858.31 1027.94,-855 1021.48,-852.11"/>
+<polygon fill="#000000" stroke="#000000" points="1022.59,-848.78 1012.01,-848.17 1019.9,-855.24 1022.59,-848.78"/>
+</g>
+<!-- sourcefile~mpi_fft_solver_factory.f90 -->
+<g id="file~~graph~~FileGraph_node19" class="node">
+<title>sourcefile~mpi_fft_solver_factory.f90</title>
+<g id="a_file~~graph~~FileGraph_node19"><a xlink:href=".././sourcefile/mpi_fft_solver_factory.f90.html" xlink:title="mpi_fft_solver_factory.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="630.5,-806.05 482.5,-806.05 482.5,-782.05 630.5,-782.05 630.5,-806.05"/>
+<text text-anchor="middle" x="556.5" y="-791.65" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_fft_solver_factory.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~block.f90&#45;&gt;sourcefile~mpi_fft_solver_factory.f90 -->
+<g id="file~~graph~~FileGraph_edge28" class="edge">
+<title>sourcefile~block.f90&#45;&gt;sourcefile~mpi_fft_solver_factory.f90</title>
+<path fill="none" stroke="#000000" d="M1471.25,-823.9C1458.66,-813.95 1439.35,-800.49 1420,-794.05 1309.86,-757.37 1275.58,-775.36 1159.5,-775.05"/>
+<path fill="none" stroke="#000000" d="M1157.5,-775.05C1073.89,-773.29 1054.13,-754.12 970.5,-754.05"/>
+<path fill="none" stroke="#000000" d="M968.5,-754.05C854.6,-753.95 723.78,-769.38 640.91,-781.1"/>
+<polygon fill="#000000" stroke="#000000" points="640.2,-777.67 630.79,-782.55 641.19,-784.59 640.2,-777.67"/>
 </g>
 <!-- sourcefile~mpi_fftw3_solver.f90 -->
-<g id="file~~graph~~FileGraph_node18" class="node">
+<g id="file~~graph~~FileGraph_node20" class="node">
 <title>sourcefile~mpi_fftw3_solver.f90</title>
-<g id="a_file~~graph~~FileGraph_node18"><a xlink:href=".././sourcefile/mpi_fftw3_solver.f90.html" xlink:title="mpi_fftw3_solver.f90">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="377.5,-1376.85 256.5,-1376.85 256.5,-1352.85 377.5,-1352.85 377.5,-1376.85"/>
-<text text-anchor="middle" x="317" y="-1362.45" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_fftw3_solver.f90</text>
+<g id="a_file~~graph~~FileGraph_node20"><a xlink:href=".././sourcefile/mpi_fftw3_solver.f90.html" xlink:title="mpi_fftw3_solver.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="847,-806.05 726,-806.05 726,-782.05 847,-782.05 847,-806.05"/>
+<text text-anchor="middle" x="786.5" y="-791.65" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_fftw3_solver.f90</text>
 </a>
 </g>
 </g>
 <!-- sourcefile~block.f90&#45;&gt;sourcefile~mpi_fftw3_solver.f90 -->
-<g id="file~~graph~~FileGraph_edge24" class="edge">
+<g id="file~~graph~~FileGraph_edge31" class="edge">
 <title>sourcefile~block.f90&#45;&gt;sourcefile~mpi_fftw3_solver.f90</title>
-<path fill="none" stroke="#000000" d="M981.5,-1383.85C898.29,-1371.85 877.24,-1397.39 793.5,-1404.85"/>
-<path fill="none" stroke="#000000" d="M791.5,-1404.85C648.14,-1417.63 480.27,-1394.41 387.88,-1378.33"/>
-<polygon fill="#000000" stroke="#000000" points="388.27,-1374.84 377.81,-1376.55 387.05,-1381.74 388.27,-1374.84"/>
+<path fill="none" stroke="#000000" d="M968.5,-754.05C920.55,-754 867.11,-767.56 830.8,-778.9"/>
+<polygon fill="#000000" stroke="#000000" points="829.49,-775.65 821.04,-782.03 831.63,-782.31 829.49,-775.65"/>
 </g>
 <!-- sourcefile~ohhelppic3d.f90 -->
-<g id="file~~graph~~FileGraph_node24" class="node">
+<g id="file~~graph~~FileGraph_node26" class="node">
 <title>sourcefile~ohhelppic3d.f90</title>
-<g id="a_file~~graph~~FileGraph_node24"><a xlink:href=".././sourcefile/ohhelppic3d.f90.html" xlink:title="ohhelppic3d.f90">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="195,-879.85 96,-879.85 96,-855.85 195,-855.85 195,-879.85"/>
-<text text-anchor="middle" x="145.5" y="-865.45" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ohhelppic3d.f90</text>
+<g id="a_file~~graph~~FileGraph_node26"><a xlink:href=".././sourcefile/ohhelppic3d.f90.html" xlink:title="ohhelppic3d.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="195,-1066.05 96,-1066.05 96,-1042.05 195,-1042.05 195,-1066.05"/>
+<text text-anchor="middle" x="145.5" y="-1051.65" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ohhelppic3d.f90</text>
 </a>
 </g>
 </g>
 <!-- sourcefile~block.f90&#45;&gt;sourcefile~ohhelppic3d.f90 -->
-<g id="file~~graph~~FileGraph_edge34" class="edge">
+<g id="file~~graph~~FileGraph_edge41" class="edge">
 <title>sourcefile~block.f90&#45;&gt;sourcefile~ohhelppic3d.f90</title>
-<path fill="none" stroke="#000000" d="M1105.24,-1406.32C1074.79,-1399.83 1026.04,-1389.99 983.5,-1383.85"/>
-<path fill="none" stroke="#000000" d="M981.5,-1383.85C931.46,-1376.64 924.46,-1354.37 875,-1343.85 736.73,-1314.45 698.59,-1316.07 557.5,-1324.85"/>
+<path fill="none" stroke="#000000" d="M1347.5,-1015.05C1119.27,-1134.44 1110.93,-1263.21 863,-1333.05 629.71,-1398.76 532.68,-1464.54 318,-1352.05"/>
 </g>
-<!-- sourcefile~poisson_solver.f90 -->
-<g id="file~~graph~~FileGraph_node38" class="node">
-<title>sourcefile~poisson_solver.f90</title>
-<g id="a_file~~graph~~FileGraph_node38"><a xlink:href=".././sourcefile/poisson_solver.f90.html" xlink:title="poisson_solver.f90">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="611,-959.85 502,-959.85 502,-935.85 611,-935.85 611,-959.85"/>
-<text text-anchor="middle" x="556.5" y="-945.45" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">poisson_solver.f90</text>
+<!-- sourcefile~poisson_field_solver.f90 -->
+<g id="file~~graph~~FileGraph_node40" class="node">
+<title>sourcefile~poisson_field_solver.f90</title>
+<g id="a_file~~graph~~FileGraph_node40"><a xlink:href=".././sourcefile/poisson_field_solver.f90.html" xlink:title="poisson_field_solver.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="386,-826.05 248,-826.05 248,-802.05 386,-802.05 386,-826.05"/>
+<text text-anchor="middle" x="317" y="-811.65" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">poisson_field_solver.f90</text>
 </a>
 </g>
 </g>
-<!-- sourcefile~block.f90&#45;&gt;sourcefile~poisson_solver.f90 -->
-<g id="file~~graph~~FileGraph_edge88" class="edge">
-<title>sourcefile~block.f90&#45;&gt;sourcefile~poisson_solver.f90</title>
-<path fill="none" stroke="#000000" d="M1133.77,-1400.7C1127.92,-1345.23 1101.26,-1116.73 1054,-1065.85 995.63,-1003.01 741.57,-967.73 621.2,-954.26"/>
-<polygon fill="#000000" stroke="#000000" points="621.35,-950.76 611.02,-953.14 620.58,-957.72 621.35,-950.76"/>
+<!-- sourcefile~block.f90&#45;&gt;sourcefile~poisson_field_solver.f90 -->
+<g id="file~~graph~~FileGraph_edge96" class="edge">
+<title>sourcefile~block.f90&#45;&gt;sourcefile~poisson_field_solver.f90</title>
+<path fill="none" stroke="#000000" d="M1157.5,-956.05C1047.93,-920.49 1013.1,-952.94 899,-937.05 848.88,-930.07 838.09,-914.88 787.5,-914.05"/>
+</g>
+<!-- sourcefile~poisson_solver3d.f90 -->
+<g id="file~~graph~~FileGraph_node41" class="node">
+<title>sourcefile~poisson_solver3d.f90</title>
+<g id="a_file~~graph~~FileGraph_node41"><a xlink:href=".././sourcefile/poisson_solver3d.f90.html" xlink:title="poisson_solver3d.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="848.5,-886.05 724.5,-886.05 724.5,-862.05 848.5,-862.05 848.5,-886.05"/>
+<text text-anchor="middle" x="786.5" y="-871.65" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">poisson_solver3d.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~block.f90&#45;&gt;sourcefile~poisson_solver3d.f90 -->
+<g id="file~~graph~~FileGraph_edge105" class="edge">
+<title>sourcefile~block.f90&#45;&gt;sourcefile~poisson_solver3d.f90</title>
+<path fill="none" stroke="#000000" d="M1157.5,-956.05C1101.65,-937.53 1096.53,-911.36 1040,-895.05 980.47,-877.87 910,-873.24 858.66,-872.55"/>
+<polygon fill="#000000" stroke="#000000" points="858.69,-869.05 848.66,-872.46 858.62,-876.05 858.69,-869.05"/>
 </g>
 <!-- sourcefile~block_communicator_list.f90 -->
 <g id="file~~graph~~FileGraph_node3" class="node">
 <title>sourcefile~block_communicator_list.f90</title>
 <g id="a_file~~graph~~FileGraph_node3"><a xlink:href=".././sourcefile/block_communicator_list.f90.html" xlink:title="block_communicator_list.f90">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="875,-1494.85 710,-1494.85 710,-1470.85 875,-1470.85 875,-1494.85"/>
-<text text-anchor="middle" x="792.5" y="-1480.45" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">block_communicator_list.f90</text>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="1241,-865.05 1076,-865.05 1076,-841.05 1241,-841.05 1241,-865.05"/>
+<text text-anchor="middle" x="1158.5" y="-850.65" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">block_communicator_list.f90</text>
 </a>
 </g>
 </g>
 <!-- sourcefile~block_communicator.f90&#45;&gt;sourcefile~block_communicator_list.f90 -->
 <g id="file~~graph~~FileGraph_edge2" class="edge">
 <title>sourcefile~block_communicator.f90&#45;&gt;sourcefile~block_communicator_list.f90</title>
-<path fill="none" stroke="#000000" d="M925.09,-1454.85C904.65,-1459.2 881.36,-1464.16 860.11,-1468.68"/>
-<polygon fill="#000000" stroke="#000000" points="859.24,-1465.29 850.19,-1470.79 860.7,-1472.13 859.24,-1465.29"/>
+<path fill="none" stroke="#000000" d="M1276.96,-855.55C1268.57,-855.37 1259.92,-855.18 1251.29,-855"/>
+<polygon fill="#000000" stroke="#000000" points="1251.26,-851.5 1241.19,-854.79 1251.11,-858.5 1251.26,-851.5"/>
 </g>
 <!-- sourcefile~block_communicator.f90&#45;&gt;sourcefile~mpi_block_rebaser.f90 -->
-<g id="file~~graph~~FileGraph_edge20" class="edge">
+<g id="file~~graph~~FileGraph_edge24" class="edge">
 <title>sourcefile~block_communicator.f90&#45;&gt;sourcefile~mpi_block_rebaser.f90</title>
-<path fill="none" stroke="#000000" d="M910.53,-1442.52C833.48,-1442.15 710.95,-1441.58 632.4,-1441.21"/>
-<polygon fill="#000000" stroke="#000000" points="632.11,-1437.7 622.09,-1441.16 632.07,-1444.7 632.11,-1437.7"/>
+<path fill="none" stroke="#000000" d="M1317.02,-869.06C1264.14,-887.81 1153.63,-917.62 1076,-874.05 1049.21,-859.01 1064.3,-833.84 1040,-815.05 1038.14,-813.61 1036.17,-812.26 1034.14,-811.01"/>
+<polygon fill="#000000" stroke="#000000" points="1035.29,-807.67 1024.81,-806.1 1032.03,-813.86 1035.29,-807.67"/>
 </g>
 <!-- sourcefile~block_communicator_list.f90&#45;&gt;sourcefile~mpi_block_rebaser.f90 -->
-<g id="file~~graph~~FileGraph_edge21" class="edge">
+<g id="file~~graph~~FileGraph_edge25" class="edge">
 <title>sourcefile~block_communicator_list.f90&#45;&gt;sourcefile~mpi_block_rebaser.f90</title>
-<path fill="none" stroke="#000000" d="M724.44,-1470.82C695.57,-1465.63 661.69,-1459.55 632.03,-1454.23"/>
-<polygon fill="#000000" stroke="#000000" points="632.61,-1450.78 622.15,-1452.46 631.37,-1457.67 632.61,-1450.78"/>
+<path fill="none" stroke="#000000" d="M1119.32,-840.98C1105.64,-836.63 1090.12,-831.65 1076,-827.05 1059.97,-821.82 1056.07,-820.15 1040,-815.05 1033.85,-813.09 1027.38,-811.08 1020.97,-809.11"/>
+<polygon fill="#000000" stroke="#000000" points="1021.57,-805.64 1010.99,-806.07 1019.53,-812.33 1021.57,-805.64"/>
 </g>
 <!-- sourcefile~block_list.f90&#45;&gt;sourcefile~mpi_block_rebaser.f90 -->
-<g id="file~~graph~~FileGraph_edge22" class="edge">
+<g id="file~~graph~~FileGraph_edge26" class="edge">
 <title>sourcefile~block_list.f90&#45;&gt;sourcefile~mpi_block_rebaser.f90</title>
-<path fill="none" stroke="#000000" d="M941.46,-1508.67C888.07,-1514.01 790.91,-1519.91 710,-1503.85 665.88,-1495.1 618.52,-1473.39 588.48,-1457.9"/>
-<polygon fill="#000000" stroke="#000000" points="589.85,-1454.66 579.37,-1453.12 586.6,-1460.86 589.85,-1454.66"/>
+<path fill="none" stroke="#000000" d="M1307.15,-812.8C1244.8,-809.33 1124.02,-802.6 1045.36,-798.22"/>
+<polygon fill="#000000" stroke="#000000" points="1045.21,-794.7 1035.03,-797.64 1044.82,-801.69 1045.21,-794.7"/>
 </g>
 <!-- sourcefile~const_velocity_distribution.f90 -->
 <g id="file~~graph~~FileGraph_node5" class="node">
 <title>sourcefile~const_velocity_distribution.f90</title>
 <g id="a_file~~graph~~FileGraph_node5"><a xlink:href=".././sourcefile/const_velocity_distribution.f90.html" xlink:title="const_velocity_distribution.f90">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="643,-721.85 470,-721.85 470,-697.85 643,-697.85 643,-721.85"/>
-<text text-anchor="middle" x="556.5" y="-707.45" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">const_velocity_distribution.f90</text>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="643,-162.05 470,-162.05 470,-138.05 643,-138.05 643,-162.05"/>
+<text text-anchor="middle" x="556.5" y="-147.65" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">const_velocity_distribution.f90</text>
 </a>
 </g>
 </g>
@@ -314,860 +322,961 @@
 <g id="file~~graph~~FileGraph_node6" class="node">
 <title>sourcefile~domain.f90</title>
 <g id="a_file~~graph~~FileGraph_node6"><a xlink:href=".././sourcefile/domain.f90.html" xlink:title="domain.f90">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="829,-1277.85 756,-1277.85 756,-1253.85 829,-1253.85 829,-1277.85"/>
-<text text-anchor="middle" x="792.5" y="-1263.45" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">domain.f90</text>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="823,-1324.05 750,-1324.05 750,-1300.05 823,-1300.05 823,-1324.05"/>
+<text text-anchor="middle" x="786.5" y="-1309.65" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">domain.f90</text>
 </a>
 </g>
 </g>
 <!-- sourcefile~hdf5.f90 -->
-<g id="file~~graph~~FileGraph_node9" class="node">
+<g id="file~~graph~~FileGraph_node10" class="node">
 <title>sourcefile~hdf5.f90</title>
-<g id="a_file~~graph~~FileGraph_node9"><a xlink:href=".././sourcefile/hdf5.f90.html" xlink:title="hdf5.f90">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="585,-1258.85 528,-1258.85 528,-1234.85 585,-1234.85 585,-1258.85"/>
-<text text-anchor="middle" x="556.5" y="-1244.45" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">hdf5.f90</text>
+<g id="a_file~~graph~~FileGraph_node10"><a xlink:href=".././sourcefile/hdf5.f90.html" xlink:title="hdf5.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="585,-1324.05 528,-1324.05 528,-1300.05 585,-1300.05 585,-1324.05"/>
+<text text-anchor="middle" x="556.5" y="-1309.65" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">hdf5.f90</text>
 </a>
 </g>
 </g>
 <!-- sourcefile~domain.f90&#45;&gt;sourcefile~hdf5.f90 -->
-<g id="file~~graph~~FileGraph_edge7" class="edge">
+<g id="file~~graph~~FileGraph_edge10" class="edge">
 <title>sourcefile~domain.f90&#45;&gt;sourcefile~hdf5.f90</title>
-<path fill="none" stroke="#000000" d="M755.96,-1262.97C712.64,-1259.45 639.74,-1253.53 595.38,-1249.93"/>
-<polygon fill="#000000" stroke="#000000" points="595.54,-1246.43 585.29,-1249.11 594.98,-1253.41 595.54,-1246.43"/>
+<path fill="none" stroke="#000000" d="M749.88,-1312.05C707.76,-1312.05 637.98,-1312.05 595.04,-1312.05"/>
+<polygon fill="#000000" stroke="#000000" points="595,-1308.55 585,-1312.05 595,-1315.55 595,-1308.55"/>
 </g>
 <!-- sourcefile~hdf5_for_ohfield.f90 -->
-<g id="file~~graph~~FileGraph_node10" class="node">
+<g id="file~~graph~~FileGraph_node11" class="node">
 <title>sourcefile~hdf5_for_ohfield.f90</title>
-<g id="a_file~~graph~~FileGraph_node10"><a xlink:href=".././sourcefile/hdf5_for_ohfield.f90.html" xlink:title="hdf5_for_ohfield.f90">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="376.5,-1218.85 257.5,-1218.85 257.5,-1194.85 376.5,-1194.85 376.5,-1218.85"/>
-<text text-anchor="middle" x="317" y="-1204.45" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">hdf5_for_ohfield.f90</text>
+<g id="a_file~~graph~~FileGraph_node11"><a xlink:href=".././sourcefile/hdf5_for_ohfield.f90.html" xlink:title="hdf5_for_ohfield.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="376.5,-1286.05 257.5,-1286.05 257.5,-1262.05 376.5,-1262.05 376.5,-1286.05"/>
+<text text-anchor="middle" x="317" y="-1271.65" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">hdf5_for_ohfield.f90</text>
 </a>
 </g>
 </g>
 <!-- sourcefile~domain.f90&#45;&gt;sourcefile~hdf5_for_ohfield.f90 -->
-<g id="file~~graph~~FileGraph_edge8" class="edge">
+<g id="file~~graph~~FileGraph_edge11" class="edge">
 <title>sourcefile~domain.f90&#45;&gt;sourcefile~hdf5_for_ohfield.f90</title>
-<path fill="none" stroke="#000000" d="M755.63,-1254.94C741.37,-1250.46 724.84,-1245.1 710,-1239.85 693.81,-1234.13 690.56,-1230.37 674,-1225.85 623.39,-1212.05 609.79,-1211.14 557.5,-1206.85"/>
+<path fill="none" stroke="#000000" d="M749.89,-1302.73C705.29,-1291.78 626.37,-1274.75 557.5,-1272.05"/>
 </g>
 <!-- sourcefile~domain.f90&#45;&gt;sourcefile~ohhelppic3d.f90 -->
-<g id="file~~graph~~FileGraph_edge35" class="edge">
+<g id="file~~graph~~FileGraph_edge42" class="edge">
 <title>sourcefile~domain.f90&#45;&gt;sourcefile~ohhelppic3d.f90</title>
-<path fill="none" stroke="#000000" d="M765.5,-1277.94C742.08,-1288.32 706.44,-1302.82 674,-1310.85 623.38,-1323.38 609.55,-1321.61 557.5,-1324.85"/>
-<path fill="none" stroke="#000000" d="M555.5,-1324.85C502.82,-1328.13 362.2,-1353.69 318,-1324.85"/>
+<path fill="none" stroke="#000000" d="M764.38,-1299.85C742.44,-1287.66 706.79,-1269.17 674,-1258.05 623.94,-1241.06 610.18,-1238.48 557.5,-1234.05"/>
 </g>
 <!-- sourcefile~field_boundary_type.f90 -->
 <g id="file~~graph~~FileGraph_node7" class="node">
 <title>sourcefile~field_boundary_type.f90</title>
 <g id="a_file~~graph~~FileGraph_node7"><a xlink:href=".././sourcefile/field_boundary_type.f90.html" xlink:title="field_boundary_type.f90">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="863,-1075.85 722,-1075.85 722,-1051.85 863,-1051.85 863,-1075.85"/>
-<text text-anchor="middle" x="792.5" y="-1061.45" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">field_boundary_type.f90</text>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="1040,-928.05 899,-928.05 899,-904.05 1040,-904.05 1040,-928.05"/>
+<text text-anchor="middle" x="969.5" y="-913.65" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">field_boundary_type.f90</text>
 </a>
 </g>
 </g>
 <!-- sourcefile~field_boundary_type.f90&#45;&gt;sourcefile~mpi_fftw3_solver.f90 -->
-<g id="file~~graph~~FileGraph_edge25" class="edge">
+<g id="file~~graph~~FileGraph_edge32" class="edge">
 <title>sourcefile~field_boundary_type.f90&#45;&gt;sourcefile~mpi_fftw3_solver.f90</title>
-<path fill="none" stroke="#000000" d="M721.62,-1075.69C717.35,-1078.22 713.41,-1081.24 710,-1084.85 653.11,-1145.14 730.47,-1207.17 674,-1267.85 635.41,-1309.32 480.21,-1339.79 387.95,-1354.67"/>
-<polygon fill="#000000" stroke="#000000" points="387.18,-1351.24 377.85,-1356.27 388.28,-1358.16 387.18,-1351.24"/>
+<path fill="none" stroke="#000000" d="M953.5,-904.01C939.18,-892.36 917.16,-874.01 899,-857.05 882.24,-841.38 882.37,-832.34 863,-820.05 856.88,-816.17 850.12,-812.79 843.23,-809.87"/>
+<polygon fill="#000000" stroke="#000000" points="844.38,-806.56 833.79,-806.16 841.82,-813.08 844.38,-806.56"/>
 </g>
 <!-- sourcefile~field_boundary_type.f90&#45;&gt;sourcefile~ohhelppic3d.f90 -->
-<g id="file~~graph~~FileGraph_edge36" class="edge">
+<g id="file~~graph~~FileGraph_edge43" class="edge">
 <title>sourcefile~field_boundary_type.f90&#45;&gt;sourcefile~ohhelppic3d.f90</title>
-<path fill="none" stroke="#000000" d="M737.25,-1075.89C679.45,-1088.3 591.65,-1105.85 557.5,-1105.85"/>
+<path fill="none" stroke="#000000" d="M957.75,-928.33C931.83,-956.57 862.5,-1024.34 787.5,-1032.05"/>
+<path fill="none" stroke="#000000" d="M785.5,-1032.05C684.7,-1042.4 658.7,-1026.94 557.5,-1032.05"/>
 </g>
-<!-- sourcefile~field_boundary_type.f90&#45;&gt;sourcefile~poisson_solver.f90 -->
-<g id="file~~graph~~FileGraph_edge89" class="edge">
-<title>sourcefile~field_boundary_type.f90&#45;&gt;sourcefile~poisson_solver.f90</title>
-<path fill="none" stroke="#000000" d="M766.9,-1051.66C724.66,-1030.72 638.29,-987.9 590.74,-964.33"/>
-<polygon fill="#000000" stroke="#000000" points="592.28,-961.19 581.77,-959.88 589.18,-967.46 592.28,-961.19"/>
+<!-- sourcefile~field_boundary_type.f90&#45;&gt;sourcefile~poisson_field_solver.f90 -->
+<g id="file~~graph~~FileGraph_edge97" class="edge">
+<title>sourcefile~field_boundary_type.f90&#45;&gt;sourcefile~poisson_field_solver.f90</title>
+<path fill="none" stroke="#000000" d="M898.88,-915.45C865.23,-915.12 824.26,-914.65 787.5,-914.05"/>
+<path fill="none" stroke="#000000" d="M785.5,-914.05C683.79,-912.37 656.49,-957.46 557.5,-934.05"/>
+</g>
+<!-- sourcefile~field_boundary_type.f90&#45;&gt;sourcefile~poisson_solver3d.f90 -->
+<g id="file~~graph~~FileGraph_edge106" class="edge">
+<title>sourcefile~field_boundary_type.f90&#45;&gt;sourcefile~poisson_solver3d.f90</title>
+<path fill="none" stroke="#000000" d="M916.63,-904.01C895.62,-899.14 871.18,-893.46 849.25,-888.38"/>
+<polygon fill="#000000" stroke="#000000" points="849.91,-884.94 839.37,-886.09 848.32,-891.76 849.91,-884.94"/>
 </g>
 <!-- sourcefile~field_solver.f90 -->
 <g id="file~~graph~~FileGraph_node8" class="node">
 <title>sourcefile~field_solver.f90</title>
 <g id="a_file~~graph~~FileGraph_node8"><a xlink:href=".././sourcefile/field_solver.f90.html" xlink:title="field_solver.f90">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="838.5,-919.85 746.5,-919.85 746.5,-895.85 838.5,-895.85 838.5,-919.85"/>
-<text text-anchor="middle" x="792.5" y="-905.45" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">field_solver.f90</text>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="832.5,-966.05 740.5,-966.05 740.5,-942.05 832.5,-942.05 832.5,-966.05"/>
+<text text-anchor="middle" x="786.5" y="-951.65" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">field_solver.f90</text>
 </a>
 </g>
 </g>
 <!-- sourcefile~field_solver.f90&#45;&gt;sourcefile~ohhelppic3d.f90 -->
-<g id="file~~graph~~FileGraph_edge37" class="edge">
+<g id="file~~graph~~FileGraph_edge44" class="edge">
 <title>sourcefile~field_solver.f90&#45;&gt;sourcefile~ohhelppic3d.f90</title>
-<path fill="none" stroke="#000000" d="M750.01,-895.74C703.51,-883.35 625.69,-866.12 557.5,-867.85"/>
+<path fill="none" stroke="#000000" d="M764.32,-966.15C724.98,-987.51 637.38,-1029.85 557.5,-1032.05"/>
+<path fill="none" stroke="#000000" d="M555.5,-1032.05C430.84,-1035.48 285.03,-1044.53 205.55,-1049.9"/>
+<polygon fill="#000000" stroke="#000000" points="205,-1046.43 195.26,-1050.6 205.47,-1053.41 205,-1046.43"/>
 </g>
-<!-- sourcefile~field_solver.f90&#45;&gt;sourcefile~poisson_solver.f90 -->
-<g id="file~~graph~~FileGraph_edge90" class="edge">
-<title>sourcefile~field_solver.f90&#45;&gt;sourcefile~poisson_solver.f90</title>
-<path fill="none" stroke="#000000" d="M746.38,-915.57C710.83,-921.64 660.82,-930.19 621.19,-936.97"/>
-<polygon fill="#000000" stroke="#000000" points="620.36,-933.56 611.09,-938.69 621.54,-940.46 620.36,-933.56"/>
+<!-- sourcefile~field_solver.f90&#45;&gt;sourcefile~poisson_field_solver.f90 -->
+<g id="file~~graph~~FileGraph_edge98" class="edge">
+<title>sourcefile~field_solver.f90&#45;&gt;sourcefile~poisson_field_solver.f90</title>
+<path fill="none" stroke="#000000" d="M740.33,-953.91C693.89,-952.89 619.76,-948.77 557.5,-934.05"/>
+</g>
+<!-- sourcefile~flux_velocity_maxwell_distribution3d.f90 -->
+<g id="file~~graph~~FileGraph_node9" class="node">
+<title>sourcefile~flux_velocity_maxwell_distribution3d.f90</title>
+<g id="a_file~~graph~~FileGraph_node9"><a xlink:href=".././sourcefile/flux_velocity_maxwell_distribution3d.f90.html" xlink:title="flux_velocity_maxwell_distribution3d.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="670,-204.05 443,-204.05 443,-180.05 670,-180.05 670,-204.05"/>
+<text text-anchor="middle" x="556.5" y="-189.65" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">flux_velocity_maxwell_distribution3d.f90</text>
+</a>
+</g>
 </g>
 <!-- sourcefile~hdf5.f90&#45;&gt;sourcefile~hdf5_for_ohfield.f90 -->
-<g id="file~~graph~~FileGraph_edge9" class="edge">
+<g id="file~~graph~~FileGraph_edge12" class="edge">
 <title>sourcefile~hdf5.f90&#45;&gt;sourcefile~hdf5_for_ohfield.f90</title>
-<path fill="none" stroke="#000000" d="M527.79,-1242.19C493.48,-1236.41 433.82,-1226.36 386.87,-1218.45"/>
-<polygon fill="#000000" stroke="#000000" points="387.2,-1214.96 376.76,-1216.75 386.04,-1221.86 387.2,-1214.96"/>
+<path fill="none" stroke="#000000" d="M527.79,-1307.61C493.48,-1302.12 433.82,-1292.58 386.87,-1285.07"/>
+<polygon fill="#000000" stroke="#000000" points="387.18,-1281.57 376.76,-1283.45 386.08,-1288.49 387.18,-1281.57"/>
 </g>
 <!-- sourcefile~hdf5.f90&#45;&gt;sourcefile~ohhelppic3d.f90 -->
-<g id="file~~graph~~FileGraph_edge38" class="edge">
+<g id="file~~graph~~FileGraph_edge45" class="edge">
 <title>sourcefile~hdf5.f90&#45;&gt;sourcefile~ohhelppic3d.f90</title>
-<path fill="none" stroke="#000000" d="M527.63,-1248.39C503.67,-1250.31 468.43,-1254.56 439,-1263.85 381.57,-1281.99 368.44,-1357.76 318,-1324.85"/>
-<path fill="none" stroke="#000000" d="M316,-1324.85C162.66,-1224.81 147.44,-967.44 146.4,-890.14"/>
-<polygon fill="#000000" stroke="#000000" points="149.9,-890.05 146.34,-880.08 142.9,-890.1 149.9,-890.05"/>
+<path fill="none" stroke="#000000" d="M527.71,-1317.65C467.01,-1329.76 327.26,-1356.9 318,-1352.05"/>
+<path fill="none" stroke="#000000" d="M316,-1352.05C275.71,-1330.94 258.84,-1331.02 231,-1295.05 177.73,-1226.21 156.47,-1121.23 149.45,-1076.02"/>
+<polygon fill="#000000" stroke="#000000" points="152.91,-1075.49 148,-1066.1 145.99,-1076.51 152.91,-1075.49"/>
 </g>
 <!-- sourcefile~hdf5_for_ohfield.f90&#45;&gt;sourcefile~ohhelppic3d.f90 -->
-<g id="file~~graph~~FileGraph_edge39" class="edge">
+<g id="file~~graph~~FileGraph_edge46" class="edge">
 <title>sourcefile~hdf5_for_ohfield.f90&#45;&gt;sourcefile~ohhelppic3d.f90</title>
-<path fill="none" stroke="#000000" d="M300.34,-1194.64C281.43,-1179.13 249.83,-1150.66 231,-1119.85 183.76,-1042.56 159.28,-935.62 150.43,-889.96"/>
-<polygon fill="#000000" stroke="#000000" points="153.84,-889.15 148.56,-879.96 146.96,-890.43 153.84,-889.15"/>
+<path fill="none" stroke="#000000" d="M257.16,-1263.38C247.65,-1259.69 238.49,-1254.73 231,-1248.05 178.63,-1201.33 157.36,-1116.3 149.95,-1076.16"/>
+<polygon fill="#000000" stroke="#000000" points="153.36,-1075.35 148.21,-1066.1 146.46,-1076.55 153.36,-1075.35"/>
 </g>
 <!-- sourcefile~interpolator.f90 -->
-<g id="file~~graph~~FileGraph_node11" class="node">
+<g id="file~~graph~~FileGraph_node12" class="node">
 <title>sourcefile~interpolator.f90</title>
-<g id="a_file~~graph~~FileGraph_node11"><a xlink:href=".././sourcefile/interpolator.f90.html" xlink:title="interpolator.f90">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="1029.5,-1098.85 935.5,-1098.85 935.5,-1074.85 1029.5,-1074.85 1029.5,-1098.85"/>
-<text text-anchor="middle" x="982.5" y="-1084.45" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">interpolator.f90</text>
+<g id="a_file~~graph~~FileGraph_node12"><a xlink:href=".././sourcefile/interpolator.f90.html" xlink:title="interpolator.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="1016.5,-1164.05 922.5,-1164.05 922.5,-1140.05 1016.5,-1140.05 1016.5,-1164.05"/>
+<text text-anchor="middle" x="969.5" y="-1149.65" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">interpolator.f90</text>
 </a>
 </g>
 </g>
 <!-- sourcefile~linear_interpolator.f90 -->
-<g id="file~~graph~~FileGraph_node12" class="node">
+<g id="file~~graph~~FileGraph_node13" class="node">
 <title>sourcefile~linear_interpolator.f90</title>
-<g id="a_file~~graph~~FileGraph_node12"><a xlink:href=".././sourcefile/linear_interpolator.f90.html" xlink:title="linear_interpolator.f90">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="857.5,-1117.85 727.5,-1117.85 727.5,-1093.85 857.5,-1093.85 857.5,-1117.85"/>
-<text text-anchor="middle" x="792.5" y="-1103.45" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">linear_interpolator.f90</text>
+<g id="a_file~~graph~~FileGraph_node13"><a xlink:href=".././sourcefile/linear_interpolator.f90.html" xlink:title="linear_interpolator.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="851.5,-1164.05 721.5,-1164.05 721.5,-1140.05 851.5,-1140.05 851.5,-1164.05"/>
+<text text-anchor="middle" x="786.5" y="-1149.65" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">linear_interpolator.f90</text>
 </a>
 </g>
 </g>
 <!-- sourcefile~interpolator.f90&#45;&gt;sourcefile~linear_interpolator.f90 -->
-<g id="file~~graph~~FileGraph_edge12" class="edge">
+<g id="file~~graph~~FileGraph_edge15" class="edge">
 <title>sourcefile~interpolator.f90&#45;&gt;sourcefile~linear_interpolator.f90</title>
-<path fill="none" stroke="#000000" d="M935.03,-1091.55C914.66,-1093.61 890.26,-1096.07 867.5,-1098.37"/>
-<polygon fill="#000000" stroke="#000000" points="867.12,-1094.89 857.52,-1099.38 867.82,-1101.86 867.12,-1094.89"/>
+<path fill="none" stroke="#000000" d="M922.36,-1152.05C903.99,-1152.05 882.38,-1152.05 861.91,-1152.05"/>
+<polygon fill="#000000" stroke="#000000" points="861.65,-1148.55 851.65,-1152.05 861.65,-1155.55 861.65,-1148.55"/>
 </g>
 <!-- sourcefile~interpolator.f90&#45;&gt;sourcefile~ohhelppic3d.f90 -->
-<g id="file~~graph~~FileGraph_edge40" class="edge">
+<g id="file~~graph~~FileGraph_edge47" class="edge">
 <title>sourcefile~interpolator.f90&#45;&gt;sourcefile~ohhelppic3d.f90</title>
-<path fill="none" stroke="#000000" d="M959.46,-1074.74C938.46,-1063.94 905.61,-1048.93 875,-1042.85 803.07,-1028.58 781.93,-1028.58 710,-1042.85 638.07,-1057.13 630.83,-1105.85 557.5,-1105.85"/>
-<path fill="none" stroke="#000000" d="M555.5,-1105.85C449.95,-1105.27 418.4,-1138.44 318,-1105.85"/>
+<path fill="none" stroke="#000000" d="M953.54,-1164.18C934.04,-1179.2 898.26,-1204.13 863,-1215.05 733.04,-1255.28 693.06,-1245.46 557.5,-1234.05"/>
+<path fill="none" stroke="#000000" d="M555.5,-1234.05C494.27,-1229.22 236.76,-1180.78 231,-1177.05 192.85,-1152.34 167.3,-1103.72 155,-1075.58"/>
+<polygon fill="#000000" stroke="#000000" points="158.17,-1074.08 151.07,-1066.21 151.71,-1076.79 158.17,-1074.08"/>
 </g>
 <!-- sourcefile~linear_interpolator.f90&#45;&gt;sourcefile~ohhelppic3d.f90 -->
-<g id="file~~graph~~FileGraph_edge41" class="edge">
+<g id="file~~graph~~FileGraph_edge48" class="edge">
 <title>sourcefile~linear_interpolator.f90&#45;&gt;sourcefile~ohhelppic3d.f90</title>
-<path fill="none" stroke="#000000" d="M727.44,-1105.85C680.41,-1105.85 614.98,-1105.85 557.5,-1105.85"/>
+<path fill="none" stroke="#000000" d="M721.36,-1152.63C616.67,-1152 403.44,-1144.09 231,-1095.05 211.47,-1089.49 190.94,-1079.64 175,-1070.98"/>
+<polygon fill="#000000" stroke="#000000" points="176.64,-1067.88 166.2,-1066.07 173.22,-1074 176.64,-1067.88"/>
 </g>
 <!-- sourcefile~linear_scatter.f90 -->
-<g id="file~~graph~~FileGraph_node13" class="node">
+<g id="file~~graph~~FileGraph_node14" class="node">
 <title>sourcefile~linear_scatter.f90</title>
-<g id="a_file~~graph~~FileGraph_node13"><a xlink:href=".././sourcefile/linear_scatter.f90.html" xlink:title="linear_scatter.f90">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="844.5,-1159.85 740.5,-1159.85 740.5,-1135.85 844.5,-1135.85 844.5,-1159.85"/>
-<text text-anchor="middle" x="792.5" y="-1145.45" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">linear_scatter.f90</text>
+<g id="a_file~~graph~~FileGraph_node14"><a xlink:href=".././sourcefile/linear_scatter.f90.html" xlink:title="linear_scatter.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="838.5,-1084.05 734.5,-1084.05 734.5,-1060.05 838.5,-1060.05 838.5,-1084.05"/>
+<text text-anchor="middle" x="786.5" y="-1069.65" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">linear_scatter.f90</text>
 </a>
 </g>
 </g>
 <!-- sourcefile~linear_scatter.f90&#45;&gt;sourcefile~ohhelppic3d.f90 -->
-<g id="file~~graph~~FileGraph_edge42" class="edge">
+<g id="file~~graph~~FileGraph_edge49" class="edge">
 <title>sourcefile~linear_scatter.f90&#45;&gt;sourcefile~ohhelppic3d.f90</title>
-<path fill="none" stroke="#000000" d="M740.36,-1136.49C682.65,-1124.05 592.27,-1105.85 557.5,-1105.85"/>
+<path fill="none" stroke="#000000" d="M745.5,-1060.01C700.26,-1047.58 624.19,-1030.21 557.5,-1032.05"/>
 </g>
 <!-- sourcefile~main.f90 -->
-<g id="file~~graph~~FileGraph_node14" class="node">
+<g id="file~~graph~~FileGraph_node15" class="node">
 <title>sourcefile~main.f90</title>
-<g id="a_file~~graph~~FileGraph_node14"><a xlink:href=".././sourcefile/main.f90.html" xlink:title="main.f90">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="60,-879.85 0,-879.85 0,-855.85 60,-855.85 60,-879.85"/>
-<text text-anchor="middle" x="30" y="-865.45" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">main.f90</text>
+<g id="a_file~~graph~~FileGraph_node15"><a xlink:href=".././sourcefile/main.f90.html" xlink:title="main.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="60,-1066.05 0,-1066.05 0,-1042.05 60,-1042.05 60,-1066.05"/>
+<text text-anchor="middle" x="30" y="-1051.65" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">main.f90</text>
 </a>
 </g>
 </g>
 <!-- sourcefile~maxwellian_velocity_distribution1d.f90 -->
-<g id="file~~graph~~FileGraph_node15" class="node">
+<g id="file~~graph~~FileGraph_node16" class="node">
 <title>sourcefile~maxwellian_velocity_distribution1d.f90</title>
-<g id="a_file~~graph~~FileGraph_node15"><a xlink:href=".././sourcefile/maxwellian_velocity_distribution1d.f90.html" xlink:title="maxwellian_velocity_distribution1d.f90">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="666,-519.85 447,-519.85 447,-495.85 666,-495.85 666,-519.85"/>
-<text text-anchor="middle" x="556.5" y="-505.45" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">maxwellian_velocity_distribution1d.f90</text>
+<g id="a_file~~graph~~FileGraph_node16"><a xlink:href=".././sourcefile/maxwellian_velocity_distribution1d.f90.html" xlink:title="maxwellian_velocity_distribution1d.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="666,-284.05 447,-284.05 447,-260.05 666,-260.05 666,-284.05"/>
+<text text-anchor="middle" x="556.5" y="-269.65" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">maxwellian_velocity_distribution1d.f90</text>
 </a>
 </g>
 </g>
 <!-- sourcefile~mpi_block_rebaser.f90&#45;&gt;sourcefile~mpi_fftw3_solver.f90 -->
-<g id="file~~graph~~FileGraph_edge26" class="edge">
+<g id="file~~graph~~FileGraph_edge33" class="edge">
 <title>sourcefile~mpi_block_rebaser.f90&#45;&gt;sourcefile~mpi_fftw3_solver.f90</title>
-<path fill="none" stroke="#000000" d="M492.4,-1428.85C474.94,-1424.97 456.09,-1420.25 439,-1414.85 409.28,-1405.47 376.69,-1391.8 352.82,-1381.12"/>
-<polygon fill="#000000" stroke="#000000" points="354.04,-1377.83 343.49,-1376.9 351.15,-1384.21 354.04,-1377.83"/>
+<path fill="none" stroke="#000000" d="M903.92,-794.05C888.91,-794.05 872.86,-794.05 857.62,-794.05"/>
+<polygon fill="#000000" stroke="#000000" points="857.22,-790.55 847.22,-794.05 857.22,-797.55 857.22,-790.55"/>
+</g>
+<!-- sourcefile~mpi_fft_solver.f90&#45;&gt;sourcefile~mpi_fft_solver_factory.f90 -->
+<g id="file~~graph~~FileGraph_edge29" class="edge">
+<title>sourcefile~mpi_fft_solver.f90&#45;&gt;sourcefile~mpi_fft_solver_factory.f90</title>
+<path fill="none" stroke="#000000" d="M916.19,-836.51C880.03,-836.58 830.82,-836.16 787.5,-834.05"/>
+<path fill="none" stroke="#000000" d="M785.5,-834.05C755.32,-832.57 681.91,-819.03 626.48,-808.1"/>
+<polygon fill="#000000" stroke="#000000" points="626.85,-804.6 616.36,-806.09 625.49,-811.47 626.85,-804.6"/>
 </g>
 <!-- sourcefile~mpi_fft_solver.f90&#45;&gt;sourcefile~mpi_fftw3_solver.f90 -->
-<g id="file~~graph~~FileGraph_edge27" class="edge">
+<g id="file~~graph~~FileGraph_edge34" class="edge">
 <title>sourcefile~mpi_fft_solver.f90&#45;&gt;sourcefile~mpi_fftw3_solver.f90</title>
-<path fill="none" stroke="#000000" d="M555.5,-1362.85C499.08,-1360.5 435.05,-1361.23 387.71,-1362.43"/>
-<polygon fill="#000000" stroke="#000000" points="387.47,-1358.93 377.57,-1362.7 387.66,-1365.93 387.47,-1358.93"/>
+<path fill="none" stroke="#000000" d="M916.63,-824.01C895.62,-819.14 871.18,-813.46 849.25,-808.38"/>
+<polygon fill="#000000" stroke="#000000" points="849.91,-804.94 839.37,-806.09 848.32,-811.76 849.91,-804.94"/>
 </g>
 <!-- sourcefile~mpi_fft_solver.f90&#45;&gt;sourcefile~ohhelppic3d.f90 -->
-<g id="file~~graph~~FileGraph_edge43" class="edge">
+<g id="file~~graph~~FileGraph_edge50" class="edge">
 <title>sourcefile~mpi_fft_solver.f90&#45;&gt;sourcefile~ohhelppic3d.f90</title>
-<path fill="none" stroke="#000000" d="M739.43,-1365.4C691.99,-1365.66 620.01,-1365.46 557.5,-1362.85"/>
-<path fill="none" stroke="#000000" d="M555.5,-1362.85C542.15,-1362.29 329.19,-1332.15 318,-1324.85"/>
+<path fill="none" stroke="#000000" d="M785.5,-834.05C684.29,-829.1 658.3,-844.46 557.5,-834.05"/>
+<path fill="none" stroke="#000000" d="M555.5,-834.05C503.32,-828.66 488.19,-833.29 439,-815.05 382.53,-794.11 370.09,-723.82 318,-754.05"/>
 </g>
-<!-- sourcefile~mpi_fft_solver.f90&#45;&gt;sourcefile~poisson_solver.f90 -->
-<g id="file~~graph~~FileGraph_edge91" class="edge">
-<title>sourcefile~mpi_fft_solver.f90&#45;&gt;sourcefile~poisson_solver.f90</title>
-<path fill="none" stroke="#000000" d="M773.4,-1352.82C754.41,-1339.18 725.26,-1315.12 710,-1286.85 668.14,-1209.3 710.85,-1171.91 674,-1091.85 650.63,-1041.07 605.28,-992.86 578.57,-967.14"/>
-<polygon fill="#000000" stroke="#000000" points="580.92,-964.54 571.25,-960.2 576.1,-969.62 580.92,-964.54"/>
+<!-- sourcefile~mpi_fft_solver.f90&#45;&gt;sourcefile~poisson_field_solver.f90 -->
+<g id="file~~graph~~FileGraph_edge99" class="edge">
+<title>sourcefile~mpi_fft_solver.f90&#45;&gt;sourcefile~poisson_field_solver.f90</title>
+<path fill="none" stroke="#000000" d="M555.5,-834.05C502.39,-828.56 442.48,-823.53 396.12,-819.88"/>
+<polygon fill="#000000" stroke="#000000" points="396.39,-816.39 386.14,-819.1 395.84,-823.37 396.39,-816.39"/>
 </g>
-<!-- sourcefile~mpi_fftw3_solver.f90&#45;&gt;sourcefile~ohhelppic3d.f90 -->
-<g id="file~~graph~~FileGraph_edge44" class="edge">
-<title>sourcefile~mpi_fftw3_solver.f90&#45;&gt;sourcefile~ohhelppic3d.f90</title>
-<path fill="none" stroke="#000000" d="M256.21,-1355.74C246.68,-1351.89 237.76,-1346.47 231,-1338.85 170.64,-1270.83 151.72,-974.66 147.51,-890.33"/>
-<polygon fill="#000000" stroke="#000000" points="150.99,-889.91 147.01,-880.09 144,-890.25 150.99,-889.91"/>
+<!-- sourcefile~mpi_fft_solver.f90&#45;&gt;sourcefile~poisson_solver3d.f90 -->
+<g id="file~~graph~~FileGraph_edge107" class="edge">
+<title>sourcefile~mpi_fft_solver.f90&#45;&gt;sourcefile~poisson_solver3d.f90</title>
+<path fill="none" stroke="#000000" d="M916.15,-847.04C896.95,-851.07 874.94,-855.69 854.62,-859.96"/>
+<polygon fill="#000000" stroke="#000000" points="853.87,-856.54 844.8,-862.02 855.31,-863.39 853.87,-856.54"/>
+</g>
+<!-- sourcefile~mpi_fft_solver_factory.f90&#45;&gt;sourcefile~ohhelppic3d.f90 -->
+<g id="file~~graph~~FileGraph_edge51" class="edge">
+<title>sourcefile~mpi_fft_solver_factory.f90&#45;&gt;sourcefile~ohhelppic3d.f90</title>
+<path fill="none" stroke="#000000" d="M495.7,-782.03C427.9,-768.69 325.69,-749.59 318,-754.05"/>
+</g>
+<!-- sourcefile~mpi_fft_solver_factory.f90&#45;&gt;sourcefile~poisson_field_solver.f90 -->
+<g id="file~~graph~~FileGraph_edge100" class="edge">
+<title>sourcefile~mpi_fft_solver_factory.f90&#45;&gt;sourcefile~poisson_field_solver.f90</title>
+<path fill="none" stroke="#000000" d="M482.3,-800.21C454.99,-802.51 423.89,-805.13 396.15,-807.47"/>
+<polygon fill="#000000" stroke="#000000" points="395.77,-803.99 386.09,-808.31 396.35,-810.96 395.77,-803.99"/>
+</g>
+<!-- sourcefile~mpi_fftw3_solver.f90&#45;&gt;sourcefile~mpi_fft_solver_factory.f90 -->
+<g id="file~~graph~~FileGraph_edge30" class="edge">
+<title>sourcefile~mpi_fftw3_solver.f90&#45;&gt;sourcefile~mpi_fft_solver_factory.f90</title>
+<path fill="none" stroke="#000000" d="M725.89,-794.05C699.92,-794.05 669.03,-794.05 640.85,-794.05"/>
+<polygon fill="#000000" stroke="#000000" points="640.6,-790.55 630.6,-794.05 640.6,-797.55 640.6,-790.55"/>
 </g>
 <!-- sourcefile~no_particle_injector.f90 -->
-<g id="file~~graph~~FileGraph_node19" class="node">
+<g id="file~~graph~~FileGraph_node21" class="node">
 <title>sourcefile~no_particle_injector.f90</title>
-<g id="a_file~~graph~~FileGraph_node19"><a xlink:href=".././sourcefile/no_particle_injector.f90.html" xlink:title="no_particle_injector.f90">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="624.5,-839.85 488.5,-839.85 488.5,-815.85 624.5,-815.85 624.5,-839.85"/>
-<text text-anchor="middle" x="556.5" y="-825.45" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">no_particle_injector.f90</text>
+<g id="a_file~~graph~~FileGraph_node21"><a xlink:href=".././sourcefile/no_particle_injector.f90.html" xlink:title="no_particle_injector.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="624.5,-688.05 488.5,-688.05 488.5,-664.05 624.5,-664.05 624.5,-688.05"/>
+<text text-anchor="middle" x="556.5" y="-673.65" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">no_particle_injector.f90</text>
 </a>
 </g>
 </g>
 <!-- sourcefile~particle_injector_manager.f90 -->
-<g id="file~~graph~~FileGraph_node30" class="node">
+<g id="file~~graph~~FileGraph_node32" class="node">
 <title>sourcefile~particle_injector_manager.f90</title>
-<g id="a_file~~graph~~FileGraph_node30"><a xlink:href=".././sourcefile/particle_injector_manager.f90.html" xlink:title="particle_injector_manager.f90">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="403,-579.85 231,-579.85 231,-555.85 403,-555.85 403,-579.85"/>
-<text text-anchor="middle" x="317" y="-565.45" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">particle_injector_manager.f90</text>
+<g id="a_file~~graph~~FileGraph_node32"><a xlink:href=".././sourcefile/particle_injector_manager.f90.html" xlink:title="particle_injector_manager.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="403,-524.05 231,-524.05 231,-500.05 403,-500.05 403,-524.05"/>
+<text text-anchor="middle" x="317" y="-509.65" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">particle_injector_manager.f90</text>
 </a>
 </g>
 </g>
 <!-- sourcefile~no_particle_injector.f90&#45;&gt;sourcefile~particle_injector_manager.f90 -->
-<g id="file~~graph~~FileGraph_edge65" class="edge">
+<g id="file~~graph~~FileGraph_edge73" class="edge">
 <title>sourcefile~no_particle_injector.f90&#45;&gt;sourcefile~particle_injector_manager.f90</title>
-<path fill="none" stroke="#000000" d="M488.28,-823.08C470.9,-819.24 453.12,-812.73 439,-801.85 367.23,-746.54 334.08,-636.7 322.75,-589.85"/>
-<polygon fill="#000000" stroke="#000000" points="326.11,-588.81 320.44,-579.86 319.29,-590.39 326.11,-588.81"/>
+<path fill="none" stroke="#000000" d="M488.34,-671.98C471.42,-668.84 453.86,-663.63 439,-655.05 387.44,-625.29 347.74,-564.97 329.31,-533.01"/>
+<polygon fill="#000000" stroke="#000000" points="332.24,-531.07 324.29,-524.07 326.14,-534.5 332.24,-531.07"/>
 </g>
 <!-- sourcefile~no_position_distribution.f90 -->
-<g id="file~~graph~~FileGraph_node20" class="node">
+<g id="file~~graph~~FileGraph_node22" class="node">
 <title>sourcefile~no_position_distribution.f90</title>
-<g id="a_file~~graph~~FileGraph_node20"><a xlink:href=".././sourcefile/no_position_distribution.f90.html" xlink:title="no_position_distribution.f90">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="636,-397.85 477,-397.85 477,-373.85 636,-373.85 636,-397.85"/>
-<text text-anchor="middle" x="556.5" y="-383.45" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">no_position_distribution.f90</text>
+<g id="a_file~~graph~~FileGraph_node22"><a xlink:href=".././sourcefile/no_position_distribution.f90.html" xlink:title="no_position_distribution.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="636,-646.05 477,-646.05 477,-622.05 636,-622.05 636,-646.05"/>
+<text text-anchor="middle" x="556.5" y="-631.65" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">no_position_distribution.f90</text>
 </a>
 </g>
 </g>
 <!-- sourcefile~no_position_distribution.f90&#45;&gt;sourcefile~ohhelppic3d.f90 -->
-<g id="file~~graph~~FileGraph_edge45" class="edge">
+<g id="file~~graph~~FileGraph_edge52" class="edge">
 <title>sourcefile~no_position_distribution.f90&#45;&gt;sourcefile~ohhelppic3d.f90</title>
-<path fill="none" stroke="#000000" d="M532.7,-373.83C476.75,-344.7 335.89,-273.71 318,-287.85"/>
+<path fill="none" stroke="#000000" d="M476.74,-642.61C463.78,-645.6 450.76,-649.63 439,-655.05 375.9,-684.14 378.1,-719.18 318,-754.05"/>
+<path fill="none" stroke="#000000" d="M316,-754.05C280.05,-774.91 258.62,-761.99 231,-793.05 167.87,-864.04 151.82,-982.85 147.81,-1031.87"/>
+<polygon fill="#000000" stroke="#000000" points="144.3,-1031.77 147.07,-1042 151.29,-1032.28 144.3,-1031.77"/>
 </g>
 <!-- sourcefile~no_position_distribution.f90&#45;&gt;sourcefile~particle_injector_manager.f90 -->
-<g id="file~~graph~~FileGraph_edge66" class="edge">
+<g id="file~~graph~~FileGraph_edge74" class="edge">
 <title>sourcefile~no_position_distribution.f90&#45;&gt;sourcefile~particle_injector_manager.f90</title>
-<path fill="none" stroke="#000000" d="M476.71,-395.62C463.48,-399.41 450.37,-404.64 439,-411.85 385.26,-445.94 345.82,-512.64 328.21,-546.72"/>
-<polygon fill="#000000" stroke="#000000" points="325.01,-545.29 323.64,-555.79 331.27,-548.44 325.01,-545.29"/>
+<path fill="none" stroke="#000000" d="M478.33,-621.99C464.86,-618.45 451.25,-613.89 439,-608.05 398.3,-588.63 358.86,-553.3 336.58,-531.34"/>
+<polygon fill="#000000" stroke="#000000" points="338.98,-528.79 329.45,-524.18 334.02,-533.73 338.98,-528.79"/>
 </g>
 <!-- sourcefile~ohfield.f90 -->
-<g id="file~~graph~~FileGraph_node21" class="node">
+<g id="file~~graph~~FileGraph_node23" class="node">
 <title>sourcefile~ohfield.f90</title>
-<g id="a_file~~graph~~FileGraph_node21"><a xlink:href=".././sourcefile/ohfield.f90.html" xlink:title="ohfield.f90">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="1171,-1118.85 1101,-1118.85 1101,-1094.85 1171,-1094.85 1171,-1118.85"/>
-<text text-anchor="middle" x="1136" y="-1104.45" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ohfield.f90</text>
+<g id="a_file~~graph~~FileGraph_node23"><a xlink:href=".././sourcefile/ohfield.f90.html" xlink:title="ohfield.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="1193.5,-1065.05 1123.5,-1065.05 1123.5,-1041.05 1193.5,-1041.05 1193.5,-1065.05"/>
+<text text-anchor="middle" x="1158.5" y="-1050.65" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ohfield.f90</text>
 </a>
 </g>
 </g>
 <!-- sourcefile~ohfield.f90&#45;&gt;sourcefile~field_solver.f90 -->
 <g id="file~~graph~~FileGraph_edge5" class="edge">
 <title>sourcefile~ohfield.f90&#45;&gt;sourcefile~field_solver.f90</title>
-<path fill="none" stroke="#000000" d="M981.5,-927.85C940.68,-906.43 888.07,-902.49 848.88,-903.3"/>
-<polygon fill="#000000" stroke="#000000" points="848.6,-899.81 838.72,-903.62 848.82,-906.81 848.6,-899.81"/>
+<path fill="none" stroke="#000000" d="M1123.24,-1044.58C1085.89,-1035.61 1024.27,-1021.6 970.5,-1013.05"/>
+<path fill="none" stroke="#000000" d="M968.5,-1013.05C954.8,-1010.87 881.19,-986.16 832.16,-969.42"/>
+<polygon fill="#000000" stroke="#000000" points="833,-966.01 822.41,-966.08 830.73,-972.63 833,-966.01"/>
 </g>
 <!-- sourcefile~ohfield.f90&#45;&gt;sourcefile~hdf5_for_ohfield.f90 -->
-<g id="file~~graph~~FileGraph_edge10" class="edge">
+<g id="file~~graph~~FileGraph_edge13" class="edge">
 <title>sourcefile~ohfield.f90&#45;&gt;sourcefile~hdf5_for_ohfield.f90</title>
-<path fill="none" stroke="#000000" d="M1127.06,-1119.14C1114.24,-1137.78 1087.05,-1172.62 1054,-1187.85 993.24,-1215.84 617.86,-1211.81 557.5,-1206.85"/>
-<path fill="none" stroke="#000000" d="M555.5,-1206.85C498.76,-1203.2 434.25,-1203.48 386.79,-1204.52"/>
-<polygon fill="#000000" stroke="#000000" points="386.54,-1201.03 376.63,-1204.76 386.71,-1208.02 386.54,-1201.03"/>
+<path fill="none" stroke="#000000" d="M1123.5,-1056.99C1107.36,-1060.44 1088.85,-1066.91 1076,-1079.05 1043.48,-1109.77 1071.46,-1141.24 1040,-1173.05 886.05,-1328.68 776.24,-1280.63 557.5,-1272.05"/>
+<path fill="none" stroke="#000000" d="M555.5,-1272.05C498.72,-1269.21 434.2,-1270.01 386.76,-1271.35"/>
+<polygon fill="#000000" stroke="#000000" points="386.49,-1267.86 376.6,-1271.65 386.7,-1274.85 386.49,-1267.86"/>
 </g>
 <!-- sourcefile~ohfield.f90&#45;&gt;sourcefile~interpolator.f90 -->
-<g id="file~~graph~~FileGraph_edge11" class="edge">
+<g id="file~~graph~~FileGraph_edge14" class="edge">
 <title>sourcefile~ohfield.f90&#45;&gt;sourcefile~interpolator.f90</title>
-<path fill="none" stroke="#000000" d="M1100.62,-1102.31C1082.62,-1099.94 1060.13,-1096.97 1039.68,-1094.27"/>
-<polygon fill="#000000" stroke="#000000" points="1039.89,-1090.77 1029.52,-1092.93 1038.97,-1097.71 1039.89,-1090.77"/>
+<path fill="none" stroke="#000000" d="M1123.28,-1059.08C1107.84,-1062.98 1089.97,-1069.22 1076,-1079.05 1054.48,-1094.19 1061.14,-1110.39 1040,-1126.05 1034.97,-1129.77 1029.35,-1133.02 1023.54,-1135.84"/>
+<polygon fill="#000000" stroke="#000000" points="1022.05,-1132.67 1014.32,-1139.91 1024.88,-1139.07 1022.05,-1132.67"/>
 </g>
 <!-- sourcefile~ohfield.f90&#45;&gt;sourcefile~linear_interpolator.f90 -->
-<g id="file~~graph~~FileGraph_edge13" class="edge">
+<g id="file~~graph~~FileGraph_edge16" class="edge">
 <title>sourcefile~ohfield.f90&#45;&gt;sourcefile~linear_interpolator.f90</title>
-<path fill="none" stroke="#000000" d="M1100.83,-1112.68C1070.21,-1117.59 1024.01,-1124.22 983.5,-1126.85"/>
-<path fill="none" stroke="#000000" d="M981.5,-1126.85C942.28,-1129.4 898.64,-1124.97 863.28,-1119.54"/>
-<polygon fill="#000000" stroke="#000000" points="863.49,-1116.03 853.07,-1117.91 862.39,-1122.94 863.49,-1116.03"/>
+<path fill="none" stroke="#000000" d="M968.5,-1112.05C926.51,-1118.45 879.71,-1128.88 844.22,-1137.49"/>
+<polygon fill="#000000" stroke="#000000" points="842.94,-1134.2 834.06,-1139.98 844.6,-1141 842.94,-1134.2"/>
 </g>
 <!-- sourcefile~ohfield.f90&#45;&gt;sourcefile~linear_scatter.f90 -->
-<g id="file~~graph~~FileGraph_edge14" class="edge">
+<g id="file~~graph~~FileGraph_edge17" class="edge">
 <title>sourcefile~ohfield.f90&#45;&gt;sourcefile~linear_scatter.f90</title>
-<path fill="none" stroke="#000000" d="M981.5,-1126.85C939.11,-1129.6 891.57,-1134.93 854.89,-1139.54"/>
-<polygon fill="#000000" stroke="#000000" points="854.33,-1136.08 844.85,-1140.81 855.21,-1143.02 854.33,-1136.08"/>
+<path fill="none" stroke="#000000" d="M1123.21,-1063.94C1069.76,-1080.91 972.45,-1111.75 970.5,-1112.05"/>
+<path fill="none" stroke="#000000" d="M968.5,-1112.05C943.43,-1115.87 880.64,-1099.83 836.07,-1086.93"/>
+<polygon fill="#000000" stroke="#000000" points="836.88,-1083.52 826.29,-1084.07 834.91,-1090.24 836.88,-1083.52"/>
 </g>
 <!-- sourcefile~ohfield_factory.f90 -->
-<g id="file~~graph~~FileGraph_node22" class="node">
+<g id="file~~graph~~FileGraph_node24" class="node">
 <title>sourcefile~ohfield_factory.f90</title>
-<g id="a_file~~graph~~FileGraph_node22"><a xlink:href=".././sourcefile/ohfield_factory.f90.html" xlink:title="ohfield_factory.f90">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="372.5,-919.85 261.5,-919.85 261.5,-895.85 372.5,-895.85 372.5,-919.85"/>
-<text text-anchor="middle" x="317" y="-905.45" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ohfield_factory.f90</text>
+<g id="a_file~~graph~~FileGraph_node24"><a xlink:href=".././sourcefile/ohfield_factory.f90.html" xlink:title="ohfield_factory.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="372.5,-1086.05 261.5,-1086.05 261.5,-1062.05 372.5,-1062.05 372.5,-1086.05"/>
+<text text-anchor="middle" x="317" y="-1071.65" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ohfield_factory.f90</text>
 </a>
 </g>
 </g>
 <!-- sourcefile~ohfield.f90&#45;&gt;sourcefile~ohfield_factory.f90 -->
-<g id="file~~graph~~FileGraph_edge31" class="edge">
+<g id="file~~graph~~FileGraph_edge38" class="edge">
 <title>sourcefile~ohfield.f90&#45;&gt;sourcefile~ohfield_factory.f90</title>
-<path fill="none" stroke="#000000" d="M981.5,-927.85C907.1,-888.8 877.52,-947 793.5,-947.85"/>
-<path fill="none" stroke="#000000" d="M791.5,-947.85C738.45,-948.39 726.7,-932.94 674,-926.85 572.77,-915.15 454.49,-910.64 382.97,-908.91"/>
-<polygon fill="#000000" stroke="#000000" points="382.84,-905.41 372.76,-908.68 382.68,-912.41 382.84,-905.41"/>
+<path fill="none" stroke="#000000" d="M968.5,-1112.05C755.78,-1144.48 500.06,-1107.74 382.66,-1086.71"/>
+<polygon fill="#000000" stroke="#000000" points="383.22,-1083.26 372.76,-1084.92 381.97,-1090.15 383.22,-1083.26"/>
 </g>
 <!-- sourcefile~ohhelp.f90 -->
-<g id="file~~graph~~FileGraph_node23" class="node">
+<g id="file~~graph~~FileGraph_node25" class="node">
 <title>sourcefile~ohhelp.f90</title>
-<g id="a_file~~graph~~FileGraph_node23"><a xlink:href=".././sourcefile/ohhelp.f90.html" xlink:title="ohhelp.f90">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="1017.5,-803.85 947.5,-803.85 947.5,-779.85 1017.5,-779.85 1017.5,-803.85"/>
-<text text-anchor="middle" x="982.5" y="-789.45" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ohhelp.f90</text>
+<g id="a_file~~graph~~FileGraph_node25"><a xlink:href=".././sourcefile/ohhelp.f90.html" xlink:title="ohhelp.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="1004.5,-652.05 934.5,-652.05 934.5,-628.05 1004.5,-628.05 1004.5,-652.05"/>
+<text text-anchor="middle" x="969.5" y="-637.65" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ohhelp.f90</text>
 </a>
 </g>
 </g>
 <!-- sourcefile~ohfield.f90&#45;&gt;sourcefile~ohhelp.f90 -->
-<g id="file~~graph~~FileGraph_edge32" class="edge">
+<g id="file~~graph~~FileGraph_edge39" class="edge">
 <title>sourcefile~ohfield.f90&#45;&gt;sourcefile~ohhelp.f90</title>
-<path fill="none" stroke="#000000" d="M1130.41,-1094.42C1118.82,-1063.39 1086.95,-980.25 1054,-913.85 1035.85,-877.29 1011.41,-836.56 996.59,-812.63"/>
-<polygon fill="#000000" stroke="#000000" points="999.5,-810.67 991.24,-804.04 993.56,-814.38 999.5,-810.67"/>
+<path fill="none" stroke="#000000" d="M1140.29,-1040.85C1121.21,-1026.32 1091.15,-1000.18 1076,-970.05 1029.53,-877.6 1078.5,-836.08 1040,-740.05 1027.73,-709.45 1004.63,-679.03 988.43,-659.92"/>
+<polygon fill="#000000" stroke="#000000" points="990.95,-657.48 981.76,-652.21 985.66,-662.06 990.95,-657.48"/>
 </g>
 <!-- sourcefile~ohfield.f90&#45;&gt;sourcefile~ohhelppic3d.f90 -->
-<g id="file~~graph~~FileGraph_edge46" class="edge">
+<g id="file~~graph~~FileGraph_edge53" class="edge">
 <title>sourcefile~ohfield.f90&#45;&gt;sourcefile~ohhelppic3d.f90</title>
-<path fill="none" stroke="#000000" d="M1128.93,-1094.48C1111.63,-1060.78 1058.48,-967.21 983.5,-927.85"/>
-<path fill="none" stroke="#000000" d="M981.5,-927.85C812.99,-839.39 747.76,-863.02 557.5,-867.85"/>
+<path fill="none" stroke="#000000" d="M968.5,-1013.05C888.71,-999.76 867.96,-1023.78 787.5,-1032.05"/>
 </g>
-<!-- sourcefile~ohfield.f90&#45;&gt;sourcefile~poisson_solver.f90 -->
-<g id="file~~graph~~FileGraph_edge92" class="edge">
-<title>sourcefile~ohfield.f90&#45;&gt;sourcefile~poisson_solver.f90</title>
-<path fill="none" stroke="#000000" d="M791.5,-947.85C733.97,-948.44 668.49,-948.38 621.45,-948.2"/>
-<polygon fill="#000000" stroke="#000000" points="621.42,-944.7 611.41,-948.16 621.39,-951.7 621.42,-944.7"/>
+<!-- sourcefile~ohfield.f90&#45;&gt;sourcefile~poisson_field_solver.f90 -->
+<g id="file~~graph~~FileGraph_edge101" class="edge">
+<title>sourcefile~ohfield.f90&#45;&gt;sourcefile~poisson_field_solver.f90</title>
+<path fill="none" stroke="#000000" d="M968.5,-1013.05C853.82,-994.8 823.71,-998.61 710,-975.05 641.28,-960.81 625.8,-950.2 557.5,-934.05"/>
 </g>
 <!-- sourcefile~scatter.f90 -->
-<g id="file~~graph~~FileGraph_node43" class="node">
+<g id="file~~graph~~FileGraph_node45" class="node">
 <title>sourcefile~scatter.f90</title>
-<g id="a_file~~graph~~FileGraph_node43"><a xlink:href=".././sourcefile/scatter.f90.html" xlink:title="scatter.f90">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="1016.5,-1178.85 948.5,-1178.85 948.5,-1154.85 1016.5,-1154.85 1016.5,-1178.85"/>
-<text text-anchor="middle" x="982.5" y="-1164.45" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">scatter.f90</text>
+<g id="a_file~~graph~~FileGraph_node45"><a xlink:href=".././sourcefile/scatter.f90.html" xlink:title="scatter.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="1003.5,-1065.05 935.5,-1065.05 935.5,-1041.05 1003.5,-1041.05 1003.5,-1065.05"/>
+<text text-anchor="middle" x="969.5" y="-1050.65" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">scatter.f90</text>
 </a>
 </g>
 </g>
 <!-- sourcefile~ohfield.f90&#45;&gt;sourcefile~scatter.f90 -->
-<g id="file~~graph~~FileGraph_edge98" class="edge">
+<g id="file~~graph~~FileGraph_edge112" class="edge">
 <title>sourcefile~ohfield.f90&#45;&gt;sourcefile~scatter.f90</title>
-<path fill="none" stroke="#000000" d="M1107.01,-1118.96C1091.46,-1125.59 1071.74,-1133.86 1054,-1140.85 1044.99,-1144.4 1035.28,-1148.08 1026.03,-1151.51"/>
-<polygon fill="#000000" stroke="#000000" points="1024.78,-1148.24 1016.61,-1154.98 1027.2,-1154.81 1024.78,-1148.24"/>
+<path fill="none" stroke="#000000" d="M1123.2,-1053.05C1092.47,-1053.05 1047.24,-1053.05 1013.98,-1053.05"/>
+<polygon fill="#000000" stroke="#000000" points="1013.64,-1049.55 1003.64,-1053.05 1013.64,-1056.55 1013.64,-1049.55"/>
 </g>
 <!-- sourcefile~ohfield_factory.f90&#45;&gt;sourcefile~ohhelppic3d.f90 -->
-<g id="file~~graph~~FileGraph_edge47" class="edge">
+<g id="file~~graph~~FileGraph_edge54" class="edge">
 <title>sourcefile~ohfield_factory.f90&#45;&gt;sourcefile~ohhelppic3d.f90</title>
-<path fill="none" stroke="#000000" d="M265.14,-895.85C246.29,-891.4 224.77,-886.32 205.27,-881.72"/>
-<polygon fill="#000000" stroke="#000000" points="205.82,-878.26 195.28,-879.36 204.21,-885.07 205.82,-878.26"/>
+<path fill="none" stroke="#000000" d="M261.44,-1067.61C243.47,-1065.49 223.43,-1063.12 205.17,-1060.97"/>
+<polygon fill="#000000" stroke="#000000" points="205.58,-1057.49 195.24,-1059.8 204.76,-1064.45 205.58,-1057.49"/>
 </g>
 <!-- sourcefile~ohhelp.f90&#45;&gt;sourcefile~field_solver.f90 -->
 <g id="file~~graph~~FileGraph_edge6" class="edge">
 <title>sourcefile~ohhelp.f90&#45;&gt;sourcefile~field_solver.f90</title>
-<path fill="none" stroke="#000000" d="M961.74,-804.05C928.22,-824.73 860.14,-866.73 821.65,-890.48"/>
-<polygon fill="#000000" stroke="#000000" points="819.67,-887.59 813,-895.82 823.35,-893.55 819.67,-887.59"/>
+<path fill="none" stroke="#000000" d="M957.4,-652.28C941.81,-670.17 913.68,-705.17 899,-740.05 866.01,-818.46 918.72,-863.76 863,-928.05 857.39,-934.52 850.08,-939.39 842.23,-943.04"/>
+<polygon fill="#000000" stroke="#000000" points="840.82,-939.84 832.83,-946.8 843.42,-946.34 840.82,-939.84"/>
 </g>
 <!-- sourcefile~ohhelp.f90&#45;&gt;sourcefile~no_particle_injector.f90 -->
-<g id="file~~graph~~FileGraph_edge28" class="edge">
+<g id="file~~graph~~FileGraph_edge35" class="edge">
 <title>sourcefile~ohhelp.f90&#45;&gt;sourcefile~no_particle_injector.f90</title>
-<path fill="none" stroke="#000000" d="M947.4,-789.48C909.63,-787.4 846.99,-785.59 793.5,-791.85"/>
-<path fill="none" stroke="#000000" d="M791.5,-791.85C739.03,-797.99 680.26,-807.04 634.75,-814.53"/>
-<polygon fill="#000000" stroke="#000000" points="633.95,-811.12 624.65,-816.2 635.09,-818.02 633.95,-811.12"/>
+<path fill="none" stroke="#000000" d="M934.17,-643.06C868.68,-648.79 724.49,-661.42 634.72,-669.28"/>
+<polygon fill="#000000" stroke="#000000" points="634.24,-665.81 624.59,-670.17 634.86,-672.79 634.24,-665.81"/>
 </g>
 <!-- sourcefile~ohhelp.f90&#45;&gt;sourcefile~ohhelppic3d.f90 -->
-<g id="file~~graph~~FileGraph_edge48" class="edge">
+<g id="file~~graph~~FileGraph_edge55" class="edge">
 <title>sourcefile~ohhelp.f90&#45;&gt;sourcefile~ohhelppic3d.f90</title>
-<path fill="none" stroke="#000000" d="M791.5,-791.85C754,-796.24 742.88,-797.28 710,-815.85 691.1,-826.53 693.53,-839.38 674,-848.85 626.8,-871.76 609.94,-866.52 557.5,-867.85"/>
-<path fill="none" stroke="#000000" d="M555.5,-867.85C449.98,-870.53 423.01,-857.11 318,-867.85"/>
+<path fill="none" stroke="#000000" d="M555.5,-754.05C450.01,-750.27 409.3,-701.08 318,-754.05"/>
 </g>
 <!-- sourcefile~particle_injector.f90 -->
-<g id="file~~graph~~FileGraph_node29" class="node">
+<g id="file~~graph~~FileGraph_node31" class="node">
 <title>sourcefile~particle_injector.f90</title>
-<g id="a_file~~graph~~FileGraph_node29"><a xlink:href=".././sourcefile/particle_injector.f90.html" xlink:title="particle_injector.f90">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="851.5,-763.85 733.5,-763.85 733.5,-739.85 851.5,-739.85 851.5,-763.85"/>
-<text text-anchor="middle" x="792.5" y="-749.45" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">particle_injector.f90</text>
+<g id="a_file~~graph~~FileGraph_node31"><a xlink:href=".././sourcefile/particle_injector.f90.html" xlink:title="particle_injector.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="845.5,-608.05 727.5,-608.05 727.5,-584.05 845.5,-584.05 845.5,-608.05"/>
+<text text-anchor="middle" x="786.5" y="-593.65" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">particle_injector.f90</text>
 </a>
 </g>
 </g>
 <!-- sourcefile~ohhelp.f90&#45;&gt;sourcefile~particle_injector.f90 -->
-<g id="file~~graph~~FileGraph_edge64" class="edge">
+<g id="file~~graph~~FileGraph_edge72" class="edge">
 <title>sourcefile~ohhelp.f90&#45;&gt;sourcefile~particle_injector.f90</title>
-<path fill="none" stroke="#000000" d="M947.45,-784.61C923.12,-779.43 889.58,-772.29 860.02,-766"/>
-<polygon fill="#000000" stroke="#000000" points="860.67,-762.57 850.16,-763.91 859.21,-769.41 860.67,-762.57"/>
+<path fill="none" stroke="#000000" d="M934.46,-631.77C909.91,-625.8 876.13,-617.59 847.14,-610.55"/>
+<polygon fill="#000000" stroke="#000000" points="847.66,-607.07 837.12,-608.11 846.01,-613.87 847.66,-607.07"/>
 </g>
 <!-- sourcefile~ohhelp.f90&#45;&gt;sourcefile~particle_injector_manager.f90 -->
-<g id="file~~graph~~FileGraph_edge67" class="edge">
+<g id="file~~graph~~FileGraph_edge75" class="edge">
 <title>sourcefile~ohhelp.f90&#45;&gt;sourcefile~particle_injector_manager.f90</title>
-<path fill="none" stroke="#000000" d="M966.41,-779.76C946.74,-764.86 910.62,-740.33 875,-730.85 804.13,-711.99 776.45,-699.82 710,-730.85 687.42,-741.4 695.91,-761.98 674,-773.85 628.15,-798.7 607.96,-801.01 557.5,-787.85"/>
-<path fill="none" stroke="#000000" d="M555.5,-787.85C499.87,-772.75 483.32,-767.71 439,-730.85 388.93,-689.22 348.11,-622.78 329.26,-589.02"/>
-<polygon fill="#000000" stroke="#000000" points="332.21,-587.12 324.34,-580.04 326.08,-590.49 332.21,-587.12"/>
+<path fill="none" stroke="#000000" d="M947.77,-652.27C926.98,-664.04 893.73,-681.56 863,-692.05 797.44,-714.44 626.71,-756.97 557.5,-754.05"/>
+<path fill="none" stroke="#000000" d="M555.5,-754.05C432.85,-749.65 352.45,-591.92 326.83,-533.51"/>
+<polygon fill="#000000" stroke="#000000" points="329.97,-531.94 322.81,-524.12 323.53,-534.69 329.97,-531.94"/>
 </g>
 <!-- sourcefile~particle_injector_with_distribution.f90 -->
-<g id="file~~graph~~FileGraph_node31" class="node">
+<g id="file~~graph~~FileGraph_node33" class="node">
 <title>sourcefile~particle_injector_with_distribution.f90</title>
-<g id="a_file~~graph~~FileGraph_node31"><a xlink:href=".././sourcefile/particle_injector_with_distribution.f90.html" xlink:title="particle_injector_with_distribution.f90">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="662,-599.85 451,-599.85 451,-575.85 662,-575.85 662,-599.85"/>
-<text text-anchor="middle" x="556.5" y="-585.45" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">particle_injector_with_distribution.f90</text>
+<g id="a_file~~graph~~FileGraph_node33"><a xlink:href=".././sourcefile/particle_injector_with_distribution.f90.html" xlink:title="particle_injector_with_distribution.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="662,-524.05 451,-524.05 451,-500.05 662,-500.05 662,-524.05"/>
+<text text-anchor="middle" x="556.5" y="-509.65" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">particle_injector_with_distribution.f90</text>
 </a>
 </g>
 </g>
 <!-- sourcefile~ohhelp.f90&#45;&gt;sourcefile~particle_injector_with_distribution.f90 -->
-<g id="file~~graph~~FileGraph_edge77" class="edge">
+<g id="file~~graph~~FileGraph_edge85" class="edge">
 <title>sourcefile~ohhelp.f90&#45;&gt;sourcefile~particle_injector_with_distribution.f90</title>
-<path fill="none" stroke="#000000" d="M977.71,-779.7C967.21,-748.27 934.51,-664.16 875,-626.85 815.15,-589.33 736.39,-579.47 672.29,-579.04"/>
-<polygon fill="#000000" stroke="#000000" points="672.13,-575.54 662.14,-579.05 672.14,-582.54 672.13,-575.54"/>
+<path fill="none" stroke="#000000" d="M961.03,-627.98C945.86,-604.73 908.99,-554.17 863,-533.05 803.97,-505.94 731.7,-499.92 672.27,-501.04"/>
+<polygon fill="#000000" stroke="#000000" points="672,-497.55 662.09,-501.3 672.18,-504.54 672,-497.55"/>
 </g>
-<!-- sourcefile~ohhelp.f90&#45;&gt;sourcefile~poisson_solver.f90 -->
-<g id="file~~graph~~FileGraph_edge93" class="edge">
-<title>sourcefile~ohhelp.f90&#45;&gt;sourcefile~poisson_solver.f90</title>
-<path fill="none" stroke="#000000" d="M947.31,-797.11C896.48,-805.17 805.62,-820.62 793.5,-829.85"/>
+<!-- sourcefile~ohhelp.f90&#45;&gt;sourcefile~poisson_field_solver.f90 -->
+<g id="file~~graph~~FileGraph_edge102" class="edge">
+<title>sourcefile~ohhelp.f90&#45;&gt;sourcefile~poisson_field_solver.f90</title>
+<path fill="none" stroke="#000000" d="M555.5,-754.05C482.45,-751.43 400.42,-779.38 354.41,-798.02"/>
+<polygon fill="#000000" stroke="#000000" points="352.79,-794.91 344.88,-801.96 355.46,-801.38 352.79,-794.91"/>
 </g>
 <!-- sourcefile~ohhelppic3d.f90&#45;&gt;sourcefile~main.f90 -->
-<g id="file~~graph~~FileGraph_edge16" class="edge">
+<g id="file~~graph~~FileGraph_edge19" class="edge">
 <title>sourcefile~ohhelppic3d.f90&#45;&gt;sourcefile~main.f90</title>
-<path fill="none" stroke="#000000" d="M95.71,-867.85C87.17,-867.85 78.39,-867.85 70.16,-867.85"/>
-<polygon fill="#000000" stroke="#000000" points="70.09,-864.35 60.09,-867.85 70.09,-871.35 70.09,-864.35"/>
+<path fill="none" stroke="#000000" d="M95.71,-1054.05C87.17,-1054.05 78.39,-1054.05 70.16,-1054.05"/>
+<polygon fill="#000000" stroke="#000000" points="70.09,-1050.55 60.09,-1054.05 70.09,-1057.55 70.09,-1050.55"/>
 </g>
 <!-- sourcefile~ohparticles.f90 -->
-<g id="file~~graph~~FileGraph_node25" class="node">
+<g id="file~~graph~~FileGraph_node27" class="node">
 <title>sourcefile~ohparticles.f90</title>
-<g id="a_file~~graph~~FileGraph_node25"><a xlink:href=".././sourcefile/ohparticles.f90.html" xlink:title="ohparticles.f90">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="1182,-500.85 1090,-500.85 1090,-476.85 1182,-476.85 1182,-500.85"/>
-<text text-anchor="middle" x="1136" y="-486.45" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ohparticles.f90</text>
+<g id="a_file~~graph~~FileGraph_node27"><a xlink:href=".././sourcefile/ohparticles.f90.html" xlink:title="ohparticles.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="1204.5,-366.05 1112.5,-366.05 1112.5,-342.05 1204.5,-342.05 1204.5,-366.05"/>
+<text text-anchor="middle" x="1158.5" y="-351.65" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ohparticles.f90</text>
 </a>
 </g>
 </g>
 <!-- sourcefile~ohparticles.f90&#45;&gt;sourcefile~ohhelp.f90 -->
-<g id="file~~graph~~FileGraph_edge33" class="edge">
+<g id="file~~graph~~FileGraph_edge40" class="edge">
 <title>sourcefile~ohparticles.f90&#45;&gt;sourcefile~ohhelp.f90</title>
-<path fill="none" stroke="#000000" d="M1128.87,-501.11C1105.74,-547.37 1023.55,-711.75 994.1,-770.66"/>
-<polygon fill="#000000" stroke="#000000" points="990.88,-769.27 989.54,-779.78 997.14,-772.4 990.88,-769.27"/>
+<path fill="none" stroke="#000000" d="M1149.46,-366.34C1120.39,-410.8 1020.49,-563.6 983.99,-619.42"/>
+<polygon fill="#000000" stroke="#000000" points="981.05,-617.52 978.51,-627.8 986.91,-621.35 981.05,-617.52"/>
 </g>
 <!-- sourcefile~ohparticles.f90&#45;&gt;sourcefile~ohhelppic3d.f90 -->
-<g id="file~~graph~~FileGraph_edge49" class="edge">
+<g id="file~~graph~~FileGraph_edge56" class="edge">
 <title>sourcefile~ohparticles.f90&#45;&gt;sourcefile~ohhelppic3d.f90</title>
-<path fill="none" stroke="#000000" d="M1128.84,-476.78C1104.44,-430.5 1009.29,-263.98 875,-204.85 697.65,-126.77 624.09,-147.47 439,-204.85 376.71,-224.16 369.57,-247.93 318,-287.85"/>
-<path fill="none" stroke="#000000" d="M316,-287.85C223.52,-359.81 163.37,-747.83 149.55,-845.52"/>
-<polygon fill="#000000" stroke="#000000" points="146.07,-845.1 148.16,-855.49 153.01,-846.07 146.07,-845.1"/>
+<path fill="none" stroke="#000000" d="M1149.12,-342.01C1117.71,-298.03 1001.61,-145.54 863,-87.05 800.33,-60.6 621.54,-45.13 557.5,-68.05"/>
 </g>
 <!-- sourcefile~parameters.f90 -->
-<g id="file~~graph~~FileGraph_node26" class="node">
+<g id="file~~graph~~FileGraph_node28" class="node">
 <title>sourcefile~parameters.f90</title>
-<g id="a_file~~graph~~FileGraph_node26"><a xlink:href=".././sourcefile/parameters.f90.html" xlink:title="parameters.f90">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="604,-279.85 509,-279.85 509,-255.85 604,-255.85 604,-279.85"/>
-<text text-anchor="middle" x="556.5" y="-265.45" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">parameters.f90</text>
+<g id="a_file~~graph~~FileGraph_node28"><a xlink:href=".././sourcefile/parameters.f90.html" xlink:title="parameters.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="604,-444.05 509,-444.05 509,-420.05 604,-420.05 604,-444.05"/>
+<text text-anchor="middle" x="556.5" y="-429.65" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">parameters.f90</text>
 </a>
 </g>
 </g>
 <!-- sourcefile~parameters.f90&#45;&gt;sourcefile~ohhelppic3d.f90 -->
-<g id="file~~graph~~FileGraph_edge50" class="edge">
+<g id="file~~graph~~FileGraph_edge57" class="edge">
 <title>sourcefile~parameters.f90&#45;&gt;sourcefile~ohhelppic3d.f90</title>
-<path fill="none" stroke="#000000" d="M509,-257.88C456.75,-249.54 372.2,-244.99 318,-287.85"/>
+<path fill="none" stroke="#000000" d="M523.88,-420.05C499.27,-409.79 465.04,-393.48 439,-373.05 374.03,-322.08 381.9,-179.75 318,-232.05"/>
 </g>
 <!-- sourcefile~parameters.f90&#45;&gt;sourcefile~particle_injector_manager.f90 -->
-<g id="file~~graph~~FileGraph_edge68" class="edge">
+<g id="file~~graph~~FileGraph_edge76" class="edge">
 <title>sourcefile~parameters.f90&#45;&gt;sourcefile~particle_injector_manager.f90</title>
-<path fill="none" stroke="#000000" d="M522.2,-279.87C496.83,-290.39 462.4,-307.77 439,-331.85 375.87,-396.81 338.31,-501.3 324.3,-546.2"/>
-<polygon fill="#000000" stroke="#000000" points="320.94,-545.22 321.39,-555.8 327.64,-547.25 320.94,-545.22"/>
+<path fill="none" stroke="#000000" d="M509,-440.21C487.43,-444.55 461.62,-450.56 439,-458.05 408.15,-468.26 374.51,-483.64 350.55,-495.38"/>
+<polygon fill="#000000" stroke="#000000" points="348.95,-492.27 341.54,-499.84 352.06,-498.54 348.95,-492.27"/>
 </g>
 <!-- sourcefile~particle_boundaries.f90 -->
-<g id="file~~graph~~FileGraph_node27" class="node">
+<g id="file~~graph~~FileGraph_node29" class="node">
 <title>sourcefile~particle_boundaries.f90</title>
-<g id="a_file~~graph~~FileGraph_node27"><a xlink:href=".././sourcefile/particle_boundaries.f90.html" xlink:title="particle_boundaries.f90">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="386.5,-159.85 247.5,-159.85 247.5,-135.85 386.5,-135.85 386.5,-159.85"/>
-<text text-anchor="middle" x="317" y="-145.45" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">particle_boundaries.f90</text>
+<g id="a_file~~graph~~FileGraph_node29"><a xlink:href=".././sourcefile/particle_boundaries.f90.html" xlink:title="particle_boundaries.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="386.5,-1168.05 247.5,-1168.05 247.5,-1144.05 386.5,-1144.05 386.5,-1168.05"/>
+<text text-anchor="middle" x="317" y="-1153.65" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">particle_boundaries.f90</text>
 </a>
 </g>
 </g>
 <!-- sourcefile~particle_boundaries.f90&#45;&gt;sourcefile~ohhelppic3d.f90 -->
-<g id="file~~graph~~FileGraph_edge51" class="edge">
+<g id="file~~graph~~FileGraph_edge58" class="edge">
 <title>sourcefile~particle_boundaries.f90&#45;&gt;sourcefile~ohhelppic3d.f90</title>
-<path fill="none" stroke="#000000" d="M304.97,-160C286.31,-181.3 248.82,-227.56 231,-273.85 149.87,-484.64 145.55,-764.5 146.13,-845.2"/>
-<polygon fill="#000000" stroke="#000000" points="142.64,-845.67 146.24,-855.63 149.64,-845.59 142.64,-845.67"/>
+<path fill="none" stroke="#000000" d="M263.72,-1143.98C252.54,-1140.34 241.07,-1135.75 231,-1130.05 204.73,-1115.19 179.68,-1090.95 163.78,-1073.85"/>
+<polygon fill="#000000" stroke="#000000" points="166.05,-1071.15 156.74,-1066.1 160.87,-1075.86 166.05,-1071.15"/>
 </g>
 <!-- sourcefile~particle_boundary.f90 -->
-<g id="file~~graph~~FileGraph_node28" class="node">
+<g id="file~~graph~~FileGraph_node30" class="node">
 <title>sourcefile~particle_boundary.f90</title>
-<g id="a_file~~graph~~FileGraph_node28"><a xlink:href=".././sourcefile/particle_boundary.f90.html" xlink:title="particle_boundary.f90">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="856.5,-138.85 728.5,-138.85 728.5,-114.85 856.5,-114.85 856.5,-138.85"/>
-<text text-anchor="middle" x="792.5" y="-124.45" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">particle_boundary.f90</text>
+<g id="a_file~~graph~~FileGraph_node30"><a xlink:href=".././sourcefile/particle_boundary.f90.html" xlink:title="particle_boundary.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="850.5,-1206.05 722.5,-1206.05 722.5,-1182.05 850.5,-1182.05 850.5,-1206.05"/>
+<text text-anchor="middle" x="786.5" y="-1191.65" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">particle_boundary.f90</text>
 </a>
 </g>
 </g>
 <!-- sourcefile~particle_boundary.f90&#45;&gt;sourcefile~particle_boundaries.f90 -->
-<g id="file~~graph~~FileGraph_edge62" class="edge">
+<g id="file~~graph~~FileGraph_edge70" class="edge">
 <title>sourcefile~particle_boundary.f90&#45;&gt;sourcefile~particle_boundaries.f90</title>
-<path fill="none" stroke="#000000" d="M728.13,-129.66C642.51,-133.46 489.92,-140.23 396.94,-144.35"/>
-<polygon fill="#000000" stroke="#000000" points="396.58,-140.86 386.75,-144.8 396.89,-147.86 396.58,-140.86"/>
+<path fill="none" stroke="#000000" d="M729.87,-1182C712.1,-1178.58 692.29,-1175.2 674,-1173.05 579.26,-1161.92 469.52,-1158.03 397.2,-1156.69"/>
+<polygon fill="#000000" stroke="#000000" points="396.87,-1153.19 386.81,-1156.52 396.75,-1160.19 396.87,-1153.19"/>
 </g>
 <!-- sourcefile~periodic_particle_boundary.f90 -->
-<g id="file~~graph~~FileGraph_node37" class="node">
+<g id="file~~graph~~FileGraph_node39" class="node">
 <title>sourcefile~periodic_particle_boundary.f90</title>
-<g id="a_file~~graph~~FileGraph_node37"><a xlink:href=".././sourcefile/periodic_particle_boundary.f90.html" xlink:title="periodic_particle_boundary.f90">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="645,-119.85 468,-119.85 468,-95.85 645,-95.85 645,-119.85"/>
-<text text-anchor="middle" x="556.5" y="-105.45" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">periodic_particle_boundary.f90</text>
+<g id="a_file~~graph~~FileGraph_node39"><a xlink:href=".././sourcefile/periodic_particle_boundary.f90.html" xlink:title="periodic_particle_boundary.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="645,-1206.05 468,-1206.05 468,-1182.05 645,-1182.05 645,-1206.05"/>
+<text text-anchor="middle" x="556.5" y="-1191.65" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">periodic_particle_boundary.f90</text>
 </a>
 </g>
 </g>
 <!-- sourcefile~particle_boundary.f90&#45;&gt;sourcefile~periodic_particle_boundary.f90 -->
-<g id="file~~graph~~FileGraph_edge87" class="edge">
+<g id="file~~graph~~FileGraph_edge95" class="edge">
 <title>sourcefile~particle_boundary.f90&#45;&gt;sourcefile~periodic_particle_boundary.f90</title>
-<path fill="none" stroke="#000000" d="M728.48,-121.74C706,-119.91 680.11,-117.81 655.38,-115.8"/>
-<polygon fill="#000000" stroke="#000000" points="655.49,-112.3 645.24,-114.98 654.93,-119.27 655.49,-112.3"/>
+<path fill="none" stroke="#000000" d="M722.29,-1194.05C701.51,-1194.05 677.9,-1194.05 655.18,-1194.05"/>
+<polygon fill="#000000" stroke="#000000" points="655.16,-1190.55 645.16,-1194.05 655.16,-1197.55 655.16,-1190.55"/>
 </g>
 <!-- sourcefile~particle_injector.f90&#45;&gt;sourcefile~no_particle_injector.f90 -->
-<g id="file~~graph~~FileGraph_edge29" class="edge">
+<g id="file~~graph~~FileGraph_edge36" class="edge">
 <title>sourcefile~particle_injector.f90&#45;&gt;sourcefile~no_particle_injector.f90</title>
-<path fill="none" stroke="#000000" d="M745.79,-763.97C733.88,-767.79 721.24,-772.44 710,-777.85 692.67,-786.19 691.68,-794.3 674,-801.85 661.58,-807.16 647.93,-811.45 634.49,-814.9"/>
-<polygon fill="#000000" stroke="#000000" points="633.64,-811.5 624.75,-817.26 635.3,-818.3 633.64,-811.5"/>
+<path fill="none" stroke="#000000" d="M748.75,-608.12C736.08,-612.93 722.06,-619.01 710,-626.05 692.25,-636.4 692.69,-646.52 674,-655.05 661.66,-660.68 647.95,-664.8 634.38,-667.82"/>
+<polygon fill="#000000" stroke="#000000" points="633.65,-664.4 624.55,-669.83 635.05,-671.26 633.65,-664.4"/>
 </g>
 <!-- sourcefile~particle_injector.f90&#45;&gt;sourcefile~particle_injector_manager.f90 -->
-<g id="file~~graph~~FileGraph_edge69" class="edge">
+<g id="file~~graph~~FileGraph_edge77" class="edge">
 <title>sourcefile~particle_injector.f90&#45;&gt;sourcefile~particle_injector_manager.f90</title>
-<path fill="none" stroke="#000000" d="M743.25,-763.88C685.31,-777.51 591.66,-796.76 557.5,-787.85"/>
+<path fill="none" stroke="#000000" d="M727.16,-599.21C680.95,-600.83 614.85,-601.18 557.5,-594.05"/>
 </g>
 <!-- sourcefile~particle_injector.f90&#45;&gt;sourcefile~particle_injector_with_distribution.f90 -->
-<g id="file~~graph~~FileGraph_edge78" class="edge">
+<g id="file~~graph~~FileGraph_edge86" class="edge">
 <title>sourcefile~particle_injector.f90&#45;&gt;sourcefile~particle_injector_with_distribution.f90</title>
-<path fill="none" stroke="#000000" d="M780.02,-739.7C759.93,-718.89 716.48,-675.85 674,-646.85 649.32,-630 619.16,-614.86 595.71,-604.13"/>
-<polygon fill="#000000" stroke="#000000" points="596.99,-600.87 586.43,-599.96 594.12,-607.25 596.99,-600.87"/>
+<path fill="none" stroke="#000000" d="M727.88,-583.93C721.61,-581.48 715.51,-578.55 710,-575.05 689.26,-561.85 695.33,-545.27 674,-533.05 670.73,-531.18 667.33,-529.46 663.84,-527.9"/>
+<polygon fill="#000000" stroke="#000000" points="664.99,-524.59 654.41,-524.09 662.37,-531.08 664.99,-524.59"/>
 </g>
 <!-- sourcefile~particle_injector_manager.f90&#45;&gt;sourcefile~ohhelppic3d.f90 -->
-<g id="file~~graph~~FileGraph_edge52" class="edge">
+<g id="file~~graph~~FileGraph_edge59" class="edge">
 <title>sourcefile~particle_injector_manager.f90&#45;&gt;sourcefile~ohhelppic3d.f90</title>
-<path fill="none" stroke="#000000" d="M309.15,-579.98C283.27,-625.78 191.35,-788.48 158.38,-846.83"/>
-<polygon fill="#000000" stroke="#000000" points="155.31,-845.14 153.44,-855.57 161.41,-848.59 155.31,-845.14"/>
+<path fill="none" stroke="#000000" d="M310.98,-524.26C297.16,-558.15 257.79,-656.36 231,-740.05 196.36,-848.24 163.97,-980.36 151.69,-1031.94"/>
+<polygon fill="#000000" stroke="#000000" points="148.22,-1031.41 149.32,-1041.95 155.03,-1033.03 148.22,-1031.41"/>
 </g>
 <!-- sourcefile~particle_injector_with_distribution.f90&#45;&gt;sourcefile~particle_injector_manager.f90 -->
-<g id="file~~graph~~FileGraph_edge70" class="edge">
+<g id="file~~graph~~FileGraph_edge78" class="edge">
 <title>sourcefile~particle_injector_with_distribution.f90&#45;&gt;sourcefile~particle_injector_manager.f90</title>
-<path fill="none" stroke="#000000" d="M450.98,-579.05C438.54,-578 425.88,-576.94 413.57,-575.9"/>
-<polygon fill="#000000" stroke="#000000" points="413.58,-572.39 403.32,-575.04 412.99,-579.36 413.58,-572.39"/>
+<path fill="none" stroke="#000000" d="M450.98,-512.05C438.54,-512.05 425.88,-512.05 413.57,-512.05"/>
+<polygon fill="#000000" stroke="#000000" points="413.32,-508.55 403.32,-512.05 413.32,-515.55 413.32,-508.55"/>
 </g>
 <!-- sourcefile~particle_mover.f90 -->
-<g id="file~~graph~~FileGraph_node32" class="node">
+<g id="file~~graph~~FileGraph_node34" class="node">
 <title>sourcefile~particle_mover.f90</title>
-<g id="a_file~~graph~~FileGraph_node32"><a xlink:href=".././sourcefile/particle_mover.f90.html" xlink:title="particle_mover.f90">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="848.5,-39.85 736.5,-39.85 736.5,-15.85 848.5,-15.85 848.5,-39.85"/>
-<text text-anchor="middle" x="792.5" y="-25.45" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">particle_mover.f90</text>
+<g id="a_file~~graph~~FileGraph_node34"><a xlink:href=".././sourcefile/particle_mover.f90.html" xlink:title="particle_mover.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="842.5,-40.05 730.5,-40.05 730.5,-16.05 842.5,-16.05 842.5,-40.05"/>
+<text text-anchor="middle" x="786.5" y="-25.65" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">particle_mover.f90</text>
 </a>
 </g>
 </g>
 <!-- sourcefile~particle_mover.f90&#45;&gt;sourcefile~ohhelppic3d.f90 -->
-<g id="file~~graph~~FileGraph_edge53" class="edge">
+<g id="file~~graph~~FileGraph_edge60" class="edge">
 <title>sourcefile~particle_mover.f90&#45;&gt;sourcefile~ohhelppic3d.f90</title>
-<path fill="none" stroke="#000000" d="M736.24,-37.92C716.6,-41.45 694.33,-45.39 674,-48.85 575.46,-65.62 298.93,-53.52 231,-126.85 180.76,-181.09 152.91,-728.3 147.48,-845.74"/>
-<polygon fill="#000000" stroke="#000000" points="143.99,-845.58 147.03,-855.73 150.98,-845.9 143.99,-845.58"/>
+<path fill="none" stroke="#000000" d="M730.25,-38.73C712.33,-42.12 692.33,-45.83 674,-49.05 622.33,-58.13 606.9,-50.38 557.5,-68.05"/>
+<path fill="none" stroke="#000000" d="M555.5,-68.05C506.1,-85.72 484.57,-61.05 439,-87.05 366.1,-128.65 382.82,-178.72 318,-232.05"/>
+<path fill="none" stroke="#000000" d="M316,-232.05C187.37,-337.87 153.3,-910.28 147.49,-1031.49"/>
+<polygon fill="#000000" stroke="#000000" points="143.98,-1031.63 147.01,-1041.78 150.97,-1031.95 143.98,-1031.63"/>
 </g>
 <!-- sourcefile~particle_mover_boris.f90 -->
-<g id="file~~graph~~FileGraph_node33" class="node">
+<g id="file~~graph~~FileGraph_node35" class="node">
 <title>sourcefile~particle_mover_boris.f90</title>
-<g id="a_file~~graph~~FileGraph_node33"><a xlink:href=".././sourcefile/particle_mover_boris.f90.html" xlink:title="particle_mover_boris.f90">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="629,-39.85 484,-39.85 484,-15.85 629,-15.85 629,-39.85"/>
-<text text-anchor="middle" x="556.5" y="-25.45" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">particle_mover_boris.f90</text>
+<g id="a_file~~graph~~FileGraph_node35"><a xlink:href=".././sourcefile/particle_mover_boris.f90.html" xlink:title="particle_mover_boris.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="629,-40.05 484,-40.05 484,-16.05 629,-16.05 629,-40.05"/>
+<text text-anchor="middle" x="556.5" y="-25.65" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">particle_mover_boris.f90</text>
 </a>
 </g>
 </g>
 <!-- sourcefile~particle_mover.f90&#45;&gt;sourcefile~particle_mover_boris.f90 -->
-<g id="file~~graph~~FileGraph_edge82" class="edge">
+<g id="file~~graph~~FileGraph_edge90" class="edge">
 <title>sourcefile~particle_mover.f90&#45;&gt;sourcefile~particle_mover_boris.f90</title>
-<path fill="none" stroke="#000000" d="M736.34,-27.85C707.45,-27.85 671.49,-27.85 639.41,-27.85"/>
-<polygon fill="#000000" stroke="#000000" points="639.14,-24.35 629.14,-27.85 639.14,-31.35 639.14,-24.35"/>
+<path fill="none" stroke="#000000" d="M730.31,-28.05C702.96,-28.05 669.38,-28.05 639.13,-28.05"/>
+<polygon fill="#000000" stroke="#000000" points="639.01,-24.55 629.01,-28.05 639.01,-31.55 639.01,-24.55"/>
 </g>
 <!-- sourcefile~particle_mover_factory.f90 -->
-<g id="file~~graph~~FileGraph_node34" class="node">
+<g id="file~~graph~~FileGraph_node36" class="node">
 <title>sourcefile~particle_mover_factory.f90</title>
-<g id="a_file~~graph~~FileGraph_node34"><a xlink:href=".././sourcefile/particle_mover_factory.f90.html" xlink:title="particle_mover_factory.f90">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="394,-39.85 240,-39.85 240,-15.85 394,-15.85 394,-39.85"/>
-<text text-anchor="middle" x="317" y="-25.45" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">particle_mover_factory.f90</text>
+<g id="a_file~~graph~~FileGraph_node36"><a xlink:href=".././sourcefile/particle_mover_factory.f90.html" xlink:title="particle_mover_factory.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="394,-40.05 240,-40.05 240,-16.05 394,-16.05 394,-40.05"/>
+<text text-anchor="middle" x="317" y="-25.65" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">particle_mover_factory.f90</text>
 </a>
 </g>
 </g>
 <!-- sourcefile~particle_mover.f90&#45;&gt;sourcefile~particle_mover_factory.f90 -->
-<g id="file~~graph~~FileGraph_edge83" class="edge">
+<g id="file~~graph~~FileGraph_edge91" class="edge">
 <title>sourcefile~particle_mover.f90&#45;&gt;sourcefile~particle_mover_factory.f90</title>
-<path fill="none" stroke="#000000" d="M736.48,-15.95C716.86,-12.25 694.54,-8.67 674,-6.85 569.96,2.37 543.06,2.11 439,-6.85 421.51,-8.36 402.75,-11.07 385.35,-14.05"/>
-<polygon fill="#000000" stroke="#000000" points="384.52,-10.64 375.29,-15.83 385.74,-17.54 384.52,-10.64"/>
+<path fill="none" stroke="#000000" d="M732.76,-16.03C714.28,-12.38 693.32,-8.85 674,-7.05 570.01,2.66 543.06,1.91 439,-7.05 421.51,-8.55 402.75,-11.26 385.35,-14.25"/>
+<polygon fill="#000000" stroke="#000000" points="384.52,-10.84 375.29,-16.03 385.74,-17.73 384.52,-10.84"/>
 </g>
 <!-- sourcefile~particle_mover_boris.f90&#45;&gt;sourcefile~particle_mover_factory.f90 -->
-<g id="file~~graph~~FileGraph_edge84" class="edge">
+<g id="file~~graph~~FileGraph_edge92" class="edge">
 <title>sourcefile~particle_mover_boris.f90&#45;&gt;sourcefile~particle_mover_factory.f90</title>
-<path fill="none" stroke="#000000" d="M483.92,-27.85C458.96,-27.85 430.68,-27.85 404.63,-27.85"/>
-<polygon fill="#000000" stroke="#000000" points="404.39,-24.35 394.39,-27.85 404.39,-31.35 404.39,-24.35"/>
+<path fill="none" stroke="#000000" d="M483.92,-28.05C458.96,-28.05 430.68,-28.05 404.63,-28.05"/>
+<polygon fill="#000000" stroke="#000000" points="404.39,-24.55 394.39,-28.05 404.39,-31.55 404.39,-24.55"/>
 </g>
 <!-- sourcefile~particle_mover_factory.f90&#45;&gt;sourcefile~ohhelppic3d.f90 -->
-<g id="file~~graph~~FileGraph_edge54" class="edge">
+<g id="file~~graph~~FileGraph_edge61" class="edge">
 <title>sourcefile~particle_mover_factory.f90&#45;&gt;sourcefile~ohhelppic3d.f90</title>
-<path fill="none" stroke="#000000" d="M248.58,-39.91C241.89,-43.46 235.81,-48.01 231,-53.85 179.17,-116.81 152.34,-721.52 147.36,-845.65"/>
-<polygon fill="#000000" stroke="#000000" points="143.85,-845.71 146.95,-855.84 150.85,-845.98 143.85,-845.71"/>
+<path fill="none" stroke="#000000" d="M308.76,-40.43C291.86,-70 249.82,-147.52 231,-218.05 147.09,-532.6 145.26,-934.03 146.17,-1031.84"/>
+<polygon fill="#000000" stroke="#000000" points="142.67,-1032.05 146.29,-1042 149.67,-1031.97 142.67,-1032.05"/>
 </g>
 <!-- sourcefile~pcg64.f90 -->
-<g id="file~~graph~~FileGraph_node35" class="node">
+<g id="file~~graph~~FileGraph_node37" class="node">
 <title>sourcefile~pcg64.f90</title>
-<g id="a_file~~graph~~FileGraph_node35"><a xlink:href=".././sourcefile/pcg64.f90.html" xlink:title="pcg64.f90">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="825.5,-237.85 759.5,-237.85 759.5,-213.85 825.5,-213.85 825.5,-237.85"/>
-<text text-anchor="middle" x="792.5" y="-223.45" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">pcg64.f90</text>
+<g id="a_file~~graph~~FileGraph_node37"><a xlink:href=".././sourcefile/pcg64.f90.html" xlink:title="pcg64.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="819.5,-120.05 753.5,-120.05 753.5,-96.05 819.5,-96.05 819.5,-120.05"/>
+<text text-anchor="middle" x="786.5" y="-105.65" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">pcg64.f90</text>
 </a>
 </g>
 </g>
 <!-- sourcefile~pcg_generator.f90 -->
-<g id="file~~graph~~FileGraph_node36" class="node">
+<g id="file~~graph~~FileGraph_node38" class="node">
 <title>sourcefile~pcg_generator.f90</title>
-<g id="a_file~~graph~~FileGraph_node36"><a xlink:href=".././sourcefile/pcg_generator.f90.html" xlink:title="pcg_generator.f90">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="611,-237.85 502,-237.85 502,-213.85 611,-213.85 611,-237.85"/>
-<text text-anchor="middle" x="556.5" y="-223.45" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">pcg_generator.f90</text>
+<g id="a_file~~graph~~FileGraph_node38"><a xlink:href=".././sourcefile/pcg_generator.f90.html" xlink:title="pcg_generator.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="611,-120.05 502,-120.05 502,-96.05 611,-96.05 611,-120.05"/>
+<text text-anchor="middle" x="556.5" y="-105.65" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">pcg_generator.f90</text>
 </a>
 </g>
 </g>
 <!-- sourcefile~pcg64.f90&#45;&gt;sourcefile~pcg_generator.f90 -->
-<g id="file~~graph~~FileGraph_edge85" class="edge">
+<g id="file~~graph~~FileGraph_edge93" class="edge">
 <title>sourcefile~pcg64.f90&#45;&gt;sourcefile~pcg_generator.f90</title>
-<path fill="none" stroke="#000000" d="M759.45,-225.85C724.04,-225.85 666.08,-225.85 621.32,-225.85"/>
-<polygon fill="#000000" stroke="#000000" points="621.12,-222.35 611.12,-225.85 621.12,-229.35 621.12,-222.35"/>
+<path fill="none" stroke="#000000" d="M753.32,-108.05C719.11,-108.05 664.13,-108.05 621.13,-108.05"/>
+<polygon fill="#000000" stroke="#000000" points="621.03,-104.55 611.03,-108.05 621.03,-111.55 621.03,-104.55"/>
 </g>
 <!-- sourcefile~pcg_generator.f90&#45;&gt;sourcefile~ohhelppic3d.f90 -->
-<g id="file~~graph~~FileGraph_edge55" class="edge">
+<g id="file~~graph~~FileGraph_edge62" class="edge">
 <title>sourcefile~pcg_generator.f90&#45;&gt;sourcefile~ohhelppic3d.f90</title>
-<path fill="none" stroke="#000000" d="M501.94,-227.71C449.89,-232.08 371.14,-245.82 318,-287.85"/>
+<path fill="none" stroke="#000000" d="M501.79,-111.76C481.39,-114.68 458.41,-119.87 439,-129.05 375.16,-159.24 372.65,-187.32 318,-232.05"/>
 </g>
 <!-- sourcefile~periodic_particle_boundary.f90&#45;&gt;sourcefile~particle_boundaries.f90 -->
-<g id="file~~graph~~FileGraph_edge63" class="edge">
+<g id="file~~graph~~FileGraph_edge71" class="edge">
 <title>sourcefile~periodic_particle_boundary.f90&#45;&gt;sourcefile~particle_boundaries.f90</title>
-<path fill="none" stroke="#000000" d="M484.24,-119.85C456.74,-124.49 425.17,-129.8 396.98,-134.55"/>
-<polygon fill="#000000" stroke="#000000" points="396.04,-131.16 386.76,-136.27 397.2,-138.06 396.04,-131.16"/>
+<path fill="none" stroke="#000000" d="M480.35,-1182.02C453.72,-1177.76 423.69,-1172.96 396.77,-1168.65"/>
+<polygon fill="#000000" stroke="#000000" points="397.04,-1165.15 386.62,-1167.03 395.94,-1172.06 397.04,-1165.15"/>
 </g>
-<!-- sourcefile~poisson_solver.f90&#45;&gt;sourcefile~ohhelppic3d.f90 -->
-<g id="file~~graph~~FileGraph_edge56" class="edge">
-<title>sourcefile~poisson_solver.f90&#45;&gt;sourcefile~ohhelppic3d.f90</title>
-<path fill="none" stroke="#000000" d="M547.76,-960.05C519.79,-1002.44 420.22,-1139.03 318,-1105.85"/>
-<path fill="none" stroke="#000000" d="M316,-1105.85C217.82,-1073.98 168.63,-942.41 152.58,-889.77"/>
-<polygon fill="#000000" stroke="#000000" points="155.91,-888.68 149.73,-880.07 149.19,-890.65 155.91,-888.68"/>
+<!-- sourcefile~poisson_field_solver.f90&#45;&gt;sourcefile~ohhelppic3d.f90 -->
+<g id="file~~graph~~FileGraph_edge63" class="edge">
+<title>sourcefile~poisson_field_solver.f90&#45;&gt;sourcefile~ohhelppic3d.f90</title>
+<path fill="none" stroke="#000000" d="M307.36,-826.28C280.05,-864.96 195.33,-984.91 161.08,-1033.4"/>
+<polygon fill="#000000" stroke="#000000" points="158.03,-1031.65 155.12,-1041.84 163.75,-1035.69 158.03,-1031.65"/>
+</g>
+<!-- sourcefile~poisson_solver3d.f90&#45;&gt;sourcefile~poisson_field_solver.f90 -->
+<g id="file~~graph~~FileGraph_edge103" class="edge">
+<title>sourcefile~poisson_solver3d.f90&#45;&gt;sourcefile~poisson_field_solver.f90</title>
+<path fill="none" stroke="#000000" d="M747.35,-886.19C687.39,-904.95 575.97,-938.42 557.5,-934.05"/>
+<path fill="none" stroke="#000000" d="M555.5,-934.05C472.15,-914.34 384.96,-860.24 343.21,-831.9"/>
+<polygon fill="#000000" stroke="#000000" points="345,-828.88 334.77,-826.1 341.03,-834.65 345,-828.88"/>
 </g>
 <!-- sourcefile~position_distribution.f90 -->
-<g id="file~~graph~~FileGraph_node39" class="node">
+<g id="file~~graph~~FileGraph_node42" class="node">
 <title>sourcefile~position_distribution.f90</title>
-<g id="a_file~~graph~~FileGraph_node39"><a xlink:href=".././sourcefile/position_distribution.f90.html" xlink:title="position_distribution.f90">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="862.5,-539.85 722.5,-539.85 722.5,-515.85 862.5,-515.85 862.5,-539.85"/>
-<text text-anchor="middle" x="792.5" y="-525.45" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">position_distribution.f90</text>
+<g id="a_file~~graph~~FileGraph_node42"><a xlink:href=".././sourcefile/position_distribution.f90.html" xlink:title="position_distribution.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="856.5,-566.05 716.5,-566.05 716.5,-542.05 856.5,-542.05 856.5,-566.05"/>
+<text text-anchor="middle" x="786.5" y="-551.65" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">position_distribution.f90</text>
 </a>
 </g>
 </g>
 <!-- sourcefile~position_distribution.f90&#45;&gt;sourcefile~no_position_distribution.f90 -->
-<g id="file~~graph~~FileGraph_edge30" class="edge">
+<g id="file~~graph~~FileGraph_edge37" class="edge">
 <title>sourcefile~position_distribution.f90&#45;&gt;sourcefile~no_position_distribution.f90</title>
-<path fill="none" stroke="#000000" d="M776.03,-515.82C754.02,-498.95 712.09,-467.78 674,-444.85 647.71,-429.03 616.65,-413.44 593.22,-402.27"/>
-<polygon fill="#000000" stroke="#000000" points="594.54,-399.02 584,-397.91 591.55,-405.35 594.54,-399.02"/>
+<path fill="none" stroke="#000000" d="M730.26,-566.12C723.24,-568.6 716.31,-571.55 710,-575.05 691.02,-585.58 693.24,-598.01 674,-608.05 665.25,-612.61 655.72,-616.38 646.01,-619.48"/>
+<polygon fill="#000000" stroke="#000000" points="644.85,-616.18 636.26,-622.38 646.84,-622.89 644.85,-616.18"/>
 </g>
 <!-- sourcefile~position_distribution.f90&#45;&gt;sourcefile~particle_injector_manager.f90 -->
-<g id="file~~graph~~FileGraph_edge71" class="edge">
+<g id="file~~graph~~FileGraph_edge79" class="edge">
 <title>sourcefile~position_distribution.f90&#45;&gt;sourcefile~particle_injector_manager.f90</title>
-<path fill="none" stroke="#000000" d="M722.4,-533.69C640.87,-540.58 504.89,-552.06 413.37,-559.8"/>
-<polygon fill="#000000" stroke="#000000" points="412.94,-556.32 403.27,-560.65 413.53,-563.29 412.94,-556.32"/>
+<path fill="none" stroke="#000000" d="M736.58,-566.1C680.29,-579.35 591.3,-598.25 557.5,-594.05"/>
+<path fill="none" stroke="#000000" d="M555.5,-594.05C503.44,-587.57 488.78,-591.59 439,-575.05 405.27,-563.84 369.5,-544.12 345.68,-529.72"/>
+<polygon fill="#000000" stroke="#000000" points="347.21,-526.55 336.86,-524.3 343.54,-532.52 347.21,-526.55"/>
 </g>
 <!-- sourcefile~position_distribution.f90&#45;&gt;sourcefile~particle_injector_with_distribution.f90 -->
-<g id="file~~graph~~FileGraph_edge79" class="edge">
+<g id="file~~graph~~FileGraph_edge87" class="edge">
 <title>sourcefile~position_distribution.f90&#45;&gt;sourcefile~particle_injector_with_distribution.f90</title>
-<path fill="none" stroke="#000000" d="M752.23,-539.88C729.48,-546.68 700.23,-555.14 674,-561.85 658.12,-565.92 640.94,-569.95 624.77,-573.59"/>
-<polygon fill="#000000" stroke="#000000" points="623.85,-570.21 614.85,-575.8 625.37,-577.04 623.85,-570.21"/>
+<path fill="none" stroke="#000000" d="M722.13,-542.02C706.41,-539.06 689.59,-535.92 674,-533.05 661.28,-530.7 647.77,-528.24 634.62,-525.86"/>
+<polygon fill="#000000" stroke="#000000" points="635.13,-522.4 624.67,-524.06 633.88,-529.29 635.13,-522.4"/>
 </g>
 <!-- sourcefile~position_random_uniform_distribution.f90 -->
-<g id="file~~graph~~FileGraph_node40" class="node">
+<g id="file~~graph~~FileGraph_node43" class="node">
 <title>sourcefile~position_random_uniform_distribution.f90</title>
-<g id="a_file~~graph~~FileGraph_node40"><a xlink:href=".././sourcefile/position_random_uniform_distribution.f90.html" xlink:title="position_random_uniform_distribution.f90">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="674,-477.85 439,-477.85 439,-453.85 674,-453.85 674,-477.85"/>
-<text text-anchor="middle" x="556.5" y="-463.45" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">position_random_uniform_distribution.f90</text>
+<g id="a_file~~graph~~FileGraph_node43"><a xlink:href=".././sourcefile/position_random_uniform_distribution.f90.html" xlink:title="position_random_uniform_distribution.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="674,-566.05 439,-566.05 439,-542.05 674,-542.05 674,-566.05"/>
+<text text-anchor="middle" x="556.5" y="-551.65" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">position_random_uniform_distribution.f90</text>
 </a>
 </g>
 </g>
 <!-- sourcefile~position_distribution.f90&#45;&gt;sourcefile~position_random_uniform_distribution.f90 -->
-<g id="file~~graph~~FileGraph_edge95" class="edge">
+<g id="file~~graph~~FileGraph_edge109" class="edge">
 <title>sourcefile~position_distribution.f90&#45;&gt;sourcefile~position_random_uniform_distribution.f90</title>
-<path fill="none" stroke="#000000" d="M760.99,-515.72C737.51,-506.75 704.09,-494.76 674,-486.85 664.38,-484.33 654.24,-482 644.12,-479.9"/>
-<polygon fill="#000000" stroke="#000000" points="644.51,-476.41 634.02,-477.87 643.13,-483.27 644.51,-476.41"/>
+<path fill="none" stroke="#000000" d="M716.47,-554.05C706.24,-554.05 695.43,-554.05 684.45,-554.05"/>
+<polygon fill="#000000" stroke="#000000" points="684.34,-550.55 674.34,-554.05 684.34,-557.55 684.34,-550.55"/>
 </g>
 <!-- sourcefile~position_random_uniform_distribution.f90&#45;&gt;sourcefile~particle_injector_manager.f90 -->
-<g id="file~~graph~~FileGraph_edge72" class="edge">
+<g id="file~~graph~~FileGraph_edge80" class="edge">
 <title>sourcefile~position_random_uniform_distribution.f90&#45;&gt;sourcefile~particle_injector_manager.f90</title>
-<path fill="none" stroke="#000000" d="M466.63,-477.91C457.14,-480.36 447.76,-483.31 439,-486.85 401.01,-502.21 362.62,-530.59 339.56,-549.35"/>
-<polygon fill="#000000" stroke="#000000" points="337.26,-546.71 331.79,-555.78 341.73,-552.1 337.26,-546.71"/>
+<path fill="none" stroke="#000000" d="M487.44,-542.01C458.87,-536.96 425.48,-531.06 395.93,-525.83"/>
+<polygon fill="#000000" stroke="#000000" points="396.52,-522.38 386.07,-524.09 395.31,-529.27 396.52,-522.38"/>
 </g>
 <!-- sourcefile~random_generator.f90 -->
-<g id="file~~graph~~FileGraph_node41" class="node">
+<g id="file~~graph~~FileGraph_node44" class="node">
 <title>sourcefile~random_generator.f90</title>
-<g id="a_file~~graph~~FileGraph_node41"><a xlink:href=".././sourcefile/random_generator.f90.html" xlink:title="random_generator.f90">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="858.5,-457.85 726.5,-457.85 726.5,-433.85 858.5,-433.85 858.5,-457.85"/>
-<text text-anchor="middle" x="792.5" y="-443.45" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">random_generator.f90</text>
+<g id="a_file~~graph~~FileGraph_node44"><a xlink:href=".././sourcefile/random_generator.f90.html" xlink:title="random_generator.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="852.5,-325.05 720.5,-325.05 720.5,-301.05 852.5,-301.05 852.5,-325.05"/>
+<text text-anchor="middle" x="786.5" y="-310.65" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">random_generator.f90</text>
 </a>
 </g>
+</g>
+<!-- sourcefile~random_generator.f90&#45;&gt;sourcefile~flux_velocity_maxwell_distribution3d.f90 -->
+<g id="file~~graph~~FileGraph_edge7" class="edge">
+<title>sourcefile~random_generator.f90&#45;&gt;sourcefile~flux_velocity_maxwell_distribution3d.f90</title>
+<path fill="none" stroke="#000000" d="M769.21,-300.86C753.66,-289.04 729.74,-270.41 710,-253.05 693.24,-238.31 693.63,-228.66 674,-218.05 666.03,-213.74 657.39,-210.15 648.54,-207.15"/>
+<polygon fill="#000000" stroke="#000000" points="649.46,-203.77 638.87,-204.13 647.37,-210.45 649.46,-203.77"/>
 </g>
 <!-- sourcefile~random_generator.f90&#45;&gt;sourcefile~maxwellian_velocity_distribution1d.f90 -->
-<g id="file~~graph~~FileGraph_edge17" class="edge">
+<g id="file~~graph~~FileGraph_edge20" class="edge">
 <title>sourcefile~random_generator.f90&#45;&gt;sourcefile~maxwellian_velocity_distribution1d.f90</title>
-<path fill="none" stroke="#000000" d="M760.99,-457.99C737.51,-466.96 704.09,-478.94 674,-486.85 664.38,-489.38 654.24,-491.7 644.12,-493.81"/>
-<polygon fill="#000000" stroke="#000000" points="643.13,-490.43 634.02,-495.84 644.51,-497.3 643.13,-490.43"/>
+<path fill="none" stroke="#000000" d="M720.47,-301.35C693.74,-296.55 662.58,-290.94 634.71,-285.93"/>
+<polygon fill="#000000" stroke="#000000" points="635.06,-282.44 624.6,-284.11 633.82,-289.33 635.06,-282.44"/>
 </g>
 <!-- sourcefile~random_generator.f90&#45;&gt;sourcefile~ohhelppic3d.f90 -->
-<g id="file~~graph~~FileGraph_edge57" class="edge">
+<g id="file~~graph~~FileGraph_edge64" class="edge">
 <title>sourcefile~random_generator.f90&#45;&gt;sourcefile~ohhelppic3d.f90</title>
-<path fill="none" stroke="#000000" d="M777.75,-433.65C756.85,-415.78 715.16,-382.66 674,-364.85 636.86,-348.78 349.74,-262.75 318,-287.85"/>
+<path fill="none" stroke="#000000" d="M720.39,-317.08C649.8,-319.67 534.44,-318.67 439,-293.05 380.83,-277.43 364.61,-193.9 318,-232.05"/>
 </g>
 <!-- sourcefile~random_generator.f90&#45;&gt;sourcefile~particle_injector_manager.f90 -->
-<g id="file~~graph~~FileGraph_edge73" class="edge">
+<g id="file~~graph~~FileGraph_edge81" class="edge">
 <title>sourcefile~random_generator.f90&#45;&gt;sourcefile~particle_injector_manager.f90</title>
-<path fill="none" stroke="#000000" d="M740.95,-433.85C670.27,-419.63 539.33,-402.81 439,-444.85 389.39,-465.64 349.84,-517.78 330.65,-547.07"/>
-<polygon fill="#000000" stroke="#000000" points="327.57,-545.39 325.15,-555.7 333.47,-549.15 327.57,-545.39"/>
+<path fill="none" stroke="#000000" d="M740.17,-325.16C729.87,-328.85 719.25,-333.45 710,-339.05 691.17,-350.44 693.73,-363.31 674,-373.05 579.13,-419.88 535.26,-367.14 439,-411.05 396.46,-430.45 356.81,-468.94 335.14,-492.4"/>
+<polygon fill="#000000" stroke="#000000" points="332.36,-490.25 328.24,-500.02 337.55,-494.95 332.36,-490.25"/>
 </g>
 <!-- sourcefile~random_generator.f90&#45;&gt;sourcefile~particle_injector_with_distribution.f90 -->
-<g id="file~~graph~~FileGraph_edge80" class="edge">
+<g id="file~~graph~~FileGraph_edge88" class="edge">
 <title>sourcefile~random_generator.f90&#45;&gt;sourcefile~particle_injector_with_distribution.f90</title>
-<path fill="none" stroke="#000000" d="M776.03,-457.89C754.02,-474.75 712.09,-505.92 674,-528.85 647.71,-544.68 616.65,-560.26 593.22,-571.44"/>
-<polygon fill="#000000" stroke="#000000" points="591.55,-568.36 584,-575.79 594.54,-574.69 591.55,-568.36"/>
+<path fill="none" stroke="#000000" d="M730.32,-325.14C722.8,-328.65 715.71,-333.19 710,-339.05 672.92,-377.1 708.39,-412.55 674,-453.05 657.05,-473.01 631.68,-486.97 608.94,-496.28"/>
+<polygon fill="#000000" stroke="#000000" points="607.44,-493.11 599.39,-499.99 609.98,-499.63 607.44,-493.11"/>
 </g>
 <!-- sourcefile~random_generator.f90&#45;&gt;sourcefile~pcg_generator.f90 -->
-<g id="file~~graph~~FileGraph_edge86" class="edge">
+<g id="file~~graph~~FileGraph_edge94" class="edge">
 <title>sourcefile~random_generator.f90&#45;&gt;sourcefile~pcg_generator.f90</title>
-<path fill="none" stroke="#000000" d="M776.79,-433.63C758.68,-417.85 728.12,-388.75 710,-357.85 683.77,-313.11 713.07,-280.96 674,-246.85 659.5,-234.19 640.01,-227.98 621.13,-225.2"/>
-<polygon fill="#000000" stroke="#000000" points="621.38,-221.71 611.04,-224.02 620.57,-228.66 621.38,-221.71"/>
+<path fill="none" stroke="#000000" d="M763.9,-301.01C746.88,-290.46 723.81,-273.63 710,-253.05 678.03,-205.39 716.64,-167.46 674,-129.05 659.7,-116.16 640.27,-109.9 621.37,-107.13"/>
+<polygon fill="#000000" stroke="#000000" points="621.61,-103.63 611.27,-105.96 620.8,-110.59 621.61,-103.63"/>
 </g>
 <!-- sourcefile~random_generator.f90&#45;&gt;sourcefile~position_random_uniform_distribution.f90 -->
-<g id="file~~graph~~FileGraph_edge96" class="edge">
+<g id="file~~graph~~FileGraph_edge110" class="edge">
 <title>sourcefile~random_generator.f90&#45;&gt;sourcefile~position_random_uniform_distribution.f90</title>
-<path fill="none" stroke="#000000" d="M726.32,-451.42C713.13,-452.55 698.85,-453.77 684.36,-455.01"/>
-<polygon fill="#000000" stroke="#000000" points="683.97,-451.53 674.31,-455.87 684.57,-458.5 683.97,-451.53"/>
+<path fill="none" stroke="#000000" d="M728.54,-325.09C721.53,-328.62 715.07,-333.17 710,-339.05 652.75,-405.48 736.17,-471.2 674,-533.05 673.04,-534.01 672.05,-534.93 671.03,-535.82"/>
+<polygon fill="#000000" stroke="#000000" points="668.69,-533.19 662.76,-541.98 672.87,-538.81 668.69,-533.19"/>
 </g>
-<!-- sourcefile~rescaler.f90 -->
-<g id="file~~graph~~FileGraph_node42" class="node">
-<title>sourcefile~rescaler.f90</title>
-<g id="a_file~~graph~~FileGraph_node42"><a xlink:href=".././sourcefile/rescaler.f90.html" xlink:title="rescaler.f90">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="1173,-1466.85 1099,-1466.85 1099,-1442.85 1173,-1442.85 1173,-1466.85"/>
-<text text-anchor="middle" x="1136" y="-1452.45" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">rescaler.f90</text>
+<!-- sourcefile~velocity_maxwell_distribution3d.f90 -->
+<g id="file~~graph~~FileGraph_node50" class="node">
+<title>sourcefile~velocity_maxwell_distribution3d.f90</title>
+<g id="a_file~~graph~~FileGraph_node50"><a xlink:href=".././sourcefile/velocity_maxwell_distribution3d.f90.html" xlink:title="velocity_maxwell_distribution3d.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="657.5,-364.05 455.5,-364.05 455.5,-340.05 657.5,-340.05 657.5,-364.05"/>
+<text text-anchor="middle" x="556.5" y="-349.65" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">velocity_maxwell_distribution3d.f90</text>
 </a>
 </g>
+</g>
+<!-- sourcefile~random_generator.f90&#45;&gt;sourcefile~velocity_maxwell_distribution3d.f90 -->
+<g id="file~~graph~~FileGraph_edge114" class="edge">
+<title>sourcefile~random_generator.f90&#45;&gt;sourcefile~velocity_maxwell_distribution3d.f90</title>
+<path fill="none" stroke="#000000" d="M720.47,-324.17C694.79,-328.56 665.02,-333.66 638.01,-338.28"/>
+<polygon fill="#000000" stroke="#000000" points="637.07,-334.89 627.8,-340.02 638.25,-341.79 637.07,-334.89"/>
 </g>
 <!-- sourcefile~scatter.f90&#45;&gt;sourcefile~linear_scatter.f90 -->
-<g id="file~~graph~~FileGraph_edge15" class="edge">
+<g id="file~~graph~~FileGraph_edge18" class="edge">
 <title>sourcefile~scatter.f90&#45;&gt;sourcefile~linear_scatter.f90</title>
-<path fill="none" stroke="#000000" d="M948.32,-1163.5C922.56,-1160.9 886.12,-1157.21 855.07,-1154.07"/>
-<polygon fill="#000000" stroke="#000000" points="855.06,-1150.56 844.76,-1153.03 854.36,-1157.52 855.06,-1150.56"/>
+<path fill="none" stroke="#000000" d="M935.3,-1056.53C911.11,-1059.07 877.64,-1062.59 848.66,-1065.63"/>
+<polygon fill="#000000" stroke="#000000" points="848.2,-1062.16 838.62,-1066.68 848.93,-1069.12 848.2,-1062.16"/>
 </g>
 <!-- sourcefile~scatter.f90&#45;&gt;sourcefile~ohhelppic3d.f90 -->
-<g id="file~~graph~~FileGraph_edge58" class="edge">
+<g id="file~~graph~~FileGraph_edge65" class="edge">
 <title>sourcefile~scatter.f90&#45;&gt;sourcefile~ohhelppic3d.f90</title>
-<path fill="none" stroke="#000000" d="M948.4,-1167.63C927.38,-1168.09 899.59,-1168.62 875,-1168.85 801.67,-1169.54 781.93,-1183.13 710,-1168.85 638.07,-1154.58 630.83,-1106.26 557.5,-1105.85"/>
+<path fill="none" stroke="#000000" d="M935.17,-1044.81C898.88,-1036.86 839.11,-1026.75 787.5,-1032.05"/>
 </g>
 <!-- sourcefile~science_constants.f90 -->
-<g id="file~~graph~~FileGraph_node44" class="node">
+<g id="file~~graph~~FileGraph_node46" class="node">
 <title>sourcefile~science_constants.f90</title>
-<g id="a_file~~graph~~FileGraph_node44"><a xlink:href=".././sourcefile/science_constants.f90.html" xlink:title="science_constants.f90">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="1047.5,-457.85 917.5,-457.85 917.5,-433.85 1047.5,-433.85 1047.5,-457.85"/>
-<text text-anchor="middle" x="982.5" y="-443.45" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">science_constants.f90</text>
+<g id="a_file~~graph~~FileGraph_node46"><a xlink:href=".././sourcefile/science_constants.f90.html" xlink:title="science_constants.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="1034.5,-325.05 904.5,-325.05 904.5,-301.05 1034.5,-301.05 1034.5,-325.05"/>
+<text text-anchor="middle" x="969.5" y="-310.65" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">science_constants.f90</text>
 </a>
 </g>
+</g>
+<!-- sourcefile~science_constants.f90&#45;&gt;sourcefile~flux_velocity_maxwell_distribution3d.f90 -->
+<g id="file~~graph~~FileGraph_edge8" class="edge">
+<title>sourcefile~science_constants.f90&#45;&gt;sourcefile~flux_velocity_maxwell_distribution3d.f90</title>
+<path fill="none" stroke="#000000" d="M960.41,-300.81C944.72,-278.29 907.76,-230.78 863,-211.05 806.35,-186.07 737.99,-179.89 680.31,-180.57"/>
+<polygon fill="#000000" stroke="#000000" points="679.97,-177.08 670.04,-180.77 680.11,-184.08 679.97,-177.08"/>
+</g>
+<!-- sourcefile~science_constants.f90&#45;&gt;sourcefile~maxwellian_velocity_distribution1d.f90 -->
+<g id="file~~graph~~FileGraph_edge21" class="edge">
+<title>sourcefile~science_constants.f90&#45;&gt;sourcefile~maxwellian_velocity_distribution1d.f90</title>
+<path fill="none" stroke="#000000" d="M915.06,-301C898.45,-297.63 880.03,-294.29 863,-292.05 801.73,-283.98 733.1,-279.11 676.43,-276.21"/>
+<polygon fill="#000000" stroke="#000000" points="676.52,-272.71 666.35,-275.71 676.17,-279.7 676.52,-272.71"/>
 </g>
 <!-- sourcefile~science_constants.f90&#45;&gt;sourcefile~parameters.f90 -->
-<g id="file~~graph~~FileGraph_edge60" class="edge">
+<g id="file~~graph~~FileGraph_edge67" class="edge">
 <title>sourcefile~science_constants.f90&#45;&gt;sourcefile~parameters.f90</title>
-<path fill="none" stroke="#000000" d="M975.52,-433.66C961.83,-407.19 925.47,-344.56 875,-315.85 793.24,-269.34 681.34,-263.29 614.54,-264.57"/>
-<polygon fill="#000000" stroke="#000000" points="614.12,-261.08 604.22,-264.83 614.3,-268.07 614.12,-261.08"/>
+<path fill="none" stroke="#000000" d="M785.5,-353.05C731.63,-363.5 725.88,-388.18 674,-406.05 654.81,-412.66 633.26,-418.01 613.95,-422.11"/>
+<polygon fill="#000000" stroke="#000000" points="613.18,-418.7 604.09,-424.14 614.59,-425.55 613.18,-418.7"/>
 </g>
-<!-- sourcefile~science_constants.f90&#45;&gt;sourcefile~poisson_solver.f90 -->
-<g id="file~~graph~~FileGraph_edge94" class="edge">
-<title>sourcefile~science_constants.f90&#45;&gt;sourcefile~poisson_solver.f90</title>
-<path fill="none" stroke="#000000" d="M981.78,-458.15C982.26,-508.85 977.15,-703.83 875,-805.85 848.28,-832.54 823.54,-806.98 793.5,-829.85"/>
-<path fill="none" stroke="#000000" d="M791.5,-829.85C730.58,-876.23 648.64,-912.62 599.64,-932.12"/>
-<polygon fill="#000000" stroke="#000000" points="598.32,-928.88 590.29,-935.79 600.88,-935.39 598.32,-928.88"/>
+<!-- sourcefile~science_constants.f90&#45;&gt;sourcefile~poisson_solver3d.f90 -->
+<g id="file~~graph~~FileGraph_edge108" class="edge">
+<title>sourcefile~science_constants.f90&#45;&gt;sourcefile~poisson_solver3d.f90</title>
+<path fill="none" stroke="#000000" d="M958.77,-325.24C943.05,-345.72 912.46,-388.92 899,-431.05 870.7,-519.65 920.22,-774.72 863,-848.05 860.6,-851.13 857.81,-853.84 854.75,-856.24"/>
+<polygon fill="#000000" stroke="#000000" points="852.58,-853.47 846.11,-861.86 856.4,-859.34 852.58,-853.47"/>
 </g>
 <!-- sourcefile~science_constants.f90&#45;&gt;sourcefile~random_generator.f90 -->
-<g id="file~~graph~~FileGraph_edge97" class="edge">
+<g id="file~~graph~~FileGraph_edge111" class="edge">
 <title>sourcefile~science_constants.f90&#45;&gt;sourcefile~random_generator.f90</title>
-<path fill="none" stroke="#000000" d="M917.33,-445.85C901.79,-445.85 885.05,-445.85 869.05,-445.85"/>
-<polygon fill="#000000" stroke="#000000" points="868.66,-442.35 858.66,-445.85 868.66,-449.35 868.66,-442.35"/>
+<path fill="none" stroke="#000000" d="M904.43,-313.05C891.06,-313.05 876.84,-313.05 863.1,-313.05"/>
+<polygon fill="#000000" stroke="#000000" points="862.7,-309.55 852.7,-313.05 862.7,-316.55 862.7,-309.55"/>
+</g>
+<!-- sourcefile~science_constants.f90&#45;&gt;sourcefile~velocity_maxwell_distribution3d.f90 -->
+<g id="file~~graph~~FileGraph_edge115" class="edge">
+<title>sourcefile~science_constants.f90&#45;&gt;sourcefile~velocity_maxwell_distribution3d.f90</title>
+<path fill="none" stroke="#000000" d="M917.55,-325.05C881.36,-333.39 831.57,-344.5 787.5,-353.05"/>
+<path fill="none" stroke="#000000" d="M785.5,-353.05C747.67,-360.39 705.64,-362 668.08,-361.18"/>
+<polygon fill="#000000" stroke="#000000" points="667.7,-357.67 657.61,-360.89 667.51,-364.66 667.7,-357.67"/>
+</g>
+<!-- sourcefile~string_holder.f90 -->
+<g id="file~~graph~~FileGraph_node47" class="node">
+<title>sourcefile~string_holder.f90</title>
+<g id="a_file~~graph~~FileGraph_node47"><a xlink:href=".././sourcefile/string_holder.f90.html" xlink:title="string_holder.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="1020,-464.05 919,-464.05 919,-440.05 1020,-440.05 1020,-464.05"/>
+<text text-anchor="middle" x="969.5" y="-449.65" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">string_holder.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~string_holder.f90&#45;&gt;sourcefile~parameters.f90 -->
+<g id="file~~graph~~FileGraph_edge68" class="edge">
+<title>sourcefile~string_holder.f90&#45;&gt;sourcefile~parameters.f90</title>
+<path fill="none" stroke="#000000" d="M944.95,-439.97C924.05,-429.97 892.36,-416.55 863,-411.05 777.25,-394.97 675.89,-408.14 614.18,-419.66"/>
+<polygon fill="#000000" stroke="#000000" points="613.41,-416.24 604.25,-421.56 614.73,-423.12 613.41,-416.24"/>
+</g>
+<!-- sourcefile~string_holder.f90&#45;&gt;sourcefile~particle_injector_manager.f90 -->
+<g id="file~~graph~~FileGraph_edge82" class="edge">
+<title>sourcefile~string_holder.f90&#45;&gt;sourcefile~particle_injector_manager.f90</title>
+<path fill="none" stroke="#000000" d="M918.7,-454.08C824.67,-458.28 614.65,-469.39 439,-491.05 423.29,-492.98 406.52,-495.56 390.62,-498.25"/>
+<polygon fill="#000000" stroke="#000000" points="389.58,-494.88 380.31,-500.03 390.76,-501.78 389.58,-494.88"/>
+</g>
+<!-- sourcefile~string_holder.f90&#45;&gt;sourcefile~poisson_field_solver.f90 -->
+<g id="file~~graph~~FileGraph_edge104" class="edge">
+<title>sourcefile~string_holder.f90&#45;&gt;sourcefile~poisson_field_solver.f90</title>
+<path fill="none" stroke="#000000" d="M963.77,-464.17C951.52,-494.09 916,-572.3 863,-617.05 793.3,-675.89 761.39,-670.9 674,-697.05 572.28,-727.48 535.91,-696.65 439,-740.05 420.5,-748.33 419.97,-756.96 403,-768.05 386.68,-778.71 367.66,-789.17 351.76,-797.41"/>
+<polygon fill="#000000" stroke="#000000" points="350.11,-794.33 342.8,-802 353.3,-800.56 350.11,-794.33"/>
 </g>
 <!-- sourcefile~toml_wrapper.f90 -->
-<g id="file~~graph~~FileGraph_node45" class="node">
+<g id="file~~graph~~FileGraph_node48" class="node">
 <title>sourcefile~toml_wrapper.f90</title>
-<g id="a_file~~graph~~FileGraph_node45"><a xlink:href=".././sourcefile/toml_wrapper.f90.html" xlink:title="toml_wrapper.f90">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="845,-348.85 740,-348.85 740,-324.85 845,-324.85 845,-348.85"/>
-<text text-anchor="middle" x="792.5" y="-334.45" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">toml_wrapper.f90</text>
+<g id="a_file~~graph~~FileGraph_node48"><a xlink:href=".././sourcefile/toml_wrapper.f90.html" xlink:title="toml_wrapper.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="839,-444.05 734,-444.05 734,-420.05 839,-420.05 839,-444.05"/>
+<text text-anchor="middle" x="786.5" y="-429.65" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">toml_wrapper.f90</text>
 </a>
 </g>
+</g>
+<!-- sourcefile~string_holder.f90&#45;&gt;sourcefile~toml_wrapper.f90 -->
+<g id="file~~graph~~FileGraph_edge113" class="edge">
+<title>sourcefile~string_holder.f90&#45;&gt;sourcefile~toml_wrapper.f90</title>
+<path fill="none" stroke="#000000" d="M918.56,-446.53C897.15,-444.16 871.91,-441.38 849.33,-438.88"/>
+<polygon fill="#000000" stroke="#000000" points="849.49,-435.38 839.17,-437.76 848.72,-442.33 849.49,-435.38"/>
 </g>
 <!-- sourcefile~toml_wrapper.f90&#45;&gt;sourcefile~parameters.f90 -->
-<g id="file~~graph~~FileGraph_edge61" class="edge">
+<g id="file~~graph~~FileGraph_edge69" class="edge">
 <title>sourcefile~toml_wrapper.f90&#45;&gt;sourcefile~parameters.f90</title>
-<path fill="none" stroke="#000000" d="M761.92,-324.8C738.37,-315.51 704.43,-302.78 674,-293.85 654.61,-288.17 633.09,-283.04 613.88,-278.87"/>
-<polygon fill="#000000" stroke="#000000" points="614.57,-275.44 604.06,-276.78 613.11,-282.29 614.57,-275.44"/>
+<path fill="none" stroke="#000000" d="M733.76,-432.05C698.22,-432.05 651.02,-432.05 614.41,-432.05"/>
+<polygon fill="#000000" stroke="#000000" points="614.38,-428.55 604.38,-432.05 614.38,-435.55 614.38,-428.55"/>
 </g>
-<!-- sourcefile~toml_wrapper.f90&#45;&gt;sourcefile~particle_injector_manager.f90 -->
-<g id="file~~graph~~FileGraph_edge74" class="edge">
-<title>sourcefile~toml_wrapper.f90&#45;&gt;sourcefile~particle_injector_manager.f90</title>
-<path fill="none" stroke="#000000" d="M739.73,-327.09C666.72,-316.21 532.06,-306.99 439,-364.85 371.06,-407.09 336.42,-502.75 323.77,-545.95"/>
-<polygon fill="#000000" stroke="#000000" points="320.35,-545.16 321.02,-555.74 327.09,-547.06 320.35,-545.16"/>
-</g>
-<!-- sourcefile~velocity_distribution.f90 -->
-<g id="file~~graph~~FileGraph_node46" class="node">
-<title>sourcefile~velocity_distribution.f90</title>
-<g id="a_file~~graph~~FileGraph_node46"><a xlink:href=".././sourcefile/velocity_distribution.f90.html" xlink:title="velocity_distribution.f90">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="862,-659.85 723,-659.85 723,-635.85 862,-635.85 862,-659.85"/>
-<text text-anchor="middle" x="792.5" y="-645.45" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">velocity_distribution.f90</text>
+<!-- sourcefile~velocity_distribution3d.f90 -->
+<g id="file~~graph~~FileGraph_node49" class="node">
+<title>sourcefile~velocity_distribution3d.f90</title>
+<g id="a_file~~graph~~FileGraph_node49"><a xlink:href=".././sourcefile/velocity_distribution3d.f90.html" xlink:title="velocity_distribution3d.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="863,-244.05 710,-244.05 710,-220.05 863,-220.05 863,-244.05"/>
+<text text-anchor="middle" x="786.5" y="-229.65" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">velocity_distribution3d.f90</text>
 </a>
 </g>
 </g>
-<!-- sourcefile~velocity_distribution.f90&#45;&gt;sourcefile~const_velocity_distribution.f90 -->
+<!-- sourcefile~velocity_distribution3d.f90&#45;&gt;sourcefile~const_velocity_distribution.f90 -->
 <g id="file~~graph~~FileGraph_edge4" class="edge">
-<title>sourcefile~velocity_distribution.f90&#45;&gt;sourcefile~const_velocity_distribution.f90</title>
-<path fill="none" stroke="#000000" d="M760.99,-659.99C737.51,-668.96 704.09,-680.94 674,-688.85 664.38,-691.38 654.24,-693.7 644.12,-695.81"/>
-<polygon fill="#000000" stroke="#000000" points="643.13,-692.43 634.02,-697.84 644.51,-699.3 643.13,-692.43"/>
+<title>sourcefile~velocity_distribution3d.f90&#45;&gt;sourcefile~const_velocity_distribution.f90</title>
+<path fill="none" stroke="#000000" d="M767.8,-220C746.49,-206.07 709.16,-183.47 674,-171.05 667.14,-168.62 659.95,-166.47 652.65,-164.56"/>
+<polygon fill="#000000" stroke="#000000" points="653.19,-161.09 642.65,-162.09 651.52,-167.88 653.19,-161.09"/>
 </g>
-<!-- sourcefile~velocity_distribution.f90&#45;&gt;sourcefile~maxwellian_velocity_distribution1d.f90 -->
-<g id="file~~graph~~FileGraph_edge18" class="edge">
-<title>sourcefile~velocity_distribution.f90&#45;&gt;sourcefile~maxwellian_velocity_distribution1d.f90</title>
-<path fill="none" stroke="#000000" d="M775.23,-635.59C752.97,-619.06 711.49,-589.13 674,-566.85 647.62,-551.18 616.57,-535.58 593.16,-524.37"/>
-<polygon fill="#000000" stroke="#000000" points="594.49,-521.12 583.95,-519.99 591.48,-527.45 594.49,-521.12"/>
+<!-- sourcefile~velocity_distribution3d.f90&#45;&gt;sourcefile~flux_velocity_maxwell_distribution3d.f90 -->
+<g id="file~~graph~~FileGraph_edge9" class="edge">
+<title>sourcefile~velocity_distribution3d.f90&#45;&gt;sourcefile~flux_velocity_maxwell_distribution3d.f90</title>
+<path fill="none" stroke="#000000" d="M717.09,-220.05C691.62,-215.58 662.51,-210.47 636.19,-205.85"/>
+<polygon fill="#000000" stroke="#000000" points="636.71,-202.39 626.25,-204.11 635.5,-209.29 636.71,-202.39"/>
 </g>
-<!-- sourcefile~velocity_distribution.f90&#45;&gt;sourcefile~ohhelppic3d.f90 -->
-<g id="file~~graph~~FileGraph_edge59" class="edge">
-<title>sourcefile~velocity_distribution.f90&#45;&gt;sourcefile~ohhelppic3d.f90</title>
-<path fill="none" stroke="#000000" d="M777.21,-660.14C755.96,-677.88 714.2,-710.74 674,-730.85 575.83,-779.97 540.53,-765.13 439,-806.85 383.29,-829.74 377.79,-860.6 318,-867.85"/>
-<path fill="none" stroke="#000000" d="M316,-867.85C279.41,-871.59 238.15,-871.68 205.5,-870.79"/>
-<polygon fill="#000000" stroke="#000000" points="205.32,-867.29 195.22,-870.47 205.11,-874.28 205.32,-867.29"/>
+<!-- sourcefile~velocity_distribution3d.f90&#45;&gt;sourcefile~maxwellian_velocity_distribution1d.f90 -->
+<g id="file~~graph~~FileGraph_edge22" class="edge">
+<title>sourcefile~velocity_distribution3d.f90&#45;&gt;sourcefile~maxwellian_velocity_distribution1d.f90</title>
+<path fill="none" stroke="#000000" d="M717.09,-244.05C691.62,-248.52 662.51,-253.62 636.19,-258.24"/>
+<polygon fill="#000000" stroke="#000000" points="635.5,-254.81 626.25,-259.99 636.71,-261.71 635.5,-254.81"/>
 </g>
-<!-- sourcefile~velocity_distribution.f90&#45;&gt;sourcefile~particle_injector_manager.f90 -->
-<g id="file~~graph~~FileGraph_edge75" class="edge">
-<title>sourcefile~velocity_distribution.f90&#45;&gt;sourcefile~particle_injector_manager.f90</title>
-<path fill="none" stroke="#000000" d="M722.88,-644.66C651.31,-640.31 536.22,-630.44 439,-608.85 411.15,-602.67 380.74,-592.35 357.37,-583.61"/>
-<polygon fill="#000000" stroke="#000000" points="358.41,-580.26 347.82,-579.98 355.92,-586.8 358.41,-580.26"/>
+<!-- sourcefile~velocity_distribution3d.f90&#45;&gt;sourcefile~ohhelppic3d.f90 -->
+<g id="file~~graph~~FileGraph_edge66" class="edge">
+<title>sourcefile~velocity_distribution3d.f90&#45;&gt;sourcefile~ohhelppic3d.f90</title>
+<path fill="none" stroke="#000000" d="M709.75,-222.23C664.74,-218.8 606.98,-218.65 557.5,-232.05"/>
+<path fill="none" stroke="#000000" d="M555.5,-232.05C453.62,-259.64 399.52,-164.99 318,-232.05"/>
 </g>
-<!-- sourcefile~velocity_distribution.f90&#45;&gt;sourcefile~particle_injector_with_distribution.f90 -->
-<g id="file~~graph~~FileGraph_edge81" class="edge">
-<title>sourcefile~velocity_distribution.f90&#45;&gt;sourcefile~particle_injector_with_distribution.f90</title>
-<path fill="none" stroke="#000000" d="M752.23,-635.83C729.48,-629.03 700.23,-620.57 674,-613.85 658.12,-609.79 640.94,-605.75 624.77,-602.12"/>
-<polygon fill="#000000" stroke="#000000" points="625.37,-598.67 614.85,-599.91 623.85,-605.5 625.37,-598.67"/>
+<!-- sourcefile~velocity_distribution3d.f90&#45;&gt;sourcefile~particle_injector_manager.f90 -->
+<g id="file~~graph~~FileGraph_edge83" class="edge">
+<title>sourcefile~velocity_distribution3d.f90&#45;&gt;sourcefile~particle_injector_manager.f90</title>
+<path fill="none" stroke="#000000" d="M555.5,-232.05C504.86,-245.76 480.79,-219.33 439,-251.05 358.75,-311.95 329.84,-438.9 321.19,-490.02"/>
+<polygon fill="#000000" stroke="#000000" points="317.72,-489.57 319.6,-499.99 324.63,-490.67 317.72,-489.57"/>
 </g>
-<!-- sourcefile~velocity_maxwell_distribution.f90 -->
-<g id="file~~graph~~FileGraph_node47" class="node">
-<title>sourcefile~velocity_maxwell_distribution.f90</title>
-<g id="a_file~~graph~~FileGraph_node47"><a xlink:href=".././sourcefile/velocity_maxwell_distribution.f90.html" xlink:title="velocity_maxwell_distribution.f90">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="651,-679.85 462,-679.85 462,-655.85 651,-655.85 651,-679.85"/>
-<text text-anchor="middle" x="556.5" y="-665.45" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">velocity_maxwell_distribution.f90</text>
-</a>
+<!-- sourcefile~velocity_distribution3d.f90&#45;&gt;sourcefile~particle_injector_with_distribution.f90 -->
+<g id="file~~graph~~FileGraph_edge89" class="edge">
+<title>sourcefile~velocity_distribution3d.f90&#45;&gt;sourcefile~particle_injector_with_distribution.f90</title>
+<path fill="none" stroke="#000000" d="M763.2,-244.07C746.02,-254.5 723.07,-271.19 710,-292.05 671.07,-354.18 719.01,-395.17 674,-453.05 658.23,-473.33 633.59,-487.21 611.03,-496.39"/>
+<polygon fill="#000000" stroke="#000000" points="609.6,-493.19 601.52,-500.04 612.11,-499.73 609.6,-493.19"/>
 </g>
+<!-- sourcefile~velocity_distribution3d.f90&#45;&gt;sourcefile~velocity_maxwell_distribution3d.f90 -->
+<g id="file~~graph~~FileGraph_edge116" class="edge">
+<title>sourcefile~velocity_distribution3d.f90&#45;&gt;sourcefile~velocity_maxwell_distribution3d.f90</title>
+<path fill="none" stroke="#000000" d="M763.82,-244.18C741.43,-256.64 705.43,-276.5 674,-293.05 646.32,-307.62 614.63,-323.63 591.3,-335.29"/>
+<polygon fill="#000000" stroke="#000000" points="589.55,-332.25 582.16,-339.84 592.67,-338.51 589.55,-332.25"/>
 </g>
-<!-- sourcefile~velocity_distribution.f90&#45;&gt;sourcefile~velocity_maxwell_distribution.f90 -->
-<g id="file~~graph~~FileGraph_edge99" class="edge">
-<title>sourcefile~velocity_distribution.f90&#45;&gt;sourcefile~velocity_maxwell_distribution.f90</title>
-<path fill="none" stroke="#000000" d="M722.87,-653.72C703.64,-655.36 682.28,-657.19 661.48,-658.97"/>
-<polygon fill="#000000" stroke="#000000" points="660.99,-655.49 651.32,-659.83 661.59,-662.47 660.99,-655.49"/>
-</g>
-<!-- sourcefile~velocity_maxwell_distribution.f90&#45;&gt;sourcefile~particle_injector_manager.f90 -->
-<g id="file~~graph~~FileGraph_edge76" class="edge">
-<title>sourcefile~velocity_maxwell_distribution.f90&#45;&gt;sourcefile~particle_injector_manager.f90</title>
-<path fill="none" stroke="#000000" d="M484.13,-655.83C468.95,-652.2 453.22,-647.6 439,-641.85 403.17,-627.37 365.79,-602.83 342.23,-586.01"/>
-<polygon fill="#000000" stroke="#000000" points="344.06,-583.01 333.91,-579.98 339.96,-588.68 344.06,-583.01"/>
+<!-- sourcefile~velocity_maxwell_distribution3d.f90&#45;&gt;sourcefile~particle_injector_manager.f90 -->
+<g id="file~~graph~~FileGraph_edge84" class="edge">
+<title>sourcefile~velocity_maxwell_distribution3d.f90&#45;&gt;sourcefile~particle_injector_manager.f90</title>
+<path fill="none" stroke="#000000" d="M471.95,-364.06C460.44,-367.59 449.11,-372.15 439,-378.05 390.38,-406.4 350.43,-460.91 330.92,-490.93"/>
+<polygon fill="#000000" stroke="#000000" points="327.72,-489.43 325.31,-499.75 333.63,-493.19 327.72,-489.43"/>
 </g>
 </g>
 </svg>
@@ -1175,8 +1284,8 @@
                   var panfilegraphFileGraph = svgPanZoom('#filegraphFileGraph',
                     {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
                   );
-                </script>        <div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div>
-          <div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog">
+                </script>        <div><a type="button" class="graph-help" data-toggle="modal" href="#FileGraph-help-text">Help</a></div>
+          <div class="modal fade" id="FileGraph-help-text" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
               <div class="modal-content">
                 <div class="modal-header">
@@ -1227,32 +1336,27 @@ can be.
     </div> <!-- /container -->
     <footer>
       <div class="container">
-        <div class="row">
-          <div class="col-xs-6 col-md-6"><p>ohhelp-pic-3d was developed by Nkzono99<br>&copy; 2023 <a rel="license" href="https://opensource.org/licenses/MIT">MIT</a>
+        <div class="row justify-content-between">
+          <div class="col"><p>ohhelp-pic-3d was developed by Nkzono99<br>&copy; 2023 <a rel="license" href="https://opensource.org/licenses/MIT">MIT</a>
 </p>
           </div>
-          <div class="col-xs-6 col-md-6">
-            <p class="text-right">
+          <div class="col">
+            <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2023-07-11T21:09:12.065188             </p>
+ on 2023-11-07T16:33:23.830536             </p>
           </div>
         </div>
         <br>
       </div> <!-- /container -->
     </footer>
 
-    <!-- Bootstrap core JavaScript
-         ================================================== -->
-         <!-- Placed at the end of the document so the pages load faster -->
-    <!--
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-        -->
-        <script src="../js/bootstrap.min.js"></script>
-        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-        <script src="../js/ie10-viewport-bug-workaround.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
 
-        <!-- MathJax JavaScript
+    <!-- MathJax JavaScript
              ================================================== -->
              <!-- Placed at the end of the document so the pages load faster -->
         <script type="text/x-mathjax-config">

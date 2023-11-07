@@ -10,81 +10,55 @@
 
     <title>t_Block &ndash; ohhelp-pic-3d </title>
 
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link href="../css/pygments.css" rel="stylesheet">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/local.css" rel="stylesheet">
       <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
-
-         <script src="../js/jquery-2.1.3.min.js"></script>
-         <script src="../js/svg-pan-zoom.min.js"></script>
-
+    <script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha256-tG5mcZUtJsZvyKAxYLVXrmjKBVLd6VpVccqz/r4ypFE=" crossorigin="anonymous"></script>
   </head>
 
   <body>
 
     <!-- Fixed navbar -->
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
           <a class="navbar-brand" href="../index.html">ohhelp-pic-3d </a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
-              <a href="#" class="dropdown-toggle"
-                 data-toggle="dropdown" role="button"
-                 aria-haspopup="true"
-                 aria-expanded="false">
-                 Contents <span class="caret"></span>
-              </a>
-              <ul class="dropdown-menu">
-                    <li><a href="../lists/files.html">Source Files</a></li>
-                  <li><a href="../lists/modules.html">Modules</a></li>
-                  <li><a href="../lists/procedures.html">Procedures</a></li>
-                  <li><a href="../lists/types.html">Derived Types</a></li>
-                  <li><a href="../program/main.html">Program</a></li>
-              </ul>
-            </li>
-                <li class="visible-xs hidden-sm visible-lg">
-                  <a href="../lists/files.html">Source Files</a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
                 </li>
-              <li class="visible-xs hidden-sm visible-lg">
-                <a href="../lists/modules.html">Modules</a>
-              </li>
-              <li class="visible-xs hidden-sm visible-lg">
-                <a href="../lists/procedures.html">Procedures</a>
-              </li>
-              <li class="visible-xs hidden-sm visible-lg">
-                <a href="../lists/types.html">Derived Types</a>
-              </li>
-              <li class="visible-xs hidden-sm visible-lg">
-                <a href="../program/main.html">Program</a>
-              </li>
-          </ul>
-            <form action="../search.html" class="navbar-form navbar-right" role="search">
-              <div class="form-group">
-                <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../program/main.html">Program</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
               </div>
-              <!--
-                  <button type="submit" class="btn btn-default">Submit</button>
-                  -->
-            </form>
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
 
     <div class="container">
   <div class="row">
@@ -92,34 +66,38 @@
       <small>Derived Type</small>
       
     </h1>
-      <div class="row" id="info-bar">
-    <div class="col-lg-12">
-      <div class="well well-sm">
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
         <ul class="list-inline" style="margin-bottom:0px;display:inline">
-            <li id="meta-license"><i class="fa fa-legal"></i> <a rel="license" href="https://opensource.org/licenses/MIT">MIT</a></li>
+            <li class="list-inline-item" id="meta-license"><i class="fa fa-legal"></i> <a rel="license" href="https://opensource.org/licenses/MIT">MIT</a></li>
 
-          <li id="statements"><i class="fa fa-list-ol"></i>
-            <a data-toggle="tooltip"
-               data-placement="bottom" data-html="true"
-               title="<p> 2.1% of total for derived types.</p>Including implementation: 41 statements,  1.5% of total for derived types.">10 statements</a>
-          </li>
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip"
+                 data-bs-placement="bottom" data-html="true"
+                 title="<p> 2.1% of total for derived types.</p>Including implementation: 41 statements,  1.9% of total for derived types.">10 statements</a>
+            </li>
 
-            <li id="source-file">
+            <li class="list-inline-item" id="source-file">
               <i class="fa fa-code"></i>
               <a href="../src/block.f90"> Source File</a>
             </li>
         </ul>
-        <ol class="breadcrumb in-well text-right">
-              <li><a href='../sourcefile/block.f90.html'>block.f90</a></li>
-              <li><a href='../module/m_block.html'>m_block</a></li>
-          <li class="active">t_Block</li>
-        </ol>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/block.f90.html'>block.f90</a></li>
+                <li class="breadcrumb-item"><a href='../module/m_block.html'>m_block</a></li>
+            <li class="breadcrumb-item active" aria-current="page">t_Block</li>
+          </ol>
+        </nav>
       </div>
     </div>
   </div>
   <script>
     $(function () {
-    $('[data-toggle="tooltip"]').tooltip()
+    $('[data-bs-toggle="tooltip"]').tooltip()
     })
   </script>
 
@@ -130,14 +108,13 @@
       <div id="sidebar">
       <h3>Contents</h3>
   
-      <div class="panel panel-primary">
-      <div class="panel-heading text-left">
-        <h3 class="panel-title">
-          <a data-toggle="collapse" href="#vars-0">Variables</a>
-        </h3>
-      </div>
-      <div id="vars-0" class="panel-collapse collapse">
-        <div class="list-group">
+      <div class="card mb-4">
+      <a data-bs-toggle="collapse" href="#vars-0"
+         aria-expanded="false" aria-controls="vars-0">
+         <h4 class="card-header bg-primary text-white">Variables</h4>
+      </a>
+      <div id="vars-0" class="collapse">
+        <div class="list-group list-group-flush">
             <a class="list-group-item" href="../type/t_block.html#variable-end">end</a>
             <a class="list-group-item" href="../type/t_block.html#variable-sizes">sizes</a>
             <a class="list-group-item" href="../type/t_block.html#variable-start">start</a>
@@ -160,14 +137,13 @@
   
   
   
-      <div class="panel panel-primary">
-      <div class="panel-heading text-left">
-        <h3 class="panel-title">
-          <a data-toggle="collapse" href="#boundprocs-0">Type-Bound Procedures</a>
-        </h3>
-      </div>
-      <div id="boundprocs-0" class="panel-collapse collapse">
-        <div class="list-group">
+      <div class="card mb-4">
+      <a data-bs-toggle="collapse" href="#boundprocs-0"
+         aria-expanded="false" aria-controls="boundprocs-0">
+         <h4 class="card-header bg-primary text-white">Type-Bound Procedures</h4>
+      </a>
+      <div id="boundprocs-0" class="collapse">
+        <div class="list-group list-group-flush">
             <a class="list-group-item" href="../type/t_block.html#boundprocedure-from_array">from_array</a>
             <a class="list-group-item" href="../type/t_block.html#boundprocedure-overlapped">overlapped</a>
             <a class="list-group-item" href="../type/t_block.html#boundprocedure-size">size</a>
@@ -176,6 +152,7 @@
       </div>
     </div>
 
+  
   
 
 
@@ -186,137 +163,168 @@
     <div class="col-md-9" id='text'>
       <h2>type, public :: t_Block</h2>
     
-<br>    <div class="panel panel-default">
-      <div class="panel-heading">
-  <h3 class="panel-title">Inherited by</h3>
+<br>    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Inherited by</h3>
       </div>
-      <div class="panel-body">
+      <div class="card-body">
      <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <!-- Generated by graphviz version 2.43.0 (0)
  -->
 <!-- Title: type~~t_block~~InheritedByGraph Pages: 1 -->
-<svg id="typet_blockInheritedByGraph" width="641pt" height="116pt"
- viewBox="0.00 0.00 641.00 116.15" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="type~~t_block~~InheritedByGraph" class="graph" transform="scale(1.59 1.59) rotate(0) translate(4 181)">
+<svg id="typet_blockInheritedByGraph" width="641pt" height="185pt"
+ viewBox="0.00 0.00 641.00 184.80" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="type~~t_block~~InheritedByGraph" class="graph" transform="scale(1.61 1.61) rotate(0) translate(4 292.66)">
 <title>type~~t_block~~InheritedByGraph</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-181 1017,-181 1017,4 -4,4"/>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-292.66 1025,-292.66 1025,4 -4,4"/>
 <!-- type~t_block -->
 <g id="type~~t_block~~InheritedByGraph_node1" class="node">
 <title>type~t_block</title>
-<polygon fill="none" stroke="black" points="54,-112 0,-112 0,-88 54,-88 54,-112"/>
-<text text-anchor="middle" x="27" y="-97.6" font-family="Helvetica,sans-Serif" font-size="10.50">t_Block</text>
+<polygon fill="none" stroke="black" points="54,-156.07 0,-156.07 0,-132.07 54,-132.07 54,-156.07"/>
+<text text-anchor="middle" x="27" y="-141.67" font-family="Helvetica,sans-Serif" font-size="10.50">t_Block</text>
 </g>
 <!-- type~t_blockcommunicator -->
 <g id="type~~t_block~~InheritedByGraph_node2" class="node">
 <title>type~t_blockcommunicator</title>
 <g id="a_type~~t_block~~InheritedByGraph_node2"><a xlink:href=".././type/t_blockcommunicator.html" xlink:title="t_BlockCommunicator">
-<polygon fill="#5cb85c" stroke="#5cb85c" points="408,-154 278,-154 278,-130 408,-130 408,-154"/>
-<text text-anchor="middle" x="343" y="-139.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">t_BlockCommunicator</text>
+<polygon fill="#5cb85c" stroke="#5cb85c" points="408,-218.07 278,-218.07 278,-194.07 408,-194.07 408,-218.07"/>
+<text text-anchor="middle" x="343" y="-203.67" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">t_BlockCommunicator</text>
 </a>
 </g>
 </g>
 <!-- type~t_blockcommunicator&#45;&gt;type~t_block -->
-<g id="type~~t_block~~InheritedByGraph_edge3" class="edge">
+<g id="type~~t_block~~InheritedByGraph_edge5" class="edge">
 <title>type~t_blockcommunicator&#45;&gt;type~t_block</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M277.88,-139.05C222.81,-135.64 141.55,-128.51 72,-114 69.37,-113.45 66.67,-112.81 63.97,-112.1"/>
-<polygon fill="#000000" stroke="#000000" points="64.87,-108.71 54.29,-109.33 62.94,-115.44 64.87,-108.71"/>
-<text text-anchor="middle" x="166" y="-139.4" font-family="Helvetica,sans-Serif" font-size="9.50">local_block, comm_block</text>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M277.97,-205.86C222.08,-203.85 139.56,-196.43 72,-172.07 65.13,-169.6 58.23,-165.9 51.99,-162.01"/>
+<polygon fill="#000000" stroke="#000000" points="53.66,-158.92 43.41,-156.26 49.77,-164.73 53.66,-158.92"/>
+<text text-anchor="middle" x="166" y="-206.47" font-family="Helvetica,sans-Serif" font-size="9.50">local_block, comm_block</text>
 </g>
 <!-- type~t_blocklist -->
 <g id="type~~t_block~~InheritedByGraph_node3" class="node">
 <title>type~t_blocklist</title>
 <g id="a_type~~t_block~~InheritedByGraph_node3"><a xlink:href=".././type/t_blocklist.html" xlink:title="t_BlockList">
-<polygon fill="#5cb85c" stroke="#5cb85c" points="377.5,-112 308.5,-112 308.5,-88 377.5,-88 377.5,-112"/>
-<text text-anchor="middle" x="343" y="-97.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">t_BlockList</text>
+<polygon fill="#5cb85c" stroke="#5cb85c" points="377.5,-176.07 308.5,-176.07 308.5,-152.07 377.5,-152.07 377.5,-176.07"/>
+<text text-anchor="middle" x="343" y="-161.67" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">t_BlockList</text>
 </a>
 </g>
 </g>
 <!-- type~t_blocklist&#45;&gt;type~t_block -->
-<g id="type~~t_block~~InheritedByGraph_edge5" class="edge">
+<g id="type~~t_block~~InheritedByGraph_edge6" class="edge">
 <title>type~t_blocklist&#45;&gt;type~t_block</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M308.4,-100C249,-100 125.93,-100 64.52,-100"/>
-<polygon fill="#000000" stroke="#000000" points="64.15,-96.5 54.15,-100 64.15,-103.5 64.15,-96.5"/>
-<text text-anchor="middle" x="166" y="-102.4" font-family="Helvetica,sans-Serif" font-size="9.50">buffer, tmp_buffer</text>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M308.4,-161.93C248.87,-158.14 125.42,-150.28 64.14,-146.38"/>
+<polygon fill="#000000" stroke="#000000" points="64.35,-142.88 54.15,-145.74 63.9,-149.87 64.35,-142.88"/>
+<text text-anchor="middle" x="166" y="-160.47" font-family="Helvetica,sans-Serif" font-size="9.50">buffer, tmp_buffer</text>
 </g>
 <!-- type~t_mpiblockrebaser -->
 <g id="type~~t_block~~InheritedByGraph_node4" class="node">
 <title>type~t_mpiblockrebaser</title>
 <g id="a_type~~t_block~~InheritedByGraph_node4"><a xlink:href=".././type/t_mpiblockrebaser.html" xlink:title="t_MPIBlockRebaser">
-<polygon fill="#5cb85c" stroke="#5cb85c" points="1013,-177 901,-177 901,-153 1013,-153 1013,-177"/>
-<text text-anchor="middle" x="957" y="-162.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">t_MPIBlockRebaser</text>
+<polygon fill="#5cb85c" stroke="#5cb85c" points="1017,-245.07 905,-245.07 905,-221.07 1017,-221.07 1017,-245.07"/>
+<text text-anchor="middle" x="961" y="-230.67" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">t_MPIBlockRebaser</text>
 </a>
 </g>
 </g>
 <!-- type~t_mpiblockrebaser&#45;&gt;type~t_block -->
 <g id="type~~t_block~~InheritedByGraph_edge4" class="edge">
 <title>type~t_mpiblockrebaser&#45;&gt;type~t_block</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M900.6,-167.52C894.66,-167.71 888.71,-167.88 883,-168 816.79,-169.36 800.22,-168.36 734,-168 531.32,-166.89 480.56,-170.01 278,-163 186.34,-159.83 154.24,-191.6 72,-151 58.73,-144.45 47.83,-131.91 40.19,-120.9"/>
-<polygon fill="#000000" stroke="#000000" points="42.93,-118.69 34.57,-112.19 37.05,-122.49 42.93,-118.69"/>
-<text text-anchor="middle" x="488" y="-169.4" font-family="Helvetica,sans-Serif" font-size="9.50">local_block, require_block</text>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M904.74,-232.93C858.98,-232.79 792.26,-232.52 734,-232.07 439.72,-229.81 324.56,-369.13 72,-218.07 52.88,-206.64 41.11,-183.43 34.61,-166.04"/>
+<polygon fill="#000000" stroke="#000000" points="37.77,-164.45 31.23,-156.12 31.14,-166.71 37.77,-164.45"/>
+<text text-anchor="middle" x="488" y="-275.47" font-family="Helvetica,sans-Serif" font-size="9.50">local_block, require_block</text>
 </g>
 <!-- type~t_blockcommunicatorlist -->
-<g id="type~~t_block~~InheritedByGraph_node7" class="node">
+<g id="type~~t_block~~InheritedByGraph_node8" class="node">
 <title>type~t_blockcommunicatorlist</title>
-<g id="a_type~~t_block~~InheritedByGraph_node7"><a xlink:href=".././type/t_blockcommunicatorlist.html" xlink:title="t_BlockCommunicatorList">
-<polygon fill="#5cb85c" stroke="#5cb85c" points="716,-154 568,-154 568,-130 716,-130 716,-154"/>
-<text text-anchor="middle" x="642" y="-139.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">t_BlockCommunicatorList</text>
+<g id="a_type~~t_block~~InheritedByGraph_node8"><a xlink:href=".././type/t_blockcommunicatorlist.html" xlink:title="t_BlockCommunicatorList">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="716,-218.07 568,-218.07 568,-194.07 716,-194.07 716,-218.07"/>
+<text text-anchor="middle" x="642" y="-203.67" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">t_BlockCommunicatorList</text>
 </a>
 </g>
 </g>
 <!-- type~t_mpiblockrebaser&#45;&gt;type~t_blockcommunicatorlist -->
-<g id="type~~t_block~~InheritedByGraph_edge8" class="edge">
+<g id="type~~t_block~~InheritedByGraph_edge11" class="edge">
 <title>type~t_mpiblockrebaser&#45;&gt;type~t_blockcommunicatorlist</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M900.61,-159.52C894.67,-158.98 888.71,-158.46 883,-158 830.95,-153.77 772.49,-149.86 726.3,-146.96"/>
-<polygon fill="#000000" stroke="#000000" points="726.24,-143.45 716.04,-146.32 725.8,-150.43 726.24,-143.45"/>
-<text text-anchor="middle" x="808.5" y="-160.4" font-family="Helvetica,sans-Serif" font-size="9.50">block_senders, block_receivers</text>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M904.96,-224.7C897.59,-223.73 890.12,-222.82 883,-222.07 831.07,-216.64 772.61,-212.7 726.39,-210.09"/>
+<polygon fill="#000000" stroke="#000000" points="726.3,-206.58 716.12,-209.52 725.91,-213.56 726.3,-206.58"/>
+<text text-anchor="middle" x="808.5" y="-224.47" font-family="Helvetica,sans-Serif" font-size="9.50">block_senders, block_receivers</text>
 </g>
 <!-- type~t_mpifftsolver3d -->
 <g id="type~~t_block~~InheritedByGraph_node5" class="node">
 <title>type~t_mpifftsolver3d</title>
 <g id="a_type~~t_block~~InheritedByGraph_node5"><a xlink:href=".././type/t_mpifftsolver3d.html" xlink:title="t_MPIFFTSolver3d">
-<polygon fill="#5cb85c" stroke="#5cb85c" points="396,-24 290,-24 290,0 396,0 396,-24"/>
-<text text-anchor="middle" x="343" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">t_MPIFFTSolver3d</text>
+<polygon fill="#5cb85c" stroke="#5cb85c" points="396,-96.07 290,-96.07 290,-72.07 396,-72.07 396,-96.07"/>
+<text text-anchor="middle" x="343" y="-81.67" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">t_MPIFFTSolver3d</text>
 </a>
 </g>
 </g>
 <!-- type~t_mpifftsolver3d&#45;&gt;type~t_block -->
 <g id="type~~t_block~~InheritedByGraph_edge1" class="edge">
 <title>type~t_mpifftsolver3d&#45;&gt;type~t_block</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M289.84,-4.15C232.4,1.8 139.25,3.28 72,-36 55.63,-45.56 43.97,-63.91 36.79,-78.53"/>
-<polygon fill="#000000" stroke="#000000" points="33.48,-77.34 32.52,-87.89 39.85,-80.24 33.48,-77.34"/>
-<text text-anchor="middle" x="166" y="-38.4" font-family="Helvetica,sans-Serif" font-size="9.50">local_block, logical_block, global_block</text>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M289.93,-76.58C233.57,-70.83 142.35,-68.46 72,-100.07 60.38,-105.29 50.13,-115.04 42.45,-124.03"/>
+<polygon fill="#000000" stroke="#000000" points="39.66,-121.93 36.16,-131.93 45.13,-126.29 39.66,-121.93"/>
+<text text-anchor="middle" x="166" y="-102.47" font-family="Helvetica,sans-Serif" font-size="9.50">local_block, logical_block, global_block</text>
 </g>
-<!-- type~t_poissonsolver3d -->
+<!-- type~t_poissonfieldsolver -->
 <g id="type~~t_block~~InheritedByGraph_node6" class="node">
-<title>type~t_poissonsolver3d</title>
-<g id="a_type~~t_block~~InheritedByGraph_node6"><a xlink:href=".././type/t_poissonsolver3d.html" xlink:title="t_PoissonSolver3d">
-<polygon fill="#5cb85c" stroke="#5cb85c" points="696.5,-54 587.5,-54 587.5,-30 696.5,-30 696.5,-54"/>
-<text text-anchor="middle" x="642" y="-39.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">t_PoissonSolver3d</text>
+<title>type~t_poissonfieldsolver</title>
+<g id="a_type~~t_block~~InheritedByGraph_node6"><a xlink:href=".././type/t_poissonfieldsolver.html" xlink:title="t_PoissonFieldSolver">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="1021,-109.07 901,-109.07 901,-85.07 1021,-85.07 1021,-109.07"/>
+<text text-anchor="middle" x="961" y="-94.67" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">t_PoissonFieldSolver</text>
 </a>
 </g>
+</g>
+<!-- type~t_poissonfieldsolver&#45;&gt;type~t_block -->
+<g id="type~~t_block~~InheritedByGraph_edge3" class="edge">
+<title>type~t_poissonfieldsolver&#45;&gt;type~t_block</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M807.5,-109.07C480.66,-124.86 398.88,-127.31 72,-142.07 69.46,-142.19 66.84,-142.31 64.2,-142.43"/>
+<polygon fill="#000000" stroke="#000000" points="63.89,-138.94 54.06,-142.89 64.21,-145.93 63.89,-138.94"/>
+<text text-anchor="middle" x="488" y="-128.47" font-family="Helvetica,sans-Serif" font-size="9.50">local_block, global_block</text>
+</g>
+<!-- type~t_poissonfieldsolver&#45;&gt;type~t_mpifftsolver3d -->
+<g id="type~~t_block~~InheritedByGraph_edge8" class="edge">
+<title>type~t_poissonfieldsolver&#45;&gt;type~t_mpifftsolver3d</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M900.75,-103.24C873.06,-105.75 839.63,-108.25 809.5,-109.07"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M807.5,-109.07C766.65,-110.19 756.76,-102.95 716,-100.07 607.15,-92.39 480.1,-87.88 406.18,-85.7"/>
+<polygon fill="#000000" stroke="#000000" points="406.21,-82.2 396.11,-85.41 406.01,-89.2 406.21,-82.2"/>
+<text text-anchor="middle" x="642" y="-102.47" font-family="Helvetica,sans-Serif" font-size="9.50">fft3d</text>
+</g>
+<!-- type~t_poissonsolver3d -->
+<g id="type~~t_block~~InheritedByGraph_node7" class="node">
+<title>type~t_poissonsolver3d</title>
+<g id="a_type~~t_block~~InheritedByGraph_node7"><a xlink:href=".././type/t_poissonsolver3d.html" xlink:title="t_PoissonSolver3d">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="696.5,-50.07 587.5,-50.07 587.5,-26.07 696.5,-26.07 696.5,-50.07"/>
+<text text-anchor="middle" x="642" y="-35.67" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">t_PoissonSolver3d</text>
+</a>
+</g>
+</g>
+<!-- type~t_poissonfieldsolver&#45;&gt;type~t_poissonsolver3d -->
+<g id="type~~t_block~~InheritedByGraph_edge10" class="edge">
+<title>type~t_poissonfieldsolver&#45;&gt;type~t_poissonsolver3d</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M900.75,-86.05C845.47,-75.76 763.24,-60.45 706.6,-49.91"/>
+<polygon fill="#000000" stroke="#000000" points="707.15,-46.45 696.68,-48.07 705.87,-53.34 707.15,-46.45"/>
+<text text-anchor="middle" x="808.5" y="-83.47" font-family="Helvetica,sans-Serif" font-size="9.50">poisson_solver3d</text>
 </g>
 <!-- type~t_poissonsolver3d&#45;&gt;type~t_block -->
 <g id="type~~t_block~~InheritedByGraph_edge2" class="edge">
 <title>type~t_poissonsolver3d&#45;&gt;type~t_block</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M587.42,-45.16C516.53,-49.53 387.74,-58.12 278,-69 201.77,-76.56 112.83,-88.28 64.25,-94.94"/>
-<polygon fill="#000000" stroke="#000000" points="63.66,-91.49 54.23,-96.32 64.61,-98.42 63.66,-91.49"/>
-<text text-anchor="middle" x="343" y="-71.4" font-family="Helvetica,sans-Serif" font-size="9.50">local_block, global_block</text>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M591.79,-26.05C487,-3.37 237.87,34.66 72,-69.07 52.74,-81.12 40.92,-104.91 34.45,-122.49"/>
+<polygon fill="#000000" stroke="#000000" points="31.13,-121.38 31.24,-131.98 37.76,-123.63 31.13,-121.38"/>
+<text text-anchor="middle" x="343" y="-6.47" font-family="Helvetica,sans-Serif" font-size="9.50">local_block, global_block</text>
 </g>
 <!-- type~t_poissonsolver3d&#45;&gt;type~t_mpifftsolver3d -->
-<g id="type~~t_block~~InheritedByGraph_edge7" class="edge">
+<g id="type~~t_block~~InheritedByGraph_edge9" class="edge">
 <title>type~t_poissonsolver3d&#45;&gt;type~t_mpifftsolver3d</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M587.22,-36.57C536.33,-31.43 459.99,-23.72 406.44,-18.31"/>
-<polygon fill="#000000" stroke="#000000" points="406.69,-14.81 396.39,-17.29 405.98,-21.78 406.69,-14.81"/>
-<text text-anchor="middle" x="488" y="-35.4" font-family="Helvetica,sans-Serif" font-size="9.50">fft3d</text>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M587.21,-41.81C543.52,-45.39 480.44,-51.79 426,-62.07 415.57,-64.04 404.53,-66.64 394.03,-69.37"/>
+<polygon fill="#000000" stroke="#000000" points="392.94,-66.04 384.18,-72 394.74,-72.8 392.94,-66.04"/>
+<text text-anchor="middle" x="488" y="-64.47" font-family="Helvetica,sans-Serif" font-size="9.50">fft3d</text>
 </g>
 <!-- type~t_blockcommunicatorlist&#45;&gt;type~t_blockcommunicator -->
-<g id="type~~t_block~~InheritedByGraph_edge6" class="edge">
+<g id="type~~t_block~~InheritedByGraph_edge7" class="edge">
 <title>type~t_blockcommunicatorlist&#45;&gt;type~t_blockcommunicator</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M567.97,-142C522.46,-142 464.07,-142 418.32,-142"/>
-<polygon fill="#000000" stroke="#000000" points="418.17,-138.5 408.17,-142 418.17,-145.5 418.17,-138.5"/>
-<text text-anchor="middle" x="488" y="-144.4" font-family="Helvetica,sans-Serif" font-size="9.50">buffer, tmp_buffer</text>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M567.97,-206.07C522.46,-206.07 464.07,-206.07 418.32,-206.07"/>
+<polygon fill="#000000" stroke="#000000" points="418.17,-202.57 408.17,-206.07 418.17,-209.57 418.17,-202.57"/>
+<text text-anchor="middle" x="488" y="-208.47" font-family="Helvetica,sans-Serif" font-size="9.50">buffer, tmp_buffer</text>
 </g>
 </g>
 </svg>
@@ -324,8 +332,8 @@
                   var pantypet_blockInheritedByGraph = svgPanZoom('#typet_blockInheritedByGraph',
                     {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
                   );
-                </script>        <div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div>
-          <div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog">
+                </script>        <div><a type="button" class="graph-help" data-toggle="modal" href="#InheritedByGraph-help-text">Help</a></div>
+          <div class="modal fade" id="InheritedByGraph-help-text" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
               <div class="modal-content">
                 <div class="modal-header">
@@ -375,71 +383,16 @@ said component(s).
     </div>
     <br>
 
-    <section class="visible-xs visible-sm hidden-md">
-        <h3>Contents</h3>
-  
-      <div class="panel panel-primary">
-      <div class="panel-heading text-left">
-        <h3 class="panel-title">
-          <a data-toggle="collapse" href="#vars-1">Variables</a>
-        </h3>
-      </div>
-      <div id="vars-1" class="panel-collapse collapse">
-        <div class="list-group">
-            <a class="list-group-item" href="../type/t_block.html#variable-end">end</a>
-            <a class="list-group-item" href="../type/t_block.html#variable-sizes">sizes</a>
-            <a class="list-group-item" href="../type/t_block.html#variable-start">start</a>
-        </div>
-      </div>
-    </div>
-
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-      <div class="panel panel-primary">
-      <div class="panel-heading text-left">
-        <h3 class="panel-title">
-          <a data-toggle="collapse" href="#boundprocs-1">Type-Bound Procedures</a>
-        </h3>
-      </div>
-      <div id="boundprocs-1" class="panel-collapse collapse">
-        <div class="list-group">
-            <a class="list-group-item" href="../type/t_block.html#boundprocedure-from_array">from_array</a>
-            <a class="list-group-item" href="../type/t_block.html#boundprocedure-overlapped">overlapped</a>
-            <a class="list-group-item" href="../type/t_block.html#boundprocedure-size">size</a>
-            <a class="list-group-item" href="../type/t_block.html#boundprocedure-to_array">to_array</a>
-        </div>
-      </div>
-    </div>
-
-  
-
-
-    </section>
-    <br class="visible-xs visible-sm hidden-md">
-
     <section>
     <h2>Components</h2>
       <table class="table table-striped varlist">
     <thead>
       <tr>
-        <th>Type</th>
-<th>Visibility</th>        <th>Attributes</th>
-        <th></th>
-        <th>Name</th>
-<th></th><th>Initial</th>        <th></th>
+        <th scope="col">Type</th>
+<th scope="col">Visibility</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+<th></th><th scope="col">Initial</th>        <th scope="col"></th>
     </thead>
     <tbody>
         <tr>
@@ -503,25 +456,33 @@ said component(s).
 
       <section>
         <h2>Type-Bound Procedures</h2>
-            <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-from_array"></span><h3>procedure, public,  :: <strong>from_array</strong>  => block_from_array         
-    </h3></div>
+          <div class="row">
+              <div class="card mt-3">
+    <div class="card-header codesum">
+      <span class="anchor" id="boundprocedure-from_array"></span>
+      <h3>
+          procedure, public ::
+  <strong>from_array</strong> => block_from_array
+        
+      </h3>
+    </div>
     <ul class="list-group">
         <li class="list-group-item">
                   <h3>
     private  subroutine block_from_array(self, array)  
 </h3>
+
   
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
     <thead>
       <tr>
-        <th>Type</th>
-<th>Intent</th><th>Optional</th>        <th>Attributes</th>
-        <th></th>
-        <th>Name</th>
-        <th></th>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
     </thead>
     <tbody>
         <tr>
@@ -562,25 +523,34 @@ said component(s).
     </ul>
   </div>
 
-            <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-overlapped"></span><h3>procedure, public,  :: <strong>overlapped</strong>  => block_overlapped         
-    </h3></div>
+          </div>
+          <div class="row">
+              <div class="card mt-3">
+    <div class="card-header codesum">
+      <span class="anchor" id="boundprocedure-overlapped"></span>
+      <h3>
+          procedure, public ::
+  <strong>overlapped</strong> => block_overlapped
+        
+      </h3>
+    </div>
     <ul class="list-group">
         <li class="list-group-item">
                   <h3>
     private  function block_overlapped(self, other) result(overlapped)  
 </h3>
+
   
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
     <thead>
       <tr>
-        <th>Type</th>
-<th>Intent</th><th>Optional</th>        <th>Attributes</th>
-        <th></th>
-        <th>Name</th>
-        <th></th>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
     </thead>
     <tbody>
         <tr>
@@ -626,25 +596,34 @@ said component(s).
     </ul>
   </div>
 
-            <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-size"></span><h3>procedure, public,  :: <strong>size</strong>  => block_size         
-    </h3></div>
+          </div>
+          <div class="row">
+              <div class="card mt-3">
+    <div class="card-header codesum">
+      <span class="anchor" id="boundprocedure-size"></span>
+      <h3>
+          procedure, public ::
+  <strong>size</strong> => block_size
+        
+      </h3>
+    </div>
     <ul class="list-group">
         <li class="list-group-item">
                   <h3>
     private  function block_size(self) result(size)  
 </h3>
+
   
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
     <thead>
       <tr>
-        <th>Type</th>
-<th>Intent</th><th>Optional</th>        <th>Attributes</th>
-        <th></th>
-        <th>Name</th>
-        <th></th>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
     </thead>
     <tbody>
         <tr>
@@ -675,25 +654,34 @@ said component(s).
     </ul>
   </div>
 
-            <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-to_array"></span><h3>procedure, public,  :: <strong>to_array</strong>  => block_to_array         
-    </h3></div>
+          </div>
+          <div class="row">
+              <div class="card mt-3">
+    <div class="card-header codesum">
+      <span class="anchor" id="boundprocedure-to_array"></span>
+      <h3>
+          procedure, public ::
+  <strong>to_array</strong> => block_to_array
+        
+      </h3>
+    </div>
     <ul class="list-group">
         <li class="list-group-item">
                   <h3>
     private  subroutine block_to_array(self, array)  
 </h3>
+
   
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
     <thead>
       <tr>
-        <th>Type</th>
-<th>Intent</th><th>Optional</th>        <th>Attributes</th>
-        <th></th>
-        <th>Name</th>
-        <th></th>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
     </thead>
     <tbody>
         <tr>
@@ -734,6 +722,7 @@ said component(s).
     </ul>
   </div>
 
+          </div>
       </section>
 
     
@@ -744,32 +733,27 @@ said component(s).
     </div> <!-- /container -->
     <footer>
       <div class="container">
-        <div class="row">
-          <div class="col-xs-6 col-md-6"><p>ohhelp-pic-3d was developed by Nkzono99<br>&copy; 2023 <a rel="license" href="https://opensource.org/licenses/MIT">MIT</a>
+        <div class="row justify-content-between">
+          <div class="col"><p>ohhelp-pic-3d was developed by Nkzono99<br>&copy; 2023 <a rel="license" href="https://opensource.org/licenses/MIT">MIT</a>
 </p>
           </div>
-          <div class="col-xs-6 col-md-6">
-            <p class="text-right">
+          <div class="col">
+            <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2023-07-11T21:09:12.065188             </p>
+ on 2023-11-07T16:33:23.830536             </p>
           </div>
         </div>
         <br>
       </div> <!-- /container -->
     </footer>
 
-    <!-- Bootstrap core JavaScript
-         ================================================== -->
-         <!-- Placed at the end of the document so the pages load faster -->
-    <!--
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-        -->
-        <script src="../js/bootstrap.min.js"></script>
-        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-        <script src="../js/ie10-viewport-bug-workaround.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
 
-        <!-- MathJax JavaScript
+    <!-- MathJax JavaScript
              ================================================== -->
              <!-- Placed at the end of the document so the pages load faster -->
         <script type="text/x-mathjax-config">

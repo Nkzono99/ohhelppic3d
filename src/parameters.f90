@@ -1,6 +1,7 @@
 module m_parameters
     use m_science_constants
-    use m_toml_wrapper, only: t_TomlWrapper, t_StringHolder
+    use m_toml_wrapper, only: t_TomlWrapper
+    use m_string_holder, only: t_StringHolder
     implicit none
 
     private

@@ -10,81 +10,55 @@
 
     <title>m_field_solver &ndash; ohhelp-pic-3d</title>
 
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link href="../css/pygments.css" rel="stylesheet">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/local.css" rel="stylesheet">
       <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
-
-         <script src="../js/jquery-2.1.3.min.js"></script>
-         <script src="../js/svg-pan-zoom.min.js"></script>
-
+    <script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha256-tG5mcZUtJsZvyKAxYLVXrmjKBVLd6VpVccqz/r4ypFE=" crossorigin="anonymous"></script>
   </head>
 
   <body>
 
     <!-- Fixed navbar -->
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
           <a class="navbar-brand" href="../index.html">ohhelp-pic-3d </a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
-              <a href="#" class="dropdown-toggle"
-                 data-toggle="dropdown" role="button"
-                 aria-haspopup="true"
-                 aria-expanded="false">
-                 Contents <span class="caret"></span>
-              </a>
-              <ul class="dropdown-menu">
-                    <li><a href="../lists/files.html">Source Files</a></li>
-                  <li><a href="../lists/modules.html">Modules</a></li>
-                  <li><a href="../lists/procedures.html">Procedures</a></li>
-                  <li><a href="../lists/types.html">Derived Types</a></li>
-                  <li><a href="../program/main.html">Program</a></li>
-              </ul>
-            </li>
-                <li class="visible-xs hidden-sm visible-lg">
-                  <a href="../lists/files.html">Source Files</a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
                 </li>
-              <li class="visible-xs hidden-sm visible-lg">
-                <a href="../lists/modules.html">Modules</a>
-              </li>
-              <li class="visible-xs hidden-sm visible-lg">
-                <a href="../lists/procedures.html">Procedures</a>
-              </li>
-              <li class="visible-xs hidden-sm visible-lg">
-                <a href="../lists/types.html">Derived Types</a>
-              </li>
-              <li class="visible-xs hidden-sm visible-lg">
-                <a href="../program/main.html">Program</a>
-              </li>
-          </ul>
-            <form action="../search.html" class="navbar-form navbar-right" role="search">
-              <div class="form-group">
-                <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../program/main.html">Program</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
               </div>
-              <!--
-                  <button type="submit" class="btn btn-default">Submit</button>
-                  -->
-            </form>
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
 
     <div class="container">
   <div class="row">
@@ -92,40 +66,44 @@
       <small>Module</small>
       
     </h1>
-      <div class="row" id="info-bar">
-    <div class="col-lg-12">
-      <div class="well well-sm">
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
         <ul class="list-inline" style="margin-bottom:0px;display:inline">
-            <li id="meta-license"><i class="fa fa-legal"></i> <a rel="license" href="https://opensource.org/licenses/MIT">MIT</a></li>
+            <li class="list-inline-item" id="meta-license"><i class="fa fa-legal"></i> <a rel="license" href="https://opensource.org/licenses/MIT">MIT</a></li>
 
-          <li id="statements"><i class="fa fa-list-ol"></i>
-            <a data-toggle="tooltip"
-               data-placement="bottom" data-html="true"
-               title=" 0.7% of total for modules and submodules.">25 statements</a>
-          </li>
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip"
+                 data-bs-placement="bottom" data-html="true"
+                 title=" 0.7% of total for modules and submodules.">25 statements</a>
+            </li>
 
-            <li id="source-file">
+            <li class="list-inline-item" id="source-file">
               <i class="fa fa-code"></i>
               <a href="../src/field_solver.f90"> Source File</a>
             </li>
         </ul>
-        <ol class="breadcrumb in-well text-right">
-              <li><a href='../sourcefile/field_solver.f90.html'>field_solver.f90</a></li>
-          <li class="active">m_field_solver</li>
-        </ol>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/field_solver.f90.html'>field_solver.f90</a></li>
+            <li class="breadcrumb-item active" aria-current="page">m_field_solver</li>
+          </ol>
+        </nav>
       </div>
     </div>
   </div>
   <script>
     $(function () {
-    $('[data-toggle="tooltip"]').tooltip()
+    $('[data-bs-toggle="tooltip"]').tooltip()
     })
   </script>
 
   </div>
 
   <div class="row">
-    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+    <div class="col-md-3">
         <div id="sidebar">
       <h3>Contents</h3>
   
@@ -138,19 +116,19 @@
   
   
   
-      <div class="panel panel-primary">
-      <div class="panel-heading text-left">
-        <h3 class="panel-title">
-          <a data-toggle="collapse" href="#types-0">Derived Types</a>
-        </h3>
-      </div>
-      <div id="types-0" class="panel-collapse collapse">
-        <div class="list-group">
+      <div class="card mb-4">
+      <a data-bs-toggle="collapse" href="#types-0"
+         aria-expanded="false" aria-controls="types-0">
+         <h4 class="card-header bg-primary text-white">Derived Types</h4>
+      </a>
+      <div id="types-0" class="collapse">
+        <div class="list-group list-group-flush">
             <a class="list-group-item" href="../module/m_field_solver.html#type-t_fieldsolver">t_FieldSolver</a>
         </div>
       </div>
     </div>
 
+  
   
   
   
@@ -167,19 +145,18 @@
 
     <div class="col-md-9" id='text'>
       
-<br>          <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Uses</h3>
-      </div>
-      <ul class="list-group">
-          <li class="list-group-item">
-            <ul class="list-inline">
-                <li><a href='../module/m_ohfield.html'>m_ohfield</a></li>
-                <li><a href='../module/m_ohhelp.html'>m_ohhelp</a></li>
-            </ul>
-          </li>
-          <li class="list-group-item">
-            <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<br>          <div class="card mb-4">
+      <h3 class="card-header card-title bg-light">Uses</h3>
+      <div class="card-body">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <ul class="list-inline">
+                  <li class="list-inline-item"><a href='../module/m_ohhelp.html'>m_ohhelp</a></li>
+                  <li class="list-inline-item"><a href='../module/m_ohfield.html'>m_ohfield</a></li>
+              </ul>
+            </li>
+            <li class="list-group-item">
+              <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <!-- Generated by graphviz version 2.43.0 (0)
@@ -297,8 +274,8 @@
 </g>
 </g>
 </svg>
-</div>        <div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div>
-          <div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog">
+</div>        <div><a type="button" class="graph-help" data-toggle="modal" href="#UsesGraph-help-text">Help</a></div>
+          <div class="modal fade" id="UsesGraph-help-text" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
               <div class="modal-content">
                 <div class="modal-header">
@@ -367,88 +344,88 @@ modules which it uses.
             </div>
           </div>
         </div>
-          </li>
-      </ul>
+            </li>
+        </ul>
+      </div>
     </div>
 
-          <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Used by</h3>
-      </div>
-      <ul class="list-group">
-          <li class="list-group-item">
-            <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+          <div class="card">
+      <h3 class="card-header card-title bg-light">Used by</h3>
+      <div class="card-body">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <!-- Generated by graphviz version 2.43.0 (0)
  -->
 <!-- Title: module~~m_field_solver~~UsedByGraph Pages: 1 -->
-<svg id="modulem_field_solverUsedByGraph" width="444pt" height="52pt"
- viewBox="0.00 0.00 444.00 52.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg id="modulem_field_solverUsedByGraph" width="473pt" height="52pt"
+ viewBox="0.00 0.00 473.00 52.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="module~~m_field_solver~~UsedByGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 48)">
 <title>module~~m_field_solver~~UsedByGraph</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-48 440,-48 440,4 -4,4"/>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-48 469,-48 469,4 -4,4"/>
 <!-- module~m_field_solver -->
 <g id="module~~m_field_solver~~UsedByGraph_node1" class="node">
 <title>module~m_field_solver</title>
 <polygon fill="none" stroke="black" points="89,-44 0,-44 0,-20 89,-20 89,-44"/>
 <text text-anchor="middle" x="44.5" y="-29.6" font-family="Helvetica,sans-Serif" font-size="10.50">m_field_solver</text>
 </g>
-<!-- module~m_poisson_solver -->
+<!-- module~m_poisson_field_solver -->
 <g id="module~~m_field_solver~~UsedByGraph_node2" class="node">
-<title>module~m_poisson_solver</title>
-<g id="a_module~~m_field_solver~~UsedByGraph_node2"><a xlink:href=".././module/m_poisson_solver.html" xlink:title="m_poisson_solver">
-<polygon fill="#337ab7" stroke="#337ab7" points="231,-24 125,-24 125,0 231,0 231,-24"/>
-<text text-anchor="middle" x="178" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">m_poisson_solver</text>
+<title>module~m_poisson_field_solver</title>
+<g id="a_module~~m_field_solver~~UsedByGraph_node2"><a xlink:href=".././module/m_poisson_field_solver.html" xlink:title="m_poisson_field_solver">
+<polygon fill="#337ab7" stroke="#337ab7" points="260,-24 125,-24 125,0 260,0 260,-24"/>
+<text text-anchor="middle" x="192.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">m_poisson_field_solver</text>
 </a>
 </g>
 </g>
-<!-- module~m_poisson_solver&#45;&gt;module~m_field_solver -->
+<!-- module~m_poisson_field_solver&#45;&gt;module~m_field_solver -->
 <g id="module~~m_field_solver~~UsedByGraph_edge1" class="edge">
-<title>module~m_poisson_solver&#45;&gt;module~m_field_solver</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M124.65,-19.96C116.3,-21.23 107.65,-22.55 99.26,-23.82"/>
-<polygon fill="#000000" stroke="#000000" points="98.57,-20.39 89.21,-25.35 99.62,-27.31 98.57,-20.39"/>
+<title>module~m_poisson_field_solver&#45;&gt;module~m_field_solver</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M124.91,-21.12C116.25,-22.31 107.46,-23.51 99.05,-24.66"/>
+<polygon fill="#000000" stroke="#000000" points="98.44,-21.21 89.01,-26.04 99.39,-28.15 98.44,-21.21"/>
 </g>
 <!-- module~ohhelppic3d -->
 <g id="module~~m_field_solver~~UsedByGraph_node3" class="node">
 <title>module~ohhelppic3d</title>
 <g id="a_module~~m_field_solver~~UsedByGraph_node3"><a xlink:href=".././module/ohhelppic3d.html" xlink:title="ohhelppic3d">
-<polygon fill="#337ab7" stroke="#337ab7" points="346,-44 267,-44 267,-20 346,-20 346,-44"/>
-<text text-anchor="middle" x="306.5" y="-29.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ohhelppic3d</text>
+<polygon fill="#337ab7" stroke="#337ab7" points="375,-44 296,-44 296,-20 375,-20 375,-44"/>
+<text text-anchor="middle" x="335.5" y="-29.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ohhelppic3d</text>
 </a>
 </g>
 </g>
 <!-- module~ohhelppic3d&#45;&gt;module~m_field_solver -->
 <g id="module~~m_field_solver~~UsedByGraph_edge2" class="edge">
 <title>module~ohhelppic3d&#45;&gt;module~m_field_solver</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M266.83,-32.62C255.31,-32.78 242.64,-32.92 231,-33 183.89,-33.32 172.11,-33.3 125,-33 116.76,-32.95 108.03,-32.87 99.5,-32.77"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M295.83,-32.62C284.31,-32.78 271.64,-32.92 260,-33 200,-33.4 185,-33.38 125,-33 116.76,-32.95 108.03,-32.87 99.5,-32.77"/>
 <polygon fill="#000000" stroke="#000000" points="99.28,-29.27 89.24,-32.65 99.19,-36.27 99.28,-29.27"/>
 </g>
-<!-- module~ohhelppic3d&#45;&gt;module~m_poisson_solver -->
+<!-- module~ohhelppic3d&#45;&gt;module~m_poisson_field_solver -->
 <g id="module~~m_field_solver~~UsedByGraph_edge3" class="edge">
-<title>module~ohhelppic3d&#45;&gt;module~m_poisson_solver</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M266.86,-25.89C258.82,-24.62 250.14,-23.25 241.49,-21.88"/>
-<polygon fill="#000000" stroke="#000000" points="241.81,-18.39 231.38,-20.28 240.71,-25.3 241.81,-18.39"/>
+<title>module~ohhelppic3d&#45;&gt;module~m_poisson_field_solver</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M295.97,-26.53C287.91,-25.39 279.15,-24.15 270.25,-22.89"/>
+<polygon fill="#000000" stroke="#000000" points="270.57,-19.4 260.18,-21.46 269.59,-26.33 270.57,-19.4"/>
 </g>
 <!-- program~main -->
 <g id="module~~m_field_solver~~UsedByGraph_node4" class="node">
 <title>program~main</title>
 <g id="a_module~~m_field_solver~~UsedByGraph_node4"><a xlink:href=".././program/main.html" xlink:title="main">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="436,-44 382,-44 382,-20 436,-20 436,-44"/>
-<text text-anchor="middle" x="409" y="-29.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">main</text>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="465,-44 411,-44 411,-20 465,-20 465,-44"/>
+<text text-anchor="middle" x="438" y="-29.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">main</text>
 </a>
 </g>
 </g>
 <!-- program~main&#45;&gt;module~ohhelppic3d -->
 <g id="module~~m_field_solver~~UsedByGraph_edge4" class="edge">
 <title>program~main&#45;&gt;module~ohhelppic3d</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M381.86,-32C374,-32 365.11,-32 356.28,-32"/>
-<polygon fill="#000000" stroke="#000000" points="356.01,-28.5 346.01,-32 356.01,-35.5 356.01,-28.5"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M410.86,-32C403,-32 394.11,-32 385.28,-32"/>
+<polygon fill="#000000" stroke="#000000" points="385.01,-28.5 375.01,-32 385.01,-35.5 385.01,-28.5"/>
 </g>
 </g>
 </svg>
-</div>        <div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div>
-          <div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog">
+</div>        <div><a type="button" class="graph-help" data-toggle="modal" href="#UsedByGraph-help-text">Help</a></div>
+          <div class="modal fade" id="UsedByGraph-help-text" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
               <div class="modal-content">
                 <div class="modal-header">
@@ -517,49 +494,12 @@ modules which it uses.
             </div>
           </div>
         </div>
-          </li>
-      </ul>
+            </li>
+        </ul>
+      </div>
     </div>
 
       <br>
-
-      <section class="visible-xs visible-sm hidden-md">
-          <h3>Contents</h3>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-      <div class="panel panel-primary">
-      <div class="panel-heading text-left">
-        <h3 class="panel-title">
-          <a data-toggle="collapse" href="#types-1">Derived Types</a>
-        </h3>
-      </div>
-      <div id="types-1" class="panel-collapse collapse">
-        <div class="list-group">
-            <a class="list-group-item" href="../module/m_field_solver.html#type-t_fieldsolver">t_FieldSolver</a>
-        </div>
-      </div>
-    </div>
-
-  
-  
-  
-  
-  
-  
-  
-  
-
-
-      </section>
-      <br class="visible-xs visible-sm hidden-md">
 
 
 
@@ -568,8 +508,8 @@ modules which it uses.
 
         <section>
           <h2>Derived Types</h2>
-              <div class="panel panel-default">
-    <div class="panel-heading codesum">
+              <div class="card">
+    <div class="card-header codesum">
       <span class="anchor" id="type-t_fieldsolver"></span>
       <h3>
         type, public&nbsp;::&nbsp;
@@ -577,7 +517,7 @@ modules which it uses.
         
       </h3>
     </div>
-    <div class="panel-body">
+    <div class="card-body">
       
 
 
@@ -587,11 +527,8 @@ modules which it uses.
         <table class="table table-striped varlist">
           <tbody>
               <tr>
-                <td>
-                    procedure
-(fieldSolver_solve)                    ,                  public
-                  :: <strong><a href='../type/t_fieldsolver.html#boundprocedure-solve~2'>solve</a></strong>
-<small></small>                </td>
+                <td>  procedure(fieldSolver_solve), public, deferred ::
+  <strong><a href='../type/t_fieldsolver.html#boundprocedure-solve~2'>solve</a></strong></td>
                 <td></td>
               </tr>
           </tbody>
@@ -613,32 +550,27 @@ modules which it uses.
     </div> <!-- /container -->
     <footer>
       <div class="container">
-        <div class="row">
-          <div class="col-xs-6 col-md-6"><p>ohhelp-pic-3d was developed by Nkzono99<br>&copy; 2023 <a rel="license" href="https://opensource.org/licenses/MIT">MIT</a>
+        <div class="row justify-content-between">
+          <div class="col"><p>ohhelp-pic-3d was developed by Nkzono99<br>&copy; 2023 <a rel="license" href="https://opensource.org/licenses/MIT">MIT</a>
 </p>
           </div>
-          <div class="col-xs-6 col-md-6">
-            <p class="text-right">
+          <div class="col">
+            <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2023-07-11T21:09:12.065188             </p>
+ on 2023-11-07T16:33:23.830536             </p>
           </div>
         </div>
         <br>
       </div> <!-- /container -->
     </footer>
 
-    <!-- Bootstrap core JavaScript
-         ================================================== -->
-         <!-- Placed at the end of the document so the pages load faster -->
-    <!--
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-        -->
-        <script src="../js/bootstrap.min.js"></script>
-        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-        <script src="../js/ie10-viewport-bug-workaround.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
 
-        <!-- MathJax JavaScript
+    <!-- MathJax JavaScript
              ================================================== -->
              <!-- Placed at the end of the document so the pages load faster -->
         <script type="text/x-mathjax-config">

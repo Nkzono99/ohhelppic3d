@@ -1,6 +1,6 @@
 module m_field_solver
-    use m_ohfield
     use m_ohhelp
+    use m_ohfield
     implicit none
 
     private

@@ -10,81 +10,55 @@
 
     <title>t_RandomGenerator &ndash; ohhelp-pic-3d </title>
 
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link href="../css/pygments.css" rel="stylesheet">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/local.css" rel="stylesheet">
       <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
-
-         <script src="../js/jquery-2.1.3.min.js"></script>
-         <script src="../js/svg-pan-zoom.min.js"></script>
-
+    <script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha256-tG5mcZUtJsZvyKAxYLVXrmjKBVLd6VpVccqz/r4ypFE=" crossorigin="anonymous"></script>
   </head>
 
   <body>
 
     <!-- Fixed navbar -->
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
           <a class="navbar-brand" href="../index.html">ohhelp-pic-3d </a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
-              <a href="#" class="dropdown-toggle"
-                 data-toggle="dropdown" role="button"
-                 aria-haspopup="true"
-                 aria-expanded="false">
-                 Contents <span class="caret"></span>
-              </a>
-              <ul class="dropdown-menu">
-                    <li><a href="../lists/files.html">Source Files</a></li>
-                  <li><a href="../lists/modules.html">Modules</a></li>
-                  <li><a href="../lists/procedures.html">Procedures</a></li>
-                  <li><a href="../lists/types.html">Derived Types</a></li>
-                  <li><a href="../program/main.html">Program</a></li>
-              </ul>
-            </li>
-                <li class="visible-xs hidden-sm visible-lg">
-                  <a href="../lists/files.html">Source Files</a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
                 </li>
-              <li class="visible-xs hidden-sm visible-lg">
-                <a href="../lists/modules.html">Modules</a>
-              </li>
-              <li class="visible-xs hidden-sm visible-lg">
-                <a href="../lists/procedures.html">Procedures</a>
-              </li>
-              <li class="visible-xs hidden-sm visible-lg">
-                <a href="../lists/types.html">Derived Types</a>
-              </li>
-              <li class="visible-xs hidden-sm visible-lg">
-                <a href="../program/main.html">Program</a>
-              </li>
-          </ul>
-            <form action="../search.html" class="navbar-form navbar-right" role="search">
-              <div class="form-group">
-                <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../program/main.html">Program</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
               </div>
-              <!--
-                  <button type="submit" class="btn btn-default">Submit</button>
-                  -->
-            </form>
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
 
     <div class="container">
   <div class="row">
@@ -92,34 +66,38 @@
       <small>Derived Type</small>
       
     </h1>
-      <div class="row" id="info-bar">
-    <div class="col-lg-12">
-      <div class="well well-sm">
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
         <ul class="list-inline" style="margin-bottom:0px;display:inline">
-            <li id="meta-license"><i class="fa fa-legal"></i> <a rel="license" href="https://opensource.org/licenses/MIT">MIT</a></li>
+            <li class="list-inline-item" id="meta-license"><i class="fa fa-legal"></i> <a rel="license" href="https://opensource.org/licenses/MIT">MIT</a></li>
 
-          <li id="statements"><i class="fa fa-list-ol"></i>
-            <a data-toggle="tooltip"
-               data-placement="bottom" data-html="true"
-               title="<p> 1.4% of total for derived types.</p>Including implementation: 27 statements,  1.0% of total for derived types.">7 statements</a>
-          </li>
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip"
+                 data-bs-placement="bottom" data-html="true"
+                 title="<p> 1.5% of total for derived types.</p>Including implementation: 27 statements,  1.2% of total for derived types.">7 statements</a>
+            </li>
 
-            <li id="source-file">
+            <li class="list-inline-item" id="source-file">
               <i class="fa fa-code"></i>
               <a href="../src/random_generator.f90"> Source File</a>
             </li>
         </ul>
-        <ol class="breadcrumb in-well text-right">
-              <li><a href='../sourcefile/random_generator.f90.html'>random_generator.f90</a></li>
-              <li><a href='../module/m_random_generator.html'>m_random_generator</a></li>
-          <li class="active">t_RandomGenerator</li>
-        </ol>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/random_generator.f90.html'>random_generator.f90</a></li>
+                <li class="breadcrumb-item"><a href='../module/m_random_generator.html'>m_random_generator</a></li>
+            <li class="breadcrumb-item active" aria-current="page">t_RandomGenerator</li>
+          </ol>
+        </nav>
       </div>
     </div>
   </div>
   <script>
     $(function () {
-    $('[data-toggle="tooltip"]').tooltip()
+    $('[data-bs-toggle="tooltip"]').tooltip()
     })
   </script>
 
@@ -146,14 +124,13 @@
   
   
   
-      <div class="panel panel-primary">
-      <div class="panel-heading text-left">
-        <h3 class="panel-title">
-          <a data-toggle="collapse" href="#boundprocs-0">Type-Bound Procedures</a>
-        </h3>
-      </div>
-      <div id="boundprocs-0" class="panel-collapse collapse">
-        <div class="list-group">
+      <div class="card mb-4">
+      <a data-bs-toggle="collapse" href="#boundprocs-0"
+         aria-expanded="false" aria-controls="boundprocs-0">
+         <h4 class="card-header bg-primary text-white">Type-Bound Procedures</h4>
+      </a>
+      <div id="boundprocs-0" class="collapse">
+        <div class="list-group list-group-flush">
             <a class="list-group-item" href="../type/t_randomgenerator.html#boundprocedure-advance">advance</a>
             <a class="list-group-item" href="../type/t_randomgenerator.html#boundprocedure-normal">normal</a>
             <a class="list-group-item" href="../type/t_randomgenerator.html#boundprocedure-rand">rand</a>
@@ -162,6 +139,7 @@
       </div>
     </div>
 
+  
   
 
 
@@ -172,111 +150,143 @@
     <div class="col-md-9" id='text'>
       <h2>type, public, abstract :: t_RandomGenerator</h2>
     
-<br>    <div class="panel panel-default">
-      <div class="panel-heading">
-  <h3 class="panel-title">Inherited by</h3>
+<br>    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Inherited by</h3>
       </div>
-      <div class="panel-body">
+      <div class="card-body">
      <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <!-- Generated by graphviz version 2.43.0 (0)
  -->
 <!-- Title: type~~t_randomgenerator~~InheritedByGraph Pages: 1 -->
-<svg id="typet_randomgeneratorInheritedByGraph" width="479pt" height="200pt"
- viewBox="0.00 0.00 479.00 200.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="type~~t_randomgenerator~~InheritedByGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 196)">
+<svg id="typet_randomgeneratorInheritedByGraph" width="479pt" height="284pt"
+ viewBox="0.00 0.00 479.00 284.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="type~~t_randomgenerator~~InheritedByGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 280)">
 <title>type~~t_randomgenerator~~InheritedByGraph</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-196 475,-196 475,4 -4,4"/>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-280 475,-280 475,4 -4,4"/>
 <!-- type~t_randomgenerator -->
 <g id="type~~t_randomgenerator~~InheritedByGraph_node1" class="node">
 <title>type~t_randomgenerator</title>
-<polygon fill="none" stroke="black" points="121,-108 0,-108 0,-84 121,-84 121,-108"/>
-<text text-anchor="middle" x="60.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50">t_RandomGenerator</text>
+<polygon fill="none" stroke="black" points="121,-150 0,-150 0,-126 121,-126 121,-150"/>
+<text text-anchor="middle" x="60.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50">t_RandomGenerator</text>
+</g>
+<!-- type~t_fluxvelocitymaxwelldistribution3d -->
+<g id="type~~t_randomgenerator~~InheritedByGraph_node2" class="node">
+<title>type~t_fluxvelocitymaxwelldistribution3d</title>
+<g id="a_type~~t_randomgenerator~~InheritedByGraph_node2"><a xlink:href=".././type/t_fluxvelocitymaxwelldistribution3d.html" xlink:title="t_FluxVelocityMaxwellDistribution3d">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="459.5,-276 257.5,-276 257.5,-252 459.5,-252 459.5,-276"/>
+<text text-anchor="middle" x="358.5" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">t_FluxVelocityMaxwellDistribution3d</text>
+</a>
+</g>
+</g>
+<!-- type~t_fluxvelocitymaxwelldistribution3d&#45;&gt;type~t_randomgenerator -->
+<g id="type~~t_randomgenerator~~InheritedByGraph_edge5" class="edge">
+<title>type~t_fluxvelocitymaxwelldistribution3d&#45;&gt;type~t_randomgenerator</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M257.49,-254.35C218.6,-247.41 174.87,-235.49 139,-215 113.67,-200.53 90.8,-175.64 76.57,-158.09"/>
+<polygon fill="#000000" stroke="#000000" points="79.25,-155.83 70.32,-150.14 73.75,-160.16 79.25,-155.83"/>
+<text text-anchor="middle" x="183.5" y="-249.4" font-family="Helvetica,sans-Serif" font-size="9.50">random_generator</text>
 </g>
 <!-- type~t_maxwellianvelocitydistribution1d -->
-<g id="type~~t_randomgenerator~~InheritedByGraph_node2" class="node">
+<g id="type~~t_randomgenerator~~InheritedByGraph_node3" class="node">
 <title>type~t_maxwellianvelocitydistribution1d</title>
-<g id="a_type~~t_randomgenerator~~InheritedByGraph_node2"><a xlink:href=".././type/t_maxwellianvelocitydistribution1d.html" xlink:title="t_MaxwellianVelocityDistribution1d">
-<polygon fill="#5cb85c" stroke="#5cb85c" points="457,-192 260,-192 260,-168 457,-168 457,-192"/>
-<text text-anchor="middle" x="358.5" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">t_MaxwellianVelocityDistribution1d</text>
+<g id="a_type~~t_randomgenerator~~InheritedByGraph_node3"><a xlink:href=".././type/t_maxwellianvelocitydistribution1d.html" xlink:title="t_MaxwellianVelocityDistribution1d">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="457,-234 260,-234 260,-210 457,-210 457,-234"/>
+<text text-anchor="middle" x="358.5" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">t_MaxwellianVelocityDistribution1d</text>
 </a>
 </g>
 </g>
 <!-- type~t_maxwellianvelocitydistribution1d&#45;&gt;type~t_randomgenerator -->
 <g id="type~~t_randomgenerator~~InheritedByGraph_edge3" class="edge">
 <title>type~t_maxwellianvelocitydistribution1d&#45;&gt;type~t_randomgenerator</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M271.15,-167.96C230.34,-160.83 181.39,-150.16 139,-135 122.48,-129.09 104.95,-120.49 90.74,-112.86"/>
-<polygon fill="#000000" stroke="#000000" points="92.39,-109.77 81.94,-108.03 89.02,-115.91 92.39,-109.77"/>
-<text text-anchor="middle" x="183.5" y="-161.4" font-family="Helvetica,sans-Serif" font-size="9.50">random_generator</text>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M271.15,-209.96C230.34,-202.83 181.39,-192.16 139,-177 122.48,-171.09 104.95,-162.49 90.74,-154.86"/>
+<polygon fill="#000000" stroke="#000000" points="92.39,-151.77 81.94,-150.03 89.02,-157.91 92.39,-151.77"/>
+<text text-anchor="middle" x="183.5" y="-203.4" font-family="Helvetica,sans-Serif" font-size="9.50">random_generator</text>
 </g>
 <!-- type~t_particleinjectormanager -->
-<g id="type~~t_randomgenerator~~InheritedByGraph_node3" class="node">
+<g id="type~~t_randomgenerator~~InheritedByGraph_node4" class="node">
 <title>type~t_particleinjectormanager</title>
-<g id="a_type~~t_randomgenerator~~InheritedByGraph_node3"><a xlink:href=".././type/t_particleinjectormanager.html" xlink:title="t_ParticleInjectorManager">
-<polygon fill="#5cb85c" stroke="#5cb85c" points="433,-150 284,-150 284,-126 433,-126 433,-150"/>
-<text text-anchor="middle" x="358.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">t_ParticleInjectorManager</text>
+<g id="a_type~~t_randomgenerator~~InheritedByGraph_node4"><a xlink:href=".././type/t_particleinjectormanager.html" xlink:title="t_ParticleInjectorManager">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="433,-192 284,-192 284,-168 433,-168 433,-192"/>
+<text text-anchor="middle" x="358.5" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">t_ParticleInjectorManager</text>
 </a>
 </g>
 </g>
 <!-- type~t_particleinjectormanager&#45;&gt;type~t_randomgenerator -->
-<g id="type~~t_randomgenerator~~InheritedByGraph_edge1" class="edge">
+<g id="type~~t_randomgenerator~~InheritedByGraph_edge6" class="edge">
 <title>type~t_particleinjectormanager&#45;&gt;type~t_randomgenerator</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M283.79,-129.51C241.37,-124.38 187.1,-117.42 139,-110 136.37,-109.59 133.69,-109.17 130.98,-108.73"/>
-<polygon fill="#000000" stroke="#000000" points="131.55,-105.28 121.11,-107.09 130.4,-112.18 131.55,-105.28"/>
-<text text-anchor="middle" x="183.5" y="-123.4" font-family="Helvetica,sans-Serif" font-size="9.50">random_generator</text>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M283.79,-171.51C241.37,-166.38 187.1,-159.42 139,-152 136.37,-151.59 133.69,-151.17 130.98,-150.73"/>
+<polygon fill="#000000" stroke="#000000" points="131.55,-147.28 121.11,-149.09 130.4,-154.18 131.55,-147.28"/>
+<text text-anchor="middle" x="183.5" y="-165.4" font-family="Helvetica,sans-Serif" font-size="9.50">random_generator</text>
 </g>
 <!-- type~t_particleinjectorwithdistribution -->
-<g id="type~~t_randomgenerator~~InheritedByGraph_node4" class="node">
+<g id="type~~t_randomgenerator~~InheritedByGraph_node5" class="node">
 <title>type~t_particleinjectorwithdistribution</title>
-<g id="a_type~~t_randomgenerator~~InheritedByGraph_node4"><a xlink:href=".././type/t_particleinjectorwithdistribution.html" xlink:title="t_ParticleInjectorWithDistribution">
-<polygon fill="#5cb85c" stroke="#5cb85c" points="452,-108 265,-108 265,-84 452,-84 452,-108"/>
-<text text-anchor="middle" x="358.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">t_ParticleInjectorWithDistribution</text>
+<g id="a_type~~t_randomgenerator~~InheritedByGraph_node5"><a xlink:href=".././type/t_particleinjectorwithdistribution.html" xlink:title="t_ParticleInjectorWithDistribution">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="452,-150 265,-150 265,-126 452,-126 452,-150"/>
+<text text-anchor="middle" x="358.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">t_ParticleInjectorWithDistribution</text>
 </a>
 </g>
 </g>
 <!-- type~t_particleinjectorwithdistribution&#45;&gt;type~t_randomgenerator -->
 <g id="type~~t_randomgenerator~~InheritedByGraph_edge2" class="edge">
 <title>type~t_particleinjectorwithdistribution&#45;&gt;type~t_randomgenerator</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M264.66,-96C221.61,-96 171.3,-96 131.51,-96"/>
-<polygon fill="#000000" stroke="#000000" points="131.37,-92.5 121.37,-96 131.37,-99.5 131.37,-92.5"/>
-<text text-anchor="middle" x="183.5" y="-98.4" font-family="Helvetica,sans-Serif" font-size="9.50">random_generator</text>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M264.66,-138C221.61,-138 171.3,-138 131.51,-138"/>
+<polygon fill="#000000" stroke="#000000" points="131.37,-134.5 121.37,-138 131.37,-141.5 131.37,-134.5"/>
+<text text-anchor="middle" x="183.5" y="-140.4" font-family="Helvetica,sans-Serif" font-size="9.50">random_generator</text>
 </g>
 <!-- type~t_pcggenerator -->
-<g id="type~~t_randomgenerator~~InheritedByGraph_node5" class="node">
+<g id="type~~t_randomgenerator~~InheritedByGraph_node6" class="node">
 <title>type~t_pcggenerator</title>
-<g id="a_type~~t_randomgenerator~~InheritedByGraph_node5"><a xlink:href=".././type/t_pcggenerator.html" xlink:title="t_PcgGenerator">
-<polygon fill="#5cb85c" stroke="#5cb85c" points="406,-66 311,-66 311,-42 406,-42 406,-66"/>
-<text text-anchor="middle" x="358.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">t_PcgGenerator</text>
+<g id="a_type~~t_randomgenerator~~InheritedByGraph_node6"><a xlink:href=".././type/t_pcggenerator.html" xlink:title="t_PcgGenerator">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="406,-108 311,-108 311,-84 406,-84 406,-108"/>
+<text text-anchor="middle" x="358.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">t_PcgGenerator</text>
 </a>
 </g>
 </g>
 <!-- type~t_pcggenerator&#45;&gt;type~t_randomgenerator -->
-<g id="type~~t_randomgenerator~~InheritedByGraph_edge5" class="edge">
+<g id="type~~t_randomgenerator~~InheritedByGraph_edge7" class="edge">
 <title>type~t_pcggenerator&#45;&gt;type~t_randomgenerator</title>
-<path fill="none" stroke="#000000" d="M310.92,-60.61C262.64,-67.46 186.62,-78.25 131.18,-86.11"/>
-<polygon fill="#000000" stroke="#000000" points="130.49,-82.68 121.08,-87.55 131.48,-89.61 130.49,-82.68"/>
+<path fill="none" stroke="#000000" d="M310.92,-102.61C262.64,-109.46 186.62,-120.25 131.18,-128.11"/>
+<polygon fill="#000000" stroke="#000000" points="130.49,-124.68 121.08,-129.55 131.48,-131.61 130.49,-124.68"/>
 </g>
 <!-- type~t_positionrandomuniformdistribution1d -->
-<g id="type~~t_randomgenerator~~InheritedByGraph_node6" class="node">
+<g id="type~~t_randomgenerator~~InheritedByGraph_node7" class="node">
 <title>type~t_positionrandomuniformdistribution1d</title>
-<g id="a_type~~t_randomgenerator~~InheritedByGraph_node6"><a xlink:href=".././type/t_positionrandomuniformdistribution1d.html" xlink:title="t_PositionRandomUniformDistribution1d">
-<polygon fill="#5cb85c" stroke="#5cb85c" points="471,-24 246,-24 246,0 471,0 471,-24"/>
-<text text-anchor="middle" x="358.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">t_PositionRandomUniformDistribution1d</text>
+<g id="a_type~~t_randomgenerator~~InheritedByGraph_node7"><a xlink:href=".././type/t_positionrandomuniformdistribution1d.html" xlink:title="t_PositionRandomUniformDistribution1d">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="471,-66 246,-66 246,-42 471,-42 471,-66"/>
+<text text-anchor="middle" x="358.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">t_PositionRandomUniformDistribution1d</text>
 </a>
 </g>
 </g>
 <!-- type~t_positionrandomuniformdistribution1d&#45;&gt;type~t_randomgenerator -->
 <g id="type~~t_randomgenerator~~InheritedByGraph_edge4" class="edge">
 <title>type~t_positionrandomuniformdistribution1d&#45;&gt;type~t_randomgenerator</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M274.6,-24.01C233.14,-31.38 182.63,-42.43 139,-58 123.06,-63.69 106.1,-71.75 92.12,-78.99"/>
-<polygon fill="#000000" stroke="#000000" points="90.18,-76.06 82.97,-83.83 93.45,-82.25 90.18,-76.06"/>
-<text text-anchor="middle" x="183.5" y="-60.4" font-family="Helvetica,sans-Serif" font-size="9.50">random_generator</text>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M274.6,-66.01C233.14,-73.38 182.63,-84.43 139,-100 123.06,-105.69 106.1,-113.75 92.12,-120.99"/>
+<polygon fill="#000000" stroke="#000000" points="90.18,-118.06 82.97,-125.83 93.45,-124.25 90.18,-118.06"/>
+<text text-anchor="middle" x="183.5" y="-102.4" font-family="Helvetica,sans-Serif" font-size="9.50">random_generator</text>
+</g>
+<!-- type~t_velocitymaxwelldistribution3d -->
+<g id="type~~t_randomgenerator~~InheritedByGraph_node8" class="node">
+<title>type~t_velocitymaxwelldistribution3d</title>
+<g id="a_type~~t_randomgenerator~~InheritedByGraph_node8"><a xlink:href=".././type/t_velocitymaxwelldistribution3d.html" xlink:title="t_VelocityMaxwellDistribution3d">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="449,-24 268,-24 268,0 449,0 449,-24"/>
+<text text-anchor="middle" x="358.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">t_VelocityMaxwellDistribution3d</text>
+</a>
+</g>
+</g>
+<!-- type~t_velocitymaxwelldistribution3d&#45;&gt;type~t_randomgenerator -->
+<g id="type~~t_randomgenerator~~InheritedByGraph_edge1" class="edge">
+<title>type~t_velocitymaxwelldistribution3d&#45;&gt;type~t_randomgenerator</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M267.8,-19.91C226.48,-26.52 178.07,-38.68 139,-61 113.67,-75.47 90.8,-100.36 76.57,-117.91"/>
+<polygon fill="#000000" stroke="#000000" points="73.75,-115.84 70.32,-125.86 79.25,-120.17 73.75,-115.84"/>
+<text text-anchor="middle" x="183.5" y="-63.4" font-family="Helvetica,sans-Serif" font-size="9.50">random_generator</text>
 </g>
 </g>
 </svg>
-</div>        <div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div>
-          <div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog">
+</div>        <div><a type="button" class="graph-help" data-toggle="modal" href="#InheritedByGraph-help-text">Help</a></div>
+          <div class="modal fade" id="InheritedByGraph-help-text" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
               <div class="modal-content">
                 <div class="modal-header">
@@ -326,71 +336,38 @@ said component(s).
     </div>
     <br>
 
-    <section class="visible-xs visible-sm hidden-md">
-        <h3>Contents</h3>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-      <div class="panel panel-primary">
-      <div class="panel-heading text-left">
-        <h3 class="panel-title">
-          <a data-toggle="collapse" href="#boundprocs-1">Type-Bound Procedures</a>
-        </h3>
-      </div>
-      <div id="boundprocs-1" class="panel-collapse collapse">
-        <div class="list-group">
-            <a class="list-group-item" href="../type/t_randomgenerator.html#boundprocedure-advance">advance</a>
-            <a class="list-group-item" href="../type/t_randomgenerator.html#boundprocedure-normal">normal</a>
-            <a class="list-group-item" href="../type/t_randomgenerator.html#boundprocedure-rand">rand</a>
-            <a class="list-group-item" href="../type/t_randomgenerator.html#boundprocedure-random_fix">random_fix</a>
-        </div>
-      </div>
-    </div>
-
-  
-
-
-    </section>
-    <br class="visible-xs visible-sm hidden-md">
-
     
 
 
       <section>
         <h2>Type-Bound Procedures</h2>
-            <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-advance"></span><h3>procedure(randomGenerator_advance), public, deferred :: <strong>advance</strong>          
-    </h3></div>
+          <div class="row">
+              <div class="card mt-3">
+    <div class="card-header codesum">
+      <span class="anchor" id="boundprocedure-advance"></span>
+      <h3>
+          procedure(randomGenerator_advance), public, deferred ::
+  <strong>advance</strong>
+        
+      </h3>
+    </div>
     <ul class="list-group">
         <li class="list-group-item">
                   <h3>
      subroutine randomGenerator_advance(self, n)  
 <small>Prototype</small></h3>
+
   
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
     <thead>
       <tr>
-        <th>Type</th>
-<th>Intent</th><th>Optional</th>        <th>Attributes</th>
-        <th></th>
-        <th>Name</th>
-        <th></th>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
     </thead>
     <tbody>
         <tr>
@@ -431,25 +408,34 @@ said component(s).
     </ul>
   </div>
 
-            <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-normal"></span><h3>procedure, public,  :: <strong>normal</strong>  => randomGenerator_normal         
-    </h3></div>
+          </div>
+          <div class="row">
+              <div class="card mt-3">
+    <div class="card-header codesum">
+      <span class="anchor" id="boundprocedure-normal"></span>
+      <h3>
+          procedure, public ::
+  <strong>normal</strong> => randomGenerator_normal
+        
+      </h3>
+    </div>
     <ul class="list-group">
         <li class="list-group-item">
                   <h3>
     private  function randomGenerator_normal(self) result(ret)  
 </h3>
+
   
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
     <thead>
       <tr>
-        <th>Type</th>
-<th>Intent</th><th>Optional</th>        <th>Attributes</th>
-        <th></th>
-        <th>Name</th>
-        <th></th>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
     </thead>
     <tbody>
         <tr>
@@ -480,25 +466,34 @@ said component(s).
     </ul>
   </div>
 
-            <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-rand"></span><h3>procedure(randomGenerator_rand), public, deferred :: <strong>rand</strong>          
-    </h3></div>
+          </div>
+          <div class="row">
+              <div class="card mt-3">
+    <div class="card-header codesum">
+      <span class="anchor" id="boundprocedure-rand"></span>
+      <h3>
+          procedure(randomGenerator_rand), public, deferred ::
+  <strong>rand</strong>
+        
+      </h3>
+    </div>
     <ul class="list-group">
         <li class="list-group-item">
                   <h3>
      function randomGenerator_rand(self) result(ret)  
 <small>Prototype</small></h3>
+
   
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
     <thead>
       <tr>
-        <th>Type</th>
-<th>Intent</th><th>Optional</th>        <th>Attributes</th>
-        <th></th>
-        <th>Name</th>
-        <th></th>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
     </thead>
     <tbody>
         <tr>
@@ -529,25 +524,34 @@ said component(s).
     </ul>
   </div>
 
-            <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-random_fix"></span><h3>procedure, public,  :: <strong>random_fix</strong>  => randomGenerator_random_fix         
-    </h3></div>
+          </div>
+          <div class="row">
+              <div class="card mt-3">
+    <div class="card-header codesum">
+      <span class="anchor" id="boundprocedure-random_fix"></span>
+      <h3>
+          procedure, public ::
+  <strong>random_fix</strong> => randomGenerator_random_fix
+        
+      </h3>
+    </div>
     <ul class="list-group">
         <li class="list-group-item">
                   <h3>
     private  function randomGenerator_random_fix(self, value) result(ret)  
 </h3>
+
   
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
     <thead>
       <tr>
-        <th>Type</th>
-<th>Intent</th><th>Optional</th>        <th>Attributes</th>
-        <th></th>
-        <th>Name</th>
-        <th></th>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
     </thead>
     <tbody>
         <tr>
@@ -593,6 +597,7 @@ said component(s).
     </ul>
   </div>
 
+          </div>
       </section>
 
     
@@ -603,32 +608,27 @@ said component(s).
     </div> <!-- /container -->
     <footer>
       <div class="container">
-        <div class="row">
-          <div class="col-xs-6 col-md-6"><p>ohhelp-pic-3d was developed by Nkzono99<br>&copy; 2023 <a rel="license" href="https://opensource.org/licenses/MIT">MIT</a>
+        <div class="row justify-content-between">
+          <div class="col"><p>ohhelp-pic-3d was developed by Nkzono99<br>&copy; 2023 <a rel="license" href="https://opensource.org/licenses/MIT">MIT</a>
 </p>
           </div>
-          <div class="col-xs-6 col-md-6">
-            <p class="text-right">
+          <div class="col">
+            <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2023-07-11T21:09:12.065188             </p>
+ on 2023-11-07T16:33:23.830536             </p>
           </div>
         </div>
         <br>
       </div> <!-- /container -->
     </footer>
 
-    <!-- Bootstrap core JavaScript
-         ================================================== -->
-         <!-- Placed at the end of the document so the pages load faster -->
-    <!--
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-        -->
-        <script src="../js/bootstrap.min.js"></script>
-        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-        <script src="../js/ie10-viewport-bug-workaround.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
 
-        <!-- MathJax JavaScript
+    <!-- MathJax JavaScript
              ================================================== -->
              <!-- Placed at the end of the document so the pages load faster -->
         <script type="text/x-mathjax-config">

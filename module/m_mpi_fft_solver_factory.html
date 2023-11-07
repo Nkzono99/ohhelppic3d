@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Particle-In-Cell using OhHelp">
+    <meta name="author" content="Nkzono99" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>m_mpi_fft_solver_factory &ndash; ohhelp-pic-3d</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha256-tG5mcZUtJsZvyKAxYLVXrmjKBVLd6VpVccqz/r4ypFE=" crossorigin="anonymous"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">ohhelp-pic-3d </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../program/main.html">Program</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>m_mpi_fft_solver_factory
+      <small>Module</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+            <li class="list-inline-item" id="meta-license"><i class="fa fa-legal"></i> <a rel="license" href="https://opensource.org/licenses/MIT">MIT</a></li>
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip"
+                 data-bs-placement="bottom" data-html="true"
+                 title=" 0.6% of total for modules and submodules.">24 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/mpi_fft_solver_factory.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/mpi_fft_solver_factory.f90.html'>mpi_fft_solver_factory.f90</a></li>
+            <li class="breadcrumb-item active" aria-current="page">m_mpi_fft_solver_factory</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-bs-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">
+        <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+      <div class="card mb-4">
+      <a data-bs-toggle="collapse" href="#funcs-0"
+         aria-expanded="false" aria-controls="funcs-0">
+         <h4 class="card-header bg-primary text-white">Functions</h4>
+      </a>
+      <div id="funcs-0" class="collapse">
+        <div class="list-group list-group-flush">
+            <a class="list-group-item" href="../module/m_mpi_fft_solver_factory.html#proc-create_mpi_fft_solver">create_mpi_fft_solver</a>
+        </div>
+      </div>
+    </div>
+
+  
+  
+  
+  
+  
+  
+  
+  
+
+
+  </div>
+
+    </div>
+
+    <div class="col-md-9" id='text'>
+      
+<br>          <div class="card mb-4">
+      <h3 class="card-header card-title bg-light">Uses</h3>
+      <div class="card-body">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <ul class="list-inline">
+                  <li class="list-inline-item"><a href='../module/m_mpi_fftw3_solver.html'>m_mpi_fftw3_solver</a></li>
+                  <li class="list-inline-item"><a href='../module/m_block.html'>m_block</a></li>
+                  <li class="list-inline-item"><a href='../module/m_mpi_fft_solver.html'>m_mpi_fft_solver</a></li>
+              </ul>
+            </li>
+            <li class="list-group-item">
+              <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: module~~m_mpi_fft_solver_factory~~UsesGraph Pages: 1 -->
+<svg id="modulem_mpi_fft_solver_factoryUsesGraph" width="641pt" height="182pt"
+ viewBox="0.00 0.00 641.00 182.11" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="module~~m_mpi_fft_solver_factory~~UsesGraph" class="graph" transform="scale(1.47 1.47) rotate(0) translate(4 264.19)">
+<title>module~~m_mpi_fft_solver_factory~~UsesGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-264.19 940,-264.19 940,4 -4,4"/>
+<!-- module~m_mpi_fft_solver_factory -->
+<g id="module~~m_mpi_fft_solver_factory~~UsesGraph_node1" class="node">
+<title>module~m_mpi_fft_solver_factory</title>
+<polygon fill="none" stroke="black" points="936,-200.19 791,-200.19 791,-176.19 936,-176.19 936,-200.19"/>
+<text text-anchor="middle" x="863.5" y="-185.79" font-family="Helvetica,sans-Serif" font-size="10.50">m_mpi_fft_solver_factory</text>
+</g>
+<!-- module~m_block -->
+<g id="module~~m_mpi_fft_solver_factory~~UsesGraph_node2" class="node">
+<title>module~m_block</title>
+<g id="a_module~~m_mpi_fft_solver_factory~~UsesGraph_node2"><a xlink:href=".././module/m_block.html" xlink:title="m_block">
+<polygon fill="#337ab7" stroke="#337ab7" points="57,-200.19 0,-200.19 0,-176.19 57,-176.19 57,-200.19"/>
+<text text-anchor="middle" x="28.5" y="-185.79" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">m_block</text>
+</a>
+</g>
+</g>
+<!-- module~m_mpi_fft_solver_factory&#45;&gt;module~m_block -->
+<g id="module~~m_mpi_fft_solver_factory~~UsesGraph_edge1" class="edge">
+<title>module~m_mpi_fft_solver_factory&#45;&gt;module~m_block</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M790.81,-196.85C761.7,-200.36 727.74,-204.47 697,-208.19"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M695,-208.19C623.96,-216.79 605.42,-203.82 534,-208.19"/>
+</g>
+<!-- module~m_mpi_fft_solver -->
+<g id="module~~m_mpi_fft_solver_factory~~UsesGraph_node3" class="node">
+<title>module~m_mpi_fft_solver</title>
+<g id="a_module~~m_mpi_fft_solver_factory~~UsesGraph_node3"><a xlink:href=".././module/m_mpi_fft_solver.html" xlink:title="m_mpi_fft_solver">
+<polygon fill="#337ab7" stroke="#337ab7" points="584.5,-260.19 481.5,-260.19 481.5,-236.19 584.5,-236.19 584.5,-260.19"/>
+<text text-anchor="middle" x="533" y="-245.79" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">m_mpi_fft_solver</text>
+</a>
+</g>
+</g>
+<!-- module~m_mpi_fft_solver_factory&#45;&gt;module~m_mpi_fft_solver -->
+<g id="module~~m_mpi_fft_solver_factory~~UsesGraph_edge2" class="edge">
+<title>module~m_mpi_fft_solver_factory&#45;&gt;module~m_mpi_fft_solver</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M695,-208.19C656.04,-212.9 612.95,-223.93 581.15,-233.22"/>
+<polygon fill="#000000" stroke="#000000" points="579.84,-229.96 571.25,-236.16 581.83,-236.67 579.84,-229.96"/>
+</g>
+<!-- module~m_mpi_fftw3_solver -->
+<g id="module~~m_mpi_fft_solver_factory~~UsesGraph_node4" class="node">
+<title>module~m_mpi_fftw3_solver</title>
+<g id="a_module~~m_mpi_fft_solver_factory~~UsesGraph_node4"><a xlink:href=".././module/m_mpi_fftw3_solver.html" xlink:title="m_mpi_fftw3_solver">
+<polygon fill="#337ab7" stroke="#337ab7" points="755,-180.19 637,-180.19 637,-156.19 755,-156.19 755,-180.19"/>
+<text text-anchor="middle" x="696" y="-165.79" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">m_mpi_fftw3_solver</text>
+</a>
+</g>
+</g>
+<!-- module~m_mpi_fft_solver_factory&#45;&gt;module~m_mpi_fftw3_solver -->
+<g id="module~~m_mpi_fft_solver_factory~~UsesGraph_edge3" class="edge">
+<title>module~m_mpi_fft_solver_factory&#45;&gt;module~m_mpi_fftw3_solver</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M790.87,-179.53C782.36,-178.5 773.69,-177.46 765.24,-176.43"/>
+<polygon fill="#000000" stroke="#000000" points="765.39,-172.93 755.04,-175.2 764.55,-179.88 765.39,-172.93"/>
+</g>
+<!-- module~m_mpi_fft_solver&#45;&gt;module~m_block -->
+<g id="module~~m_mpi_fft_solver_factory~~UsesGraph_edge4" class="edge">
+<title>module~m_mpi_fft_solver&#45;&gt;module~m_block</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M500.23,-236.08C464.26,-223.57 403.66,-206.15 350,-208.19"/>
+</g>
+<!-- module~m_mpi_fftw3_solver&#45;&gt;module~m_block -->
+<g id="module~~m_mpi_fft_solver_factory~~UsesGraph_edge6" class="edge">
+<title>module~m_mpi_fftw3_solver&#45;&gt;module~m_block</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M661.64,-180.27C629.46,-191.01 579.13,-205.43 534,-208.19"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M532,-208.19C451.26,-213.12 430.83,-205.12 350,-208.19"/>
+</g>
+<!-- module~m_mpi_fftw3_solver&#45;&gt;module~m_mpi_fft_solver -->
+<g id="module~~m_mpi_fft_solver_factory~~UsesGraph_edge9" class="edge">
+<title>module~m_mpi_fftw3_solver&#45;&gt;module~m_mpi_fft_solver</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M664.5,-180.22C655.42,-184.23 645.61,-189.02 637,-194.19 619.63,-204.63 618.63,-212.19 601,-222.19 594.51,-225.87 587.39,-229.25 580.3,-232.27"/>
+<polygon fill="#000000" stroke="#000000" points="578.65,-229.16 570.7,-236.15 581.28,-235.64 578.65,-229.16"/>
+</g>
+<!-- m_fftw3_mpi -->
+<g id="module~~m_mpi_fft_solver_factory~~UsesGraph_node5" class="node">
+<title>m_fftw3_mpi</title>
+<polygon fill="#337ab7" stroke="#337ab7" points="573,-180.19 493,-180.19 493,-156.19 573,-156.19 573,-180.19"/>
+<text text-anchor="middle" x="533" y="-165.79" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">m_fftw3_mpi</text>
+</g>
+<!-- module~m_mpi_fftw3_solver&#45;&gt;m_fftw3_mpi -->
+<g id="module~~m_mpi_fft_solver_factory~~UsesGraph_edge5" class="edge">
+<title>module~m_mpi_fftw3_solver&#45;&gt;m_fftw3_mpi</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M636.88,-168.19C619.42,-168.19 600.44,-168.19 583.59,-168.19"/>
+<polygon fill="#000000" stroke="#000000" points="583.41,-164.69 573.41,-168.19 583.41,-171.69 583.41,-164.69"/>
+</g>
+<!-- module~m_field_boundary_type -->
+<g id="module~~m_mpi_fft_solver_factory~~UsesGraph_node6" class="node">
+<title>module~m_field_boundary_type</title>
+<g id="a_module~~m_mpi_fft_solver_factory~~UsesGraph_node6"><a xlink:href=".././module/m_field_boundary_type.html" xlink:title="m_field_boundary_type">
+<polygon fill="#337ab7" stroke="#337ab7" points="601,-96.19 465,-96.19 465,-72.19 601,-72.19 601,-96.19"/>
+<text text-anchor="middle" x="533" y="-81.79" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">m_field_boundary_type</text>
+</a>
+</g>
+</g>
+<!-- module~m_mpi_fftw3_solver&#45;&gt;module~m_field_boundary_type -->
+<g id="module~~m_mpi_fft_solver_factory~~UsesGraph_edge7" class="edge">
+<title>module~m_mpi_fftw3_solver&#45;&gt;module~m_field_boundary_type</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M679.86,-156.03C661.94,-142.13 630.76,-119.46 601,-105.19 596.93,-103.24 592.64,-101.41 588.28,-99.72"/>
+<polygon fill="#000000" stroke="#000000" points="589.25,-96.35 578.66,-96.22 586.86,-102.93 589.25,-96.35"/>
+</g>
+<!-- module~m_mpi_block_rebaser -->
+<g id="module~~m_mpi_fft_solver_factory~~UsesGraph_node7" class="node">
+<title>module~m_mpi_block_rebaser</title>
+<g id="a_module~~m_mpi_fft_solver_factory~~UsesGraph_node7"><a xlink:href=".././module/m_mpi_block_rebaser.html" xlink:title="m_mpi_block_rebaser">
+<polygon fill="#337ab7" stroke="#337ab7" points="597,-138.19 469,-138.19 469,-114.19 597,-114.19 597,-138.19"/>
+<text text-anchor="middle" x="533" y="-123.79" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">m_mpi_block_rebaser</text>
+</a>
+</g>
+</g>
+<!-- module~m_mpi_fftw3_solver&#45;&gt;module~m_mpi_block_rebaser -->
+<g id="module~~m_mpi_fft_solver_factory~~UsesGraph_edge8" class="edge">
+<title>module~m_mpi_fftw3_solver&#45;&gt;module~m_mpi_block_rebaser</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M648.86,-156.15C630.51,-151.36 609.21,-145.81 589.98,-140.79"/>
+<polygon fill="#000000" stroke="#000000" points="590.7,-137.36 580.14,-138.23 588.94,-144.14 590.7,-137.36"/>
+</g>
+<!-- mpi -->
+<g id="module~~m_mpi_fft_solver_factory~~UsesGraph_node8" class="node">
+<title>mpi</title>
+<polygon fill="#337ab7" stroke="#337ab7" points="55.5,-118.19 1.5,-118.19 1.5,-94.19 55.5,-94.19 55.5,-118.19"/>
+<text text-anchor="middle" x="28.5" y="-103.79" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi</text>
+</g>
+<!-- module~m_mpi_fftw3_solver&#45;&gt;mpi -->
+<g id="module~~m_mpi_fft_solver_factory~~UsesGraph_edge10" class="edge">
+<title>module~m_mpi_fftw3_solver&#45;&gt;mpi</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M687.7,-155.88C673.81,-133.61 641.34,-86.77 601,-63.19 472.78,11.77 412.41,13.44 269,-25.19 216.89,-39.23 217.1,-76.54 164,-86.19"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M162,-86.19C129.62,-91.77 92.63,-97.28 65.98,-101.1"/>
+<polygon fill="#000000" stroke="#000000" points="65.36,-97.65 55.95,-102.53 66.34,-104.58 65.36,-97.65"/>
+</g>
+<!-- module~m_mpi_block_rebaser&#45;&gt;module~m_block -->
+<g id="module~~m_mpi_fft_solver_factory~~UsesGraph_edge12" class="edge">
+<title>module~m_mpi_block_rebaser&#45;&gt;module~m_block</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M482.25,-138.29C476.2,-140.76 470.29,-143.7 465,-147.19 444.48,-160.72 449.97,-176.36 429,-189.19 398.2,-208.04 386.09,-206.82 350,-208.19"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M348,-208.19C266.28,-211.29 245.76,-209.84 164,-208.19"/>
+</g>
+<!-- module~m_mpi_block_rebaser&#45;&gt;mpi -->
+<g id="module~~m_mpi_fft_solver_factory~~UsesGraph_edge16" class="edge">
+<title>module~m_mpi_block_rebaser&#45;&gt;mpi</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M494.15,-114.09C457.68,-103.33 400.72,-88.9 350,-86.19"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M348,-86.19C266.34,-81.82 244.46,-71.57 164,-86.19"/>
+</g>
+<!-- m_get_default -->
+<g id="module~~m_mpi_fft_solver_factory~~UsesGraph_node9" class="node">
+<title>m_get_default</title>
+<polygon fill="#337ab7" stroke="#337ab7" points="393,-58.19 305,-58.19 305,-34.19 393,-34.19 393,-58.19"/>
+<text text-anchor="middle" x="349" y="-43.79" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">m_get_default</text>
+</g>
+<!-- module~m_mpi_block_rebaser&#45;&gt;m_get_default -->
+<g id="module~~m_mpi_fft_solver_factory~~UsesGraph_edge11" class="edge">
+<title>module~m_mpi_block_rebaser&#45;&gt;m_get_default</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M484.4,-114.14C477.68,-111.62 471.02,-108.66 465,-105.19 446.19,-94.35 447.73,-83.16 429,-72.19 420.95,-67.47 411.93,-63.48 402.94,-60.15"/>
+<polygon fill="#000000" stroke="#000000" points="403.84,-56.76 393.25,-56.79 401.55,-63.37 403.84,-56.76"/>
+</g>
+<!-- module~m_block_communicator -->
+<g id="module~~m_mpi_fft_solver_factory~~UsesGraph_node10" class="node">
+<title>module~m_block_communicator</title>
+<g id="a_module~~m_mpi_fft_solver_factory~~UsesGraph_node10"><a xlink:href=".././module/m_block_communicator.html" xlink:title="m_block_communicator">
+<polygon fill="#337ab7" stroke="#337ab7" points="233,-138.19 93,-138.19 93,-114.19 233,-114.19 233,-138.19"/>
+<text text-anchor="middle" x="163" y="-123.79" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">m_block_communicator</text>
+</a>
+</g>
+</g>
+<!-- module~m_mpi_block_rebaser&#45;&gt;module~m_block_communicator -->
+<g id="module~~m_mpi_fft_solver_factory~~UsesGraph_edge13" class="edge">
+<title>module~m_mpi_block_rebaser&#45;&gt;module~m_block_communicator</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M348,-86.19C298.02,-83.51 242.01,-98.35 205.06,-110.7"/>
+<polygon fill="#000000" stroke="#000000" points="203.48,-107.54 195.16,-114.1 205.76,-114.16 203.48,-107.54"/>
+</g>
+<!-- module~m_block_communicator_list -->
+<g id="module~~m_mpi_fft_solver_factory~~UsesGraph_node11" class="node">
+<title>module~m_block_communicator_list</title>
+<g id="a_module~~m_mpi_fft_solver_factory~~UsesGraph_node11"><a xlink:href=".././module/m_block_communicator_list.html" xlink:title="m_block_communicator_list">
+<polygon fill="#337ab7" stroke="#337ab7" points="429,-138.19 269,-138.19 269,-114.19 429,-114.19 429,-138.19"/>
+<text text-anchor="middle" x="349" y="-123.79" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">m_block_communicator_list</text>
+</a>
+</g>
+</g>
+<!-- module~m_mpi_block_rebaser&#45;&gt;module~m_block_communicator_list -->
+<g id="module~~m_mpi_fft_solver_factory~~UsesGraph_edge14" class="edge">
+<title>module~m_mpi_block_rebaser&#45;&gt;module~m_block_communicator_list</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M468.86,-126.19C459.23,-126.19 449.15,-126.19 439.09,-126.19"/>
+<polygon fill="#000000" stroke="#000000" points="439.07,-122.69 429.07,-126.19 439.07,-129.69 439.07,-122.69"/>
+</g>
+<!-- module~m_block_list -->
+<g id="module~~m_mpi_fft_solver_factory~~UsesGraph_node12" class="node">
+<title>module~m_block_list</title>
+<g id="a_module~~m_mpi_fft_solver_factory~~UsesGraph_node12"><a xlink:href=".././module/m_block_list.html" xlink:title="m_block_list">
+<polygon fill="#337ab7" stroke="#337ab7" points="387.5,-180.19 310.5,-180.19 310.5,-156.19 387.5,-156.19 387.5,-180.19"/>
+<text text-anchor="middle" x="349" y="-165.79" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">m_block_list</text>
+</a>
+</g>
+</g>
+<!-- module~m_mpi_block_rebaser&#45;&gt;module~m_block_list -->
+<g id="module~~m_mpi_fft_solver_factory~~UsesGraph_edge15" class="edge">
+<title>module~m_mpi_block_rebaser&#45;&gt;module~m_block_list</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M479.85,-138.22C454,-144.19 423,-151.34 397.77,-157.16"/>
+<polygon fill="#000000" stroke="#000000" points="396.66,-153.83 387.7,-159.49 398.23,-160.65 396.66,-153.83"/>
+</g>
+<!-- module~m_block_communicator&#45;&gt;module~m_block -->
+<g id="module~~m_mpi_fft_solver_factory~~UsesGraph_edge17" class="edge">
+<title>module~m_block_communicator&#45;&gt;module~m_block</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M116.05,-138.22C108.22,-140.82 100.27,-143.82 93,-147.19 79.34,-153.53 65.17,-162.42 53.69,-170.3"/>
+<polygon fill="#000000" stroke="#000000" points="51.65,-167.46 45.48,-176.08 55.68,-173.18 51.65,-167.46"/>
+</g>
+<!-- module~m_block_communicator&#45;&gt;mpi -->
+<g id="module~~m_mpi_fft_solver_factory~~UsesGraph_edge18" class="edge">
+<title>module~m_block_communicator&#45;&gt;mpi</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M92.65,-115.72C83.4,-114.32 74.24,-112.94 65.87,-111.68"/>
+<polygon fill="#000000" stroke="#000000" points="66.18,-108.19 55.77,-110.15 65.13,-115.11 66.18,-108.19"/>
+</g>
+<!-- module~m_block_communicator_list&#45;&gt;module~m_block_communicator -->
+<g id="module~~m_mpi_fft_solver_factory~~UsesGraph_edge20" class="edge">
+<title>module~m_block_communicator_list&#45;&gt;module~m_block_communicator</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M268.9,-126.19C260.45,-126.19 251.86,-126.19 243.4,-126.19"/>
+<polygon fill="#000000" stroke="#000000" points="243.19,-122.69 233.19,-126.19 243.19,-129.69 243.19,-122.69"/>
+</g>
+<!-- m_list -->
+<g id="module~~m_mpi_fft_solver_factory~~UsesGraph_node13" class="node">
+<title>m_list</title>
+<polygon fill="#337ab7" stroke="#337ab7" points="190,-180.19 136,-180.19 136,-156.19 190,-156.19 190,-180.19"/>
+<text text-anchor="middle" x="163" y="-165.79" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">m_list</text>
+</g>
+<!-- module~m_block_communicator_list&#45;&gt;m_list -->
+<g id="module~~m_mpi_fft_solver_factory~~UsesGraph_edge19" class="edge">
+<title>module~m_block_communicator_list&#45;&gt;m_list</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M295.27,-138.22C264.76,-145.19 227.16,-153.77 200.03,-159.96"/>
+<polygon fill="#000000" stroke="#000000" points="199.15,-156.57 190.18,-162.21 200.71,-163.4 199.15,-156.57"/>
+</g>
+<!-- module~m_block_list&#45;&gt;module~m_block -->
+<g id="module~~m_mpi_fft_solver_factory~~UsesGraph_edge22" class="edge">
+<title>module~m_block_list&#45;&gt;module~m_block</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M314.89,-180.28C278.41,-192.45 217.76,-209.28 164,-208.19"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M162,-208.19C129.76,-207.54 93.59,-201.73 67.2,-196.54"/>
+<polygon fill="#000000" stroke="#000000" points="67.73,-193.07 57.24,-194.52 66.34,-199.93 67.73,-193.07"/>
+</g>
+<!-- module~m_block_list&#45;&gt;m_list -->
+<g id="module~~m_mpi_fft_solver_factory~~UsesGraph_edge21" class="edge">
+<title>module~m_block_list&#45;&gt;m_list</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M310.32,-168.19C278.11,-168.19 232.06,-168.19 200.26,-168.19"/>
+<polygon fill="#000000" stroke="#000000" points="200.06,-164.69 190.06,-168.19 200.06,-171.69 200.06,-164.69"/>
+</g>
+</g>
+</svg>
+</div>                <script>
+                  var panmodulem_mpi_fft_solver_factoryUsesGraph = svgPanZoom('#modulem_mpi_fft_solver_factoryUsesGraph',
+                    {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
+                  );
+                </script>        <div><a type="button" class="graph-help" data-toggle="modal" href="#UsesGraph-help-text">Help</a></div>
+          <div class="modal fade" id="UsesGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                </div>
+              <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="518pt" height="32pt"
+ viewBox="0.00 0.00 517.50 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 513.5,-28 513.5,4 -4,4"/>
+<!-- Module -->
+<g id="node1" class="node">
+<title>Module</title>
+<polygon fill="#337ab7" stroke="#337ab7" points="54,-24 0,-24 0,0 54,0 54,-24"/>
+<text text-anchor="middle" x="27" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Module</text>
+</g>
+<!-- Submodule -->
+<g id="node2" class="node">
+<title>Submodule</title>
+<polygon fill="#5bc0de" stroke="#5bc0de" points="145.5,-24 72.5,-24 72.5,0 145.5,0 145.5,-24"/>
+<text text-anchor="middle" x="109" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Submodule</text>
+</g>
+<!-- Subroutine -->
+<g id="node3" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="234,-24 164,-24 164,0 234,0 234,-24"/>
+<text text-anchor="middle" x="199" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node4" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="310,-24 252,-24 252,0 310,0 310,-24"/>
+<text text-anchor="middle" x="281" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Program -->
+<g id="node5" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="386,-24 328,-24 328,0 386,0 386,-24"/>
+<text text-anchor="middle" x="357" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node6" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="509.5,-24 404.5,-24 404.5,0 509.5,0 509.5,-24"/>
+<text text-anchor="middle" x="457" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a submodule to the (sub)module which it is
+descended from. Dashed arrows point from a module or program unit to 
+modules which it uses.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+            </li>
+        </ul>
+      </div>
+    </div>
+
+          <div class="card">
+      <h3 class="card-header card-title bg-light">Used by</h3>
+      <div class="card-body">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: module~~m_mpi_fft_solver_factory~~UsedByGraph Pages: 1 -->
+<svg id="modulem_mpi_fft_solver_factoryUsedByGraph" width="529pt" height="52pt"
+ viewBox="0.00 0.00 529.00 52.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="module~~m_mpi_fft_solver_factory~~UsedByGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 48)">
+<title>module~~m_mpi_fft_solver_factory~~UsedByGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-48 525,-48 525,4 -4,4"/>
+<!-- module~m_mpi_fft_solver_factory -->
+<g id="module~~m_mpi_fft_solver_factory~~UsedByGraph_node1" class="node">
+<title>module~m_mpi_fft_solver_factory</title>
+<polygon fill="none" stroke="black" points="145,-44 0,-44 0,-20 145,-20 145,-44"/>
+<text text-anchor="middle" x="72.5" y="-29.6" font-family="Helvetica,sans-Serif" font-size="10.50">m_mpi_fft_solver_factory</text>
+</g>
+<!-- module~m_poisson_field_solver -->
+<g id="module~~m_mpi_fft_solver_factory~~UsedByGraph_node2" class="node">
+<title>module~m_poisson_field_solver</title>
+<g id="a_module~~m_mpi_fft_solver_factory~~UsedByGraph_node2"><a xlink:href=".././module/m_poisson_field_solver.html" xlink:title="m_poisson_field_solver">
+<polygon fill="#337ab7" stroke="#337ab7" points="316,-24 181,-24 181,0 316,0 316,-24"/>
+<text text-anchor="middle" x="248.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">m_poisson_field_solver</text>
+</a>
+</g>
+</g>
+<!-- module~m_poisson_field_solver&#45;&gt;module~m_mpi_fft_solver_factory -->
+<g id="module~~m_mpi_fft_solver_factory~~UsedByGraph_edge1" class="edge">
+<title>module~m_poisson_field_solver&#45;&gt;module~m_mpi_fft_solver_factory</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M180.72,-19.68C172.32,-20.64 163.65,-21.64 155.05,-22.63"/>
+<polygon fill="#000000" stroke="#000000" points="154.54,-19.16 145.01,-23.78 155.34,-26.12 154.54,-19.16"/>
+</g>
+<!-- module~ohhelppic3d -->
+<g id="module~~m_mpi_fft_solver_factory~~UsedByGraph_node3" class="node">
+<title>module~ohhelppic3d</title>
+<g id="a_module~~m_mpi_fft_solver_factory~~UsedByGraph_node3"><a xlink:href=".././module/ohhelppic3d.html" xlink:title="ohhelppic3d">
+<polygon fill="#337ab7" stroke="#337ab7" points="431,-44 352,-44 352,-20 431,-20 431,-44"/>
+<text text-anchor="middle" x="391.5" y="-29.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ohhelppic3d</text>
+</a>
+</g>
+</g>
+<!-- module~ohhelppic3d&#45;&gt;module~m_mpi_fft_solver_factory -->
+<g id="module~~m_mpi_fft_solver_factory~~UsedByGraph_edge2" class="edge">
+<title>module~ohhelppic3d&#45;&gt;module~m_mpi_fft_solver_factory</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M351.83,-32.62C340.31,-32.78 327.64,-32.92 316,-33 256,-33.4 241,-33.28 181,-33 172.68,-32.96 164,-32.91 155.34,-32.84"/>
+<polygon fill="#000000" stroke="#000000" points="155.23,-29.34 145.2,-32.76 155.17,-36.34 155.23,-29.34"/>
+</g>
+<!-- module~ohhelppic3d&#45;&gt;module~m_poisson_field_solver -->
+<g id="module~~m_mpi_fft_solver_factory~~UsedByGraph_edge3" class="edge">
+<title>module~ohhelppic3d&#45;&gt;module~m_poisson_field_solver</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M351.97,-26.53C343.91,-25.39 335.15,-24.15 326.25,-22.89"/>
+<polygon fill="#000000" stroke="#000000" points="326.57,-19.4 316.18,-21.46 325.59,-26.33 326.57,-19.4"/>
+</g>
+<!-- program~main -->
+<g id="module~~m_mpi_fft_solver_factory~~UsedByGraph_node4" class="node">
+<title>program~main</title>
+<g id="a_module~~m_mpi_fft_solver_factory~~UsedByGraph_node4"><a xlink:href=".././program/main.html" xlink:title="main">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="521,-44 467,-44 467,-20 521,-20 521,-44"/>
+<text text-anchor="middle" x="494" y="-29.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">main</text>
+</a>
+</g>
+</g>
+<!-- program~main&#45;&gt;module~ohhelppic3d -->
+<g id="module~~m_mpi_fft_solver_factory~~UsedByGraph_edge4" class="edge">
+<title>program~main&#45;&gt;module~ohhelppic3d</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M466.86,-32C459,-32 450.11,-32 441.28,-32"/>
+<polygon fill="#000000" stroke="#000000" points="441.01,-28.5 431.01,-32 441.01,-35.5 441.01,-28.5"/>
+</g>
+</g>
+</svg>
+</div>        <div><a type="button" class="graph-help" data-toggle="modal" href="#UsedByGraph-help-text">Help</a></div>
+          <div class="modal fade" id="UsedByGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                </div>
+              <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="518pt" height="32pt"
+ viewBox="0.00 0.00 517.50 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 513.5,-28 513.5,4 -4,4"/>
+<!-- Module -->
+<g id="node1" class="node">
+<title>Module</title>
+<polygon fill="#337ab7" stroke="#337ab7" points="54,-24 0,-24 0,0 54,0 54,-24"/>
+<text text-anchor="middle" x="27" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Module</text>
+</g>
+<!-- Submodule -->
+<g id="node2" class="node">
+<title>Submodule</title>
+<polygon fill="#5bc0de" stroke="#5bc0de" points="145.5,-24 72.5,-24 72.5,0 145.5,0 145.5,-24"/>
+<text text-anchor="middle" x="109" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Submodule</text>
+</g>
+<!-- Subroutine -->
+<g id="node3" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="234,-24 164,-24 164,0 234,0 234,-24"/>
+<text text-anchor="middle" x="199" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node4" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="310,-24 252,-24 252,0 310,0 310,-24"/>
+<text text-anchor="middle" x="281" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Program -->
+<g id="node5" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="386,-24 328,-24 328,0 386,0 386,-24"/>
+<text text-anchor="middle" x="357" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node6" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="509.5,-24 404.5,-24 404.5,0 509.5,0 509.5,-24"/>
+<text text-anchor="middle" x="457" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a submodule to the (sub)module which it is
+descended from. Dashed arrows point from a module or program unit to 
+modules which it uses.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+            </li>
+        </ul>
+      </div>
+    </div>
+
+      <br>
+
+
+
+
+
+
+
+        <section>
+          <h2>Functions</h2>
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-create_mpi_fft_solver"></span><h3>public  function <a href='../proc/create_mpi_fft_solver.html'>create_mpi_fft_solver</a>(fft_solver_name, fft_boundary_types, local_block, global_block, myid, nprocs, comm, tag) result(obj)  
+</h3></div>
+    <div class="card-body">
+          
+  
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-fft_solver_name~2"></span>
+              character(len=*),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>fft_solver_name</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-fft_boundary_types~2"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>fft_boundary_types</strong>(3)</td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-local_block~10"></span>
+              type(<a href='../type/t_block.html'>t_Block</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>local_block</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-global_block~6"></span>
+              type(<a href='../type/t_block.html'>t_Block</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>global_block</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-myid~3"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>myid</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nprocs~4"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nprocs</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-comm~6"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>comm</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-tag~6"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>tag</strong></td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <h4>
+    Return Value
+    <small>class(<a href='../type/t_mpifftsolver3d.html'>t_MPIFFTSolver3d</a>), allocatable</small>
+    </h4>
+    
+
+    </div>
+  </div>
+
+        </section>
+        <br>
+
+
+
+
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col"><p>ohhelp-pic-3d was developed by Nkzono99<br>&copy; 2023 <a rel="license" href="https://opensource.org/licenses/MIT">MIT</a>
+</p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2023-11-07T16:33:23.830536             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

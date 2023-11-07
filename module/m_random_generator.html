@@ -10,81 +10,55 @@
 
     <title>m_random_generator &ndash; ohhelp-pic-3d</title>
 
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link href="../css/pygments.css" rel="stylesheet">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/local.css" rel="stylesheet">
       <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
-
-         <script src="../js/jquery-2.1.3.min.js"></script>
-         <script src="../js/svg-pan-zoom.min.js"></script>
-
+    <script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha256-tG5mcZUtJsZvyKAxYLVXrmjKBVLd6VpVccqz/r4ypFE=" crossorigin="anonymous"></script>
   </head>
 
   <body>
 
     <!-- Fixed navbar -->
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
           <a class="navbar-brand" href="../index.html">ohhelp-pic-3d </a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
-              <a href="#" class="dropdown-toggle"
-                 data-toggle="dropdown" role="button"
-                 aria-haspopup="true"
-                 aria-expanded="false">
-                 Contents <span class="caret"></span>
-              </a>
-              <ul class="dropdown-menu">
-                    <li><a href="../lists/files.html">Source Files</a></li>
-                  <li><a href="../lists/modules.html">Modules</a></li>
-                  <li><a href="../lists/procedures.html">Procedures</a></li>
-                  <li><a href="../lists/types.html">Derived Types</a></li>
-                  <li><a href="../program/main.html">Program</a></li>
-              </ul>
-            </li>
-                <li class="visible-xs hidden-sm visible-lg">
-                  <a href="../lists/files.html">Source Files</a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
                 </li>
-              <li class="visible-xs hidden-sm visible-lg">
-                <a href="../lists/modules.html">Modules</a>
-              </li>
-              <li class="visible-xs hidden-sm visible-lg">
-                <a href="../lists/procedures.html">Procedures</a>
-              </li>
-              <li class="visible-xs hidden-sm visible-lg">
-                <a href="../lists/types.html">Derived Types</a>
-              </li>
-              <li class="visible-xs hidden-sm visible-lg">
-                <a href="../program/main.html">Program</a>
-              </li>
-          </ul>
-            <form action="../search.html" class="navbar-form navbar-right" role="search">
-              <div class="form-group">
-                <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../program/main.html">Program</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
               </div>
-              <!--
-                  <button type="submit" class="btn btn-default">Submit</button>
-                  -->
-            </form>
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
 
     <div class="container">
   <div class="row">
@@ -92,40 +66,44 @@
       <small>Module</small>
       
     </h1>
-      <div class="row" id="info-bar">
-    <div class="col-lg-12">
-      <div class="well well-sm">
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
         <ul class="list-inline" style="margin-bottom:0px;display:inline">
-            <li id="meta-license"><i class="fa fa-legal"></i> <a rel="license" href="https://opensource.org/licenses/MIT">MIT</a></li>
+            <li class="list-inline-item" id="meta-license"><i class="fa fa-legal"></i> <a rel="license" href="https://opensource.org/licenses/MIT">MIT</a></li>
 
-          <li id="statements"><i class="fa fa-list-ol"></i>
-            <a data-toggle="tooltip"
-               data-placement="bottom" data-html="true"
-               title=" 1.2% of total for modules and submodules.">46 statements</a>
-          </li>
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip"
+                 data-bs-placement="bottom" data-html="true"
+                 title=" 1.2% of total for modules and submodules.">46 statements</a>
+            </li>
 
-            <li id="source-file">
+            <li class="list-inline-item" id="source-file">
               <i class="fa fa-code"></i>
               <a href="../src/random_generator.f90"> Source File</a>
             </li>
         </ul>
-        <ol class="breadcrumb in-well text-right">
-              <li><a href='../sourcefile/random_generator.f90.html'>random_generator.f90</a></li>
-          <li class="active">m_random_generator</li>
-        </ol>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/random_generator.f90.html'>random_generator.f90</a></li>
+            <li class="breadcrumb-item active" aria-current="page">m_random_generator</li>
+          </ol>
+        </nav>
       </div>
     </div>
   </div>
   <script>
     $(function () {
-    $('[data-toggle="tooltip"]').tooltip()
+    $('[data-bs-toggle="tooltip"]').tooltip()
     })
   </script>
 
   </div>
 
   <div class="row">
-    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+    <div class="col-md-3">
         <div id="sidebar">
       <h3>Contents</h3>
   
@@ -138,19 +116,19 @@
   
   
   
-      <div class="panel panel-primary">
-      <div class="panel-heading text-left">
-        <h3 class="panel-title">
-          <a data-toggle="collapse" href="#types-0">Derived Types</a>
-        </h3>
-      </div>
-      <div id="types-0" class="panel-collapse collapse">
-        <div class="list-group">
+      <div class="card mb-4">
+      <a data-bs-toggle="collapse" href="#types-0"
+         aria-expanded="false" aria-controls="types-0">
+         <h4 class="card-header bg-primary text-white">Derived Types</h4>
+      </a>
+      <div id="types-0" class="collapse">
+        <div class="list-group list-group-flush">
             <a class="list-group-item" href="../module/m_random_generator.html#type-t_randomgenerator">t_RandomGenerator</a>
         </div>
       </div>
     </div>
 
+  
   
   
   
@@ -167,18 +145,17 @@
 
     <div class="col-md-9" id='text'>
       
-<br>          <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Uses</h3>
-      </div>
-      <ul class="list-group">
-          <li class="list-group-item">
-            <ul class="list-inline">
-                <li><a href='../module/m_science_constants.html'>m_science_constants</a></li>
-            </ul>
-          </li>
-          <li class="list-group-item">
-            <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<br>          <div class="card mb-4">
+      <h3 class="card-header card-title bg-light">Uses</h3>
+      <div class="card-body">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <ul class="list-inline">
+                  <li class="list-inline-item"><a href='../module/m_science_constants.html'>m_science_constants</a></li>
+              </ul>
+            </li>
+            <li class="list-group-item">
+              <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <!-- Generated by graphviz version 2.43.0 (0)
@@ -212,8 +189,8 @@
 </g>
 </g>
 </svg>
-</div>        <div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div>
-          <div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog">
+</div>        <div><a type="button" class="graph-help" data-toggle="modal" href="#UsesGraph-help-text">Help</a></div>
+          <div class="modal fade" id="UsesGraph-help-text" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
               <div class="modal-content">
                 <div class="modal-header">
@@ -282,161 +259,197 @@ modules which it uses.
             </div>
           </div>
         </div>
-          </li>
-      </ul>
+            </li>
+        </ul>
+      </div>
     </div>
 
-          <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Used by</h3>
-      </div>
-      <ul class="list-group">
-          <li class="list-group-item">
-            <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+          <div class="card">
+      <h3 class="card-header card-title bg-light">Used by</h3>
+      <div class="card-body">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <!-- Generated by graphviz version 2.43.0 (0)
  -->
 <!-- Title: module~~m_random_generator~~UsedByGraph Pages: 1 -->
-<svg id="modulem_random_generatorUsedByGraph" width="641pt" height="144pt"
- viewBox="0.00 0.00 641.00 143.61" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="module~~m_random_generator~~UsedByGraph" class="graph" transform="scale(1.27 1.27) rotate(0) translate(4 178.15)">
+<svg id="modulem_random_generatorUsedByGraph" width="641pt" height="216pt"
+ viewBox="0.00 0.00 641.00 215.97" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="module~~m_random_generator~~UsedByGraph" class="graph" transform="scale(1.27 1.27) rotate(0) translate(4 269.92)">
 <title>module~~m_random_generator~~UsedByGraph</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-178.15 809,-178.15 809,4 -4,4"/>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-269.92 809,-269.92 809,4 -4,4"/>
 <!-- module~m_random_generator -->
 <g id="module~~m_random_generator~~UsedByGraph_node1" class="node">
 <title>module~m_random_generator</title>
-<polygon fill="none" stroke="black" points="129,-94.15 0,-94.15 0,-70.15 129,-70.15 129,-94.15"/>
-<text text-anchor="middle" x="64.5" y="-79.75" font-family="Helvetica,sans-Serif" font-size="10.50">m_random_generator</text>
+<polygon fill="none" stroke="black" points="129,-143.92 0,-143.92 0,-119.92 129,-119.92 129,-143.92"/>
+<text text-anchor="middle" x="64.5" y="-129.52" font-family="Helvetica,sans-Serif" font-size="10.50">m_random_generator</text>
+</g>
+<!-- module~m_flux_velocity_maxwell_distribution3d -->
+<g id="module~~m_random_generator~~UsedByGraph_node2" class="node">
+<title>module~m_flux_velocity_maxwell_distribution3d</title>
+<g id="a_module~~m_random_generator~~UsedByGraph_node2"><a xlink:href=".././module/m_flux_velocity_maxwell_distribution3d.html" xlink:title="m_flux_velocity_maxwell_distribution3d">
+<polygon fill="#337ab7" stroke="#337ab7" points="391.5,-265.92 168.5,-265.92 168.5,-241.92 391.5,-241.92 391.5,-265.92"/>
+<text text-anchor="middle" x="280" y="-251.52" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">m_flux_velocity_maxwell_distribution3d</text>
+</a>
+</g>
+</g>
+<!-- module~m_flux_velocity_maxwell_distribution3d&#45;&gt;module~m_random_generator -->
+<g id="module~~m_random_generator~~UsedByGraph_edge1" class="edge">
+<title>module~m_flux_velocity_maxwell_distribution3d&#45;&gt;module~m_random_generator</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M186.19,-241.86C178.83,-239.4 171.67,-236.45 165,-232.92 128.36,-213.49 96.85,-175.89 79.59,-152.45"/>
+<polygon fill="#000000" stroke="#000000" points="82.36,-150.31 73.69,-144.23 76.68,-154.39 82.36,-150.31"/>
 </g>
 <!-- module~m_maxwellian_velocity_distribution1d -->
-<g id="module~~m_random_generator~~UsedByGraph_node2" class="node">
+<g id="module~~m_random_generator~~UsedByGraph_node3" class="node">
 <title>module~m_maxwellian_velocity_distribution1d</title>
-<g id="a_module~~m_random_generator~~UsedByGraph_node2"><a xlink:href=".././module/m_maxwellian_velocity_distribution1d.html" xlink:title="m_maxwellian_velocity_distribution1d">
-<polygon fill="#337ab7" stroke="#337ab7" points="387,-174.15 173,-174.15 173,-150.15 387,-150.15 387,-174.15"/>
-<text text-anchor="middle" x="280" y="-159.75" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">m_maxwellian_velocity_distribution1d</text>
+<g id="a_module~~m_random_generator~~UsedByGraph_node3"><a xlink:href=".././module/m_maxwellian_velocity_distribution1d.html" xlink:title="m_maxwellian_velocity_distribution1d">
+<polygon fill="#337ab7" stroke="#337ab7" points="387,-223.92 173,-223.92 173,-199.92 387,-199.92 387,-223.92"/>
+<text text-anchor="middle" x="280" y="-209.52" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">m_maxwellian_velocity_distribution1d</text>
 </a>
 </g>
 </g>
 <!-- module~m_maxwellian_velocity_distribution1d&#45;&gt;module~m_random_generator -->
-<g id="module~~m_random_generator~~UsedByGraph_edge1" class="edge">
+<g id="module~~m_random_generator~~UsedByGraph_edge2" class="edge">
 <title>module~m_maxwellian_velocity_distribution1d&#45;&gt;module~m_random_generator</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M212.09,-150.09C196.39,-146.39 179.91,-141.77 165,-136.15 139.44,-126.51 112.31,-111.42 92.84,-99.64"/>
-<polygon fill="#000000" stroke="#000000" points="94.56,-96.58 84.21,-94.32 90.89,-102.54 94.56,-96.58"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M212.09,-199.86C196.39,-196.16 179.91,-191.54 165,-185.92 139.44,-176.27 112.31,-161.18 92.84,-149.4"/>
+<polygon fill="#000000" stroke="#000000" points="94.56,-146.35 84.21,-144.09 90.89,-152.31 94.56,-146.35"/>
 </g>
 <!-- module~m_particle_injector_manager -->
-<g id="module~~m_random_generator~~UsedByGraph_node3" class="node">
+<g id="module~~m_random_generator~~UsedByGraph_node4" class="node">
 <title>module~m_particle_injector_manager</title>
-<g id="a_module~~m_random_generator~~UsedByGraph_node3"><a xlink:href=".././module/m_particle_injector_manager.html" xlink:title="m_particle_injector_manager">
-<polygon fill="#337ab7" stroke="#337ab7" points="600,-94.15 431,-94.15 431,-70.15 600,-70.15 600,-94.15"/>
-<text text-anchor="middle" x="515.5" y="-79.75" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">m_particle_injector_manager</text>
+<g id="a_module~~m_random_generator~~UsedByGraph_node4"><a xlink:href=".././module/m_particle_injector_manager.html" xlink:title="m_particle_injector_manager">
+<polygon fill="#337ab7" stroke="#337ab7" points="600,-123.92 431,-123.92 431,-99.92 600,-99.92 600,-123.92"/>
+<text text-anchor="middle" x="515.5" y="-109.52" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">m_particle_injector_manager</text>
 </a>
 </g>
 </g>
 <!-- module~m_particle_injector_manager&#45;&gt;module~m_random_generator -->
-<g id="module~~m_random_generator~~UsedByGraph_edge2" class="edge">
+<g id="module~~m_random_generator~~UsedByGraph_edge3" class="edge">
 <title>module~m_particle_injector_manager&#45;&gt;module~m_random_generator</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M475.57,-94.17C429.48,-107.16 350.22,-125.57 281,-122.15"/>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M279,-122.15C224.25,-119.44 162.85,-106.91 120,-96.59"/>
-<polygon fill="#000000" stroke="#000000" points="120.61,-93.13 110.06,-94.15 118.94,-99.93 120.61,-93.13"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M487.75,-124C444.93,-142.15 357.98,-174.1 281,-171.92"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M279,-171.92C223.34,-170.33 160.86,-157.27 117.94,-146.49"/>
+<polygon fill="#000000" stroke="#000000" points="118.57,-143.04 108.01,-143.95 116.83,-149.82 118.57,-143.04"/>
 </g>
 <!-- module~m_particle_injector_with_distribution -->
-<g id="module~~m_random_generator~~UsedByGraph_node4" class="node">
+<g id="module~~m_random_generator~~UsedByGraph_node5" class="node">
 <title>module~m_particle_injector_with_distribution</title>
-<g id="a_module~~m_random_generator~~UsedByGraph_node4"><a xlink:href=".././module/m_particle_injector_with_distribution.html" xlink:title="m_particle_injector_with_distribution">
-<polygon fill="#337ab7" stroke="#337ab7" points="383.5,-94.15 176.5,-94.15 176.5,-70.15 383.5,-70.15 383.5,-94.15"/>
-<text text-anchor="middle" x="280" y="-79.75" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">m_particle_injector_with_distribution</text>
+<g id="a_module~~m_random_generator~~UsedByGraph_node5"><a xlink:href=".././module/m_particle_injector_with_distribution.html" xlink:title="m_particle_injector_with_distribution">
+<polygon fill="#337ab7" stroke="#337ab7" points="383.5,-143.92 176.5,-143.92 176.5,-119.92 383.5,-119.92 383.5,-143.92"/>
+<text text-anchor="middle" x="280" y="-129.52" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">m_particle_injector_with_distribution</text>
 </a>
 </g>
 </g>
 <!-- module~m_particle_injector_manager&#45;&gt;module~m_particle_injector_with_distribution -->
-<g id="module~~m_random_generator~~UsedByGraph_edge8" class="edge">
+<g id="module~~m_random_generator~~UsedByGraph_edge10" class="edge">
 <title>module~m_particle_injector_manager&#45;&gt;module~m_particle_injector_with_distribution</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M430.86,-82.15C418.78,-82.15 406.18,-82.15 393.65,-82.15"/>
-<polygon fill="#000000" stroke="#000000" points="393.62,-78.65 383.62,-82.15 393.62,-85.65 393.62,-78.65"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M430.86,-119.08C418.78,-120.11 406.18,-121.19 393.65,-122.27"/>
+<polygon fill="#000000" stroke="#000000" points="393.29,-118.78 383.62,-123.13 393.88,-125.76 393.29,-118.78"/>
 </g>
 <!-- module~m_position_random_uniform_distribution -->
-<g id="module~~m_random_generator~~UsedByGraph_node6" class="node">
+<g id="module~~m_random_generator~~UsedByGraph_node7" class="node">
 <title>module~m_position_random_uniform_distribution</title>
-<g id="a_module~~m_random_generator~~UsedByGraph_node6"><a xlink:href=".././module/m_position_random_uniform_distribution.html" xlink:title="m_position_random_uniform_distribution">
-<polygon fill="#337ab7" stroke="#337ab7" points="395,-52.15 165,-52.15 165,-28.15 395,-28.15 395,-52.15"/>
-<text text-anchor="middle" x="280" y="-37.75" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">m_position_random_uniform_distribution</text>
+<g id="a_module~~m_random_generator~~UsedByGraph_node7"><a xlink:href=".././module/m_position_random_uniform_distribution.html" xlink:title="m_position_random_uniform_distribution">
+<polygon fill="#337ab7" stroke="#337ab7" points="395,-101.92 165,-101.92 165,-77.92 395,-77.92 395,-101.92"/>
+<text text-anchor="middle" x="280" y="-87.52" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">m_position_random_uniform_distribution</text>
 </a>
 </g>
 </g>
 <!-- module~m_particle_injector_manager&#45;&gt;module~m_position_random_uniform_distribution -->
-<g id="module~~m_random_generator~~UsedByGraph_edge10" class="edge">
+<g id="module~~m_random_generator~~UsedByGraph_edge12" class="edge">
 <title>module~m_particle_injector_manager&#45;&gt;module~m_position_random_uniform_distribution</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M447.59,-70.11C419.62,-65.08 386.96,-59.21 358,-54"/>
-<polygon fill="#000000" stroke="#000000" points="358.38,-50.51 347.92,-52.18 357.14,-57.4 358.38,-50.51"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M430.86,-104.04C422.49,-103.25 413.87,-102.43 405.2,-101.62"/>
+<polygon fill="#000000" stroke="#000000" points="405.29,-98.11 395,-100.66 404.63,-105.08 405.29,-98.11"/>
+</g>
+<!-- module~m_velocity_maxwell_distribution3d -->
+<g id="module~~m_random_generator~~UsedByGraph_node8" class="node">
+<title>module~m_velocity_maxwell_distribution3d</title>
+<g id="a_module~~m_random_generator~~UsedByGraph_node8"><a xlink:href=".././module/m_velocity_maxwell_distribution3d.html" xlink:title="m_velocity_maxwell_distribution3d">
+<polygon fill="#337ab7" stroke="#337ab7" points="379,-59.92 181,-59.92 181,-35.92 379,-35.92 379,-59.92"/>
+<text text-anchor="middle" x="280" y="-45.52" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">m_velocity_maxwell_distribution3d</text>
+</a>
+</g>
+</g>
+<!-- module~m_particle_injector_manager&#45;&gt;module~m_velocity_maxwell_distribution3d -->
+<g id="module~~m_random_generator~~UsedByGraph_edge13" class="edge">
+<title>module~m_particle_injector_manager&#45;&gt;module~m_velocity_maxwell_distribution3d</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M484.97,-99.76C461.05,-90.29 426.29,-77.37 395,-68.92 385.67,-66.4 375.84,-64.08 366.01,-61.99"/>
+<polygon fill="#000000" stroke="#000000" points="366.71,-58.56 356.2,-59.97 365.29,-65.41 366.71,-58.56"/>
 </g>
 <!-- module~m_particle_injector_with_distribution&#45;&gt;module~m_random_generator -->
-<g id="module~~m_random_generator~~UsedByGraph_edge3" class="edge">
+<g id="module~~m_random_generator~~UsedByGraph_edge4" class="edge">
 <title>module~m_particle_injector_with_distribution&#45;&gt;module~m_random_generator</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M176.31,-82.15C163.84,-82.15 151.29,-82.15 139.35,-82.15"/>
-<polygon fill="#000000" stroke="#000000" points="139.03,-78.65 129.03,-82.15 139.03,-85.65 139.03,-78.65"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M176.31,-131.92C163.84,-131.92 151.29,-131.92 139.35,-131.92"/>
+<polygon fill="#000000" stroke="#000000" points="139.03,-128.42 129.03,-131.92 139.03,-135.42 139.03,-128.42"/>
 </g>
 <!-- module~m_pcg_generator -->
-<g id="module~~m_random_generator~~UsedByGraph_node5" class="node">
+<g id="module~~m_random_generator~~UsedByGraph_node6" class="node">
 <title>module~m_pcg_generator</title>
-<g id="a_module~~m_random_generator~~UsedByGraph_node5"><a xlink:href=".././module/m_pcg_generator.html" xlink:title="m_pcg_generator">
-<polygon fill="#337ab7" stroke="#337ab7" points="568.5,-32.15 462.5,-32.15 462.5,-8.15 568.5,-8.15 568.5,-32.15"/>
-<text text-anchor="middle" x="515.5" y="-17.75" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">m_pcg_generator</text>
+<g id="a_module~~m_random_generator~~UsedByGraph_node6"><a xlink:href=".././module/m_pcg_generator.html" xlink:title="m_pcg_generator">
+<polygon fill="#337ab7" stroke="#337ab7" points="568.5,-40.92 462.5,-40.92 462.5,-16.92 568.5,-16.92 568.5,-40.92"/>
+<text text-anchor="middle" x="515.5" y="-26.52" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">m_pcg_generator</text>
 </a>
 </g>
 </g>
 <!-- module~m_pcg_generator&#45;&gt;module~m_random_generator -->
-<g id="module~~m_random_generator~~UsedByGraph_edge4" class="edge">
+<g id="module~~m_random_generator~~UsedByGraph_edge5" class="edge">
 <title>module~m_pcg_generator&#45;&gt;module~m_random_generator</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M462.3,-11.03C392.86,-0.9 266.98,10.42 165,-19.15 135.24,-27.78 105.84,-48.27 86.81,-63.56"/>
-<polygon fill="#000000" stroke="#000000" points="84.55,-60.88 79.07,-69.95 89.01,-66.28 84.55,-60.88"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M466.04,-16.9C396.26,-2.13 264.92,16.05 165,-26.92 125.14,-44.06 93.76,-85.89 77.57,-111.28"/>
+<polygon fill="#000000" stroke="#000000" points="74.58,-109.46 72.31,-119.81 80.54,-113.14 74.58,-109.46"/>
 </g>
 <!-- module~m_position_random_uniform_distribution&#45;&gt;module~m_random_generator -->
-<g id="module~~m_random_generator~~UsedByGraph_edge5" class="edge">
+<g id="module~~m_random_generator~~UsedByGraph_edge6" class="edge">
 <title>module~m_position_random_uniform_distribution&#45;&gt;module~m_random_generator</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M212.03,-52.18C196.57,-55.05 180.2,-58.14 165,-61.15 154.02,-63.32 142.37,-65.7 131.06,-68.06"/>
-<polygon fill="#000000" stroke="#000000" points="130.3,-64.64 121.23,-70.12 131.74,-71.49 130.3,-64.64"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M212.03,-101.95C196.57,-104.81 180.2,-107.91 165,-110.92 154.02,-113.09 142.37,-115.47 131.06,-117.83"/>
+<polygon fill="#000000" stroke="#000000" points="130.3,-114.41 121.23,-119.89 131.74,-121.26 130.3,-114.41"/>
+</g>
+<!-- module~m_velocity_maxwell_distribution3d&#45;&gt;module~m_random_generator -->
+<g id="module~~m_random_generator~~UsedByGraph_edge7" class="edge">
+<title>module~m_velocity_maxwell_distribution3d&#45;&gt;module~m_random_generator</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M193.64,-59.92C183.82,-62.39 174.09,-65.36 165,-68.92 136.77,-79.97 107.86,-99.36 88.53,-113.71"/>
+<polygon fill="#000000" stroke="#000000" points="86.21,-111.08 80.36,-119.91 90.44,-116.66 86.21,-111.08"/>
 </g>
 <!-- module~ohhelppic3d -->
-<g id="module~~m_random_generator~~UsedByGraph_node7" class="node">
+<g id="module~~m_random_generator~~UsedByGraph_node9" class="node">
 <title>module~ohhelppic3d</title>
-<g id="a_module~~m_random_generator~~UsedByGraph_node7"><a xlink:href=".././module/ohhelppic3d.html" xlink:title="ohhelppic3d">
-<polygon fill="#337ab7" stroke="#337ab7" points="715,-94.15 636,-94.15 636,-70.15 715,-70.15 715,-94.15"/>
-<text text-anchor="middle" x="675.5" y="-79.75" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ohhelppic3d</text>
+<g id="a_module~~m_random_generator~~UsedByGraph_node9"><a xlink:href=".././module/ohhelppic3d.html" xlink:title="ohhelppic3d">
+<polygon fill="#337ab7" stroke="#337ab7" points="715,-123.92 636,-123.92 636,-99.92 715,-99.92 715,-123.92"/>
+<text text-anchor="middle" x="675.5" y="-109.52" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ohhelppic3d</text>
 </a>
 </g>
 </g>
 <!-- module~ohhelppic3d&#45;&gt;module~m_random_generator -->
-<g id="module~~m_random_generator~~UsedByGraph_edge6" class="edge">
+<g id="module~~m_random_generator~~UsedByGraph_edge8" class="edge">
 <title>module~ohhelppic3d&#45;&gt;module~m_random_generator</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M637.72,-94.21C625.81,-97.66 612.46,-101.05 600,-103.15 459.95,-126.77 422.86,-129.16 281,-122.15"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M636.11,-123.95C624.59,-127.23 611.86,-130.53 600,-132.92 459.96,-161.04 423.78,-175.97 281,-171.92"/>
 </g>
 <!-- module~ohhelppic3d&#45;&gt;module~m_particle_injector_manager -->
-<g id="module~~m_random_generator~~UsedByGraph_edge7" class="edge">
+<g id="module~~m_random_generator~~UsedByGraph_edge9" class="edge">
 <title>module~ohhelppic3d&#45;&gt;module~m_particle_injector_manager</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M635.85,-82.15C627.95,-82.15 619.32,-82.15 610.42,-82.15"/>
-<polygon fill="#000000" stroke="#000000" points="610.29,-78.65 600.29,-82.15 610.29,-85.65 610.29,-78.65"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M635.85,-111.92C627.95,-111.92 619.32,-111.92 610.42,-111.92"/>
+<polygon fill="#000000" stroke="#000000" points="610.29,-108.42 600.29,-111.92 610.29,-115.42 610.29,-108.42"/>
 </g>
 <!-- module~ohhelppic3d&#45;&gt;module~m_pcg_generator -->
-<g id="module~~m_random_generator~~UsedByGraph_edge9" class="edge">
+<g id="module~~m_random_generator~~UsedByGraph_edge11" class="edge">
 <title>module~ohhelppic3d&#45;&gt;module~m_pcg_generator</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M643.66,-70.05C618.87,-60.32 583.84,-46.57 556.82,-35.97"/>
-<polygon fill="#000000" stroke="#000000" points="557.85,-32.61 547.26,-32.22 555.29,-39.13 557.85,-32.61"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M651.53,-99.85C624.38,-85.59 579.05,-61.77 548.48,-45.71"/>
+<polygon fill="#000000" stroke="#000000" points="549.98,-42.55 539.5,-41 546.73,-48.75 549.98,-42.55"/>
 </g>
 <!-- program~main -->
-<g id="module~~m_random_generator~~UsedByGraph_node8" class="node">
+<g id="module~~m_random_generator~~UsedByGraph_node10" class="node">
 <title>program~main</title>
-<g id="a_module~~m_random_generator~~UsedByGraph_node8"><a xlink:href=".././program/main.html" xlink:title="main">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="805,-94.15 751,-94.15 751,-70.15 805,-70.15 805,-94.15"/>
-<text text-anchor="middle" x="778" y="-79.75" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">main</text>
+<g id="a_module~~m_random_generator~~UsedByGraph_node10"><a xlink:href=".././program/main.html" xlink:title="main">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="805,-123.92 751,-123.92 751,-99.92 805,-99.92 805,-123.92"/>
+<text text-anchor="middle" x="778" y="-109.52" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">main</text>
 </a>
 </g>
 </g>
 <!-- program~main&#45;&gt;module~ohhelppic3d -->
-<g id="module~~m_random_generator~~UsedByGraph_edge11" class="edge">
+<g id="module~~m_random_generator~~UsedByGraph_edge14" class="edge">
 <title>program~main&#45;&gt;module~ohhelppic3d</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M750.86,-82.15C743,-82.15 734.11,-82.15 725.28,-82.15"/>
-<polygon fill="#000000" stroke="#000000" points="725.01,-78.65 715.01,-82.15 725.01,-85.65 725.01,-78.65"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M750.86,-111.92C743,-111.92 734.11,-111.92 725.28,-111.92"/>
+<polygon fill="#000000" stroke="#000000" points="725.01,-108.42 715.01,-111.92 725.01,-115.42 725.01,-108.42"/>
 </g>
 </g>
 </svg>
@@ -444,8 +457,8 @@ modules which it uses.
                   var panmodulem_random_generatorUsedByGraph = svgPanZoom('#modulem_random_generatorUsedByGraph',
                     {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
                   );
-                </script>        <div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div>
-          <div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog">
+                </script>        <div><a type="button" class="graph-help" data-toggle="modal" href="#UsedByGraph-help-text">Help</a></div>
+          <div class="modal fade" id="UsedByGraph-help-text" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
               <div class="modal-content">
                 <div class="modal-header">
@@ -514,49 +527,12 @@ modules which it uses.
             </div>
           </div>
         </div>
-          </li>
-      </ul>
+            </li>
+        </ul>
+      </div>
     </div>
 
       <br>
-
-      <section class="visible-xs visible-sm hidden-md">
-          <h3>Contents</h3>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-      <div class="panel panel-primary">
-      <div class="panel-heading text-left">
-        <h3 class="panel-title">
-          <a data-toggle="collapse" href="#types-1">Derived Types</a>
-        </h3>
-      </div>
-      <div id="types-1" class="panel-collapse collapse">
-        <div class="list-group">
-            <a class="list-group-item" href="../module/m_random_generator.html#type-t_randomgenerator">t_RandomGenerator</a>
-        </div>
-      </div>
-    </div>
-
-  
-  
-  
-  
-  
-  
-  
-  
-
-
-      </section>
-      <br class="visible-xs visible-sm hidden-md">
 
 
 
@@ -565,8 +541,8 @@ modules which it uses.
 
         <section>
           <h2>Derived Types</h2>
-              <div class="panel panel-default">
-    <div class="panel-heading codesum">
+              <div class="card">
+    <div class="card-header codesum">
       <span class="anchor" id="type-t_randomgenerator"></span>
       <h3>
         type, public&nbsp;::&nbsp;
@@ -574,7 +550,7 @@ modules which it uses.
         
       </h3>
     </div>
-    <div class="panel-body">
+    <div class="card-body">
       
 
 
@@ -584,39 +560,23 @@ modules which it uses.
         <table class="table table-striped varlist">
           <tbody>
               <tr>
-                <td>
-                    procedure
-(randomGenerator_advance)                    ,                  public
-                  :: <strong><a href='../type/t_randomgenerator.html#boundprocedure-advance'>advance</a></strong>
-<small></small>                </td>
+                <td>  procedure(randomGenerator_advance), public, deferred ::
+  <strong><a href='../type/t_randomgenerator.html#boundprocedure-advance'>advance</a></strong></td>
                 <td></td>
               </tr>
               <tr>
-                <td>
-                    procedure
-                    ,                  public
-,                   :: <strong><a href='../type/t_randomgenerator.html#boundprocedure-normal'>normal</a></strong>
- =>
-                    randomGenerator_normal
-<small>Function</small>                </td>
+                <td>  procedure, public ::
+  <strong><a href='../type/t_randomgenerator.html#boundprocedure-normal'>normal</a></strong> => randomGenerator_normal</td>
                 <td></td>
               </tr>
               <tr>
-                <td>
-                    procedure
-(randomGenerator_rand)                    ,                  public
-                  :: <strong><a href='../type/t_randomgenerator.html#boundprocedure-rand'>rand</a></strong>
-<small></small>                </td>
+                <td>  procedure(randomGenerator_rand), public, deferred ::
+  <strong><a href='../type/t_randomgenerator.html#boundprocedure-rand'>rand</a></strong></td>
                 <td></td>
               </tr>
               <tr>
-                <td>
-                    procedure
-                    ,                  public
-,                   :: <strong><a href='../type/t_randomgenerator.html#boundprocedure-random_fix'>random_fix</a></strong>
- =>
-                    randomGenerator_random_fix
-<small>Function</small>                </td>
+                <td>  procedure, public ::
+  <strong><a href='../type/t_randomgenerator.html#boundprocedure-random_fix'>random_fix</a></strong> => randomGenerator_random_fix</td>
                 <td></td>
               </tr>
           </tbody>
@@ -638,32 +598,27 @@ modules which it uses.
     </div> <!-- /container -->
     <footer>
       <div class="container">
-        <div class="row">
-          <div class="col-xs-6 col-md-6"><p>ohhelp-pic-3d was developed by Nkzono99<br>&copy; 2023 <a rel="license" href="https://opensource.org/licenses/MIT">MIT</a>
+        <div class="row justify-content-between">
+          <div class="col"><p>ohhelp-pic-3d was developed by Nkzono99<br>&copy; 2023 <a rel="license" href="https://opensource.org/licenses/MIT">MIT</a>
 </p>
           </div>
-          <div class="col-xs-6 col-md-6">
-            <p class="text-right">
+          <div class="col">
+            <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2023-07-11T21:09:12.065188             </p>
+ on 2023-11-07T16:33:23.830536             </p>
           </div>
         </div>
         <br>
       </div> <!-- /container -->
     </footer>
 
-    <!-- Bootstrap core JavaScript
-         ================================================== -->
-         <!-- Placed at the end of the document so the pages load faster -->
-    <!--
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-        -->
-        <script src="../js/bootstrap.min.js"></script>
-        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-        <script src="../js/ie10-viewport-bug-workaround.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
 
-        <!-- MathJax JavaScript
+    <!-- MathJax JavaScript
              ================================================== -->
              <!-- Placed at the end of the document so the pages load faster -->
         <script type="text/x-mathjax-config">

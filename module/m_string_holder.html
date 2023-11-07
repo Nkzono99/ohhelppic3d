@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Particle-In-Cell using OhHelp">
+    <meta name="author" content="Nkzono99" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>m_string_holder &ndash; ohhelp-pic-3d</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha256-tG5mcZUtJsZvyKAxYLVXrmjKBVLd6VpVccqz/r4ypFE=" crossorigin="anonymous"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">ohhelp-pic-3d </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../program/main.html">Program</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>m_string_holder
+      <small>Module</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+            <li class="list-inline-item" id="meta-license"><i class="fa fa-legal"></i> <a rel="license" href="https://opensource.org/licenses/MIT">MIT</a></li>
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip"
+                 data-bs-placement="bottom" data-html="true"
+                 title=" 0.4% of total for modules and submodules.">15 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/string_holder.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/string_holder.f90.html'>string_holder.f90</a></li>
+            <li class="breadcrumb-item active" aria-current="page">m_string_holder</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-bs-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">
+        <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+      <div class="card mb-4">
+      <a data-bs-toggle="collapse" href="#types-0"
+         aria-expanded="false" aria-controls="types-0">
+         <h4 class="card-header bg-primary text-white">Derived Types</h4>
+      </a>
+      <div id="types-0" class="collapse">
+        <div class="list-group list-group-flush">
+            <a class="list-group-item" href="../module/m_string_holder.html#type-t_stringholder">t_StringHolder</a>
+        </div>
+      </div>
+    </div>
+
+      <div class="card mb-4">
+      <a data-bs-toggle="collapse" href="#funcs-0"
+         aria-expanded="false" aria-controls="funcs-0">
+         <h4 class="card-header bg-primary text-white">Functions</h4>
+      </a>
+      <div id="funcs-0" class="collapse">
+        <div class="list-group list-group-flush">
+            <a class="list-group-item" href="../module/m_string_holder.html#proc-new_stringholder">new_StringHolder</a>
+        </div>
+      </div>
+    </div>
+
+  
+  
+  
+  
+  
+  
+  
+  
+
+
+  </div>
+
+    </div>
+
+    <div class="col-md-9" id='text'>
+      
+<br>      
+          <div class="card">
+      <h3 class="card-header card-title bg-light">Used by</h3>
+      <div class="card-body">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: module~~m_string_holder~~UsedByGraph Pages: 1 -->
+<svg id="modulem_string_holderUsedByGraph" width="641pt" height="97pt"
+ viewBox="0.00 0.00 641.00 97.05" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="module~~m_string_holder~~UsedByGraph" class="graph" transform="scale(1.29 1.29) rotate(0) translate(4 120.91)">
+<title>module~~m_string_holder~~UsedByGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-120.91 821,-120.91 821,4 -4,4"/>
+<!-- module~m_string_holder -->
+<g id="module~~m_string_holder~~UsedByGraph_node1" class="node">
+<title>module~m_string_holder</title>
+<polygon fill="none" stroke="black" points="98,-104 0,-104 0,-80 98,-80 98,-104"/>
+<text text-anchor="middle" x="49" y="-89.6" font-family="Helvetica,sans-Serif" font-size="10.50">m_string_holder</text>
+</g>
+<!-- module~m_parameters -->
+<g id="module~~m_string_holder~~UsedByGraph_node2" class="node">
+<title>module~m_parameters</title>
+<g id="a_module~~m_string_holder~~UsedByGraph_node2"><a xlink:href=".././module/m_parameters.html" xlink:title="m_parameters">
+<polygon fill="#337ab7" stroke="#337ab7" points="385,-104 294,-104 294,-80 385,-80 385,-104"/>
+<text text-anchor="middle" x="339.5" y="-89.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">m_parameters</text>
+</a>
+</g>
+</g>
+<!-- module~m_parameters&#45;&gt;module~m_string_holder -->
+<g id="module~~m_string_holder~~UsedByGraph_edge1" class="edge">
+<title>module~m_parameters&#45;&gt;module~m_string_holder</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M293.9,-103.18C276.02,-107.12 255.16,-111.06 236,-113 190.9,-117.57 178.99,-118.54 134,-113 122.81,-111.62 110.96,-109.25 99.8,-106.58"/>
+<polygon fill="#000000" stroke="#000000" points="100.34,-103.11 89.79,-104.07 98.63,-109.9 100.34,-103.11"/>
+</g>
+<!-- module~m_toml_wrapper -->
+<g id="module~~m_string_holder~~UsedByGraph_node5" class="node">
+<title>module~m_toml_wrapper</title>
+<g id="a_module~~m_string_holder~~UsedByGraph_node5"><a xlink:href=".././module/m_toml_wrapper.html" xlink:title="m_toml_wrapper">
+<polygon fill="#337ab7" stroke="#337ab7" points="236,-104 134,-104 134,-80 236,-80 236,-104"/>
+<text text-anchor="middle" x="185" y="-89.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">m_toml_wrapper</text>
+</a>
+</g>
+</g>
+<!-- module~m_parameters&#45;&gt;module~m_toml_wrapper -->
+<g id="module~~m_string_holder~~UsedByGraph_edge9" class="edge">
+<title>module~m_parameters&#45;&gt;module~m_toml_wrapper</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M293.98,-92C279.12,-92 262.31,-92 246.45,-92"/>
+<polygon fill="#000000" stroke="#000000" points="246.2,-88.5 236.2,-92 246.2,-95.5 246.2,-88.5"/>
+</g>
+<!-- module~m_particle_injector_manager -->
+<g id="module~~m_string_holder~~UsedByGraph_node3" class="node">
+<title>module~m_particle_injector_manager</title>
+<g id="a_module~~m_string_holder~~UsedByGraph_node3"><a xlink:href=".././module/m_particle_injector_manager.html" xlink:title="m_particle_injector_manager">
+<polygon fill="#337ab7" stroke="#337ab7" points="612,-64 443,-64 443,-40 612,-40 612,-64"/>
+<text text-anchor="middle" x="527.5" y="-49.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">m_particle_injector_manager</text>
+</a>
+</g>
+</g>
+<!-- module~m_particle_injector_manager&#45;&gt;module~m_string_holder -->
+<g id="module~~m_string_holder~~UsedByGraph_edge2" class="edge">
+<title>module~m_particle_injector_manager&#45;&gt;module~m_string_holder</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M442.94,-42.49C373.4,-36.84 272.19,-33.86 186,-52"/>
+</g>
+<!-- module~m_particle_injector_manager&#45;&gt;module~m_parameters -->
+<g id="module~~m_string_holder~~UsedByGraph_edge5" class="edge">
+<title>module~m_particle_injector_manager&#45;&gt;module~m_parameters</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M470.69,-64C446.72,-69.16 418.81,-75.16 394.99,-80.28"/>
+<polygon fill="#000000" stroke="#000000" points="394.09,-76.89 385.05,-82.42 395.56,-83.74 394.09,-76.89"/>
+</g>
+<!-- module~m_poisson_field_solver -->
+<g id="module~~m_string_holder~~UsedByGraph_node4" class="node">
+<title>module~m_poisson_field_solver</title>
+<g id="a_module~~m_string_holder~~UsedByGraph_node4"><a xlink:href=".././module/m_poisson_field_solver.html" xlink:title="m_poisson_field_solver">
+<polygon fill="#337ab7" stroke="#337ab7" points="407,-24 272,-24 272,0 407,0 407,-24"/>
+<text text-anchor="middle" x="339.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">m_poisson_field_solver</text>
+</a>
+</g>
+</g>
+<!-- module~m_poisson_field_solver&#45;&gt;module~m_string_holder -->
+<g id="module~~m_string_holder~~UsedByGraph_edge3" class="edge">
+<title>module~m_poisson_field_solver&#45;&gt;module~m_string_holder</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M297.01,-24.06C266.49,-32.65 223.9,-44.03 186,-52"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M184,-52C153.56,-58.41 120.02,-68.42 94.11,-76.82"/>
+<polygon fill="#000000" stroke="#000000" points="92.99,-73.51 84.58,-79.96 95.17,-80.16 92.99,-73.51"/>
+</g>
+<!-- module~m_toml_wrapper&#45;&gt;module~m_string_holder -->
+<g id="module~~m_string_holder~~UsedByGraph_edge4" class="edge">
+<title>module~m_toml_wrapper&#45;&gt;module~m_string_holder</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M133.72,-92C125.49,-92 116.89,-92 108.48,-92"/>
+<polygon fill="#000000" stroke="#000000" points="108.34,-88.5 98.34,-92 108.34,-95.5 108.34,-88.5"/>
+</g>
+<!-- module~ohhelppic3d -->
+<g id="module~~m_string_holder~~UsedByGraph_node6" class="node">
+<title>module~ohhelppic3d</title>
+<g id="a_module~~m_string_holder~~UsedByGraph_node6"><a xlink:href=".././module/ohhelppic3d.html" xlink:title="ohhelppic3d">
+<polygon fill="#337ab7" stroke="#337ab7" points="727,-64 648,-64 648,-40 727,-40 727,-64"/>
+<text text-anchor="middle" x="687.5" y="-49.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ohhelppic3d</text>
+</a>
+</g>
+</g>
+<!-- module~ohhelppic3d&#45;&gt;module~m_parameters -->
+<g id="module~~m_string_holder~~UsedByGraph_edge6" class="edge">
+<title>module~ohhelppic3d&#45;&gt;module~m_parameters</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M649.33,-64.09C637.51,-67.5 624.31,-70.86 612,-73 537.65,-85.94 450.4,-90.13 395.29,-91.45"/>
+<polygon fill="#000000" stroke="#000000" points="394.96,-87.96 385.04,-91.67 395.11,-94.95 394.96,-87.96"/>
+</g>
+<!-- module~ohhelppic3d&#45;&gt;module~m_particle_injector_manager -->
+<g id="module~~m_string_holder~~UsedByGraph_edge7" class="edge">
+<title>module~ohhelppic3d&#45;&gt;module~m_particle_injector_manager</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M647.85,-52C639.95,-52 631.32,-52 622.42,-52"/>
+<polygon fill="#000000" stroke="#000000" points="622.29,-48.5 612.29,-52 622.29,-55.5 622.29,-48.5"/>
+</g>
+<!-- module~ohhelppic3d&#45;&gt;module~m_poisson_field_solver -->
+<g id="module~~m_string_holder~~UsedByGraph_edge8" class="edge">
+<title>module~ohhelppic3d&#45;&gt;module~m_poisson_field_solver</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M649.33,-39.91C637.51,-36.5 624.31,-33.14 612,-31 546.95,-19.68 472.02,-15.06 417.37,-13.19"/>
+<polygon fill="#000000" stroke="#000000" points="417.18,-9.68 407.07,-12.86 416.95,-16.68 417.18,-9.68"/>
+</g>
+<!-- program~main -->
+<g id="module~~m_string_holder~~UsedByGraph_node7" class="node">
+<title>program~main</title>
+<g id="a_module~~m_string_holder~~UsedByGraph_node7"><a xlink:href=".././program/main.html" xlink:title="main">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="817,-64 763,-64 763,-40 817,-40 817,-64"/>
+<text text-anchor="middle" x="790" y="-49.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">main</text>
+</a>
+</g>
+</g>
+<!-- program~main&#45;&gt;module~ohhelppic3d -->
+<g id="module~~m_string_holder~~UsedByGraph_edge10" class="edge">
+<title>program~main&#45;&gt;module~ohhelppic3d</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M762.86,-52C755,-52 746.11,-52 737.28,-52"/>
+<polygon fill="#000000" stroke="#000000" points="737.01,-48.5 727.01,-52 737.01,-55.5 737.01,-48.5"/>
+</g>
+</g>
+</svg>
+</div>                <script>
+                  var panmodulem_string_holderUsedByGraph = svgPanZoom('#modulem_string_holderUsedByGraph',
+                    {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
+                  );
+                </script>        <div><a type="button" class="graph-help" data-toggle="modal" href="#UsedByGraph-help-text">Help</a></div>
+          <div class="modal fade" id="UsedByGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                </div>
+              <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="518pt" height="32pt"
+ viewBox="0.00 0.00 517.50 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 513.5,-28 513.5,4 -4,4"/>
+<!-- Module -->
+<g id="node1" class="node">
+<title>Module</title>
+<polygon fill="#337ab7" stroke="#337ab7" points="54,-24 0,-24 0,0 54,0 54,-24"/>
+<text text-anchor="middle" x="27" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Module</text>
+</g>
+<!-- Submodule -->
+<g id="node2" class="node">
+<title>Submodule</title>
+<polygon fill="#5bc0de" stroke="#5bc0de" points="145.5,-24 72.5,-24 72.5,0 145.5,0 145.5,-24"/>
+<text text-anchor="middle" x="109" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Submodule</text>
+</g>
+<!-- Subroutine -->
+<g id="node3" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="234,-24 164,-24 164,0 234,0 234,-24"/>
+<text text-anchor="middle" x="199" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node4" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="310,-24 252,-24 252,0 310,0 310,-24"/>
+<text text-anchor="middle" x="281" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Program -->
+<g id="node5" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="386,-24 328,-24 328,0 386,0 386,-24"/>
+<text text-anchor="middle" x="357" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node6" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="509.5,-24 404.5,-24 404.5,0 509.5,0 509.5,-24"/>
+<text text-anchor="middle" x="457" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a submodule to the (sub)module which it is
+descended from. Dashed arrows point from a module or program unit to 
+modules which it uses.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+            </li>
+        </ul>
+      </div>
+    </div>
+
+      <br>
+
+
+
+
+
+
+        <section>
+          <h2>Derived Types</h2>
+              <div class="card">
+    <div class="card-header codesum">
+      <span class="anchor" id="type-t_stringholder"></span>
+      <h3>
+        type, public&nbsp;::&nbsp;
+        <a href='../type/t_stringholder.html'>t_StringHolder</a>
+        
+      </h3>
+    </div>
+    <div class="card-body">
+      
+
+        <h4>Components</h4>
+          <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Visibility</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+<th></th><th scope="col">Initial</th>        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-string"></span>
+              character(len=:),
+            </td>
+              <td>public,</td>
+            <td>
+              allocatable
+            </td>
+            <td>::</td>
+            <td><strong>string</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+
+
+    </div>
+  </div>
+
+        </section>
+        <br>
+
+        <section>
+          <h2>Functions</h2>
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-new_stringholder"></span><h3>public  function <a href='../proc/new_stringholder.html'>new_StringHolder</a>(string) result(obj)  
+</h3></div>
+    <div class="card-body">
+          
+  
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-string~2"></span>
+              character(len=*),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>string</strong></td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <h4>
+    Return Value
+    <small>type(<a href='../type/t_stringholder.html'>t_StringHolder</a>)</small>
+    </h4>
+    
+
+    </div>
+  </div>
+
+        </section>
+        <br>
+
+
+
+
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col"><p>ohhelp-pic-3d was developed by Nkzono99<br>&copy; 2023 <a rel="license" href="https://opensource.org/licenses/MIT">MIT</a>
+</p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2023-11-07T16:33:23.830536             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

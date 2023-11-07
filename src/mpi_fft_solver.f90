@@ -18,7 +18,7 @@ module m_mpi_fft_solver
     interface
         subroutine mpiFFTSolver3d_forward(self, in, out)
             import t_MPIFFTSolver3d
-            class(t_MPIFFTSolver3d), intent(inout) :: self
+            class(t_MPIFFTSolver3d), intent(in) :: self
             double precision, intent(in) :: in(self%local_block%start(1):self%local_block%end(1), &
                                                self%local_block%start(2):self%local_block%end(2), &
                                                self%local_block%start(3):self%local_block%end(3))
@@ -29,7 +29,7 @@ module m_mpi_fft_solver
 
         subroutine mpiFFTSolver3d_backward(self, in, out)
             import t_MPIFFTSolver3d
-            class(t_MPIFFTSolver3d), intent(inout) :: self
+            class(t_MPIFFTSolver3d), intent(in) :: self
             double precision, intent(in) :: in(self%local_block%start(1):self%local_block%end(1), &
                                                self%local_block%start(2):self%local_block%end(2), &
                                                self%local_block%start(3):self%local_block%end(3))

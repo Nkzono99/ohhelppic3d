@@ -10,81 +10,55 @@
 
     <title>block.f90 &ndash; ohhelp-pic-3d</title>
 
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link href="../css/pygments.css" rel="stylesheet">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/local.css" rel="stylesheet">
       <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
-
-         <script src="../js/jquery-2.1.3.min.js"></script>
-         <script src="../js/svg-pan-zoom.min.js"></script>
-
+    <script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha256-tG5mcZUtJsZvyKAxYLVXrmjKBVLd6VpVccqz/r4ypFE=" crossorigin="anonymous"></script>
   </head>
 
   <body>
 
     <!-- Fixed navbar -->
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
           <a class="navbar-brand" href="../index.html">ohhelp-pic-3d </a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
-              <a href="#" class="dropdown-toggle"
-                 data-toggle="dropdown" role="button"
-                 aria-haspopup="true"
-                 aria-expanded="false">
-                 Contents <span class="caret"></span>
-              </a>
-              <ul class="dropdown-menu">
-                    <li><a href="../lists/files.html">Source Files</a></li>
-                  <li><a href="../lists/modules.html">Modules</a></li>
-                  <li><a href="../lists/procedures.html">Procedures</a></li>
-                  <li><a href="../lists/types.html">Derived Types</a></li>
-                  <li><a href="../program/main.html">Program</a></li>
-              </ul>
-            </li>
-                <li class="visible-xs hidden-sm visible-lg">
-                  <a href="../lists/files.html">Source Files</a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
                 </li>
-              <li class="visible-xs hidden-sm visible-lg">
-                <a href="../lists/modules.html">Modules</a>
-              </li>
-              <li class="visible-xs hidden-sm visible-lg">
-                <a href="../lists/procedures.html">Procedures</a>
-              </li>
-              <li class="visible-xs hidden-sm visible-lg">
-                <a href="../lists/types.html">Derived Types</a>
-              </li>
-              <li class="visible-xs hidden-sm visible-lg">
-                <a href="../program/main.html">Program</a>
-              </li>
-          </ul>
-            <form action="../search.html" class="navbar-form navbar-right" role="search">
-              <div class="form-group">
-                <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../program/main.html">Program</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
               </div>
-              <!--
-                  <button type="submit" class="btn btn-default">Submit</button>
-                  -->
-            </form>
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
 
     <div class="container">
   <div class="row">
@@ -92,53 +66,56 @@
       <small>Source File</small>
       
     </h1>
-      <div class="row" id="info-bar">
-    <div class="col-lg-12">
-      <div class="well well-sm">
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
         <ul class="list-inline" style="margin-bottom:0px;display:inline">
-            <li id="meta-license"><i class="fa fa-legal"></i> <a rel="license" href="https://opensource.org/licenses/MIT">MIT</a></li>
+            <li class="list-inline-item" id="meta-license"><i class="fa fa-legal"></i> <a rel="license" href="https://opensource.org/licenses/MIT">MIT</a></li>
 
-          <li id="statements"><i class="fa fa-list-ol"></i>
-            <a data-toggle="tooltip"
-               data-placement="bottom" data-html="true"
-               title=" 1.6% of total for source files.">58 statements</a>
-          </li>
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip"
+                 data-bs-placement="bottom" data-html="true"
+                 title=" 1.5% of total for source files.">58 statements</a>
+            </li>
 
-            <li id="source-file">
+            <li class="list-inline-item" id="source-file">
               <i class="fa fa-code"></i>
               <a href="../src/block.f90"> Source File</a>
             </li>
         </ul>
-        <ol class="breadcrumb in-well text-right">
-          <li class="active">block.f90</li>
-        </ol>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+            <li class="breadcrumb-item active" aria-current="page">block.f90</li>
+          </ol>
+        </nav>
       </div>
     </div>
   </div>
   <script>
     $(function () {
-    $('[data-toggle="tooltip"]').tooltip()
+    $('[data-bs-toggle="tooltip"]').tooltip()
     })
   </script>
 
   </div>
   <div class="row">
     <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
-      <div id="sidebar">
+        <div id="sidebar">
       <h3>Contents</h3>
   
   
   
   
   
-      <div class="panel panel-primary">
-      <div class="panel-heading text-left">
-        <h3 class="panel-title">
-          <a data-toggle="collapse" href="#mods-0">Modules</a>
-        </h3>
-      </div>
-      <div id="mods-0" class="panel-collapse collapse">
-        <div class="list-group">
+      <div class="card mb-4">
+      <a data-bs-toggle="collapse" href="#mods-0"
+         aria-expanded="false" aria-controls="mods-0">
+         <h4 class="card-header bg-primary text-white">Modules</h4>
+      </a>
+      <div id="mods-0" class="collapse">
+        <div class="list-group list-group-flush">
             <a class="list-group-item" href="../module/m_block.html">m_block</a>
         </div>
       </div>
@@ -157,8 +134,9 @@
   
   
   
-    <div class="panel panel-primary">
-      <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  
+    <div class="card card-primary">
+      <div class="card-header text-left"><h3 class="card-title">Source Code</h3></div>
       <div class="list-group">
         <a class="list-group-item" href="../sourcefile/block.f90.html#src">block.f90</a>
       </div>
@@ -171,217 +149,278 @@
     <div class="col-md-9" id='text'>
       
       <br>
-    <div class="panel panel-default">
-      <div class="panel-heading">
-  <h3 class="panel-title">Files dependent on this one</h3>
-      </div>
-      <div class="panel-body">
-  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Files dependent on this one</h3>
+          </div>
+          <div class="card-body">
+            <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <!-- Generated by graphviz version 2.43.0 (0)
  -->
 <!-- Title: sourcefile~~block.f90~~AfferentGraph Pages: 1 -->
 <svg id="sourcefileblockf90AfferentGraph" width="641pt" height="119pt"
- viewBox="0.00 0.00 641.00 119.46" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="sourcefile~~block.f90~~AfferentGraph" class="graph" transform="scale(1.57 1.57) rotate(0) translate(4 183.11)">
+ viewBox="0.00 0.00 641.00 118.93" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="sourcefile~~block.f90~~AfferentGraph" class="graph" transform="scale(2.13 2.13) rotate(0) translate(4 249.26)">
 <title>sourcefile~~block.f90~~AfferentGraph</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-183.11 1000,-183.11 1000,4 -4,4"/>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-249.26 1361,-249.26 1361,4 -4,4"/>
 <!-- sourcefile~block.f90 -->
 <g id="sourcefile~~block.f90~~AfferentGraph_node1" class="node">
 <title>sourcefile~block.f90</title>
-<polygon fill="none" stroke="black" points="61,-87 0,-87 0,-63 61,-63 61,-87"/>
-<text text-anchor="middle" x="30.5" y="-72.6" font-family="Helvetica,sans-Serif" font-size="10.50">block.f90</text>
+<polygon fill="none" stroke="black" points="61,-174.57 0,-174.57 0,-150.57 61,-150.57 61,-174.57"/>
+<text text-anchor="middle" x="30.5" y="-160.17" font-family="Helvetica,sans-Serif" font-size="10.50">block.f90</text>
 </g>
 <!-- sourcefile~block_communicator.f90 -->
 <g id="sourcefile~~block.f90~~AfferentGraph_node2" class="node">
 <title>sourcefile~block_communicator.f90</title>
 <g id="a_sourcefile~~block.f90~~AfferentGraph_node2"><a xlink:href=".././sourcefile/block_communicator.f90.html" xlink:title="block_communicator.f90">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="240,-108 97,-108 97,-84 240,-84 240,-108"/>
-<text text-anchor="middle" x="168.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">block_communicator.f90</text>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="240,-153.57 97,-153.57 97,-129.57 240,-129.57 240,-153.57"/>
+<text text-anchor="middle" x="168.5" y="-139.17" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">block_communicator.f90</text>
 </a>
 </g>
 </g>
 <!-- sourcefile~block_communicator.f90&#45;&gt;sourcefile~block.f90 -->
 <g id="sourcefile~~block.f90~~AfferentGraph_edge1" class="edge">
 <title>sourcefile~block_communicator.f90&#45;&gt;sourcefile~block.f90</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M96.71,-85.07C88.01,-83.73 79.36,-82.39 71.35,-81.15"/>
-<polygon fill="#000000" stroke="#000000" points="71.65,-77.66 61.23,-79.59 70.58,-84.58 71.65,-77.66"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M96.71,-152.5C88.01,-153.84 79.36,-155.18 71.35,-156.41"/>
+<polygon fill="#000000" stroke="#000000" points="70.58,-152.99 61.23,-157.98 71.65,-159.91 70.58,-152.99"/>
 </g>
 <!-- sourcefile~block_list.f90 -->
 <g id="sourcefile~~block.f90~~AfferentGraph_node3" class="node">
 <title>sourcefile~block_list.f90</title>
 <g id="a_sourcefile~~block.f90~~AfferentGraph_node3"><a xlink:href=".././sourcefile/block_list.f90.html" xlink:title="block_list.f90">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="209.5,-66 127.5,-66 127.5,-42 209.5,-42 209.5,-66"/>
-<text text-anchor="middle" x="168.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">block_list.f90</text>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="209.5,-195.57 127.5,-195.57 127.5,-171.57 209.5,-171.57 209.5,-195.57"/>
+<text text-anchor="middle" x="168.5" y="-181.17" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">block_list.f90</text>
 </a>
 </g>
 </g>
 <!-- sourcefile~block_list.f90&#45;&gt;sourcefile~block.f90 -->
 <g id="sourcefile~~block.f90~~AfferentGraph_edge2" class="edge">
 <title>sourcefile~block_list.f90&#45;&gt;sourcefile~block.f90</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M127.43,-60.19C109.75,-62.92 89.01,-66.12 71.35,-68.85"/>
-<polygon fill="#000000" stroke="#000000" points="70.71,-65.4 61.36,-70.39 71.77,-72.32 70.71,-65.4"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M127.43,-177.38C109.75,-174.65 89.01,-171.45 71.35,-168.72"/>
+<polygon fill="#000000" stroke="#000000" points="71.77,-165.24 61.36,-167.18 70.71,-172.16 71.77,-165.24"/>
 </g>
 <!-- sourcefile~mpi_block_rebaser.f90 -->
 <g id="sourcefile~~block.f90~~AfferentGraph_node4" class="node">
 <title>sourcefile~mpi_block_rebaser.f90</title>
 <g id="a_sourcefile~~block.f90~~AfferentGraph_node4"><a xlink:href=".././sourcefile/mpi_block_rebaser.f90.html" xlink:title="mpi_block_rebaser.f90">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="608,-104 477,-104 477,-80 608,-80 608,-104"/>
-<text text-anchor="middle" x="542.5" y="-89.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_block_rebaser.f90</text>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="608,-157.57 477,-157.57 477,-133.57 608,-133.57 608,-157.57"/>
+<text text-anchor="middle" x="542.5" y="-143.17" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_block_rebaser.f90</text>
 </a>
 </g>
 </g>
 <!-- sourcefile~mpi_block_rebaser.f90&#45;&gt;sourcefile~block.f90 -->
 <g id="sourcefile~~block.f90~~AfferentGraph_edge3" class="edge">
 <title>sourcefile~mpi_block_rebaser.f90&#45;&gt;sourcefile~block.f90</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M357.5,-132C274.1,-137.43 250.53,-156.47 169.5,-136"/>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M167.5,-136C136.04,-128.05 126.67,-130.13 97,-117 82.63,-110.64 67.79,-101.38 55.88,-93.18"/>
-<polygon fill="#000000" stroke="#000000" points="57.58,-90.1 47.4,-87.18 53.54,-95.81 57.58,-90.1"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M502.94,-133.52C466.43,-122.98 409.86,-108.85 359.5,-105.57"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M357.5,-105.57C274.1,-100.14 250.53,-81.09 169.5,-101.57"/>
 </g>
 <!-- sourcefile~mpi_block_rebaser.f90&#45;&gt;sourcefile~block_communicator.f90 -->
-<g id="sourcefile~~block.f90~~AfferentGraph_edge9" class="edge">
+<g id="sourcefile~~block.f90~~AfferentGraph_edge11" class="edge">
 <title>sourcefile~mpi_block_rebaser.f90&#45;&gt;sourcefile~block_communicator.f90</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M502.94,-104.04C466.43,-114.58 409.86,-128.72 359.5,-132"/>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M357.5,-132C307.73,-135.24 251.7,-122.31 213.85,-111.05"/>
-<polygon fill="#000000" stroke="#000000" points="214.75,-107.66 204.16,-108.09 212.7,-114.36 214.75,-107.66"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M357.5,-105.57C307.73,-102.32 251.7,-115.26 213.85,-126.51"/>
+<polygon fill="#000000" stroke="#000000" points="212.7,-123.21 204.16,-129.48 214.75,-129.9 212.7,-123.21"/>
 </g>
 <!-- sourcefile~mpi_block_rebaser.f90&#45;&gt;sourcefile~block_list.f90 -->
-<g id="sourcefile~~block.f90~~AfferentGraph_edge10" class="edge">
+<g id="sourcefile~~block.f90~~AfferentGraph_edge12" class="edge">
 <title>sourcefile~mpi_block_rebaser.f90&#45;&gt;sourcefile~block_list.f90</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M491.13,-80C475.18,-76.6 457.43,-73.22 441,-71 364.27,-60.64 274.48,-56.57 219.82,-54.99"/>
-<polygon fill="#000000" stroke="#000000" points="219.79,-51.49 209.7,-54.72 219.6,-58.49 219.79,-51.49"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M491.13,-157.57C475.18,-160.97 457.43,-164.35 441,-166.57 364.27,-176.93 274.48,-180.99 219.82,-182.57"/>
+<polygon fill="#000000" stroke="#000000" points="219.6,-179.08 209.7,-182.85 219.79,-186.07 219.6,-179.08"/>
 </g>
 <!-- sourcefile~block_communicator_list.f90 -->
-<g id="sourcefile~~block.f90~~AfferentGraph_node9" class="node">
+<g id="sourcefile~~block.f90~~AfferentGraph_node11" class="node">
 <title>sourcefile~block_communicator_list.f90</title>
-<g id="a_sourcefile~~block.f90~~AfferentGraph_node9"><a xlink:href=".././sourcefile/block_communicator_list.f90.html" xlink:title="block_communicator_list.f90">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="441,-104 276,-104 276,-80 441,-80 441,-104"/>
-<text text-anchor="middle" x="358.5" y="-89.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">block_communicator_list.f90</text>
+<g id="a_sourcefile~~block.f90~~AfferentGraph_node11"><a xlink:href=".././sourcefile/block_communicator_list.f90.html" xlink:title="block_communicator_list.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="441,-157.57 276,-157.57 276,-133.57 441,-133.57 441,-157.57"/>
+<text text-anchor="middle" x="358.5" y="-143.17" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">block_communicator_list.f90</text>
 </a>
 </g>
 </g>
 <!-- sourcefile~mpi_block_rebaser.f90&#45;&gt;sourcefile~block_communicator_list.f90 -->
-<g id="sourcefile~~block.f90~~AfferentGraph_edge18" class="edge">
+<g id="sourcefile~~block.f90~~AfferentGraph_edge25" class="edge">
 <title>sourcefile~mpi_block_rebaser.f90&#45;&gt;sourcefile~block_communicator_list.f90</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M476.82,-92C468.52,-92 459.91,-92 451.28,-92"/>
-<polygon fill="#000000" stroke="#000000" points="451.16,-88.5 441.16,-92 451.16,-95.5 451.16,-88.5"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M476.82,-145.57C468.52,-145.57 459.91,-145.57 451.28,-145.57"/>
+<polygon fill="#000000" stroke="#000000" points="451.16,-142.07 441.16,-145.57 451.16,-149.07 451.16,-142.07"/>
 </g>
 <!-- sourcefile~mpi_fft_solver.f90 -->
 <g id="sourcefile~~block.f90~~AfferentGraph_node5" class="node">
 <title>sourcefile~mpi_fft_solver.f90</title>
 <g id="a_sourcefile~~block.f90~~AfferentGraph_node5"><a xlink:href=".././sourcefile/mpi_fft_solver.f90.html" xlink:title="mpi_fft_solver.f90">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="595.5,-44 489.5,-44 489.5,-20 595.5,-20 595.5,-44"/>
-<text text-anchor="middle" x="542.5" y="-29.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_fft_solver.f90</text>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="595.5,-115.57 489.5,-115.57 489.5,-91.57 595.5,-91.57 595.5,-115.57"/>
+<text text-anchor="middle" x="542.5" y="-101.17" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_fft_solver.f90</text>
 </a>
 </g>
 </g>
 <!-- sourcefile~mpi_fft_solver.f90&#45;&gt;sourcefile~block.f90 -->
 <g id="sourcefile~~block.f90~~AfferentGraph_edge4" class="edge">
 <title>sourcefile~mpi_fft_solver.f90&#45;&gt;sourcefile~block.f90</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M489.46,-23.95C453.14,-19.05 403.48,-13.76 359.5,-14"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M506.65,-91.51C470.3,-80.16 411.47,-65.22 359.5,-67.57"/>
 </g>
-<!-- sourcefile~mpi_fftw3_solver.f90 -->
+<!-- sourcefile~mpi_fft_solver_factory.f90 -->
 <g id="sourcefile~~block.f90~~AfferentGraph_node6" class="node">
-<title>sourcefile~mpi_fftw3_solver.f90</title>
-<g id="a_sourcefile~~block.f90~~AfferentGraph_node6"><a xlink:href=".././sourcefile/mpi_fftw3_solver.f90.html" xlink:title="mpi_fftw3_solver.f90">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="765,-104 644,-104 644,-80 765,-80 765,-104"/>
-<text text-anchor="middle" x="704.5" y="-89.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_fftw3_solver.f90</text>
+<title>sourcefile~mpi_fft_solver_factory.f90</title>
+<g id="a_sourcefile~~block.f90~~AfferentGraph_node6"><a xlink:href=".././sourcefile/mpi_fft_solver_factory.f90.html" xlink:title="mpi_fft_solver_factory.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="952,-155.57 804,-155.57 804,-131.57 952,-131.57 952,-155.57"/>
+<text text-anchor="middle" x="878" y="-141.17" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_fft_solver_factory.f90</text>
 </a>
 </g>
 </g>
-<!-- sourcefile~mpi_fftw3_solver.f90&#45;&gt;sourcefile~block.f90 -->
+<!-- sourcefile~mpi_fft_solver_factory.f90&#45;&gt;sourcefile~block.f90 -->
 <g id="sourcefile~~block.f90~~AfferentGraph_edge5" class="edge">
+<title>sourcefile~mpi_fft_solver_factory.f90&#45;&gt;sourcefile~block.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M835.27,-155.6C772.51,-173.23 649.81,-205.91 543.5,-223.57"/>
+</g>
+<!-- sourcefile~mpi_fft_solver_factory.f90&#45;&gt;sourcefile~mpi_fft_solver.f90 -->
+<g id="sourcefile~~block.f90~~AfferentGraph_edge14" class="edge">
+<title>sourcefile~mpi_fft_solver_factory.f90&#45;&gt;sourcefile~mpi_fft_solver.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M836.92,-131.52C795.01,-119.39 731.92,-102.6 707,-103.57"/>
+</g>
+<!-- sourcefile~mpi_fftw3_solver.f90 -->
+<g id="sourcefile~~block.f90~~AfferentGraph_node7" class="node">
+<title>sourcefile~mpi_fftw3_solver.f90</title>
+<g id="a_sourcefile~~block.f90~~AfferentGraph_node7"><a xlink:href=".././sourcefile/mpi_fftw3_solver.f90.html" xlink:title="mpi_fftw3_solver.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="766.5,-156.57 645.5,-156.57 645.5,-132.57 766.5,-132.57 766.5,-156.57"/>
+<text text-anchor="middle" x="706" y="-142.17" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_fftw3_solver.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~mpi_fft_solver_factory.f90&#45;&gt;sourcefile~mpi_fftw3_solver.f90 -->
+<g id="sourcefile~~block.f90~~AfferentGraph_edge21" class="edge">
+<title>sourcefile~mpi_fft_solver_factory.f90&#45;&gt;sourcefile~mpi_fftw3_solver.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M803.92,-144C794.9,-144.05 785.69,-144.1 776.72,-144.16"/>
+<polygon fill="#000000" stroke="#000000" points="776.69,-140.66 766.71,-144.21 776.73,-147.66 776.69,-140.66"/>
+</g>
+<!-- sourcefile~mpi_fftw3_solver.f90&#45;&gt;sourcefile~block.f90 -->
+<g id="sourcefile~~block.f90~~AfferentGraph_edge6" class="edge">
 <title>sourcefile~mpi_fftw3_solver.f90&#45;&gt;sourcefile~block.f90</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M687.84,-104.14C660.44,-124.3 601.19,-163.15 543.5,-170"/>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M541.5,-170C376.63,-189.57 330.46,-176.67 169.5,-136"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M689.2,-156.86C661.55,-177.27 601.77,-216.63 543.5,-223.57"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M541.5,-223.57C345.15,-246.95 285.52,-264.22 97,-204.57 81.25,-199.58 65.6,-189.77 53.54,-180.89"/>
+<polygon fill="#000000" stroke="#000000" points="55.51,-177.99 45.45,-174.66 51.25,-183.53 55.51,-177.99"/>
 </g>
 <!-- sourcefile~mpi_fftw3_solver.f90&#45;&gt;sourcefile~mpi_block_rebaser.f90 -->
-<g id="sourcefile~~block.f90~~AfferentGraph_edge11" class="edge">
+<g id="sourcefile~~block.f90~~AfferentGraph_edge13" class="edge">
 <title>sourcefile~mpi_fftw3_solver.f90&#45;&gt;sourcefile~mpi_block_rebaser.f90</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M643.92,-92C635.56,-92 626.87,-92 618.27,-92"/>
-<polygon fill="#000000" stroke="#000000" points="618.23,-88.5 608.23,-92 618.23,-95.5 618.23,-88.5"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M645.32,-144.94C636.51,-144.99 627.34,-145.05 618.26,-145.1"/>
+<polygon fill="#000000" stroke="#000000" points="618.07,-141.6 608.09,-145.17 618.11,-148.6 618.07,-141.6"/>
 </g>
 <!-- sourcefile~mpi_fftw3_solver.f90&#45;&gt;sourcefile~mpi_fft_solver.f90 -->
-<g id="sourcefile~~block.f90~~AfferentGraph_edge12" class="edge">
+<g id="sourcefile~~block.f90~~AfferentGraph_edge15" class="edge">
 <title>sourcefile~mpi_fftw3_solver.f90&#45;&gt;sourcefile~mpi_fft_solver.f90</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M671.12,-79.86C646.32,-70.56 611.91,-57.65 585.07,-47.59"/>
-<polygon fill="#000000" stroke="#000000" points="586.15,-44.26 575.56,-44.02 583.69,-50.81 586.15,-44.26"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M657.42,-132.49C639.67,-127.98 619.34,-122.82 600.81,-118.12"/>
+<polygon fill="#000000" stroke="#000000" points="601.57,-114.7 591.02,-115.63 599.85,-121.48 601.57,-114.7"/>
 </g>
 <!-- sourcefile~ohhelppic3d.f90 -->
-<g id="sourcefile~~block.f90~~AfferentGraph_node7" class="node">
+<g id="sourcefile~~block.f90~~AfferentGraph_node8" class="node">
 <title>sourcefile~ohhelppic3d.f90</title>
-<g id="a_sourcefile~~block.f90~~AfferentGraph_node7"><a xlink:href=".././sourcefile/ohhelppic3d.f90.html" xlink:title="ohhelppic3d.f90">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="900,-84 801,-84 801,-60 900,-60 900,-84"/>
-<text text-anchor="middle" x="850.5" y="-69.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ohhelppic3d.f90</text>
+<g id="a_sourcefile~~block.f90~~AfferentGraph_node8"><a xlink:href=".././sourcefile/ohhelppic3d.f90.html" xlink:title="ohhelppic3d.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="1261,-56.57 1162,-56.57 1162,-32.57 1261,-32.57 1261,-56.57"/>
+<text text-anchor="middle" x="1211.5" y="-42.17" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ohhelppic3d.f90</text>
 </a>
 </g>
 </g>
 <!-- sourcefile~ohhelppic3d.f90&#45;&gt;sourcefile~block.f90 -->
-<g id="sourcefile~~block.f90~~AfferentGraph_edge6" class="edge">
+<g id="sourcefile~~block.f90~~AfferentGraph_edge7" class="edge">
 <title>sourcefile~ohhelppic3d.f90&#45;&gt;sourcefile~block.f90</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M827.79,-84.03C811.02,-92.95 787.04,-104.91 765,-113 669.57,-148.03 644.41,-157.75 543.5,-170"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1167.79,-32.51C1154.5,-29.15 1139.73,-25.81 1126,-23.57 942.21,6.46 890.38,8.85 707,-23.57"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M705,-23.57C631.86,-34.44 617.26,-58.27 543.5,-63.57"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M541.5,-63.57C460.8,-69.36 440.33,-63.91 359.5,-67.57"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M357.5,-67.57C272.68,-71.4 251.82,-80.76 169.5,-101.57"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M167.5,-101.57C136.04,-109.52 126.67,-107.43 97,-120.57 82.63,-126.93 67.79,-136.18 55.88,-144.38"/>
+<polygon fill="#000000" stroke="#000000" points="53.54,-141.75 47.4,-150.39 57.58,-147.47 53.54,-141.75"/>
 </g>
 <!-- sourcefile~ohhelppic3d.f90&#45;&gt;sourcefile~mpi_fft_solver.f90 -->
-<g id="sourcefile~~block.f90~~AfferentGraph_edge13" class="edge">
+<g id="sourcefile~~block.f90~~AfferentGraph_edge16" class="edge">
 <title>sourcefile~ohhelppic3d.f90&#45;&gt;sourcefile~mpi_fft_solver.f90</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M800.68,-65.62C747.83,-58.71 663.4,-47.67 605.81,-40.14"/>
-<polygon fill="#000000" stroke="#000000" points="606.11,-36.65 595.74,-38.83 605.2,-43.6 606.11,-36.65"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1185.52,-56.58C1155.84,-70.3 1104.49,-92.29 1058,-103.57"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1056,-103.57C905.26,-140.14 862,-97.57 707,-103.57"/>
 </g>
-<!-- sourcefile~ohhelppic3d.f90&#45;&gt;sourcefile~mpi_fftw3_solver.f90 -->
-<g id="sourcefile~~block.f90~~AfferentGraph_edge15" class="edge">
-<title>sourcefile~ohhelppic3d.f90&#45;&gt;sourcefile~mpi_fftw3_solver.f90</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M800.75,-78.77C792.54,-79.91 783.88,-81.11 775.26,-82.31"/>
-<polygon fill="#000000" stroke="#000000" points="774.61,-78.87 765.19,-83.71 775.57,-85.8 774.61,-78.87"/>
+<!-- sourcefile~ohhelppic3d.f90&#45;&gt;sourcefile~mpi_fft_solver_factory.f90 -->
+<g id="sourcefile~~block.f90~~AfferentGraph_edge19" class="edge">
+<title>sourcefile~ohhelppic3d.f90&#45;&gt;sourcefile~mpi_fft_solver_factory.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1056,-103.57C1019.24,-112.49 978.02,-121.84 944.61,-129.25"/>
+<polygon fill="#000000" stroke="#000000" points="943.52,-125.91 934.51,-131.49 945.03,-132.75 943.52,-125.91"/>
 </g>
-<!-- sourcefile~poisson_solver.f90 -->
-<g id="sourcefile~~block.f90~~AfferentGraph_node8" class="node">
-<title>sourcefile~poisson_solver.f90</title>
-<g id="a_sourcefile~~block.f90~~AfferentGraph_node8"><a xlink:href=".././sourcefile/poisson_solver.f90.html" xlink:title="poisson_solver.f90">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="759,-24 650,-24 650,0 759,0 759,-24"/>
-<text text-anchor="middle" x="704.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">poisson_solver.f90</text>
+<!-- sourcefile~poisson_field_solver.f90 -->
+<g id="sourcefile~~block.f90~~AfferentGraph_node9" class="node">
+<title>sourcefile~poisson_field_solver.f90</title>
+<g id="a_sourcefile~~block.f90~~AfferentGraph_node9"><a xlink:href=".././sourcefile/poisson_field_solver.f90.html" xlink:title="poisson_field_solver.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="1126,-56.57 988,-56.57 988,-32.57 1126,-32.57 1126,-56.57"/>
+<text text-anchor="middle" x="1057" y="-42.17" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">poisson_field_solver.f90</text>
 </a>
 </g>
 </g>
-<!-- sourcefile~ohhelppic3d.f90&#45;&gt;sourcefile~poisson_solver.f90 -->
+<!-- sourcefile~ohhelppic3d.f90&#45;&gt;sourcefile~poisson_field_solver.f90 -->
+<g id="sourcefile~~block.f90~~AfferentGraph_edge23" class="edge">
+<title>sourcefile~ohhelppic3d.f90&#45;&gt;sourcefile~poisson_field_solver.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1161.83,-44.57C1153.68,-44.57 1145.05,-44.57 1136.39,-44.57"/>
+<polygon fill="#000000" stroke="#000000" points="1136.22,-41.07 1126.22,-44.57 1136.22,-48.07 1136.22,-41.07"/>
+</g>
+<!-- sourcefile~poisson_field_solver.f90&#45;&gt;sourcefile~block.f90 -->
+<g id="sourcefile~~block.f90~~AfferentGraph_edge8" class="edge">
+<title>sourcefile~poisson_field_solver.f90&#45;&gt;sourcefile~block.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M997.96,-32.54C963.49,-26.69 918.86,-21.34 879,-23.57"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M877,-23.57C801.56,-27.78 781.4,-10.41 707,-23.57"/>
+</g>
+<!-- sourcefile~poisson_field_solver.f90&#45;&gt;sourcefile~mpi_fft_solver.f90 -->
 <g id="sourcefile~~block.f90~~AfferentGraph_edge17" class="edge">
-<title>sourcefile~ohhelppic3d.f90&#45;&gt;sourcefile~poisson_solver.f90</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M820.36,-59.86C798.4,-50.71 768.08,-38.08 744.11,-28.09"/>
-<polygon fill="#000000" stroke="#000000" points="745.17,-24.74 734.6,-24.12 742.48,-31.2 745.17,-24.74"/>
+<title>sourcefile~poisson_field_solver.f90&#45;&gt;sourcefile~mpi_fft_solver.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M877,-23.57C821.57,-26.67 819,-62.64 768,-84.57 741.91,-95.78 735.37,-102.47 707,-103.57"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M705,-103.57C672.29,-104.83 635.83,-104.94 605.84,-104.69"/>
+<polygon fill="#000000" stroke="#000000" points="605.56,-101.19 595.52,-104.59 605.49,-108.19 605.56,-101.19"/>
 </g>
-<!-- sourcefile~poisson_solver.f90&#45;&gt;sourcefile~block.f90 -->
-<g id="sourcefile~~block.f90~~AfferentGraph_edge7" class="edge">
-<title>sourcefile~poisson_solver.f90&#45;&gt;sourcefile~block.f90</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M649.96,-11.34C636.28,-11.2 621.6,-11.07 608,-11 549.78,-10.7 535.22,-10.26 477,-11 424.77,-11.67 411.74,-13.72 359.5,-14"/>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M357.5,-14C241.44,-11.64 207.14,3.68 97,-33 81.43,-38.19 65.88,-47.91 53.84,-56.7"/>
-<polygon fill="#000000" stroke="#000000" points="51.59,-54.01 45.75,-62.85 55.83,-59.59 51.59,-54.01"/>
+<!-- sourcefile~poisson_field_solver.f90&#45;&gt;sourcefile~mpi_fft_solver_factory.f90 -->
+<g id="sourcefile~~block.f90~~AfferentGraph_edge20" class="edge">
+<title>sourcefile~poisson_field_solver.f90&#45;&gt;sourcefile~mpi_fft_solver_factory.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1034.3,-56.71C1003.03,-74.19 945.16,-106.56 909.58,-126.46"/>
+<polygon fill="#000000" stroke="#000000" points="907.62,-123.55 900.6,-131.48 911.04,-129.66 907.62,-123.55"/>
 </g>
-<!-- sourcefile~poisson_solver.f90&#45;&gt;sourcefile~mpi_fft_solver.f90 -->
-<g id="sourcefile~~block.f90~~AfferentGraph_edge14" class="edge">
-<title>sourcefile~poisson_solver.f90&#45;&gt;sourcefile~mpi_fft_solver.f90</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M649.78,-18.72C635.61,-20.49 620.22,-22.41 605.65,-24.23"/>
-<polygon fill="#000000" stroke="#000000" points="605.21,-20.76 595.72,-25.47 606.08,-27.7 605.21,-20.76"/>
+<!-- sourcefile~poisson_solver3d.f90 -->
+<g id="sourcefile~~block.f90~~AfferentGraph_node10" class="node">
+<title>sourcefile~poisson_solver3d.f90</title>
+<g id="a_sourcefile~~block.f90~~AfferentGraph_node10"><a xlink:href=".././sourcefile/poisson_solver3d.f90.html" xlink:title="poisson_solver3d.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="768,-75.57 644,-75.57 644,-51.57 768,-51.57 768,-75.57"/>
+<text text-anchor="middle" x="706" y="-61.17" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">poisson_solver3d.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~poisson_field_solver.f90&#45;&gt;sourcefile~poisson_solver3d.f90 -->
+<g id="sourcefile~~block.f90~~AfferentGraph_edge24" class="edge">
+<title>sourcefile~poisson_field_solver.f90&#45;&gt;sourcefile~poisson_solver3d.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M877,-23.57C833.6,-25.99 785.5,-38.24 751.57,-48.56"/>
+<polygon fill="#000000" stroke="#000000" points="750.47,-45.23 741.96,-51.54 752.55,-51.92 750.47,-45.23"/>
+</g>
+<!-- sourcefile~poisson_solver3d.f90&#45;&gt;sourcefile~block.f90 -->
+<g id="sourcefile~~block.f90~~AfferentGraph_edge9" class="edge">
+<title>sourcefile~poisson_solver3d.f90&#45;&gt;sourcefile~block.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M643.96,-61.51C613.7,-61.01 576.64,-61.18 543.5,-63.57"/>
+</g>
+<!-- sourcefile~poisson_solver3d.f90&#45;&gt;sourcefile~mpi_fft_solver.f90 -->
+<g id="sourcefile~~block.f90~~AfferentGraph_edge18" class="edge">
+<title>sourcefile~poisson_solver3d.f90&#45;&gt;sourcefile~mpi_fft_solver.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M656.54,-75.57C639.38,-79.82 619.88,-84.65 601.96,-89.09"/>
+<polygon fill="#000000" stroke="#000000" points="601.07,-85.7 592.2,-91.5 602.75,-92.5 601.07,-85.7"/>
 </g>
 <!-- sourcefile~block_communicator_list.f90&#45;&gt;sourcefile~block_communicator.f90 -->
-<g id="sourcefile~~block.f90~~AfferentGraph_edge8" class="edge">
+<g id="sourcefile~~block.f90~~AfferentGraph_edge10" class="edge">
 <title>sourcefile~block_communicator_list.f90&#45;&gt;sourcefile~block_communicator.f90</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M275.86,-93.74C267.41,-93.92 258.82,-94.1 250.37,-94.28"/>
-<polygon fill="#000000" stroke="#000000" points="250.08,-90.78 240.16,-94.5 250.23,-97.78 250.08,-90.78"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M275.86,-143.83C267.41,-143.65 258.82,-143.47 250.37,-143.29"/>
+<polygon fill="#000000" stroke="#000000" points="250.23,-139.78 240.16,-143.07 250.08,-146.78 250.23,-139.78"/>
 </g>
 <!-- sourcefile~main.f90 -->
-<g id="sourcefile~~block.f90~~AfferentGraph_node10" class="node">
+<g id="sourcefile~~block.f90~~AfferentGraph_node12" class="node">
 <title>sourcefile~main.f90</title>
-<g id="a_sourcefile~~block.f90~~AfferentGraph_node10"><a xlink:href=".././sourcefile/main.f90.html" xlink:title="main.f90">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="996,-84 936,-84 936,-60 996,-60 996,-84"/>
-<text text-anchor="middle" x="966" y="-69.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">main.f90</text>
+<g id="a_sourcefile~~block.f90~~AfferentGraph_node12"><a xlink:href=".././sourcefile/main.f90.html" xlink:title="main.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="1357,-56.57 1297,-56.57 1297,-32.57 1357,-32.57 1357,-56.57"/>
+<text text-anchor="middle" x="1327" y="-42.17" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">main.f90</text>
 </a>
 </g>
 </g>
 <!-- sourcefile~main.f90&#45;&gt;sourcefile~ohhelppic3d.f90 -->
-<g id="sourcefile~~block.f90~~AfferentGraph_edge16" class="edge">
+<g id="sourcefile~~block.f90~~AfferentGraph_edge22" class="edge">
 <title>sourcefile~main.f90&#45;&gt;sourcefile~ohhelppic3d.f90</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M935.77,-72C927.85,-72 918.98,-72 910.06,-72"/>
-<polygon fill="#000000" stroke="#000000" points="910,-68.5 900,-72 910,-75.5 910,-68.5"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1296.77,-44.57C1288.85,-44.57 1279.98,-44.57 1271.06,-44.57"/>
+<polygon fill="#000000" stroke="#000000" points="1271,-41.07 1261,-44.57 1271,-48.07 1271,-41.07"/>
 </g>
 </g>
 </svg>
@@ -389,8 +428,8 @@
                   var pansourcefileblockf90AfferentGraph = svgPanZoom('#sourcefileblockf90AfferentGraph',
                     {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
                   );
-                </script>        <div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div>
-          <div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog">
+                </script>        <div><a type="button" class="graph-help" data-toggle="modal" href="#AfferentGraph-help-text">Help</a></div>
+          <div class="modal fade" id="AfferentGraph-help-text" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
               <div class="modal-content">
                 <div class="modal-header">
@@ -435,134 +474,90 @@ can be.
             </div>
           </div>
         </div>
-      </div>
-    </div>
-<br>
-    <section class="visible-xs visible-sm hidden-md">
-        <h3>Contents</h3>
-  
-  
-  
-  
-  
-      <div class="panel panel-primary">
-      <div class="panel-heading text-left">
-        <h3 class="panel-title">
-          <a data-toggle="collapse" href="#mods-1">Modules</a>
-        </h3>
-      </div>
-      <div id="mods-1" class="panel-collapse collapse">
-        <div class="list-group">
-            <a class="list-group-item" href="../module/m_block.html">m_block</a>
+          </div>
         </div>
-      </div>
-    </div>
-
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-    <div class="panel panel-primary">
-      <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
-      <div class="list-group">
-        <a class="list-group-item" href="../sourcefile/block.f90.html#src">block.f90</a>
-      </div>
-    </div>
-
-
-    </section>
-    <br class="visible-xs visible-sm hidden-md">
-
-    <section>
-      <h2><span class="anchor" id="src"></span>Source Code</h2>
-    <div class="hl"><pre><span></span><a id="ln-1" name="ln-1" href="#ln-1"></a><span class="k">module </span><span class="n">m_block</span><span class="w"></span>
+<br>
+      <section>
+        <h2><span class="anchor" id="src"></span>Source Code</h2>
+        <div class="hl codehilite"><pre><span></span><a id="ln-1" name="ln-1" href="#ln-1"></a><span class="k">module </span><span class="n">m_block</span>
 <a id="ln-2" name="ln-2" href="#ln-2"></a><span class="w">    </span><span class="k">implicit none</span>
 <a id="ln-3" name="ln-3" href="#ln-3"></a>
 <a id="ln-4" name="ln-4" href="#ln-4"></a><span class="k">    private</span>
-<a id="ln-5" name="ln-5" href="#ln-5"></a><span class="k">    public </span><span class="n">SIZE_OF_BLOCK_ARRAY</span><span class="w"></span>
-<a id="ln-6" name="ln-6" href="#ln-6"></a><span class="w">    </span><span class="k">public </span><span class="n">t_Block</span><span class="w"></span>
-<a id="ln-7" name="ln-7" href="#ln-7"></a><span class="w">    </span><span class="k">public </span><span class="n">new_block</span><span class="w"></span>
+<a id="ln-5" name="ln-5" href="#ln-5"></a><span class="k">    public </span><span class="n">SIZE_OF_BLOCK_ARRAY</span>
+<a id="ln-6" name="ln-6" href="#ln-6"></a><span class="w">    </span><span class="k">public </span><span class="n">t_Block</span>
+<a id="ln-7" name="ln-7" href="#ln-7"></a><span class="w">    </span><span class="k">public </span><span class="n">new_block</span>
 <a id="ln-8" name="ln-8" href="#ln-8"></a>
-<a id="ln-9" name="ln-9" href="#ln-9"></a><span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">SIZE_OF_BLOCK_ARRAY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">6</span><span class="w"></span>
+<a id="ln-9" name="ln-9" href="#ln-9"></a><span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">SIZE_OF_BLOCK_ARRAY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">6</span>
 <a id="ln-10" name="ln-10" href="#ln-10"></a>
-<a id="ln-11" name="ln-11" href="#ln-11"></a><span class="w">    </span><span class="k">type </span><span class="n">t_Block</span><span class="w"></span>
-<a id="ln-12" name="ln-12" href="#ln-12"></a><span class="w">        </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">start</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="w"></span>
-<a id="ln-13" name="ln-13" href="#ln-13"></a><span class="w">        </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="k">end</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="w"></span>
-<a id="ln-14" name="ln-14" href="#ln-14"></a><span class="w">        </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">sizes</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="w"></span>
+<a id="ln-11" name="ln-11" href="#ln-11"></a><span class="w">    </span><span class="k">type </span><span class="n">t_Block</span>
+<a id="ln-12" name="ln-12" href="#ln-12"></a><span class="w">        </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">start</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<a id="ln-13" name="ln-13" href="#ln-13"></a><span class="w">        </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="k">end</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<a id="ln-14" name="ln-14" href="#ln-14"></a><span class="w">        </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">sizes</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 <a id="ln-15" name="ln-15" href="#ln-15"></a><span class="w">    </span><span class="k">contains</span>
-<a id="ln-16" name="ln-16" href="#ln-16"></a><span class="k">        procedure</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">block_size</span><span class="w"></span>
-<a id="ln-17" name="ln-17" href="#ln-17"></a><span class="w">        </span><span class="k">procedure</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">overlapped</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">block_overlapped</span><span class="w"></span>
-<a id="ln-18" name="ln-18" href="#ln-18"></a><span class="w">        </span><span class="k">procedure</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">to_array</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">block_to_array</span><span class="w"></span>
-<a id="ln-19" name="ln-19" href="#ln-19"></a><span class="w">        </span><span class="k">procedure</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">from_array</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">block_from_array</span><span class="w"></span>
+<a id="ln-16" name="ln-16" href="#ln-16"></a><span class="k">        procedure</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">block_size</span>
+<a id="ln-17" name="ln-17" href="#ln-17"></a><span class="w">        </span><span class="k">procedure</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">overlapped</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">block_overlapped</span>
+<a id="ln-18" name="ln-18" href="#ln-18"></a><span class="w">        </span><span class="k">procedure</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">to_array</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">block_to_array</span>
+<a id="ln-19" name="ln-19" href="#ln-19"></a><span class="w">        </span><span class="k">procedure</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">from_array</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">block_from_array</span>
 <a id="ln-20" name="ln-20" href="#ln-20"></a><span class="w">    </span><span class="k">end type</span>
 <a id="ln-21" name="ln-21" href="#ln-21"></a>
 <a id="ln-22" name="ln-22" href="#ln-22"></a><span class="k">contains</span>
 <a id="ln-23" name="ln-23" href="#ln-23"></a>
-<a id="ln-24" name="ln-24" href="#ln-24"></a><span class="k">    function </span><span class="n">new_Block</span><span class="p">(</span><span class="n">start</span><span class="p">,</span><span class="w"> </span><span class="k">end</span><span class="p">)</span><span class="w"> </span><span class="k">result</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span><span class="w"></span>
-<a id="ln-25" name="ln-25" href="#ln-25"></a><span class="w">        </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">start</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="w"></span>
-<a id="ln-26" name="ln-26" href="#ln-26"></a><span class="w">        </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="k">end</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="w"></span>
-<a id="ln-27" name="ln-27" href="#ln-27"></a><span class="w">        </span><span class="k">type</span><span class="p">(</span><span class="n">t_Block</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">obj</span><span class="w"></span>
+<a id="ln-24" name="ln-24" href="#ln-24"></a><span class="k">    function </span><span class="n">new_Block</span><span class="p">(</span><span class="n">start</span><span class="p">,</span><span class="w"> </span><span class="k">end</span><span class="p">)</span><span class="w"> </span><span class="k">result</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+<a id="ln-25" name="ln-25" href="#ln-25"></a><span class="w">        </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">start</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<a id="ln-26" name="ln-26" href="#ln-26"></a><span class="w">        </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="k">end</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<a id="ln-27" name="ln-27" href="#ln-27"></a><span class="w">        </span><span class="k">type</span><span class="p">(</span><span class="n">t_Block</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">obj</span>
 <a id="ln-28" name="ln-28" href="#ln-28"></a>
-<a id="ln-29" name="ln-29" href="#ln-29"></a><span class="w">        </span><span class="n">obj</span><span class="p">%</span><span class="n">start</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">start</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">)</span><span class="w"></span>
-<a id="ln-30" name="ln-30" href="#ln-30"></a><span class="w">        </span><span class="n">obj</span><span class="p">%</span><span class="k">end</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">end</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">)</span><span class="w"></span>
-<a id="ln-31" name="ln-31" href="#ln-31"></a><span class="w">        </span><span class="n">obj</span><span class="p">%</span><span class="n">sizes</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">max</span><span class="p">(</span><span class="n">obj</span><span class="p">%</span><span class="k">end</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">obj</span><span class="p">%</span><span class="n">start</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"></span>
+<a id="ln-29" name="ln-29" href="#ln-29"></a><span class="w">        </span><span class="n">obj</span><span class="p">%</span><span class="n">start</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">start</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">)</span>
+<a id="ln-30" name="ln-30" href="#ln-30"></a><span class="w">        </span><span class="n">obj</span><span class="p">%</span><span class="k">end</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">end</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">)</span>
+<a id="ln-31" name="ln-31" href="#ln-31"></a><span class="w">        </span><span class="n">obj</span><span class="p">%</span><span class="n">sizes</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">max</span><span class="p">(</span><span class="n">obj</span><span class="p">%</span><span class="k">end</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">obj</span><span class="p">%</span><span class="n">start</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
 <a id="ln-32" name="ln-32" href="#ln-32"></a><span class="w">    </span><span class="k">end function</span>
 <a id="ln-33" name="ln-33" href="#ln-33"></a>
-<a id="ln-34" name="ln-34" href="#ln-34"></a><span class="k">    function </span><span class="n">block_size</span><span class="p">(</span><span class="n">self</span><span class="p">)</span><span class="w"> </span><span class="k">result</span><span class="p">(</span><span class="n">size</span><span class="p">)</span><span class="w"></span>
-<a id="ln-35" name="ln-35" href="#ln-35"></a><span class="w">        </span><span class="k">class</span><span class="p">(</span><span class="n">t_Block</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">self</span><span class="w"></span>
-<a id="ln-36" name="ln-36" href="#ln-36"></a><span class="w">        </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">size</span><span class="w"></span>
+<a id="ln-34" name="ln-34" href="#ln-34"></a><span class="k">    function </span><span class="n">block_size</span><span class="p">(</span><span class="n">self</span><span class="p">)</span><span class="w"> </span><span class="k">result</span><span class="p">(</span><span class="n">size</span><span class="p">)</span>
+<a id="ln-35" name="ln-35" href="#ln-35"></a><span class="w">        </span><span class="k">class</span><span class="p">(</span><span class="n">t_Block</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">self</span>
+<a id="ln-36" name="ln-36" href="#ln-36"></a><span class="w">        </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">size</span>
 <a id="ln-37" name="ln-37" href="#ln-37"></a>
-<a id="ln-38" name="ln-38" href="#ln-38"></a><span class="w">        </span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">product</span><span class="p">(</span><span class="n">self</span><span class="p">%</span><span class="n">sizes</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">))</span><span class="w"></span>
+<a id="ln-38" name="ln-38" href="#ln-38"></a><span class="w">        </span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">product</span><span class="p">(</span><span class="n">self</span><span class="p">%</span><span class="n">sizes</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">))</span>
 <a id="ln-39" name="ln-39" href="#ln-39"></a><span class="w">    </span><span class="k">end function</span>
 <a id="ln-40" name="ln-40" href="#ln-40"></a>
-<a id="ln-41" name="ln-41" href="#ln-41"></a><span class="k">    function </span><span class="n">block_overlapped</span><span class="p">(</span><span class="n">self</span><span class="p">,</span><span class="w"> </span><span class="n">other</span><span class="p">)</span><span class="w"> </span><span class="k">result</span><span class="p">(</span><span class="n">overlapped</span><span class="p">)</span><span class="w"></span>
-<a id="ln-42" name="ln-42" href="#ln-42"></a><span class="w">        </span><span class="k">class</span><span class="p">(</span><span class="n">t_Block</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">self</span><span class="w"></span>
-<a id="ln-43" name="ln-43" href="#ln-43"></a><span class="w">        </span><span class="k">class</span><span class="p">(</span><span class="n">t_Block</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">other</span><span class="w"></span>
-<a id="ln-44" name="ln-44" href="#ln-44"></a><span class="w">        </span><span class="k">type</span><span class="p">(</span><span class="n">t_Block</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">overlapped</span><span class="w"></span>
+<a id="ln-41" name="ln-41" href="#ln-41"></a><span class="k">    function </span><span class="n">block_overlapped</span><span class="p">(</span><span class="n">self</span><span class="p">,</span><span class="w"> </span><span class="n">other</span><span class="p">)</span><span class="w"> </span><span class="k">result</span><span class="p">(</span><span class="n">overlapped</span><span class="p">)</span>
+<a id="ln-42" name="ln-42" href="#ln-42"></a><span class="w">        </span><span class="k">class</span><span class="p">(</span><span class="n">t_Block</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">self</span>
+<a id="ln-43" name="ln-43" href="#ln-43"></a><span class="w">        </span><span class="k">class</span><span class="p">(</span><span class="n">t_Block</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">other</span>
+<a id="ln-44" name="ln-44" href="#ln-44"></a><span class="w">        </span><span class="k">type</span><span class="p">(</span><span class="n">t_Block</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">overlapped</span>
 <a id="ln-45" name="ln-45" href="#ln-45"></a>
-<a id="ln-46" name="ln-46" href="#ln-46"></a><span class="w">        </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">start</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="w"> </span><span class="k">end</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="w"></span>
+<a id="ln-46" name="ln-46" href="#ln-46"></a><span class="w">        </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">start</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="w"> </span><span class="k">end</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 <a id="ln-47" name="ln-47" href="#ln-47"></a>
 <a id="ln-48" name="ln-48" href="#ln-48"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">self</span><span class="p">%</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">.</span><span class="nb">or</span><span class="p">.</span><span class="w"> </span><span class="n">other</span><span class="p">%</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
-<a id="ln-49" name="ln-49" href="#ln-49"></a><span class="k">            </span><span class="n">overlapped</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">new_block</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="w"></span>
+<a id="ln-49" name="ln-49" href="#ln-49"></a><span class="k">            </span><span class="n">overlapped</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">new_block</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
 <a id="ln-50" name="ln-50" href="#ln-50"></a><span class="w">            </span><span class="k">return</span>
 <a id="ln-51" name="ln-51" href="#ln-51"></a><span class="k">        end if </span>
 <a id="ln-52" name="ln-52" href="#ln-52"></a>
-<a id="ln-53" name="ln-53" href="#ln-53"></a><span class="k">        </span><span class="n">start</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">max</span><span class="p">(</span><span class="n">self</span><span class="p">%</span><span class="n">start</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">),</span><span class="w"> </span><span class="n">other</span><span class="p">%</span><span class="n">start</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">))</span><span class="w"></span>
-<a id="ln-54" name="ln-54" href="#ln-54"></a><span class="w">        </span><span class="k">end</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">min</span><span class="p">(</span><span class="n">self</span><span class="p">%</span><span class="k">end</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">),</span><span class="w"> </span><span class="n">other</span><span class="p">%</span><span class="k">end</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">))</span><span class="w"></span>
+<a id="ln-53" name="ln-53" href="#ln-53"></a><span class="k">        </span><span class="n">start</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">max</span><span class="p">(</span><span class="n">self</span><span class="p">%</span><span class="n">start</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">),</span><span class="w"> </span><span class="n">other</span><span class="p">%</span><span class="n">start</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">))</span>
+<a id="ln-54" name="ln-54" href="#ln-54"></a><span class="w">        </span><span class="k">end</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">min</span><span class="p">(</span><span class="n">self</span><span class="p">%</span><span class="k">end</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">),</span><span class="w"> </span><span class="n">other</span><span class="p">%</span><span class="k">end</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">))</span>
 <a id="ln-55" name="ln-55" href="#ln-55"></a>
-<a id="ln-56" name="ln-56" href="#ln-56"></a><span class="w">        </span><span class="n">overlapped</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">new_block</span><span class="p">(</span><span class="n">start</span><span class="p">,</span><span class="w"> </span><span class="k">end</span><span class="p">)</span><span class="w"></span>
+<a id="ln-56" name="ln-56" href="#ln-56"></a><span class="w">        </span><span class="n">overlapped</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">new_block</span><span class="p">(</span><span class="n">start</span><span class="p">,</span><span class="w"> </span><span class="k">end</span><span class="p">)</span>
 <a id="ln-57" name="ln-57" href="#ln-57"></a><span class="w">    </span><span class="k">end function</span>
 <a id="ln-58" name="ln-58" href="#ln-58"></a>
-<a id="ln-59" name="ln-59" href="#ln-59"></a><span class="k">    subroutine </span><span class="n">block_to_array</span><span class="p">(</span><span class="n">self</span><span class="p">,</span><span class="w"> </span><span class="k">array</span><span class="p">)</span><span class="w"></span>
-<a id="ln-60" name="ln-60" href="#ln-60"></a><span class="w">        </span><span class="k">class</span><span class="p">(</span><span class="n">t_Block</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">self</span><span class="w"></span>
-<a id="ln-61" name="ln-61" href="#ln-61"></a><span class="w">        </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="k">array</span><span class="p">(</span><span class="n">SIZE_OF_BLOCK_ARRAY</span><span class="p">)</span><span class="w"></span>
+<a id="ln-59" name="ln-59" href="#ln-59"></a><span class="k">    subroutine </span><span class="n">block_to_array</span><span class="p">(</span><span class="n">self</span><span class="p">,</span><span class="w"> </span><span class="k">array</span><span class="p">)</span>
+<a id="ln-60" name="ln-60" href="#ln-60"></a><span class="w">        </span><span class="k">class</span><span class="p">(</span><span class="n">t_Block</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">self</span>
+<a id="ln-61" name="ln-61" href="#ln-61"></a><span class="w">        </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="k">array</span><span class="p">(</span><span class="n">SIZE_OF_BLOCK_ARRAY</span><span class="p">)</span>
 <a id="ln-62" name="ln-62" href="#ln-62"></a>
-<a id="ln-63" name="ln-63" href="#ln-63"></a><span class="w">        </span><span class="k">array</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">self</span><span class="p">%</span><span class="n">start</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">)</span><span class="w"></span>
-<a id="ln-64" name="ln-64" href="#ln-64"></a><span class="w">        </span><span class="k">array</span><span class="p">(</span><span class="mi">4</span><span class="p">:</span><span class="mi">6</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">self</span><span class="p">%</span><span class="k">end</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">)</span><span class="w"></span>
+<a id="ln-63" name="ln-63" href="#ln-63"></a><span class="w">        </span><span class="k">array</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">self</span><span class="p">%</span><span class="n">start</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">)</span>
+<a id="ln-64" name="ln-64" href="#ln-64"></a><span class="w">        </span><span class="k">array</span><span class="p">(</span><span class="mi">4</span><span class="p">:</span><span class="mi">6</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">self</span><span class="p">%</span><span class="k">end</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">)</span>
 <a id="ln-65" name="ln-65" href="#ln-65"></a><span class="w">    </span><span class="k">end subroutine</span>
 <a id="ln-66" name="ln-66" href="#ln-66"></a>
-<a id="ln-67" name="ln-67" href="#ln-67"></a><span class="k">    subroutine </span><span class="n">block_from_array</span><span class="p">(</span><span class="n">self</span><span class="p">,</span><span class="w"> </span><span class="k">array</span><span class="p">)</span><span class="w"></span>
-<a id="ln-68" name="ln-68" href="#ln-68"></a><span class="w">        </span><span class="k">class</span><span class="p">(</span><span class="n">t_Block</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">self</span><span class="w"></span>
-<a id="ln-69" name="ln-69" href="#ln-69"></a><span class="w">        </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="k">array</span><span class="p">(</span><span class="n">SIZE_OF_BLOCK_ARRAY</span><span class="p">)</span><span class="w"></span>
+<a id="ln-67" name="ln-67" href="#ln-67"></a><span class="k">    subroutine </span><span class="n">block_from_array</span><span class="p">(</span><span class="n">self</span><span class="p">,</span><span class="w"> </span><span class="k">array</span><span class="p">)</span>
+<a id="ln-68" name="ln-68" href="#ln-68"></a><span class="w">        </span><span class="k">class</span><span class="p">(</span><span class="n">t_Block</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">self</span>
+<a id="ln-69" name="ln-69" href="#ln-69"></a><span class="w">        </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="k">array</span><span class="p">(</span><span class="n">SIZE_OF_BLOCK_ARRAY</span><span class="p">)</span>
 <a id="ln-70" name="ln-70" href="#ln-70"></a>
-<a id="ln-71" name="ln-71" href="#ln-71"></a><span class="w">        </span><span class="n">self</span><span class="p">%</span><span class="n">start</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">array</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">)</span><span class="w"></span>
-<a id="ln-72" name="ln-72" href="#ln-72"></a><span class="w">        </span><span class="n">self</span><span class="p">%</span><span class="k">end</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">array</span><span class="p">(</span><span class="mi">4</span><span class="p">:</span><span class="mi">6</span><span class="p">)</span><span class="w"></span>
-<a id="ln-73" name="ln-73" href="#ln-73"></a><span class="w">        </span><span class="n">self</span><span class="p">%</span><span class="n">sizes</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">max</span><span class="p">(</span><span class="n">self</span><span class="p">%</span><span class="k">end</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">self</span><span class="p">%</span><span class="n">start</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"></span>
+<a id="ln-71" name="ln-71" href="#ln-71"></a><span class="w">        </span><span class="n">self</span><span class="p">%</span><span class="n">start</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">array</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">)</span>
+<a id="ln-72" name="ln-72" href="#ln-72"></a><span class="w">        </span><span class="n">self</span><span class="p">%</span><span class="k">end</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">array</span><span class="p">(</span><span class="mi">4</span><span class="p">:</span><span class="mi">6</span><span class="p">)</span>
+<a id="ln-73" name="ln-73" href="#ln-73"></a><span class="w">        </span><span class="n">self</span><span class="p">%</span><span class="n">sizes</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">max</span><span class="p">(</span><span class="n">self</span><span class="p">%</span><span class="k">end</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">self</span><span class="p">%</span><span class="n">start</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
 <a id="ln-74" name="ln-74" href="#ln-74"></a><span class="w">    </span><span class="k">end subroutine</span>
 <a id="ln-75" name="ln-75" href="#ln-75"></a>
-<a id="ln-76" name="ln-76" href="#ln-76"></a><span class="k">end module</span><span class="w"></span>
+<a id="ln-76" name="ln-76" href="#ln-76"></a><span class="k">end module</span>
 </pre></div>
 
-    </section>
+      </section>
     </div>
   </div>
 
@@ -570,32 +565,27 @@ can be.
     </div> <!-- /container -->
     <footer>
       <div class="container">
-        <div class="row">
-          <div class="col-xs-6 col-md-6"><p>ohhelp-pic-3d was developed by Nkzono99<br>&copy; 2023 <a rel="license" href="https://opensource.org/licenses/MIT">MIT</a>
+        <div class="row justify-content-between">
+          <div class="col"><p>ohhelp-pic-3d was developed by Nkzono99<br>&copy; 2023 <a rel="license" href="https://opensource.org/licenses/MIT">MIT</a>
 </p>
           </div>
-          <div class="col-xs-6 col-md-6">
-            <p class="text-right">
+          <div class="col">
+            <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2023-07-11T21:09:12.065188             </p>
+ on 2023-11-07T16:33:23.830536             </p>
           </div>
         </div>
         <br>
       </div> <!-- /container -->
     </footer>
 
-    <!-- Bootstrap core JavaScript
-         ================================================== -->
-         <!-- Placed at the end of the document so the pages load faster -->
-    <!--
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-        -->
-        <script src="../js/bootstrap.min.js"></script>
-        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-        <script src="../js/ie10-viewport-bug-workaround.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
 
-        <!-- MathJax JavaScript
+    <!-- MathJax JavaScript
              ================================================== -->
              <!-- Placed at the end of the document so the pages load faster -->
         <script type="text/x-mathjax-config">

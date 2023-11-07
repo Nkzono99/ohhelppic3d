@@ -10,81 +10,55 @@
 
     <title>field_boundary_type.f90 &ndash; ohhelp-pic-3d</title>
 
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link href="../css/pygments.css" rel="stylesheet">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/local.css" rel="stylesheet">
       <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
-
-         <script src="../js/jquery-2.1.3.min.js"></script>
-         <script src="../js/svg-pan-zoom.min.js"></script>
-
+    <script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha256-tG5mcZUtJsZvyKAxYLVXrmjKBVLd6VpVccqz/r4ypFE=" crossorigin="anonymous"></script>
   </head>
 
   <body>
 
     <!-- Fixed navbar -->
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
           <a class="navbar-brand" href="../index.html">ohhelp-pic-3d </a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
-              <a href="#" class="dropdown-toggle"
-                 data-toggle="dropdown" role="button"
-                 aria-haspopup="true"
-                 aria-expanded="false">
-                 Contents <span class="caret"></span>
-              </a>
-              <ul class="dropdown-menu">
-                    <li><a href="../lists/files.html">Source Files</a></li>
-                  <li><a href="../lists/modules.html">Modules</a></li>
-                  <li><a href="../lists/procedures.html">Procedures</a></li>
-                  <li><a href="../lists/types.html">Derived Types</a></li>
-                  <li><a href="../program/main.html">Program</a></li>
-              </ul>
-            </li>
-                <li class="visible-xs hidden-sm visible-lg">
-                  <a href="../lists/files.html">Source Files</a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
                 </li>
-              <li class="visible-xs hidden-sm visible-lg">
-                <a href="../lists/modules.html">Modules</a>
-              </li>
-              <li class="visible-xs hidden-sm visible-lg">
-                <a href="../lists/procedures.html">Procedures</a>
-              </li>
-              <li class="visible-xs hidden-sm visible-lg">
-                <a href="../lists/types.html">Derived Types</a>
-              </li>
-              <li class="visible-xs hidden-sm visible-lg">
-                <a href="../program/main.html">Program</a>
-              </li>
-          </ul>
-            <form action="../search.html" class="navbar-form navbar-right" role="search">
-              <div class="form-group">
-                <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../program/main.html">Program</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
               </div>
-              <!--
-                  <button type="submit" class="btn btn-default">Submit</button>
-                  -->
-            </form>
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
 
     <div class="container">
   <div class="row">
@@ -92,53 +66,56 @@
       <small>Source File</small>
       
     </h1>
-      <div class="row" id="info-bar">
-    <div class="col-lg-12">
-      <div class="well well-sm">
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
         <ul class="list-inline" style="margin-bottom:0px;display:inline">
-            <li id="meta-license"><i class="fa fa-legal"></i> <a rel="license" href="https://opensource.org/licenses/MIT">MIT</a></li>
+            <li class="list-inline-item" id="meta-license"><i class="fa fa-legal"></i> <a rel="license" href="https://opensource.org/licenses/MIT">MIT</a></li>
 
-          <li id="statements"><i class="fa fa-list-ol"></i>
-            <a data-toggle="tooltip"
-               data-placement="bottom" data-html="true"
-               title=" 0.4% of total for source files.">14 statements</a>
-          </li>
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip"
+                 data-bs-placement="bottom" data-html="true"
+                 title=" 0.4% of total for source files.">14 statements</a>
+            </li>
 
-            <li id="source-file">
+            <li class="list-inline-item" id="source-file">
               <i class="fa fa-code"></i>
               <a href="../src/field_boundary_type.f90"> Source File</a>
             </li>
         </ul>
-        <ol class="breadcrumb in-well text-right">
-          <li class="active">field_boundary_type.f90</li>
-        </ol>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+            <li class="breadcrumb-item active" aria-current="page">field_boundary_type.f90</li>
+          </ol>
+        </nav>
       </div>
     </div>
   </div>
   <script>
     $(function () {
-    $('[data-toggle="tooltip"]').tooltip()
+    $('[data-bs-toggle="tooltip"]').tooltip()
     })
   </script>
 
   </div>
   <div class="row">
     <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
-      <div id="sidebar">
+        <div id="sidebar">
       <h3>Contents</h3>
   
   
   
   
   
-      <div class="panel panel-primary">
-      <div class="panel-heading text-left">
-        <h3 class="panel-title">
-          <a data-toggle="collapse" href="#mods-0">Modules</a>
-        </h3>
-      </div>
-      <div id="mods-0" class="panel-collapse collapse">
-        <div class="list-group">
+      <div class="card mb-4">
+      <a data-bs-toggle="collapse" href="#mods-0"
+         aria-expanded="false" aria-controls="mods-0">
+         <h4 class="card-header bg-primary text-white">Modules</h4>
+      </a>
+      <div id="mods-0" class="collapse">
+        <div class="list-group list-group-flush">
             <a class="list-group-item" href="../module/m_field_boundary_type.html">m_field_boundary_type</a>
         </div>
       </div>
@@ -157,8 +134,9 @@
   
   
   
-    <div class="panel panel-primary">
-      <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  
+    <div class="card card-primary">
+      <div class="card-header text-left"><h3 class="card-title">Source Code</h3></div>
       <div class="list-group">
         <a class="list-group-item" href="../sourcefile/field_boundary_type.f90.html#src">field_boundary_type.f90</a>
       </div>
@@ -171,22 +149,22 @@
     <div class="col-md-9" id='text'>
       
       <br>
-    <div class="panel panel-default">
-      <div class="panel-heading">
-  <h3 class="panel-title">Files dependent on this one</h3>
-      </div>
-      <div class="panel-body">
-  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Files dependent on this one</h3>
+          </div>
+          <div class="card-body">
+            <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <!-- Generated by graphviz version 2.43.0 (0)
  -->
 <!-- Title: sourcefile~~field_boundary_type.f90~~AfferentGraph Pages: 1 -->
-<svg id="sourcefilefield_boundary_typef90AfferentGraph" width="537pt" height="88pt"
- viewBox="0.00 0.00 537.00 87.59" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="sourcefile~~field_boundary_type.f90~~AfferentGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 83.59)">
+<svg id="sourcefilefield_boundary_typef90AfferentGraph" width="641pt" height="77pt"
+ viewBox="0.00 0.00 641.00 77.44" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="sourcefile~~field_boundary_type.f90~~AfferentGraph" class="graph" transform="scale(1.4 1.4) rotate(0) translate(4 104.49)">
 <title>sourcefile~~field_boundary_type.f90~~AfferentGraph</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-83.59 533,-83.59 533,4 -4,4"/>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-104.49 894,-104.49 894,4 -4,4"/>
 <!-- sourcefile~field_boundary_type.f90 -->
 <g id="sourcefile~~field_boundary_type.f90~~AfferentGraph_node1" class="node">
 <title>sourcefile~field_boundary_type.f90</title>
@@ -197,78 +175,125 @@
 <g id="sourcefile~~field_boundary_type.f90~~AfferentGraph_node2" class="node">
 <title>sourcefile~mpi_fftw3_solver.f90</title>
 <g id="a_sourcefile~~field_boundary_type.f90~~AfferentGraph_node2"><a xlink:href=".././sourcefile/mpi_fftw3_solver.f90.html" xlink:title="mpi_fftw3_solver.f90">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="298,-66 177,-66 177,-42 298,-42 298,-66"/>
-<text text-anchor="middle" x="237.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_fftw3_solver.f90</text>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="299.5,-24 178.5,-24 178.5,0 299.5,0 299.5,-24"/>
+<text text-anchor="middle" x="239" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_fftw3_solver.f90</text>
 </a>
 </g>
 </g>
 <!-- sourcefile~mpi_fftw3_solver.f90&#45;&gt;sourcefile~field_boundary_type.f90 -->
 <g id="sourcefile~~field_boundary_type.f90~~AfferentGraph_edge1" class="edge">
 <title>sourcefile~mpi_fftw3_solver.f90&#45;&gt;sourcefile~field_boundary_type.f90</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M176.93,-54C168.57,-54 159.87,-54 151.21,-54"/>
-<polygon fill="#000000" stroke="#000000" points="151.09,-50.5 141.09,-54 151.09,-57.5 151.09,-50.5"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M190.29,-24.04C171.22,-28.85 149.08,-34.43 129.12,-39.46"/>
+<polygon fill="#000000" stroke="#000000" points="128.06,-36.12 119.22,-41.96 129.77,-42.91 128.06,-36.12"/>
 </g>
 <!-- sourcefile~ohhelppic3d.f90 -->
 <g id="sourcefile~~field_boundary_type.f90~~AfferentGraph_node3" class="node">
 <title>sourcefile~ohhelppic3d.f90</title>
 <g id="a_sourcefile~~field_boundary_type.f90~~AfferentGraph_node3"><a xlink:href=".././sourcefile/ohhelppic3d.f90.html" xlink:title="ohhelppic3d.f90">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="433,-66 334,-66 334,-42 433,-42 433,-66"/>
-<text text-anchor="middle" x="383.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ohhelppic3d.f90</text>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="794,-66 695,-66 695,-42 794,-42 794,-66"/>
+<text text-anchor="middle" x="744.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ohhelppic3d.f90</text>
 </a>
 </g>
 </g>
 <!-- sourcefile~ohhelppic3d.f90&#45;&gt;sourcefile~field_boundary_type.f90 -->
 <g id="sourcefile~~field_boundary_type.f90~~AfferentGraph_edge2" class="edge">
 <title>sourcefile~ohhelppic3d.f90&#45;&gt;sourcefile~field_boundary_type.f90</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M342.47,-66.07C328.53,-69.7 312.7,-73.2 298,-75 244.62,-81.53 230.52,-80.27 177,-75 162.13,-73.53 146.24,-70.93 131.43,-68.05"/>
-<polygon fill="#000000" stroke="#000000" points="131.87,-64.57 121.38,-66.02 130.48,-71.43 131.87,-64.57"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M702.14,-66.02C688.51,-69.51 673.21,-72.93 659,-75 474.53,-101.83 426.06,-105.46 240,-94"/>
 </g>
-<!-- sourcefile~ohhelppic3d.f90&#45;&gt;sourcefile~mpi_fftw3_solver.f90 -->
-<g id="sourcefile~~field_boundary_type.f90~~AfferentGraph_edge4" class="edge">
-<title>sourcefile~ohhelppic3d.f90&#45;&gt;sourcefile~mpi_fftw3_solver.f90</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M333.75,-54C325.54,-54 316.88,-54 308.26,-54"/>
-<polygon fill="#000000" stroke="#000000" points="308.19,-50.5 298.19,-54 308.19,-57.5 308.19,-50.5"/>
-</g>
-<!-- sourcefile~poisson_solver.f90 -->
+<!-- sourcefile~poisson_field_solver.f90 -->
 <g id="sourcefile~~field_boundary_type.f90~~AfferentGraph_node4" class="node">
-<title>sourcefile~poisson_solver.f90</title>
-<g id="a_sourcefile~~field_boundary_type.f90~~AfferentGraph_node4"><a xlink:href=".././sourcefile/poisson_solver.f90.html" xlink:title="poisson_solver.f90">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="292,-24 183,-24 183,0 292,0 292,-24"/>
-<text text-anchor="middle" x="237.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">poisson_solver.f90</text>
+<title>sourcefile~poisson_field_solver.f90</title>
+<g id="a_sourcefile~~field_boundary_type.f90~~AfferentGraph_node4"><a xlink:href=".././sourcefile/poisson_field_solver.f90.html" xlink:title="poisson_field_solver.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="659,-66 521,-66 521,-42 659,-42 659,-66"/>
+<text text-anchor="middle" x="590" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">poisson_field_solver.f90</text>
 </a>
 </g>
 </g>
-<!-- sourcefile~ohhelppic3d.f90&#45;&gt;sourcefile~poisson_solver.f90 -->
-<g id="sourcefile~~field_boundary_type.f90~~AfferentGraph_edge6" class="edge">
-<title>sourcefile~ohhelppic3d.f90&#45;&gt;sourcefile~poisson_solver.f90</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M341.24,-41.96C325.12,-37.26 306.47,-31.82 289.52,-26.88"/>
-<polygon fill="#000000" stroke="#000000" points="290.35,-23.48 279.77,-24.04 288.39,-30.2 290.35,-23.48"/>
+<!-- sourcefile~ohhelppic3d.f90&#45;&gt;sourcefile~poisson_field_solver.f90 -->
+<g id="sourcefile~~field_boundary_type.f90~~AfferentGraph_edge7" class="edge">
+<title>sourcefile~ohhelppic3d.f90&#45;&gt;sourcefile~poisson_field_solver.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M694.83,-54C686.68,-54 678.05,-54 669.39,-54"/>
+<polygon fill="#000000" stroke="#000000" points="669.22,-50.5 659.22,-54 669.22,-57.5 669.22,-50.5"/>
 </g>
-<!-- sourcefile~poisson_solver.f90&#45;&gt;sourcefile~field_boundary_type.f90 -->
+<!-- sourcefile~mpi_fft_solver_factory.f90 -->
+<g id="sourcefile~~field_boundary_type.f90~~AfferentGraph_node7" class="node">
+<title>sourcefile~mpi_fft_solver_factory.f90</title>
+<g id="a_sourcefile~~field_boundary_type.f90~~AfferentGraph_node7"><a xlink:href=".././sourcefile/mpi_fft_solver_factory.f90.html" xlink:title="mpi_fft_solver_factory.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="485,-26 337,-26 337,-2 485,-2 485,-26"/>
+<text text-anchor="middle" x="411" y="-11.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_fft_solver_factory.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~ohhelppic3d.f90&#45;&gt;sourcefile~mpi_fft_solver_factory.f90 -->
+<g id="sourcefile~~field_boundary_type.f90~~AfferentGraph_edge9" class="edge">
+<title>sourcefile~ohhelppic3d.f90&#45;&gt;sourcefile~mpi_fft_solver_factory.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M700.8,-41.92C687.5,-38.55 672.73,-35.22 659,-33 604.79,-24.24 543.22,-19.49 495.11,-16.93"/>
+<polygon fill="#000000" stroke="#000000" points="495.23,-13.44 485.06,-16.42 494.87,-20.43 495.23,-13.44"/>
+</g>
+<!-- sourcefile~poisson_field_solver.f90&#45;&gt;sourcefile~field_boundary_type.f90 -->
 <g id="sourcefile~~field_boundary_type.f90~~AfferentGraph_edge3" class="edge">
-<title>sourcefile~poisson_solver.f90&#45;&gt;sourcefile~field_boundary_type.f90</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M189.22,-24.04C170.32,-28.85 148.38,-34.43 128.6,-39.46"/>
-<polygon fill="#000000" stroke="#000000" points="127.62,-36.1 118.79,-41.96 129.34,-42.89 127.62,-36.1"/>
+<title>sourcefile~poisson_field_solver.f90&#45;&gt;sourcefile~field_boundary_type.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M410,-56C332.71,-60.47 317.27,-98.76 240,-94"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M238,-94C195.78,-91.4 149.06,-79.33 115.88,-69.13"/>
+<polygon fill="#000000" stroke="#000000" points="116.63,-65.69 106.04,-66.03 114.53,-72.37 116.63,-65.69"/>
+</g>
+<!-- sourcefile~poisson_solver3d.f90 -->
+<g id="sourcefile~~field_boundary_type.f90~~AfferentGraph_node5" class="node">
+<title>sourcefile~poisson_solver3d.f90</title>
+<g id="a_sourcefile~~field_boundary_type.f90~~AfferentGraph_node5"><a xlink:href=".././sourcefile/poisson_solver3d.f90.html" xlink:title="poisson_solver3d.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="301,-66 177,-66 177,-42 301,-42 301,-66"/>
+<text text-anchor="middle" x="239" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">poisson_solver3d.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~poisson_field_solver.f90&#45;&gt;sourcefile~poisson_solver3d.f90 -->
+<g id="sourcefile~~field_boundary_type.f90~~AfferentGraph_edge8" class="edge">
+<title>sourcefile~poisson_field_solver.f90&#45;&gt;sourcefile~poisson_solver3d.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M520.87,-53.29C487.95,-53.33 447.9,-53.93 412,-56"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M410,-56C377.57,-57.87 341.6,-57.77 311.13,-57.04"/>
+<polygon fill="#000000" stroke="#000000" points="311.12,-53.53 301.03,-56.77 310.93,-60.53 311.12,-53.53"/>
+</g>
+<!-- sourcefile~poisson_field_solver.f90&#45;&gt;sourcefile~mpi_fft_solver_factory.f90 -->
+<g id="sourcefile~~field_boundary_type.f90~~AfferentGraph_edge10" class="edge">
+<title>sourcefile~poisson_field_solver.f90&#45;&gt;sourcefile~mpi_fft_solver_factory.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M535.89,-42C516.82,-37.69 495.11,-32.78 475.26,-28.3"/>
+<polygon fill="#000000" stroke="#000000" points="475.9,-24.85 465.37,-26.06 474.36,-31.68 475.9,-24.85"/>
+</g>
+<!-- sourcefile~poisson_solver3d.f90&#45;&gt;sourcefile~field_boundary_type.f90 -->
+<g id="sourcefile~~field_boundary_type.f90~~AfferentGraph_edge4" class="edge">
+<title>sourcefile~poisson_solver3d.f90&#45;&gt;sourcefile~field_boundary_type.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M176.95,-54C168.61,-54 159.95,-54 151.34,-54"/>
+<polygon fill="#000000" stroke="#000000" points="151.28,-50.5 141.28,-54 151.28,-57.5 151.28,-50.5"/>
 </g>
 <!-- sourcefile~main.f90 -->
-<g id="sourcefile~~field_boundary_type.f90~~AfferentGraph_node5" class="node">
+<g id="sourcefile~~field_boundary_type.f90~~AfferentGraph_node6" class="node">
 <title>sourcefile~main.f90</title>
-<g id="a_sourcefile~~field_boundary_type.f90~~AfferentGraph_node5"><a xlink:href=".././sourcefile/main.f90.html" xlink:title="main.f90">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="529,-66 469,-66 469,-42 529,-42 529,-66"/>
-<text text-anchor="middle" x="499" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">main.f90</text>
+<g id="a_sourcefile~~field_boundary_type.f90~~AfferentGraph_node6"><a xlink:href=".././sourcefile/main.f90.html" xlink:title="main.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="890,-66 830,-66 830,-42 890,-42 890,-66"/>
+<text text-anchor="middle" x="860" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">main.f90</text>
 </a>
 </g>
 </g>
 <!-- sourcefile~main.f90&#45;&gt;sourcefile~ohhelppic3d.f90 -->
-<g id="sourcefile~~field_boundary_type.f90~~AfferentGraph_edge5" class="edge">
+<g id="sourcefile~~field_boundary_type.f90~~AfferentGraph_edge6" class="edge">
 <title>sourcefile~main.f90&#45;&gt;sourcefile~ohhelppic3d.f90</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M468.77,-54C460.85,-54 451.98,-54 443.06,-54"/>
-<polygon fill="#000000" stroke="#000000" points="443,-50.5 433,-54 443,-57.5 443,-50.5"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M829.77,-54C821.85,-54 812.98,-54 804.06,-54"/>
+<polygon fill="#000000" stroke="#000000" points="804,-50.5 794,-54 804,-57.5 804,-50.5"/>
+</g>
+<!-- sourcefile~mpi_fft_solver_factory.f90&#45;&gt;sourcefile~mpi_fftw3_solver.f90 -->
+<g id="sourcefile~~field_boundary_type.f90~~AfferentGraph_edge5" class="edge">
+<title>sourcefile~mpi_fft_solver_factory.f90&#45;&gt;sourcefile~mpi_fftw3_solver.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M336.92,-13.14C327.9,-13.03 318.69,-12.93 309.72,-12.82"/>
+<polygon fill="#000000" stroke="#000000" points="309.75,-9.32 299.71,-12.7 309.67,-16.32 309.75,-9.32"/>
 </g>
 </g>
 </svg>
-</div>        <div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div>
-          <div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog">
+</div>                <script>
+                  var pansourcefilefield_boundary_typef90AfferentGraph = svgPanZoom('#sourcefilefield_boundary_typef90AfferentGraph',
+                    {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
+                  );
+                </script>        <div><a type="button" class="graph-help" data-toggle="modal" href="#AfferentGraph-help-text">Help</a></div>
+          <div class="modal fade" id="AfferentGraph-help-text" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
               <div class="modal-content">
                 <div class="modal-header">
@@ -313,64 +338,20 @@ can be.
             </div>
           </div>
         </div>
-      </div>
-    </div>
-<br>
-    <section class="visible-xs visible-sm hidden-md">
-        <h3>Contents</h3>
-  
-  
-  
-  
-  
-      <div class="panel panel-primary">
-      <div class="panel-heading text-left">
-        <h3 class="panel-title">
-          <a data-toggle="collapse" href="#mods-1">Modules</a>
-        </h3>
-      </div>
-      <div id="mods-1" class="panel-collapse collapse">
-        <div class="list-group">
-            <a class="list-group-item" href="../module/m_field_boundary_type.html">m_field_boundary_type</a>
+          </div>
         </div>
-      </div>
-    </div>
-
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-    <div class="panel panel-primary">
-      <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
-      <div class="list-group">
-        <a class="list-group-item" href="../sourcefile/field_boundary_type.f90.html#src">field_boundary_type.f90</a>
-      </div>
-    </div>
-
-
-    </section>
-    <br class="visible-xs visible-sm hidden-md">
-
-    <section>
-      <h2><span class="anchor" id="src"></span>Source Code</h2>
-    <div class="hl"><pre><span></span><a id="ln-1" name="ln-1" href="#ln-1"></a><span class="k">module </span><span class="n">m_field_boundary_type</span><span class="w"></span>
+<br>
+      <section>
+        <h2><span class="anchor" id="src"></span>Source Code</h2>
+        <div class="hl codehilite"><pre><span></span><a id="ln-1" name="ln-1" href="#ln-1"></a><span class="k">module </span><span class="n">m_field_boundary_type</span>
 <a id="ln-2" name="ln-2" href="#ln-2"></a><span class="w">    </span><span class="k">implicit none</span>
 <a id="ln-3" name="ln-3" href="#ln-3"></a>
 <a id="ln-4" name="ln-4" href="#ln-4"></a><span class="k">    private</span>
-<a id="ln-5" name="ln-5" href="#ln-5"></a><span class="k">    public </span><span class="n">Field_BoundaryType_Periodic</span><span class="w"></span>
-<a id="ln-6" name="ln-6" href="#ln-6"></a><span class="w">    </span><span class="k">public </span><span class="n">Field_BoundaryType_Dirichlet</span><span class="w"></span>
-<a id="ln-7" name="ln-7" href="#ln-7"></a><span class="w">    </span><span class="k">public </span><span class="n">Field_BoundaryType_Neumann</span><span class="w"></span>
-<a id="ln-8" name="ln-8" href="#ln-8"></a><span class="w">    </span><span class="k">public </span><span class="n">Field_BoundaryType_Dirichlet_Neumann</span><span class="w"></span>
-<a id="ln-9" name="ln-9" href="#ln-9"></a><span class="w">    </span><span class="k">public </span><span class="n">Field_BoundaryType_Neumann_Dirichlet</span><span class="w"></span>
+<a id="ln-5" name="ln-5" href="#ln-5"></a><span class="k">    public </span><span class="n">Field_BoundaryType_Periodic</span>
+<a id="ln-6" name="ln-6" href="#ln-6"></a><span class="w">    </span><span class="k">public </span><span class="n">Field_BoundaryType_Dirichlet</span>
+<a id="ln-7" name="ln-7" href="#ln-7"></a><span class="w">    </span><span class="k">public </span><span class="n">Field_BoundaryType_Neumann</span>
+<a id="ln-8" name="ln-8" href="#ln-8"></a><span class="w">    </span><span class="k">public </span><span class="n">Field_BoundaryType_Dirichlet_Neumann</span>
+<a id="ln-9" name="ln-9" href="#ln-9"></a><span class="w">    </span><span class="k">public </span><span class="n">Field_BoundaryType_Neumann_Dirichlet</span>
 <a id="ln-10" name="ln-10" href="#ln-10"></a>
 <a id="ln-11" name="ln-11" href="#ln-11"></a><span class="w">    </span><span class="c">!&gt; Periodic boundary type.</span>
 <a id="ln-12" name="ln-12" href="#ln-12"></a><span class="w">    </span><span class="c">!&gt;</span>
@@ -382,7 +363,7 @@ can be.
 <a id="ln-18" name="ln-18" href="#ln-18"></a><span class="w">    </span><span class="c">!&gt;</span>
 <a id="ln-19" name="ln-19" href="#ln-19"></a><span class="w">    </span><span class="c">!&gt; *: Actual data element (required)</span>
 <a id="ln-20" name="ln-20" href="#ln-20"></a><span class="w">    </span><span class="c">!&gt; o: Actual data element (not required)</span>
-<a id="ln-21" name="ln-21" href="#ln-21"></a><span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">Field_BoundaryType_Periodic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"></span>
+<a id="ln-21" name="ln-21" href="#ln-21"></a><span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">Field_BoundaryType_Periodic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 <a id="ln-22" name="ln-22" href="#ln-22"></a>
 <a id="ln-23" name="ln-23" href="#ln-23"></a><span class="w">    </span><span class="c">!&gt; Dirichlet boundary type.</span>
 <a id="ln-24" name="ln-24" href="#ln-24"></a><span class="w">    </span><span class="c">!&gt;</span>
@@ -394,7 +375,7 @@ can be.
 <a id="ln-30" name="ln-30" href="#ln-30"></a><span class="w">    </span><span class="c">!&gt;</span>
 <a id="ln-31" name="ln-31" href="#ln-31"></a><span class="w">    </span><span class="c">!&gt; *: Actual data element (required)</span>
 <a id="ln-32" name="ln-32" href="#ln-32"></a><span class="w">    </span><span class="c">!&gt; D: Dirichlet boundary condition value (= 0)</span>
-<a id="ln-33" name="ln-33" href="#ln-33"></a><span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">Field_BoundaryType_Dirichlet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<a id="ln-33" name="ln-33" href="#ln-33"></a><span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">Field_BoundaryType_Dirichlet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
 <a id="ln-34" name="ln-34" href="#ln-34"></a>
 <a id="ln-35" name="ln-35" href="#ln-35"></a><span class="w">    </span><span class="c">!&gt; Neumann boundary type.</span>
 <a id="ln-36" name="ln-36" href="#ln-36"></a><span class="w">    </span><span class="c">!&gt;</span>
@@ -406,7 +387,7 @@ can be.
 <a id="ln-42" name="ln-42" href="#ln-42"></a><span class="w">    </span><span class="c">!&gt;</span>
 <a id="ln-43" name="ln-43" href="#ln-43"></a><span class="w">    </span><span class="c">!&gt; *: Actual data element (required)</span>
 <a id="ln-44" name="ln-44" href="#ln-44"></a><span class="w">    </span><span class="c">!&gt; N: Neumann boundary condition value (= 0)</span>
-<a id="ln-45" name="ln-45" href="#ln-45"></a><span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">Field_BoundaryType_Neumann</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w"></span>
+<a id="ln-45" name="ln-45" href="#ln-45"></a><span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">Field_BoundaryType_Neumann</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span>
 <a id="ln-46" name="ln-46" href="#ln-46"></a>
 <a id="ln-47" name="ln-47" href="#ln-47"></a><span class="w">    </span><span class="c">!&gt; Dirichlet(left) and Neumann(right) boundary type. (Not tested to work properly.)</span>
 <a id="ln-48" name="ln-48" href="#ln-48"></a><span class="w">    </span><span class="c">!&gt;</span>
@@ -419,7 +400,7 @@ can be.
 <a id="ln-55" name="ln-55" href="#ln-55"></a><span class="w">    </span><span class="c">!&gt; *: Actual data element (required)</span>
 <a id="ln-56" name="ln-56" href="#ln-56"></a><span class="w">    </span><span class="c">!&gt; D: Dirichlet boundary condition value (= 0)</span>
 <a id="ln-57" name="ln-57" href="#ln-57"></a><span class="w">    </span><span class="c">!&gt; N: Neumann boundary condition value (= 0)</span>
-<a id="ln-58" name="ln-58" href="#ln-58"></a><span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">Field_BoundaryType_Dirichlet_Neumann</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="w"></span>
+<a id="ln-58" name="ln-58" href="#ln-58"></a><span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">Field_BoundaryType_Dirichlet_Neumann</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span>
 <a id="ln-59" name="ln-59" href="#ln-59"></a>
 <a id="ln-60" name="ln-60" href="#ln-60"></a><span class="w">    </span><span class="c">!&gt; Neumann(left) and Dirichlet(right) boundary type. (Not tested to work properly.)</span>
 <a id="ln-61" name="ln-61" href="#ln-61"></a><span class="w">    </span><span class="c">!&gt;</span>
@@ -432,12 +413,12 @@ can be.
 <a id="ln-68" name="ln-68" href="#ln-68"></a><span class="w">    </span><span class="c">!&gt; *: Actual data element (required)</span>
 <a id="ln-69" name="ln-69" href="#ln-69"></a><span class="w">    </span><span class="c">!&gt; D: Dirichlet boundary condition value (= 0)</span>
 <a id="ln-70" name="ln-70" href="#ln-70"></a><span class="w">    </span><span class="c">!&gt; N: Neumann boundary condition value (= 0)</span>
-<a id="ln-71" name="ln-71" href="#ln-71"></a><span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">Field_BoundaryType_Neumann_Dirichlet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="w"></span>
+<a id="ln-71" name="ln-71" href="#ln-71"></a><span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">Field_BoundaryType_Neumann_Dirichlet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span>
 <a id="ln-72" name="ln-72" href="#ln-72"></a>
-<a id="ln-73" name="ln-73" href="#ln-73"></a><span class="k">end module</span><span class="w"></span>
+<a id="ln-73" name="ln-73" href="#ln-73"></a><span class="k">end module</span>
 </pre></div>
 
-    </section>
+      </section>
     </div>
   </div>
 
@@ -445,32 +426,27 @@ can be.
     </div> <!-- /container -->
     <footer>
       <div class="container">
-        <div class="row">
-          <div class="col-xs-6 col-md-6"><p>ohhelp-pic-3d was developed by Nkzono99<br>&copy; 2023 <a rel="license" href="https://opensource.org/licenses/MIT">MIT</a>
+        <div class="row justify-content-between">
+          <div class="col"><p>ohhelp-pic-3d was developed by Nkzono99<br>&copy; 2023 <a rel="license" href="https://opensource.org/licenses/MIT">MIT</a>
 </p>
           </div>
-          <div class="col-xs-6 col-md-6">
-            <p class="text-right">
+          <div class="col">
+            <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2023-07-11T21:09:12.065188             </p>
+ on 2023-11-07T16:33:23.830536             </p>
           </div>
         </div>
         <br>
       </div> <!-- /container -->
     </footer>
 
-    <!-- Bootstrap core JavaScript
-         ================================================== -->
-         <!-- Placed at the end of the document so the pages load faster -->
-    <!--
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-        -->
-        <script src="../js/bootstrap.min.js"></script>
-        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-        <script src="../js/ie10-viewport-bug-workaround.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
 
-        <!-- MathJax JavaScript
+    <!-- MathJax JavaScript
              ================================================== -->
              <!-- Placed at the end of the document so the pages load faster -->
         <script type="text/x-mathjax-config">

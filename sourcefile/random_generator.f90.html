@@ -10,81 +10,55 @@
 
     <title>random_generator.f90 &ndash; ohhelp-pic-3d</title>
 
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link href="../css/pygments.css" rel="stylesheet">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/local.css" rel="stylesheet">
       <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
-
-         <script src="../js/jquery-2.1.3.min.js"></script>
-         <script src="../js/svg-pan-zoom.min.js"></script>
-
+    <script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha256-tG5mcZUtJsZvyKAxYLVXrmjKBVLd6VpVccqz/r4ypFE=" crossorigin="anonymous"></script>
   </head>
 
   <body>
 
     <!-- Fixed navbar -->
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
           <a class="navbar-brand" href="../index.html">ohhelp-pic-3d </a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
-              <a href="#" class="dropdown-toggle"
-                 data-toggle="dropdown" role="button"
-                 aria-haspopup="true"
-                 aria-expanded="false">
-                 Contents <span class="caret"></span>
-              </a>
-              <ul class="dropdown-menu">
-                    <li><a href="../lists/files.html">Source Files</a></li>
-                  <li><a href="../lists/modules.html">Modules</a></li>
-                  <li><a href="../lists/procedures.html">Procedures</a></li>
-                  <li><a href="../lists/types.html">Derived Types</a></li>
-                  <li><a href="../program/main.html">Program</a></li>
-              </ul>
-            </li>
-                <li class="visible-xs hidden-sm visible-lg">
-                  <a href="../lists/files.html">Source Files</a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
                 </li>
-              <li class="visible-xs hidden-sm visible-lg">
-                <a href="../lists/modules.html">Modules</a>
-              </li>
-              <li class="visible-xs hidden-sm visible-lg">
-                <a href="../lists/procedures.html">Procedures</a>
-              </li>
-              <li class="visible-xs hidden-sm visible-lg">
-                <a href="../lists/types.html">Derived Types</a>
-              </li>
-              <li class="visible-xs hidden-sm visible-lg">
-                <a href="../program/main.html">Program</a>
-              </li>
-          </ul>
-            <form action="../search.html" class="navbar-form navbar-right" role="search">
-              <div class="form-group">
-                <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../program/main.html">Program</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
               </div>
-              <!--
-                  <button type="submit" class="btn btn-default">Submit</button>
-                  -->
-            </form>
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
 
     <div class="container">
   <div class="row">
@@ -92,53 +66,56 @@
       <small>Source File</small>
       
     </h1>
-      <div class="row" id="info-bar">
-    <div class="col-lg-12">
-      <div class="well well-sm">
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
         <ul class="list-inline" style="margin-bottom:0px;display:inline">
-            <li id="meta-license"><i class="fa fa-legal"></i> <a rel="license" href="https://opensource.org/licenses/MIT">MIT</a></li>
+            <li class="list-inline-item" id="meta-license"><i class="fa fa-legal"></i> <a rel="license" href="https://opensource.org/licenses/MIT">MIT</a></li>
 
-          <li id="statements"><i class="fa fa-list-ol"></i>
-            <a data-toggle="tooltip"
-               data-placement="bottom" data-html="true"
-               title=" 1.2% of total for source files.">46 statements</a>
-          </li>
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip"
+                 data-bs-placement="bottom" data-html="true"
+                 title=" 1.2% of total for source files.">46 statements</a>
+            </li>
 
-            <li id="source-file">
+            <li class="list-inline-item" id="source-file">
               <i class="fa fa-code"></i>
               <a href="../src/random_generator.f90"> Source File</a>
             </li>
         </ul>
-        <ol class="breadcrumb in-well text-right">
-          <li class="active">random_generator.f90</li>
-        </ol>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+            <li class="breadcrumb-item active" aria-current="page">random_generator.f90</li>
+          </ol>
+        </nav>
       </div>
     </div>
   </div>
   <script>
     $(function () {
-    $('[data-toggle="tooltip"]').tooltip()
+    $('[data-bs-toggle="tooltip"]').tooltip()
     })
   </script>
 
   </div>
   <div class="row">
     <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
-      <div id="sidebar">
+        <div id="sidebar">
       <h3>Contents</h3>
   
   
   
   
   
-      <div class="panel panel-primary">
-      <div class="panel-heading text-left">
-        <h3 class="panel-title">
-          <a data-toggle="collapse" href="#mods-0">Modules</a>
-        </h3>
-      </div>
-      <div id="mods-0" class="panel-collapse collapse">
-        <div class="list-group">
+      <div class="card mb-4">
+      <a data-bs-toggle="collapse" href="#mods-0"
+         aria-expanded="false" aria-controls="mods-0">
+         <h4 class="card-header bg-primary text-white">Modules</h4>
+      </a>
+      <div id="mods-0" class="collapse">
+        <div class="list-group list-group-flush">
             <a class="list-group-item" href="../module/m_random_generator.html">m_random_generator</a>
         </div>
       </div>
@@ -157,8 +134,9 @@
   
   
   
-    <div class="panel panel-primary">
-      <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  
+    <div class="card card-primary">
+      <div class="card-header text-left"><h3 class="card-title">Source Code</h3></div>
       <div class="list-group">
         <a class="list-group-item" href="../sourcefile/random_generator.f90.html#src">random_generator.f90</a>
       </div>
@@ -171,12 +149,12 @@
     <div class="col-md-9" id='text'>
       
       <br>
-    <div class="panel panel-default">
-      <div class="panel-heading">
-  <h3 class="panel-title">This file depends on</h3>
-      </div>
-      <div class="panel-body">
-  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">This file depends on</h3>
+          </div>
+          <div class="card-body">
+            <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <!-- Generated by graphviz version 2.43.0 (0)
@@ -210,8 +188,8 @@
 </g>
 </g>
 </svg>
-</div>        <div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div>
-          <div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog">
+</div>        <div><a type="button" class="graph-help" data-toggle="modal" href="#EfferentGraph-help-text">Help</a></div>
+          <div class="modal fade" id="EfferentGraph-help-text" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
               <div class="modal-content">
                 <div class="modal-header">
@@ -256,158 +234,194 @@ can be.
             </div>
           </div>
         </div>
-      </div>
-    </div>
-    <div class="panel panel-default">
-      <div class="panel-heading">
-  <h3 class="panel-title">Files dependent on this one</h3>
-      </div>
-      <div class="panel-body">
-  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Files dependent on this one</h3>
+          </div>
+          <div class="card-body">
+            <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <!-- Generated by graphviz version 2.43.0 (0)
  -->
 <!-- Title: sourcefile~~random_generator.f90~~AfferentGraph Pages: 1 -->
-<svg id="sourcefilerandom_generatorf90AfferentGraph" width="641pt" height="137pt"
- viewBox="0.00 0.00 641.00 137.45" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="sourcefile~~random_generator.f90~~AfferentGraph" class="graph" transform="scale(1.33 1.33) rotate(0) translate(4 178.27)">
+<svg id="sourcefilerandom_generatorf90AfferentGraph" width="641pt" height="207pt"
+ viewBox="0.00 0.00 641.00 206.77" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="sourcefile~~random_generator.f90~~AfferentGraph" class="graph" transform="scale(1.33 1.33) rotate(0) translate(4 270.18)">
 <title>sourcefile~~random_generator.f90~~AfferentGraph</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-178.27 846,-178.27 846,4 -4,4"/>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-270.18 846,-270.18 846,4 -4,4"/>
 <!-- sourcefile~random_generator.f90 -->
 <g id="sourcefile~~random_generator.f90~~AfferentGraph_node1" class="node">
 <title>sourcefile~random_generator.f90</title>
-<polygon fill="none" stroke="black" points="132,-94.27 0,-94.27 0,-70.27 132,-70.27 132,-94.27"/>
-<text text-anchor="middle" x="66" y="-79.87" font-family="Helvetica,sans-Serif" font-size="10.50">random_generator.f90</text>
+<polygon fill="none" stroke="black" points="132,-144.18 0,-144.18 0,-120.18 132,-120.18 132,-144.18"/>
+<text text-anchor="middle" x="66" y="-129.78" font-family="Helvetica,sans-Serif" font-size="10.50">random_generator.f90</text>
+</g>
+<!-- sourcefile~flux_velocity_maxwell_distribution3d.f90 -->
+<g id="sourcefile~~random_generator.f90~~AfferentGraph_node2" class="node">
+<title>sourcefile~flux_velocity_maxwell_distribution3d.f90</title>
+<g id="a_sourcefile~~random_generator.f90~~AfferentGraph_node2"><a xlink:href=".././sourcefile/flux_velocity_maxwell_distribution3d.f90.html" xlink:title="flux_velocity_maxwell_distribution3d.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="399,-266.18 172,-266.18 172,-242.18 399,-242.18 399,-266.18"/>
+<text text-anchor="middle" x="285.5" y="-251.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">flux_velocity_maxwell_distribution3d.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~flux_velocity_maxwell_distribution3d.f90&#45;&gt;sourcefile~random_generator.f90 -->
+<g id="sourcefile~~random_generator.f90~~AfferentGraph_edge1" class="edge">
+<title>sourcefile~flux_velocity_maxwell_distribution3d.f90&#45;&gt;sourcefile~random_generator.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M189.39,-242.11C181.96,-239.65 174.74,-236.71 168,-233.18 130.98,-213.82 98.94,-176.2 81.36,-152.74"/>
+<polygon fill="#000000" stroke="#000000" points="84.08,-150.52 75.35,-144.51 78.42,-154.65 84.08,-150.52"/>
 </g>
 <!-- sourcefile~maxwellian_velocity_distribution1d.f90 -->
-<g id="sourcefile~~random_generator.f90~~AfferentGraph_node2" class="node">
+<g id="sourcefile~~random_generator.f90~~AfferentGraph_node3" class="node">
 <title>sourcefile~maxwellian_velocity_distribution1d.f90</title>
-<g id="a_sourcefile~~random_generator.f90~~AfferentGraph_node2"><a xlink:href=".././sourcefile/maxwellian_velocity_distribution1d.f90.html" xlink:title="maxwellian_velocity_distribution1d.f90">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="395,-174.27 176,-174.27 176,-150.27 395,-150.27 395,-174.27"/>
-<text text-anchor="middle" x="285.5" y="-159.87" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">maxwellian_velocity_distribution1d.f90</text>
+<g id="a_sourcefile~~random_generator.f90~~AfferentGraph_node3"><a xlink:href=".././sourcefile/maxwellian_velocity_distribution1d.f90.html" xlink:title="maxwellian_velocity_distribution1d.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="395,-224.18 176,-224.18 176,-200.18 395,-200.18 395,-224.18"/>
+<text text-anchor="middle" x="285.5" y="-209.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">maxwellian_velocity_distribution1d.f90</text>
 </a>
 </g>
 </g>
 <!-- sourcefile~maxwellian_velocity_distribution1d.f90&#45;&gt;sourcefile~random_generator.f90 -->
-<g id="sourcefile~~random_generator.f90~~AfferentGraph_edge1" class="edge">
+<g id="sourcefile~~random_generator.f90~~AfferentGraph_edge2" class="edge">
 <title>sourcefile~maxwellian_velocity_distribution1d.f90&#45;&gt;sourcefile~random_generator.f90</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M216.14,-150.26C200.1,-146.56 183.25,-141.92 168,-136.27 142.09,-126.65 114.54,-111.56 94.77,-99.77"/>
-<polygon fill="#000000" stroke="#000000" points="96.37,-96.65 86,-94.46 92.74,-102.63 96.37,-96.65"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M216.14,-200.18C200.1,-196.48 183.25,-191.84 168,-186.18 142.09,-176.57 114.54,-161.48 94.77,-149.69"/>
+<polygon fill="#000000" stroke="#000000" points="96.37,-146.57 86,-144.37 92.74,-152.55 96.37,-146.57"/>
 </g>
 <!-- sourcefile~ohhelppic3d.f90 -->
-<g id="sourcefile~~random_generator.f90~~AfferentGraph_node3" class="node">
+<g id="sourcefile~~random_generator.f90~~AfferentGraph_node4" class="node">
 <title>sourcefile~ohhelppic3d.f90</title>
-<g id="a_sourcefile~~random_generator.f90~~AfferentGraph_node3"><a xlink:href=".././sourcefile/ohhelppic3d.f90.html" xlink:title="ohhelppic3d.f90">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="746,-94.27 647,-94.27 647,-70.27 746,-70.27 746,-94.27"/>
-<text text-anchor="middle" x="696.5" y="-79.87" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ohhelppic3d.f90</text>
+<g id="a_sourcefile~~random_generator.f90~~AfferentGraph_node4"><a xlink:href=".././sourcefile/ohhelppic3d.f90.html" xlink:title="ohhelppic3d.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="746,-124.18 647,-124.18 647,-100.18 746,-100.18 746,-124.18"/>
+<text text-anchor="middle" x="696.5" y="-109.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ohhelppic3d.f90</text>
 </a>
 </g>
 </g>
 <!-- sourcefile~ohhelppic3d.f90&#45;&gt;sourcefile~random_generator.f90 -->
-<g id="sourcefile~~random_generator.f90~~AfferentGraph_edge2" class="edge">
+<g id="sourcefile~~random_generator.f90~~AfferentGraph_edge3" class="edge">
 <title>sourcefile~ohhelppic3d.f90&#45;&gt;sourcefile~random_generator.f90</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M653.69,-94.28C640.17,-97.73 625.05,-101.13 611,-103.27 468.18,-125 430.8,-129.27 286.5,-122.27"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M649.5,-124.25C574.13,-142.81 419.4,-175.88 286.5,-172.18"/>
 </g>
 <!-- sourcefile~particle_injector_manager.f90 -->
-<g id="sourcefile~~random_generator.f90~~AfferentGraph_node4" class="node">
+<g id="sourcefile~~random_generator.f90~~AfferentGraph_node5" class="node">
 <title>sourcefile~particle_injector_manager.f90</title>
-<g id="a_sourcefile~~random_generator.f90~~AfferentGraph_node4"><a xlink:href=".././sourcefile/particle_injector_manager.f90.html" xlink:title="particle_injector_manager.f90">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="611,-94.27 439,-94.27 439,-70.27 611,-70.27 611,-94.27"/>
-<text text-anchor="middle" x="525" y="-79.87" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">particle_injector_manager.f90</text>
+<g id="a_sourcefile~~random_generator.f90~~AfferentGraph_node5"><a xlink:href=".././sourcefile/particle_injector_manager.f90.html" xlink:title="particle_injector_manager.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="611,-124.18 439,-124.18 439,-100.18 611,-100.18 611,-124.18"/>
+<text text-anchor="middle" x="525" y="-109.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">particle_injector_manager.f90</text>
 </a>
 </g>
 </g>
 <!-- sourcefile~ohhelppic3d.f90&#45;&gt;sourcefile~particle_injector_manager.f90 -->
-<g id="sourcefile~~random_generator.f90~~AfferentGraph_edge8" class="edge">
+<g id="sourcefile~~random_generator.f90~~AfferentGraph_edge10" class="edge">
 <title>sourcefile~ohhelppic3d.f90&#45;&gt;sourcefile~particle_injector_manager.f90</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M646.93,-82.27C638.75,-82.27 630.03,-82.27 621.15,-82.27"/>
-<polygon fill="#000000" stroke="#000000" points="621.07,-78.77 611.07,-82.27 621.07,-85.77 621.07,-78.77"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M646.93,-112.18C638.75,-112.18 630.03,-112.18 621.15,-112.18"/>
+<polygon fill="#000000" stroke="#000000" points="621.07,-108.68 611.07,-112.18 621.07,-115.68 621.07,-108.68"/>
 </g>
 <!-- sourcefile~pcg_generator.f90 -->
-<g id="sourcefile~~random_generator.f90~~AfferentGraph_node6" class="node">
+<g id="sourcefile~~random_generator.f90~~AfferentGraph_node7" class="node">
 <title>sourcefile~pcg_generator.f90</title>
-<g id="a_sourcefile~~random_generator.f90~~AfferentGraph_node6"><a xlink:href=".././sourcefile/pcg_generator.f90.html" xlink:title="pcg_generator.f90">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="579.5,-32.27 470.5,-32.27 470.5,-8.27 579.5,-8.27 579.5,-32.27"/>
-<text text-anchor="middle" x="525" y="-17.87" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">pcg_generator.f90</text>
+<g id="a_sourcefile~~random_generator.f90~~AfferentGraph_node7"><a xlink:href=".././sourcefile/pcg_generator.f90.html" xlink:title="pcg_generator.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="579.5,-41.18 470.5,-41.18 470.5,-17.18 579.5,-17.18 579.5,-41.18"/>
+<text text-anchor="middle" x="525" y="-26.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">pcg_generator.f90</text>
 </a>
 </g>
 </g>
 <!-- sourcefile~ohhelppic3d.f90&#45;&gt;sourcefile~pcg_generator.f90 -->
-<g id="sourcefile~~random_generator.f90~~AfferentGraph_edge10" class="edge">
+<g id="sourcefile~~random_generator.f90~~AfferentGraph_edge12" class="edge">
 <title>sourcefile~ohhelppic3d.f90&#45;&gt;sourcefile~pcg_generator.f90</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M662.42,-70.16C635.58,-60.35 597.58,-46.45 568.49,-35.81"/>
-<polygon fill="#000000" stroke="#000000" points="569.59,-32.49 559,-32.34 567.19,-39.06 569.59,-32.49"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M670.85,-100.12C641.6,-85.79 592.68,-61.84 559.88,-45.78"/>
+<polygon fill="#000000" stroke="#000000" points="561.2,-42.52 550.68,-41.27 558.12,-48.81 561.2,-42.52"/>
 </g>
 <!-- sourcefile~particle_injector_manager.f90&#45;&gt;sourcefile~random_generator.f90 -->
-<g id="sourcefile~~random_generator.f90~~AfferentGraph_edge3" class="edge">
+<g id="sourcefile~~random_generator.f90~~AfferentGraph_edge4" class="edge">
 <title>sourcefile~particle_injector_manager.f90&#45;&gt;sourcefile~random_generator.f90</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M484.39,-94.29C437.5,-107.27 356.87,-125.68 286.5,-122.27"/>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M284.5,-122.27C228.64,-119.56 165.94,-106.98 122.26,-96.64"/>
-<polygon fill="#000000" stroke="#000000" points="122.95,-93.21 112.41,-94.28 121.32,-100.02 122.95,-93.21"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M496.77,-124.27C453.19,-142.41 364.72,-174.36 286.5,-172.18"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M284.5,-172.18C227.71,-170.6 163.9,-157.49 120.16,-146.7"/>
+<polygon fill="#000000" stroke="#000000" points="120.87,-143.27 110.32,-144.22 119.17,-150.06 120.87,-143.27"/>
 </g>
 <!-- sourcefile~particle_injector_with_distribution.f90 -->
-<g id="sourcefile~~random_generator.f90~~AfferentGraph_node5" class="node">
+<g id="sourcefile~~random_generator.f90~~AfferentGraph_node6" class="node">
 <title>sourcefile~particle_injector_with_distribution.f90</title>
-<g id="a_sourcefile~~random_generator.f90~~AfferentGraph_node5"><a xlink:href=".././sourcefile/particle_injector_with_distribution.f90.html" xlink:title="particle_injector_with_distribution.f90">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="391,-94.27 180,-94.27 180,-70.27 391,-70.27 391,-94.27"/>
-<text text-anchor="middle" x="285.5" y="-79.87" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">particle_injector_with_distribution.f90</text>
+<g id="a_sourcefile~~random_generator.f90~~AfferentGraph_node6"><a xlink:href=".././sourcefile/particle_injector_with_distribution.f90.html" xlink:title="particle_injector_with_distribution.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="391,-144.18 180,-144.18 180,-120.18 391,-120.18 391,-144.18"/>
+<text text-anchor="middle" x="285.5" y="-129.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">particle_injector_with_distribution.f90</text>
 </a>
 </g>
 </g>
 <!-- sourcefile~particle_injector_manager.f90&#45;&gt;sourcefile~particle_injector_with_distribution.f90 -->
-<g id="sourcefile~~random_generator.f90~~AfferentGraph_edge9" class="edge">
+<g id="sourcefile~~random_generator.f90~~AfferentGraph_edge11" class="edge">
 <title>sourcefile~particle_injector_manager.f90&#45;&gt;sourcefile~particle_injector_with_distribution.f90</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M438.93,-82.27C426.74,-82.27 414.05,-82.27 401.41,-82.27"/>
-<polygon fill="#000000" stroke="#000000" points="401.29,-78.77 391.29,-82.27 401.29,-85.77 401.29,-78.77"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M438.93,-119.35C426.74,-120.37 414.05,-121.44 401.41,-122.51"/>
+<polygon fill="#000000" stroke="#000000" points="400.96,-119.03 391.29,-123.36 401.55,-126.01 400.96,-119.03"/>
 </g>
 <!-- sourcefile~position_random_uniform_distribution.f90 -->
-<g id="sourcefile~~random_generator.f90~~AfferentGraph_node7" class="node">
+<g id="sourcefile~~random_generator.f90~~AfferentGraph_node8" class="node">
 <title>sourcefile~position_random_uniform_distribution.f90</title>
-<g id="a_sourcefile~~random_generator.f90~~AfferentGraph_node7"><a xlink:href=".././sourcefile/position_random_uniform_distribution.f90.html" xlink:title="position_random_uniform_distribution.f90">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="403,-52.27 168,-52.27 168,-28.27 403,-28.27 403,-52.27"/>
-<text text-anchor="middle" x="285.5" y="-37.87" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">position_random_uniform_distribution.f90</text>
+<g id="a_sourcefile~~random_generator.f90~~AfferentGraph_node8"><a xlink:href=".././sourcefile/position_random_uniform_distribution.f90.html" xlink:title="position_random_uniform_distribution.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="403,-102.18 168,-102.18 168,-78.18 403,-78.18 403,-102.18"/>
+<text text-anchor="middle" x="285.5" y="-87.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">position_random_uniform_distribution.f90</text>
 </a>
 </g>
 </g>
 <!-- sourcefile~particle_injector_manager.f90&#45;&gt;sourcefile~position_random_uniform_distribution.f90 -->
-<g id="sourcefile~~random_generator.f90~~AfferentGraph_edge11" class="edge">
+<g id="sourcefile~~random_generator.f90~~AfferentGraph_edge13" class="edge">
 <title>sourcefile~particle_injector_manager.f90&#45;&gt;sourcefile~position_random_uniform_distribution.f90</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M455.94,-70.23C427.37,-65.18 393.98,-59.27 364.43,-54.05"/>
-<polygon fill="#000000" stroke="#000000" points="365.02,-50.6 354.57,-52.3 363.81,-57.49 365.02,-50.6"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M438.93,-104.3C430.6,-103.53 422.04,-102.74 413.42,-101.94"/>
+<polygon fill="#000000" stroke="#000000" points="413.56,-98.44 403.28,-101 412.92,-105.41 413.56,-98.44"/>
+</g>
+<!-- sourcefile~velocity_maxwell_distribution3d.f90 -->
+<g id="sourcefile~~random_generator.f90~~AfferentGraph_node9" class="node">
+<title>sourcefile~velocity_maxwell_distribution3d.f90</title>
+<g id="a_sourcefile~~random_generator.f90~~AfferentGraph_node9"><a xlink:href=".././sourcefile/velocity_maxwell_distribution3d.f90.html" xlink:title="velocity_maxwell_distribution3d.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="386.5,-60.18 184.5,-60.18 184.5,-36.18 386.5,-36.18 386.5,-60.18"/>
+<text text-anchor="middle" x="285.5" y="-45.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">velocity_maxwell_distribution3d.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~particle_injector_manager.f90&#45;&gt;sourcefile~velocity_maxwell_distribution3d.f90 -->
+<g id="sourcefile~~random_generator.f90~~AfferentGraph_edge14" class="edge">
+<title>sourcefile~particle_injector_manager.f90&#45;&gt;sourcefile~velocity_maxwell_distribution3d.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M494.1,-100.02C469.87,-90.53 434.67,-77.61 403,-69.18 393.47,-66.65 383.41,-64.33 373.37,-62.23"/>
+<polygon fill="#000000" stroke="#000000" points="373.84,-58.75 363.35,-60.2 372.45,-65.61 373.84,-58.75"/>
 </g>
 <!-- sourcefile~particle_injector_with_distribution.f90&#45;&gt;sourcefile~random_generator.f90 -->
-<g id="sourcefile~~random_generator.f90~~AfferentGraph_edge4" class="edge">
+<g id="sourcefile~~random_generator.f90~~AfferentGraph_edge5" class="edge">
 <title>sourcefile~particle_injector_with_distribution.f90&#45;&gt;sourcefile~random_generator.f90</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M179.89,-82.27C167.14,-82.27 154.31,-82.27 142.11,-82.27"/>
-<polygon fill="#000000" stroke="#000000" points="142.02,-78.77 132.02,-82.27 142.02,-85.77 142.02,-78.77"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M179.89,-132.18C167.14,-132.18 154.31,-132.18 142.11,-132.18"/>
+<polygon fill="#000000" stroke="#000000" points="142.02,-128.68 132.02,-132.18 142.02,-135.68 142.02,-128.68"/>
 </g>
 <!-- sourcefile~pcg_generator.f90&#45;&gt;sourcefile~random_generator.f90 -->
-<g id="sourcefile~~random_generator.f90~~AfferentGraph_edge5" class="edge">
+<g id="sourcefile~~random_generator.f90~~AfferentGraph_edge6" class="edge">
 <title>sourcefile~pcg_generator.f90&#45;&gt;sourcefile~random_generator.f90</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M470.26,-11C399.43,-0.83 271.68,10.42 168,-19.27 137.89,-27.89 108.03,-48.39 88.68,-63.67"/>
-<polygon fill="#000000" stroke="#000000" points="86.36,-61.04 80.81,-70.06 90.78,-66.47 86.36,-61.04"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M475.27,-17.18C404.41,-2.25 270.22,16.33 168,-27.18 127.79,-44.3 95.85,-86.14 79.33,-111.54"/>
+<polygon fill="#000000" stroke="#000000" points="76.32,-109.75 73.96,-120.07 82.25,-113.48 76.32,-109.75"/>
 </g>
 <!-- sourcefile~position_random_uniform_distribution.f90&#45;&gt;sourcefile~random_generator.f90 -->
-<g id="sourcefile~~random_generator.f90~~AfferentGraph_edge6" class="edge">
+<g id="sourcefile~~random_generator.f90~~AfferentGraph_edge7" class="edge">
 <title>sourcefile~position_random_uniform_distribution.f90&#45;&gt;sourcefile~random_generator.f90</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M216.06,-52.29C200.26,-55.15 183.53,-58.25 168,-61.27 156.85,-63.43 145.02,-65.81 133.54,-68.17"/>
-<polygon fill="#000000" stroke="#000000" points="132.66,-64.78 123.57,-70.23 134.07,-71.63 132.66,-64.78"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M216.06,-102.21C200.26,-105.07 183.53,-108.17 168,-111.18 156.85,-113.35 145.02,-115.73 133.54,-118.09"/>
+<polygon fill="#000000" stroke="#000000" points="132.66,-114.7 123.57,-120.15 134.07,-121.55 132.66,-114.7"/>
+</g>
+<!-- sourcefile~velocity_maxwell_distribution3d.f90&#45;&gt;sourcefile~random_generator.f90 -->
+<g id="sourcefile~~random_generator.f90~~AfferentGraph_edge8" class="edge">
+<title>sourcefile~velocity_maxwell_distribution3d.f90&#45;&gt;sourcefile~random_generator.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M196.98,-60.22C187.05,-62.68 177.2,-65.64 168,-69.18 139.28,-80.26 109.79,-99.78 90.14,-114.16"/>
+<polygon fill="#000000" stroke="#000000" points="88.02,-111.38 82.1,-120.17 92.21,-116.98 88.02,-111.38"/>
 </g>
 <!-- sourcefile~main.f90 -->
-<g id="sourcefile~~random_generator.f90~~AfferentGraph_node8" class="node">
+<g id="sourcefile~~random_generator.f90~~AfferentGraph_node10" class="node">
 <title>sourcefile~main.f90</title>
-<g id="a_sourcefile~~random_generator.f90~~AfferentGraph_node8"><a xlink:href=".././sourcefile/main.f90.html" xlink:title="main.f90">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="842,-94.27 782,-94.27 782,-70.27 842,-70.27 842,-94.27"/>
-<text text-anchor="middle" x="812" y="-79.87" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">main.f90</text>
+<g id="a_sourcefile~~random_generator.f90~~AfferentGraph_node10"><a xlink:href=".././sourcefile/main.f90.html" xlink:title="main.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="842,-124.18 782,-124.18 782,-100.18 842,-100.18 842,-124.18"/>
+<text text-anchor="middle" x="812" y="-109.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">main.f90</text>
 </a>
 </g>
 </g>
 <!-- sourcefile~main.f90&#45;&gt;sourcefile~ohhelppic3d.f90 -->
-<g id="sourcefile~~random_generator.f90~~AfferentGraph_edge7" class="edge">
+<g id="sourcefile~~random_generator.f90~~AfferentGraph_edge9" class="edge">
 <title>sourcefile~main.f90&#45;&gt;sourcefile~ohhelppic3d.f90</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M781.77,-82.27C773.85,-82.27 764.98,-82.27 756.06,-82.27"/>
-<polygon fill="#000000" stroke="#000000" points="756,-78.77 746,-82.27 756,-85.77 756,-78.77"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M781.77,-112.18C773.85,-112.18 764.98,-112.18 756.06,-112.18"/>
+<polygon fill="#000000" stroke="#000000" points="756,-108.68 746,-112.18 756,-115.68 756,-108.68"/>
 </g>
 </g>
 </svg>
@@ -415,8 +429,8 @@ can be.
                   var pansourcefilerandom_generatorf90AfferentGraph = svgPanZoom('#sourcefilerandom_generatorf90AfferentGraph',
                     {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
                   );
-                </script>        <div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div>
-          <div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog">
+                </script>        <div><a type="button" class="graph-help" data-toggle="modal" href="#AfferentGraph-help-text">Help</a></div>
+          <div class="modal fade" id="AfferentGraph-help-text" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
               <div class="modal-content">
                 <div class="modal-header">
@@ -461,118 +475,74 @@ can be.
             </div>
           </div>
         </div>
-      </div>
-    </div>
-<br>
-    <section class="visible-xs visible-sm hidden-md">
-        <h3>Contents</h3>
-  
-  
-  
-  
-  
-      <div class="panel panel-primary">
-      <div class="panel-heading text-left">
-        <h3 class="panel-title">
-          <a data-toggle="collapse" href="#mods-1">Modules</a>
-        </h3>
-      </div>
-      <div id="mods-1" class="panel-collapse collapse">
-        <div class="list-group">
-            <a class="list-group-item" href="../module/m_random_generator.html">m_random_generator</a>
+          </div>
         </div>
-      </div>
-    </div>
-
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-    <div class="panel panel-primary">
-      <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
-      <div class="list-group">
-        <a class="list-group-item" href="../sourcefile/random_generator.f90.html#src">random_generator.f90</a>
-      </div>
-    </div>
-
-
-    </section>
-    <br class="visible-xs visible-sm hidden-md">
-
-    <section>
-      <h2><span class="anchor" id="src"></span>Source Code</h2>
-    <div class="hl"><pre><span></span><a id="ln-1" name="ln-1" href="#ln-1"></a><span class="k">module </span><span class="n">m_random_generator</span><span class="w"></span>
-<a id="ln-2" name="ln-2" href="#ln-2"></a><span class="w">    </span><span class="k">use </span><span class="n">m_science_constants</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">pi</span><span class="w"></span>
+<br>
+      <section>
+        <h2><span class="anchor" id="src"></span>Source Code</h2>
+        <div class="hl codehilite"><pre><span></span><a id="ln-1" name="ln-1" href="#ln-1"></a><span class="k">module </span><span class="n">m_random_generator</span>
+<a id="ln-2" name="ln-2" href="#ln-2"></a><span class="w">    </span><span class="k">use </span><span class="n">m_science_constants</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">pi</span>
 <a id="ln-3" name="ln-3" href="#ln-3"></a><span class="w">    </span><span class="k">implicit none</span>
 <a id="ln-4" name="ln-4" href="#ln-4"></a>
 <a id="ln-5" name="ln-5" href="#ln-5"></a><span class="k">    private</span>
-<a id="ln-6" name="ln-6" href="#ln-6"></a><span class="k">    public </span><span class="n">t_RandomGenerator</span><span class="w"></span>
+<a id="ln-6" name="ln-6" href="#ln-6"></a><span class="k">    public </span><span class="n">t_RandomGenerator</span>
 <a id="ln-7" name="ln-7" href="#ln-7"></a>
 <a id="ln-8" name="ln-8" href="#ln-8"></a><span class="w">    </span><span class="c">!TODO: 乱数の取り扱いを実装</span>
-<a id="ln-9" name="ln-9" href="#ln-9"></a><span class="w">    </span><span class="k">type</span><span class="p">,</span><span class="w"> </span><span class="k">abstract</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">t_RandomGenerator</span><span class="w"></span>
+<a id="ln-9" name="ln-9" href="#ln-9"></a><span class="w">    </span><span class="k">type</span><span class="p">,</span><span class="w"> </span><span class="k">abstract</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">t_RandomGenerator</span>
 <a id="ln-10" name="ln-10" href="#ln-10"></a><span class="w">    </span><span class="k">contains</span>
 <a id="ln-11" name="ln-11" href="#ln-11"></a>
 <a id="ln-12" name="ln-12" href="#ln-12"></a><span class="k">        procedure</span><span class="p">(</span><span class="n">randomGenerator_rand</span><span class="p">),</span><span class="w"> </span><span class="k">deferred</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="nb">rand</span>
-<a id="ln-13" name="ln-13" href="#ln-13"></a><span class="nb">        </span><span class="k">procedure</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">normal</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">randomGenerator_normal</span><span class="w"></span>
-<a id="ln-14" name="ln-14" href="#ln-14"></a><span class="w">        </span><span class="k">procedure</span><span class="p">(</span><span class="n">randomGenerator_advance</span><span class="p">),</span><span class="w"> </span><span class="k">deferred</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">advance</span><span class="w"></span>
-<a id="ln-15" name="ln-15" href="#ln-15"></a><span class="w">        </span><span class="k">procedure</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">random_fix</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">randomGenerator_random_fix</span><span class="w"></span>
+<a id="ln-13" name="ln-13" href="#ln-13"></a><span class="nb">        </span><span class="k">procedure</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">normal</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">randomGenerator_normal</span>
+<a id="ln-14" name="ln-14" href="#ln-14"></a><span class="w">        </span><span class="k">procedure</span><span class="p">(</span><span class="n">randomGenerator_advance</span><span class="p">),</span><span class="w"> </span><span class="k">deferred</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">advance</span>
+<a id="ln-15" name="ln-15" href="#ln-15"></a><span class="w">        </span><span class="k">procedure</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">random_fix</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">randomGenerator_random_fix</span>
 <a id="ln-16" name="ln-16" href="#ln-16"></a><span class="w">    </span><span class="k">end type</span>
 <a id="ln-17" name="ln-17" href="#ln-17"></a>
 <a id="ln-18" name="ln-18" href="#ln-18"></a><span class="k">    interface</span>
-<a id="ln-19" name="ln-19" href="#ln-19"></a><span class="k">        function </span><span class="n">randomGenerator_rand</span><span class="p">(</span><span class="n">self</span><span class="p">)</span><span class="w"> </span><span class="k">result</span><span class="p">(</span><span class="n">ret</span><span class="p">)</span><span class="w"></span>
-<a id="ln-20" name="ln-20" href="#ln-20"></a><span class="w">            </span><span class="k">import </span><span class="n">t_RandomGenerator</span><span class="w"></span>
-<a id="ln-21" name="ln-21" href="#ln-21"></a><span class="w">            </span><span class="k">class</span><span class="p">(</span><span class="n">t_RandomGenerator</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">self</span><span class="w"></span>
-<a id="ln-22" name="ln-22" href="#ln-22"></a><span class="w">            </span><span class="kt">double precision</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">ret</span><span class="w"></span>
+<a id="ln-19" name="ln-19" href="#ln-19"></a><span class="k">        function </span><span class="n">randomGenerator_rand</span><span class="p">(</span><span class="n">self</span><span class="p">)</span><span class="w"> </span><span class="k">result</span><span class="p">(</span><span class="n">ret</span><span class="p">)</span>
+<a id="ln-20" name="ln-20" href="#ln-20"></a><span class="w">            </span><span class="k">import </span><span class="n">t_RandomGenerator</span>
+<a id="ln-21" name="ln-21" href="#ln-21"></a><span class="w">            </span><span class="k">class</span><span class="p">(</span><span class="n">t_RandomGenerator</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">self</span>
+<a id="ln-22" name="ln-22" href="#ln-22"></a><span class="w">            </span><span class="kt">double precision</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">ret</span>
 <a id="ln-23" name="ln-23" href="#ln-23"></a><span class="w">        </span><span class="k">end function</span>
 <a id="ln-24" name="ln-24" href="#ln-24"></a>
-<a id="ln-25" name="ln-25" href="#ln-25"></a><span class="k">        subroutine </span><span class="n">randomGenerator_advance</span><span class="p">(</span><span class="n">self</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"></span>
-<a id="ln-26" name="ln-26" href="#ln-26"></a><span class="w">            </span><span class="k">import </span><span class="n">t_RandomGenerator</span><span class="w"></span>
-<a id="ln-27" name="ln-27" href="#ln-27"></a><span class="w">            </span><span class="k">class</span><span class="p">(</span><span class="n">t_RandomGenerator</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">self</span><span class="w"></span>
-<a id="ln-28" name="ln-28" href="#ln-28"></a><span class="w">            </span><span class="kt">integer</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">n</span><span class="w"></span>
+<a id="ln-25" name="ln-25" href="#ln-25"></a><span class="k">        subroutine </span><span class="n">randomGenerator_advance</span><span class="p">(</span><span class="n">self</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">)</span>
+<a id="ln-26" name="ln-26" href="#ln-26"></a><span class="w">            </span><span class="k">import </span><span class="n">t_RandomGenerator</span>
+<a id="ln-27" name="ln-27" href="#ln-27"></a><span class="w">            </span><span class="k">class</span><span class="p">(</span><span class="n">t_RandomGenerator</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">self</span>
+<a id="ln-28" name="ln-28" href="#ln-28"></a><span class="w">            </span><span class="kt">integer</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">n</span>
 <a id="ln-29" name="ln-29" href="#ln-29"></a><span class="w">        </span><span class="k">end subroutine</span>
 <a id="ln-30" name="ln-30" href="#ln-30"></a><span class="k">    end interface</span>
 <a id="ln-31" name="ln-31" href="#ln-31"></a>
 <a id="ln-32" name="ln-32" href="#ln-32"></a><span class="k">contains</span>
 <a id="ln-33" name="ln-33" href="#ln-33"></a>
-<a id="ln-34" name="ln-34" href="#ln-34"></a><span class="k">    function </span><span class="n">randomGenerator_normal</span><span class="p">(</span><span class="n">self</span><span class="p">)</span><span class="w"> </span><span class="k">result</span><span class="p">(</span><span class="n">ret</span><span class="p">)</span><span class="w"></span>
-<a id="ln-35" name="ln-35" href="#ln-35"></a><span class="w">        </span><span class="k">class</span><span class="p">(</span><span class="n">t_RandomGenerator</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">self</span><span class="w"></span>
-<a id="ln-36" name="ln-36" href="#ln-36"></a><span class="w">        </span><span class="kt">double precision</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">ret</span><span class="w"></span>
+<a id="ln-34" name="ln-34" href="#ln-34"></a><span class="k">    function </span><span class="n">randomGenerator_normal</span><span class="p">(</span><span class="n">self</span><span class="p">)</span><span class="w"> </span><span class="k">result</span><span class="p">(</span><span class="n">ret</span><span class="p">)</span>
+<a id="ln-35" name="ln-35" href="#ln-35"></a><span class="w">        </span><span class="k">class</span><span class="p">(</span><span class="n">t_RandomGenerator</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">self</span>
+<a id="ln-36" name="ln-36" href="#ln-36"></a><span class="w">        </span><span class="kt">double precision</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">ret</span>
 <a id="ln-37" name="ln-37" href="#ln-37"></a>
-<a id="ln-38" name="ln-38" href="#ln-38"></a><span class="w">        </span><span class="kt">double precision</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">r1</span><span class="p">,</span><span class="w"> </span><span class="n">r2</span><span class="w"></span>
+<a id="ln-38" name="ln-38" href="#ln-38"></a><span class="w">        </span><span class="kt">double precision</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">r1</span><span class="p">,</span><span class="w"> </span><span class="n">r2</span>
 <a id="ln-39" name="ln-39" href="#ln-39"></a>
-<a id="ln-40" name="ln-40" href="#ln-40"></a><span class="w">        </span><span class="n">r1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">self</span><span class="p">%</span><span class="nb">rand</span><span class="p">()</span><span class="w"></span>
-<a id="ln-41" name="ln-41" href="#ln-41"></a><span class="w">        </span><span class="n">r2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">self</span><span class="p">%</span><span class="nb">rand</span><span class="p">()</span><span class="w"></span>
-<a id="ln-42" name="ln-42" href="#ln-42"></a><span class="w">        </span><span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">2.0d0</span><span class="o">*</span><span class="nb">sqrt</span><span class="p">(</span><span class="o">-</span><span class="mf">2.0d0</span><span class="o">*</span><span class="nb">log</span><span class="p">(</span><span class="n">r1</span><span class="p">))</span><span class="o">*</span><span class="nb">cos</span><span class="p">(</span><span class="mf">2.0d0</span><span class="o">*</span><span class="n">pi</span><span class="o">*</span><span class="n">r2</span><span class="p">)</span><span class="w"></span>
+<a id="ln-40" name="ln-40" href="#ln-40"></a><span class="w">        </span><span class="n">r1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">self</span><span class="p">%</span><span class="nb">rand</span><span class="p">()</span>
+<a id="ln-41" name="ln-41" href="#ln-41"></a><span class="w">        </span><span class="n">r2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">self</span><span class="p">%</span><span class="nb">rand</span><span class="p">()</span>
+<a id="ln-42" name="ln-42" href="#ln-42"></a><span class="w">        </span><span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">2.0d0</span><span class="o">*</span><span class="nb">sqrt</span><span class="p">(</span><span class="o">-</span><span class="mf">2.0d0</span><span class="o">*</span><span class="nb">log</span><span class="p">(</span><span class="n">r1</span><span class="p">))</span><span class="o">*</span><span class="nb">cos</span><span class="p">(</span><span class="mf">2.0d0</span><span class="o">*</span><span class="n">pi</span><span class="o">*</span><span class="n">r2</span><span class="p">)</span>
 <a id="ln-43" name="ln-43" href="#ln-43"></a><span class="w">    </span><span class="k">end function</span>
 <a id="ln-44" name="ln-44" href="#ln-44"></a>
-<a id="ln-45" name="ln-45" href="#ln-45"></a><span class="k">    function </span><span class="n">randomGenerator_random_fix</span><span class="p">(</span><span class="n">self</span><span class="p">,</span><span class="w"> </span><span class="k">value</span><span class="p">)</span><span class="w"> </span><span class="k">result</span><span class="p">(</span><span class="n">ret</span><span class="p">)</span><span class="w"></span>
-<a id="ln-46" name="ln-46" href="#ln-46"></a><span class="w">        </span><span class="k">class</span><span class="p">(</span><span class="n">t_RandomGenerator</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">self</span><span class="w"></span>
+<a id="ln-45" name="ln-45" href="#ln-45"></a><span class="k">    function </span><span class="n">randomGenerator_random_fix</span><span class="p">(</span><span class="n">self</span><span class="p">,</span><span class="w"> </span><span class="k">value</span><span class="p">)</span><span class="w"> </span><span class="k">result</span><span class="p">(</span><span class="n">ret</span><span class="p">)</span>
+<a id="ln-46" name="ln-46" href="#ln-46"></a><span class="w">        </span><span class="k">class</span><span class="p">(</span><span class="n">t_RandomGenerator</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">self</span>
 <a id="ln-47" name="ln-47" href="#ln-47"></a><span class="w">        </span><span class="kt">double precision</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="k">value</span>
-<a id="ln-48" name="ln-48" href="#ln-48"></a><span class="k">        </span><span class="kt">double precision</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">ret</span><span class="w"></span>
+<a id="ln-48" name="ln-48" href="#ln-48"></a><span class="k">        </span><span class="kt">double precision</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">ret</span>
 <a id="ln-49" name="ln-49" href="#ln-49"></a>
-<a id="ln-50" name="ln-50" href="#ln-50"></a><span class="w">        </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">fixed</span><span class="w"></span>
-<a id="ln-51" name="ln-51" href="#ln-51"></a><span class="w">        </span><span class="n">fixed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">int</span><span class="p">(</span><span class="k">value</span><span class="p">)</span><span class="w"></span>
+<a id="ln-50" name="ln-50" href="#ln-50"></a><span class="w">        </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">fixed</span>
+<a id="ln-51" name="ln-51" href="#ln-51"></a><span class="w">        </span><span class="n">fixed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">int</span><span class="p">(</span><span class="k">value</span><span class="p">)</span>
 <a id="ln-52" name="ln-52" href="#ln-52"></a>
 <a id="ln-53" name="ln-53" href="#ln-53"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">self</span><span class="p">%</span><span class="nb">rand</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="k">value</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">fixed</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
-<a id="ln-54" name="ln-54" href="#ln-54"></a><span class="k">            </span><span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fixed</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<a id="ln-54" name="ln-54" href="#ln-54"></a><span class="k">            </span><span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fixed</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span>
 <a id="ln-55" name="ln-55" href="#ln-55"></a><span class="w">        </span><span class="k">else</span>
-<a id="ln-56" name="ln-56" href="#ln-56"></a><span class="k">            </span><span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fixed</span><span class="w"></span>
+<a id="ln-56" name="ln-56" href="#ln-56"></a><span class="k">            </span><span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fixed</span>
 <a id="ln-57" name="ln-57" href="#ln-57"></a><span class="w">        </span><span class="k">end if</span>
 <a id="ln-58" name="ln-58" href="#ln-58"></a><span class="k">    end function</span>
 <a id="ln-59" name="ln-59" href="#ln-59"></a>
-<a id="ln-60" name="ln-60" href="#ln-60"></a><span class="k">end module</span><span class="w"></span>
+<a id="ln-60" name="ln-60" href="#ln-60"></a><span class="k">end module</span>
 </pre></div>
 
-    </section>
+      </section>
     </div>
   </div>
 
@@ -580,32 +550,27 @@ can be.
     </div> <!-- /container -->
     <footer>
       <div class="container">
-        <div class="row">
-          <div class="col-xs-6 col-md-6"><p>ohhelp-pic-3d was developed by Nkzono99<br>&copy; 2023 <a rel="license" href="https://opensource.org/licenses/MIT">MIT</a>
+        <div class="row justify-content-between">
+          <div class="col"><p>ohhelp-pic-3d was developed by Nkzono99<br>&copy; 2023 <a rel="license" href="https://opensource.org/licenses/MIT">MIT</a>
 </p>
           </div>
-          <div class="col-xs-6 col-md-6">
-            <p class="text-right">
+          <div class="col">
+            <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2023-07-11T21:09:12.065188             </p>
+ on 2023-11-07T16:33:23.830536             </p>
           </div>
         </div>
         <br>
       </div> <!-- /container -->
     </footer>
 
-    <!-- Bootstrap core JavaScript
-         ================================================== -->
-         <!-- Placed at the end of the document so the pages load faster -->
-    <!--
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-        -->
-        <script src="../js/bootstrap.min.js"></script>
-        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-        <script src="../js/ie10-viewport-bug-workaround.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
 
-        <!-- MathJax JavaScript
+    <!-- MathJax JavaScript
              ================================================== -->
              <!-- Placed at the end of the document so the pages load faster -->
         <script type="text/x-mathjax-config">
