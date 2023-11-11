@@ -52,9 +52,6 @@ contains
         ret(1) = 2.0d0*sigma*sqrt(-2.0d0*log(rands(1)))*cos(2.0d0*PI*rands(2))
         ret(2) = 2.0d0*sigma*sqrt(-2.0d0*log(rands(1)))*sin(2.0d0*PI*rands(2))
         ret(3) = 2.0d0*sigma*sqrt(-2.0d0*log(rands(3)))*sin(2.0d0*PI*rands(4))
-
-        ret = max(-sigma*6, min(ret, sigma*6))
-        ! print *, ret
     end function
 
 end module
