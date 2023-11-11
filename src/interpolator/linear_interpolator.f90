@@ -51,6 +51,7 @@ contains
             integer :: i, j, k
             double precision :: r(3)
             double precision :: rxyz(2, 3)
+
             r = local_position - ilocal_position
 
             rxyz(1, :) = r(:)
