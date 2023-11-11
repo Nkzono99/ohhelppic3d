@@ -27,10 +27,11 @@ contains
         obj%comm_id_count = 1
     end function
 
-    function factory_create_field(self, name, nfields) result(field)
+    function factory_create_field(self, name, nfields, nelements) result(field)
         class(t_OhFieldFactory), intent(inout) :: self
         character(len=*), intent(in) :: name
         integer, optional, intent(in) :: nfields
+        integer, intent(in), optional :: nelements
         type(t_OhField) :: field
 
         integer :: nfields_ = 2
@@ -41,13 +42,13 @@ contains
 
         select case (name)
         case ('eb', 'electromagnetic')
-            field = self%create_electromagnetic_field(nfields_)
+            field = self%create_electromagnetic_field(nfields_, nelements)
         case ('j', 'current')
-            field = self%create_current_field(nfields_)
+            field = self%create_current_field(nfields_, nelements)
         case ('rho', 'density')
-            field = self%create_density_field(nfields_)
+            field = self%create_density_field(nfields_, nelements)
         case ('phi', 'potential')
-            field = self%create_potential_field(nfields_)
+            field = self%create_potential_field(nfields_, nelements)
         case default
             print *, 'InvalidArgumentError: input name is invalid (OhFieldFactory%create_field):', name
             return
@@ -119,13 +120,20 @@ contains
         ohfield = new_OhField(exinfo, nfields, bcomminfos)
     end function
 
-    function factory_create_electromagnetic_field(self, nfields) result(field)
+    function factory_create_electromagnetic_field(self, nfields, nelements) result(field)
         class(t_OhFieldFactory), intent(inout) :: self
         integer, intent(in) :: nfields
+        integer, intent(in), optional :: nelements
         type(t_OhField) :: field
 
+        integer :: nelements_ = 6
+
+        if (present(nelements)) then
+            nelements_ = nelements
+        end if
+
         field = self%create_field_wrapper( &
-                nelements=6, &
+                nelements=nelements_, &
                 nfields=nfields, &
                 nextensions=[-1, 2], &
                 nextensions_for_broadcast=[-1, 2], &
@@ -138,13 +146,20 @@ contains
                 upward_comm_nsends=1)
     end function
 
-    function factory_create_current_field(self, nfields) result(field)
+    function factory_create_current_field(self, nfields, nelements) result(field)
         class(t_OhFieldFactory), intent(inout) :: self
         integer, intent(in) :: nfields
+        integer, intent(in), optional :: nelements
         type(t_OhField) :: field
 
+        integer :: nelements_ = 3
+
+        if (present(nelements)) then
+            nelements_ = nelements
+        end if
+
         field = self%create_field_wrapper( &
-                nelements=3, &
+                nelements=nelements_, &
                 nfields=nfields, &
                 nextensions=[0, 0], &
                 nextensions_for_broadcast=[0, 0], &
@@ -157,13 +172,20 @@ contains
                 upward_comm_nsends=3)
     end function
 
-    function factory_create_density_field(self, nfields) result(field)
+    function factory_create_density_field(self, nfields, nelements) result(field)
         class(t_OhFieldFactory), intent(inout) :: self
         integer, intent(in) :: nfields
+        integer, intent(in), optional :: nelements
         type(t_OhField) :: field
 
+        integer :: nelements_ = 1
+
+        if (present(nelements)) then
+            nelements_ = nelements
+        end if
+
         field = self%create_field_wrapper( &
-                nelements=1, &
+                nelements=nelements_, &
                 nfields=nfields, &
                 nextensions=[0, 1], &
                 nextensions_for_broadcast=[0, 0], &
@@ -176,13 +198,20 @@ contains
                 upward_comm_nsends=1)
     end function
 
-    function factory_create_potential_field(self, nfields) result(field)
+    function factory_create_potential_field(self, nfields, nelements) result(field)
         class(t_OhFieldFactory), intent(inout) :: self
         integer, intent(in) :: nfields
+        integer, intent(in), optional :: nelements
         type(t_OhField) :: field
 
+        integer :: nelements_ = 1
+
+        if (present(nelements)) then
+            nelements_ = nelements
+        end if
+
         field = self%create_field_wrapper( &
-                nelements=1, &
+                nelements=nelements_, &
                 nfields=nfields, &
                 nextensions=[0, 0], &
                 nextensions_for_broadcast=[-1, 2], &
