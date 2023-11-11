@@ -12,11 +12,12 @@ module m_field_solver
     end type
 
     interface
-        subroutine fieldSolver_solve(self, rho, aj, eb, phi, ohhelp)
+        subroutine fieldSolver_solve(self, dt, rho, aj, eb, phi, ohhelp)
             import t_FieldSolver
             import t_OhField
             import t_OhHelp
             class(t_FieldSolver), intent(in) :: self
+            double precision, intent(in) :: dt
             class(t_OhField), intent(in) :: rho
             class(t_OhField), intent(in) :: aj
             class(t_OhField), intent(inout) :: eb

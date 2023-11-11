@@ -32,13 +32,13 @@ module m_poisson_field_solver
 contains
 
     function new_PoissonFieldSolver(local_block, global_block, &
-                                      fft_solver_name, &
-                                      boundary_types, &
-                                      boundary_values, &
-                                      myid, &
-                                      nprocs, &
-                                      comm, &
-                                      tag) result(obj)
+                                    fft_solver_name, &
+                                    boundary_types, &
+                                    boundary_values, &
+                                    myid, &
+                                    nprocs, &
+                                    comm, &
+                                    tag) result(obj)
         type(t_Block), intent(in) :: local_block
         type(t_Block), intent(in) :: global_block
         character(*), intent(in) :: fft_solver_name
@@ -87,8 +87,9 @@ contains
                                                    boundary_values)
     end function
 
-    subroutine poissonSolver_solve(self, rho, aj, eb, phi, ohhelp)
+    subroutine poissonSolver_solve(self, dt, rho, aj, eb, phi, ohhelp)
         class(t_PoissonFieldSolver), intent(in) :: self
+        double precision, intent(in) :: dt
         class(t_OhField), intent(in) :: rho
         class(t_OhField), intent(in) :: aj
         class(t_OhField), intent(inout) :: eb
@@ -100,6 +101,7 @@ contains
         ! Solve poisson equation.
         block
             integer :: local_start(3), local_end(3)
+            integer :: axis
 
             local_start = phi%to_local_index(self%local_block%start, 1)
             local_end = phi%to_local_index(self%local_block%end, 1)
@@ -144,6 +146,7 @@ contains
                     phi%values(3, xl:xu, yl:yu, zl:zu, ps) - phi%values(3, xl:xu, yl:yu, zl + 1:zu + 1, ps)
             end do
 
+            call ohhelp%broadcast_field(eb)
             call ohhelp%exchange_borders(eb)
         end block
 
@@ -170,6 +173,7 @@ contains
                     0.5d0*(eb%values(3, xl:xu, yl:yu, zl - 1:zu - 1, ps) + eb%values(3, xl:xu, yl:yu, zl:zu, ps))
             end do
 
+            call ohhelp%broadcast_field(eb)
             call ohhelp%exchange_borders(eb)
         end block
     end subroutine
