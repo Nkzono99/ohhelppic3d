@@ -59,6 +59,7 @@ contains
 
         start(:) = local_block%start(:) - global_block%start(:)
         end(:) = local_block%end(:) - global_block%start(:)
+
         do concurrent(kx=start(1):end(1), ky=start(2):end(2), kz=start(3):end(3))
             block
                 double precision :: wx, wy, wz
@@ -68,8 +69,7 @@ contains
                 wy = calc_wave_number(ky, global_block%sizes(2) - 1, obj%fft3d%boundary_types(2))
                 wz = calc_wave_number(kz, global_block%sizes(3) - 1, obj%fft3d%boundary_types(3))
 
-                ! TODO: 二乗にすると正しそうな結果となったが、理論をもう一度確認すること
-                wn = wx*wx + wy*wy + wz*wz
+                wn = wx + wy + wz
 
                 obj%modified_wave_number(kx + global_block%start(1), &
                                          ky + global_block%start(2), &
@@ -116,6 +116,8 @@ contains
                 wn = 2.0d0*sin(PI*(n - k)/dble(n))
             end if
 
+            wn = -wn*wn
+
         case (Field_BoundaryType_Dirichlet)
             wn = 2.0d0*(cos(PI*(k + 1)/dble(n + 1)) - 1.0d0)
 
@@ -144,7 +146,7 @@ contains
             self%local_block%start(3):self%local_block%end(3) &
             )
 
-        phi(:, :, :) = rho(:, :, :)
+        phi(:, :, :) = -rho(:, :, :)
 
         block
             integer :: axis
@@ -191,7 +193,8 @@ contains
                                            self%local_block%start(2):self%local_block%end(2), &
                                            self%local_block%start(3):self%local_block%end(3))
 
-            if (all(self%local_block%start == self%global_block%start)) then
+            if (all(self%local_block%start == self%global_block%start) &
+                .and. all(self%fft3d%boundary_types == Field_BoundaryType_Periodic)) then
                 phi(local_start(1), &
                     local_start(2), &
                     local_start(3)) = 0d0
