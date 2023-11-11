@@ -38,3 +38,8 @@ mydev/
 
 doc/
 fpm-doc/
+*.log
+*.png
+*.gif
+*.h5
+/*.py
