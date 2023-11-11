@@ -320,6 +320,7 @@ contains
         end block
     end subroutine
 
+    ! TODO: この関数内でcount_histgramの計算とnidの調整を行うようにすることを検討
     subroutine ohhelp_transbound(self, ohparticles)
         class(t_OhHelp), intent(inout) :: self
         class(t_OhParticles), intent(inout) :: ohparticles
@@ -418,12 +419,15 @@ contains
 
         integer :: nid
 
-        nid = oh3_map_particle_to_neighbor(particle%x, particle%y, particle%z, ps)
+        ! nid = oh3_map_particle_to_neighbor(particle%x, particle%y, particle%z, ps)
+        nid = oh3_map_particle_to_subdomain(particle%x, particle%y, particle%z)
 
         if (nid /= particle%nid) then
             particle%nid = nid
             self%particle_count_histgram(self%subdomain_id(ps) + 1, particle%spec, ps) = &
                 self%particle_count_histgram(self%subdomain_id(ps) + 1, particle%spec, ps) - 1
+            self%particle_count_histgram(nid+1, particle%spec, ps) = &
+                self%particle_count_histgram(nid+1, particle%spec, ps) + 1
         end if
     end subroutine
 
@@ -434,6 +438,5 @@ contains
 
         ret = oh3_map_particle_to_subdomain(position(1), position(2), position(3))
     end function
-    
 
 end module
