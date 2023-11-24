@@ -78,61 +78,6 @@ contains
         end do
     end function
 
-    pure function calc_boundary_term(boundary_values, boundary_type) result(terms)
-        double precision, intent(in) :: boundary_values(2)
-        integer, intent(in) :: boundary_type
-        double precision :: terms(2)
-
-        select case (boundary_type)
-        case (Field_BoundaryType_Periodic)
-            terms(:) = boundary_values(:)
-
-        case (Field_BoundaryType_Dirichlet)
-            terms(:) = [-boundary_values(1), -boundary_values(2)]
-
-        case (Field_BoundaryType_Neumann)
-            terms(:) = [2.0d0*boundary_values(1), -2.0d0*boundary_values(2)]
-
-        case (Field_BoundaryType_Dirichlet_Neumann)
-            terms(:) = [-boundary_values(1), -2.0d0*boundary_values(2)]
-
-        case (Field_BoundaryType_Neumann_Dirichlet)
-            terms(:) = [-boundary_values(1), -2.0d0*boundary_values(2)]
-        end select
-    end function
-
-    pure function calc_wave_number(k, n, boundary_type) result(wn)
-        integer, intent(in) :: k
-        integer, intent(in) :: n
-        integer, intent(in) :: boundary_type
-        double precision :: wn
-
-        select case (boundary_type)
-        case (Field_BoundaryType_Periodic)
-            ! REVIEW: wave numberの計算が本当に正しいか疑わしいため、要再確認
-            if (k <= int(n/2)) then
-                wn = 2.0d0*sin(PI*k/dble(n))
-            else
-                wn = 2.0d0*sin(PI*(n - k)/dble(n))
-            end if
-
-            wn = -wn*wn
-
-        case (Field_BoundaryType_Dirichlet)
-            wn = 2.0d0*(cos(PI*(k + 1)/dble(n + 1)) - 1.0d0)
-
-        case (Field_BoundaryType_Neumann)
-            wn = 2.0d0*(cos(PI*k/dble(n)) - 1.0d0)
-
-        case (Field_BoundaryType_Dirichlet_Neumann)
-            wn = 2.0d0*(cos(PI*(k + 0.5d0)/dble(n + 1)) - 1.0d0)
-
-        case (Field_BoundaryType_Neumann_Dirichlet)
-            wn = 2.0d0*(cos(PI*(k + 0.5d0)/dble(n + 1)) - 1.0d0)
-
-        end select
-    end function
-
     subroutine poissonSolver3d_solve(self, rho, phi)
         class(t_PoissonSolver3d), intent(in) :: self
         double precision, intent(in) :: rho( &
@@ -194,7 +139,8 @@ contains
                                            self%local_block%start(3):self%local_block%end(3))
 
             if (all(self%local_block%start == self%global_block%start) &
-                .and. all(self%fft3d%boundary_types == Field_BoundaryType_Periodic)) then
+                .and. all((self%fft3d%boundary_types == Field_BoundaryType_Periodic) &
+                .or. self%fft3d%boundary_types == Field_BoundaryType_Neumann)) then
                 phi(local_start(1), &
                     local_start(2), &
                     local_start(3)) = 0d0
@@ -208,5 +154,60 @@ contains
                                          local_start(3):local_end(3)))
         end block
     end subroutine
+
+    pure function calc_boundary_term(boundary_values, boundary_type) result(terms)
+        double precision, intent(in) :: boundary_values(2)
+        integer, intent(in) :: boundary_type
+        double precision :: terms(2)
+
+        select case (boundary_type)
+        case (Field_BoundaryType_Periodic)
+            terms(:) = boundary_values(:)
+
+        case (Field_BoundaryType_Dirichlet)
+            terms(:) = [-boundary_values(1), -boundary_values(2)]
+
+        case (Field_BoundaryType_Neumann)
+            terms(:) = [2.0d0*boundary_values(1), -2.0d0*boundary_values(2)]
+
+        case (Field_BoundaryType_Dirichlet_Neumann)
+            terms(:) = [-boundary_values(1), -2.0d0*boundary_values(2)]
+
+        case (Field_BoundaryType_Neumann_Dirichlet)
+            terms(:) = [-boundary_values(1), -2.0d0*boundary_values(2)]
+        end select
+    end function
+
+    pure function calc_wave_number(k, n, boundary_type) result(wn)
+        integer, intent(in) :: k
+        integer, intent(in) :: n
+        integer, intent(in) :: boundary_type
+        double precision :: wn
+
+        select case (boundary_type)
+        case (Field_BoundaryType_Periodic)
+            ! REVIEW: wave numberの計算が本当に正しいか疑わしいため、要再確認
+            if (k <= int(n/2)) then
+                wn = 2.0d0*sin(PI*k/dble(n))
+            else
+                wn = 2.0d0*sin(PI*(n - k)/dble(n))
+            end if
+
+            wn = -wn*wn
+
+        case (Field_BoundaryType_Dirichlet)
+            wn = 2.0d0*(cos(PI*(k + 1)/dble(n + 1)) - 1.0d0)
+
+        case (Field_BoundaryType_Neumann)
+            wn = 2.0d0*(cos(PI*k/dble(n)) - 1.0d0)
+
+        case (Field_BoundaryType_Dirichlet_Neumann)
+            wn = 2.0d0*(cos(PI*(k + 0.5d0)/dble(n + 1)) - 1.0d0)
+
+        case (Field_BoundaryType_Neumann_Dirichlet)
+            wn = 2.0d0*(cos(PI*(k + 0.5d0)/dble(n + 1)) - 1.0d0)
+
+        end select
+    end function
 
 end module
